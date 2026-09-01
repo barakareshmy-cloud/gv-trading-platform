@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="GV Trading Platform — Crypto market education and simulated trading dashboard.">
+<title>GV Trading Platform | Crypto Trading</title>
+<style>
+:root{--bg:#06101b;--panel:#0b1826;--panel2:#101f30;--line:#1c3045;--text:#eef5ff;--muted:#8294a8;--blue:#1478ff;--cyan:#00c6ff;--green:#20d68b;--red:#ff5e70;--gold:#f4c95d}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}button,input,select{font:inherit}button{cursor:pointer}.container{width:min(1180px,92%);margin:auto}
+header{position:sticky;top:0;z-index:50;background:rgba(6,16,27,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between}.logo{font-weight:900;font-size:22px;display:flex;gap:10px;align-items:center}.logo span{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--blue),var(--cyan))}.links{display:flex;gap:26px}.links a{color:#a8b8c9;text-decoration:none;font-size:14px}.links a:hover{color:white}.menu{display:none;background:none;border:0;color:white;font-size:25px}
+.hero{padding:90px 0 70px;background:radial-gradient(circle at 80% 20%,rgba(20,120,255,.18),transparent 35%),radial-gradient(circle at 10% 80%,rgba(0,198,255,.08),transparent 30%)}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}.badge{display:inline-block;border:1px solid #24527a;background:#0b2035;color:#7fc8ff;padding:7px 12px;border-radius:30px;font-size:12px;margin-bottom:18px}.hero h1{font-size:clamp(40px,6vw,72px);line-height:1.02;margin-bottom:20px}.hero h1 span{color:#36a4ff}.hero p{color:var(--muted);font-size:17px;max-width:620px}.actions{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}.btn{border:0;border-radius:9px;padding:13px 20px;font-weight:800}.primary{background:linear-gradient(135deg,var(--blue),var(--cyan));color:white}.secondary{background:#112236;border:1px solid var(--line);color:white}
+.market-box{background:linear-gradient(180deg,#0d1c2b,#08131f);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 25px 80px rgba(0,0,0,.25)}.market-top{display:flex;justify-content:space-between;margin-bottom:18px}.coin{font-weight:800}.live{font-size:11px;color:var(--green)}.bigprice{font-size:35px;font-weight:900}.change{color:var(--green);font-size:13px}.mini-chart{height:150px;width:100%;margin-top:15px;background:#081420;border-radius:10px}
+section{padding:70px 0}.section-head{margin-bottom:30px}.section-head h2{font-size:32px;margin-bottom:8px}.section-head p{color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:23px}.card h3{margin-bottom:8px}.card p{color:var(--muted);font-size:14px}.icon{font-size:24px;margin-bottom:15px}
+.about{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:center}.founder{background:linear-gradient(135deg,#0d2237,#0b1826);border:1px solid var(--line);border-radius:18px;padding:35px;text-align:center}.avatar{width:100px;height:100px;border-radius:50%;margin:auto auto 15px;display:grid;place-items:center;font-size:31px;font-weight:900;background:linear-gradient(135deg,var(--blue),var(--cyan))}.founder small{color:#7f91a5}.about-text p{color:var(--muted);margin:12px 0}
+#dashboard{background:#07131f}.dash{display:grid;grid-template-columns:1fr 330px;gap:18px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}.stat{background:var(--panel);border:1px solid var(--line);padding:17px;border-radius:12px}.stat small{color:var(--muted)}.stat strong{display:block;font-size:22px;margin-top:4px}.green{color:var(--green)}.red{color:var(--red)}
+.chart-card,.trade-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}.head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.head h3{font-size:16px}.select,input{background:var(--panel2);border:1px solid #294057;color:white;padding:11px;border-radius:8px;outline:0;width:100%}.chart{width:100%;height:360px;background:#081420;border-radius:9px}.trade-card h3{margin-bottom:18px}.quote{text-align:center;background:#081420;padding:15px;border-radius:9px;margin-bottom:16px}.quote strong{display:block;font-size:27px}.field{margin:12px 0}.field label{display:block;color:var(--muted);font-size:12px;margin-bottom:6px}.trade-btns{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:17px}.buy,.sell{border:0;padding:12px;border-radius:8px;color:white;font-weight:800}.buy{background:#079563}.sell{background:#d94e61}.note{color:#687c91;font-size:11px;margin-top:16px}
+.table-wrap{overflow:auto;margin-top:18px}.table{width:100%;border-collapse:collapse;min-width:700px}.table th,.table td{text-align:left;padding:13px;border-bottom:1px solid var(--line);font-size:13px}.table th{color:var(--muted);font-size:11px;text-transform:uppercase}
+.payment-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.payment{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px}.payment h3{margin-bottom:10px}.payment p{color:var(--muted);font-size:13px;margin-bottom:15px}.payment button{width:100%;border:0;border-radius:8px;padding:12px;background:#14283d;color:white;font-weight:700}
+.guides{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.guide{background:var(--panel);border:1px solid var(--line);padding:23px;border-radius:14px}.guide h3{margin-bottom:8px}.guide p{color:var(--muted);font-size:14px}
+.risk{border:1px solid #614d24;background:#17150d;border-radius:14px;padding:25px}.risk h3{color:var(--gold);margin-bottom:10px}.risk p{color:#b5aa91;font-size:14px}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:20px}.contact-box{background:var(--panel);border:1px solid var(--line);padding:25px;border-radius:14px}.contact-box p{margin:8px 0;color:var(--muted)}.contact a{color:#54b5ff;text-decoration:none}
+footer{border-top:1px solid var(--line);padding:30px 0;color:#718399;font-size:12px}footer .foot{display:flex;justify-content:space-between;gap:15px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;place-items:center;z-index:100;padding:20px}.modal.show{display:grid}.modal-box{width:min(430px,100%);background:#0b1826;border:1px solid var(--line);border-radius:15px;padding:25px}.modal-box h2{margin-bottom:16px}.close{float:right;border:0;background:none;color:#8da0b3;font-size:22px}.modal .field{margin-bottom:12px}.modal .btn{width:100%;margin-top:8px}
+.toast{position:fixed;right:20px;bottom:20px;background:#13263b;border:1px solid #31506d;padding:13px 17px;border-radius:9px;transform:translateY(80px);opacity:0;transition:.3s;z-index:150}.toast.show{transform:translateY(0);opacity:1}
+@media(max-width:900px){.hero-grid,.about,.dash,.contact{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.cards,.guides{grid-template-columns:1fr 1fr}.links{display:none}.menu{display:block}}
+@media(max-width:600px){.nav{height:64px}.links{position:absolute;top:64px;left:0;right:0;background:#08131f;padding:18px;display:none;flex-direction:column;border-bottom:1px solid var(--line)}.links.open{display:flex}.hero{padding:65px 0}.stats,.cards,.guides,.payment-grid{grid-template-columns:1fr}.hero h1{font-size:43px}.chart{height:280px}.section-head h2{font-size:27px}footer .foot{flex-direction:column}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo"><span>GV</span> GV Trading Platform</div>
+    <nav class="links" id="links">
+      <a href="#home">Home</a><a href="#about">Founder</a><a href="#dashboard">Trading</a>
+      <a href="#learn">Guides</a><a href="#risk">Risk</a><a href="#contact">Contact</a>
+    </nav>
+    <button class="menu" id="menu">☰</button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+<div class="container hero-grid">
+  <div>
+    <div class="badge">CRYPTO • EDUCATION • DEMO TRADING</div>
+    <h1>Trade smarter with <span>GV.</span></h1>
+    <p>Explore crypto markets, learn trading principles and practice with a professional simulated trading dashboard built for modern traders.</p>
+    <div class="actions"><button class="btn primary" onclick="document.querySelector('#dashboard').scrollIntoView()">Open Trading Dashboard</button><button class="btn secondary" onclick="openModal('signup')">Create Demo Account</button></div>
+  </div>
+  <div class="market-box">
+    <div class="market-top"><div><div class="coin">BTC / USD</div><small style="color:#72869a">Bitcoin</small></div><div class="live">● LIVE DEMO</div></div>
+    <div class="bigprice" id="heroPrice">$67,420.18</div><div class="change">▲ +2.84% simulated today</div>
+    <canvas class="mini-chart" id="heroChart"></canvas>
+  </div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<div class="section-head"><h2>A modern crypto platform</h2><p>Everything you need to explore the market and build better trading habits.</p></div>
+<div class="cards">
+<div class="card"><div class="icon">📊</div><h3>Market Dashboard</h3><p>Track selected crypto assets with simulated prices, charts and market indicators.</p></div>
+<div class="card"><div class="icon">⚡</div><h3>Fast Demo Orders</h3><p>Practice buy and sell decisions without sending real orders to a financial market.</p></div>
+<div class="card"><div class="icon">🎓</div><h3>Trading Education</h3><p>Learn risk management, technical analysis, position sizing and market psychology.</p></div>
+</div>
+</div>
+</section>
+
+<section id="about">
+<div class="container about">
+  <div class="founder"><div class="avatar">GB</div><h2>Gyane Baraka</h2><small>Founder — GV Trading Platform</small><p style="margin-top:15px;color:#a6b5c5">Building a learning-focused digital environment for people interested in crypto markets.</p></div>
+  <div class="about-text"><div class="section-head"><h2>About the Founder</h2></div>
+  <p>GV Trading Platform was founded by <strong>Gyane Baraka</strong> with the vision of creating a simple, modern place where aspiring traders can understand crypto markets before taking unnecessary financial risks.</p>
+  <p>The platform combines market information, educational guides and simulated trading tools so users can focus on learning how markets work, developing discipline and understanding risk.</p>
+  <p><strong>Our principle:</strong> education first, responsible decision-making always.</p>
+  </div>
+</div>
+</section>
+
+<section id="dashboard">
+<div class="container">
+<div class="section-head"><h2>Trading Dashboard</h2><p>Demo environment — prices and orders are simulated.</p></div>
+<div class="stats">
+<div class="stat"><small>Demo Balance</small><strong id="balance">$25,840.00</strong></div>
+<div class="stat"><small>Available Margin</small><strong>$18,420.50</strong></div>
+<div class="stat"><small>Today's P/L</small><strong class="green" id="pl">+$486.25</strong></div>
+<div class="stat"><small>Open Positions</small><strong id="count">3</strong></div>
+</div>
+<div class="dash">
+<div class="chart-card">
+<div class="head"><h3 id="pair">BTC/USD</h3><select class="select" id="market" style="width:160px"><option value="BTC">BTC/USD</option><option value="ETH">ETH/USD</option><option value="SOL">SOL/USD</option><option value="XRP">XRP/USD</option></select></div>
+<canvas class="chart" id="chart"></canvas>
+</div>
+<div class="trade-card">
+<h3>Place Demo Order</h3>
+<div class="quote"><small style="color:#7e91a5">Current Price</small><strong id="tradePrice">$67,420.18</strong></div>
+<div class="field"><label>Order Type</label><select class="select"><option>Market Order</option><option>Limit Order</option><option>Stop Order</option></select></div>
+<div class="field"><label>Amount (USD)</label><input id="amount" type="number" min="1" value="100"></div>
+<div class="field"><label>Leverage</label><select class="select"><option>1x</option><option>2x</option><option>5x</option><option>10x</option></select></div>
+<div class="trade-btns"><button class="buy" onclick="order('BUY')">BUY</button><button class="sell" onclick="order('SELL')">SELL</button></div>
+<p class="note">This demo does not execute real trades or create real financial positions.</p>
+</div>
+</div>
+<div class="table-wrap"><table class="table"><thead><tr><th>Asset</th><th>Side</th><th>Size</th><th>Entry</th><th>Current</th><th>P/L</th><th>Status</th></tr></thead><tbody id="positions">
+<tr><td>BTC/USD</td><td class="green">BUY</td><td>0.15 BTC</td><td>$65,800</td><td>$67,420</td><td class="green">+$243</td><td>OPEN</td></tr>
+<tr><td>ETH/USD</td><td class="green">BUY</td><td>1.8 ETH</td><td>$3,210</td><td>$3,342</td><td class="green">+$237</td><td>OPEN</td></tr>
+<tr><td>SOL/USD</td><td class="red">SELL</td><td>20 SOL</td><td>$151</td><td>$150</td><td class="green">+$20</td><td>OPEN</td></tr>
+</tbody></table></div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<div class="section-head"><h2>Wallet & Payments</h2><p>Payment interfaces are shown for demonstration. No money is processed by this prototype.</p></div>
+<div class="payment-grid">
+<div class="payment"><h3>🇰🇪 M-Pesa</h3><p>Connect an approved M-Pesa payment integration in production to support deposits or other legitimate platform services.</p><button onclick="showToast('M-Pesa demo interface selected')">Open M-Pesa Demo</button></div>
+<div class="payment"><h3>PayPal</h3><p>Use an approved PayPal integration in production. This button is only a front-end demonstration.</p><button onclick="showToast('PayPal demo interface selected')">Open PayPal Demo</button></div>
+</div>
+</div>
+</section>
+
+<section id="learn">
+<div class="container">
+<div class="section-head"><h2>Trading Guides & Market Info</h2><p>Start with the fundamentals before risking capital.</p></div>
+<div class="guides">
+<div class="guide"><h3>01. Understand Crypto</h3><p>Learn what cryptocurrencies are, how blockchain networks work and why crypto prices can move quickly.</p></div>
+<div class="guide"><h3>02. Risk Management</h3><p>Never risk money you cannot afford to lose. Learn position sizing, stop-loss concepts and portfolio exposure.</p></div>
+<div class="guide"><h3>03. Technical Analysis</h3><p>Study price action, trends, support and resistance, volume and common chart patterns.</p></div>
+<div class="guide"><h3>04. Market Psychology</h3><p>Fear, greed and impulsive decisions can influence traders. Build a consistent plan and journal decisions.</p></div>
+<div class="guide"><h3>05. Security</h3><p>Protect accounts with strong passwords, multi-factor authentication and careful wallet practices.</p></div>
+<div class="guide"><h3>06. Research First</h3><p>Verify information, understand an asset's fundamentals and avoid decisions based solely on social-media hype.</p></div>
+</div>
+</div>
+</section>
+
+<section id="risk">
+<div class="container">
+<div class="section-head"><h2>Risk Disclosure</h2></div>
+<div class="risk">
+<h3>⚠ Important Financial Risk Notice</h3>
+<p>Cryptocurrency trading is highly speculative and can result in substantial or total loss of capital. Prices can be extremely volatile. Leverage can magnify both gains and losses. Nothing on GV Trading Platform should be interpreted as financial, investment, legal or tax advice, or as a guarantee of profit.</p>
+<p style="margin-top:10px">The trading dashboard on this website is a simulated educational environment. The displayed balances, prices, positions and order results are examples only and are not real transactions. Before offering real-money trading, deposits, withdrawals or investment services, the platform should use properly authorized providers and comply with applicable laws and regulations.</p>
+</div>
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+<div class="section-head"><h2>Contact GV Trading Platform</h2><p>Questions, partnerships and general enquiries.</p></div>
+<div class="contact">
+<div class="contact-box"><h3>Get in touch</h3><p>📞 <a href="tel:0727271122">0727271122</a></p><p>✉ <a href="mailto:barakareshmy@gmail.com">barakareshmy@gmail.com</a></p></div>
+<div class="contact-box"><h3>Platform Access</h3><p>Want to explore the demo?</p><button class="btn primary" onclick="openModal('login')" style="margin-top:8px">Login</button> <button class="btn secondary" onclick="openModal('signup')">Register</button></div>
+</div>
+</div>
+</section>
+</main>
+
+<footer><div class="container foot"><div>© 2026 GV Trading Platform. All rights reserved.</div><div>Crypto education & simulated trading interface.</div></div></footer>
+
+<div class="modal" id="modal"><div class="modal-box"><button class="close" onclick="closeModal()">×</button><h2 id="modalTitle">Login</h2><div class="field"><label>Email</label><input type="email" placeholder="you@example.com"></div><div class="field"><label>Password</label><input type="password" placeholder="••••••••"></div><button class="btn primary" onclick="demoAuth()">Continue</button><p class="note">Demo authentication only. Connect a secure backend before production use.</p></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const markets={BTC:{name:"BTC/USD",price:67420.18},ETH:{name:"ETH/USD",price:3342.80},SOL:{name:"SOL/USD",price:150.42},XRP:{name:"XRP/USD",price:2.84}};
+let selected="BTC", data=[];
+const chart=document.getElementById("chart"),ctx=chart.getContext("2d"),hero=document.getElementById("heroChart"),hctx=hero.getContext("2d");
+
+function makeData(){data=[];let p=markets[selected].price;for(let i=0;i<70;i++){p+=(Math.random()-.47)*p*.004;data.push(p)}}
+function resize(c){const r=c.getBoundingClientRect(),d=devicePixelRatio;c.width=r.width*d;c.height=r.height*d;return [r.width,r.height,d]}
+function draw(c,xdata,mini=false){
+ const [w,h,d]=resize(c),cctx=c.getContext("2d");cctx.clearRect(0,0,w,h);
+ if(!xdata.length)return;
+ const min=Math.min(...xdata),max=Math.max(...xdata);
+ cctx.strokeStyle="#15283b";cctx.lineWidth=1;
+ for(let i=1;i<6;i++){cctx.beginPath();cctx.moveTo(0,h*i/6);cctx.lineTo(w,h*i/6);cctx.stroke()}
+ cctx.beginPath();xdata.forEach((v,i)=>{let x=i/(xdata.length-1)*w,y=h-((v-min)/(max-min))*(h-25)-12;i?cctx.lineTo(x,y):cctx.moveTo(x,y)});
+ cctx.strokeStyle="#20d68b";cctx.lineWidth=mini?1.5:2;cctx.stroke();
+}
+function fmt(v){return v<10?"$"+v.toFixed(4):"$"+v.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}
+function update(){
+ const m=markets[selected];document.getElementById("pair").textContent=m.name;document.getElementById("tradePrice").textContent=fmt(m.price);document.getElementById("heroPrice").textContent=fmt(markets.BTC.price);draw(chart,data);let hd=[];let p=markets.BTC.price;for(let i=40;i--;){p+=(Math.random()-.47)*p*.003;hd.push(p)}draw(hero,hd,true)
+}
+document.getElementById("market").onchange=e=>{selected=e.target.value;makeData();update()};
+setInterval(()=>{for(const k in markets)markets[k].price+=(Math.random()-.5)*markets[k].price*.0007;data.push(markets[selected].price);if(data.length>70)data.shift();update()},1500);
+window.onresize=update;
+
+function order(side){
+ const amount=Number(document.getElementById("amount").value);
+ if(!amount||amount<=0)return showToast("Enter a valid demo amount.");
+ const m=markets[selected],row=document.createElement("tr");
+ row.innerHTML=`<td>${m.name}</td><td class="${side==="BUY"?"green":"red"}">${side}</td><td>$${amount.toLocaleString()}</td><td>${fmt(m.price)}</td><td>${fmt(m.price)}</td><td class="green">+$0.00</td><td>OPEN</td>`;
+ document.getElementById("positions").prepend(row);
+ const c=document.getElementById("count");c.textContent=+c.textContent+1;
+ showToast(`${side} ${m.name} demo order placed.`);
+}
+function showToast(t){const e=document.getElementById("toast");e.textContent=t;e.classList.add("show");setTimeout(()=>e.classList.remove("show"),2800)}
+function openModal(type){document.getElementById("modalTitle").textContent=type==="signup"?"Create Demo Account":"Login";document.getElementById("modal").classList.add("show")}
+function closeModal(){document.getElementById("modal").classList.remove("show")}
+function demoAuth(){closeModal();showToast("Demo account interface — no real account created.");}
+document.getElementById("menu").onclick=()=>document.getElementById("links").classList.toggle("open");
+document.querySelectorAll(".links a").forEach(a=>a.onclick=()=>document.getElementById("links").classList.remove("open"));
+makeData();update();
+</script>
+</body>
+</html>
