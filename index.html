@@ -38,7 +38,11 @@ a{color:inherit;text-decoration:none}
 .mobile-menu{display:none;border:1px solid var(--line);background:var(--panel);color:white;border-radius:8px;padding:8px 10px}
 .demo-pill{border:1px solid #078e71;background:#04261f;color:#00e6ad;border-radius:20px;padding:8px 13px;font-size:11px;font-weight:800}
 .demo-pill span{color:#819d9a;font-weight:500;margin-left:5px}
-.top-right{display:flex;align-items:center;gap:10px}
+.top-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.auth-top-actions{display:flex;gap:7px;align-items:center}
+.auth-top-actions button{border:1px solid var(--line2);border-radius:8px;padding:9px 12px;font-size:12px;font-weight:800;background:#071a2d;color:#d8e8f8}
+.auth-top-actions .signup-top{background:#087dff;border-color:#087dff;color:white}
+@media(max-width:850px){.auth-top-actions{display:flex}.auth-top-actions button{padding:7px 9px;font-size:11px}.balance-box{display:none}}
 .balance-box,.profile{border:1px solid var(--line2);background:#06182a;border-radius:14px;padding:8px 13px;display:flex;align-items:center;gap:10px}
 .balance-icon{width:32px;height:32px;border-radius:8px;background:#0b5fb0;display:grid;place-items:center}
 .balance-box small,.profile small{display:block;color:var(--muted);font-size:10px}
@@ -138,6 +142,10 @@ a{color:inherit;text-decoration:none}
     <div class="demo-pill">✓ DEMO ACCOUNT <span>Simulated Trading — No Real Money</span></div>
   </div>
   <div class="top-right">
+    <div class="auth-top-actions" aria-label="Account access">
+      <button type="button" onclick="openModal('login')">Login</button>
+      <button type="button" class="signup-top" onclick="openModal('signup')">Sign Up</button>
+    </div>
     <div class="balance-box"><div class="balance-icon">▣</div><div><strong id="topBalance">$10,000.00</strong><small>Demo Balance</small></div></div>
     <button class="icon-btn" onclick="showToast('No new notifications')">♟<span class="dot"></span></button>
     <div class="profile">
@@ -294,7 +302,8 @@ a{color:inherit;text-decoration:none}
     <p class="note" style="margin-top:3px">Create a local demo account to test the dashboard.</p>
     <div class="field" id="nameField"><label>Full Name</label><input id="authName" type="text" placeholder="Your full name"></div>
     <div class="field"><label>Email</label><input id="authEmail" type="email" placeholder="you@example.com"></div>
-    <div class="field"><label>Password</label><input id="authPassword" type="password" placeholder="At least 6 characters"></div>
+    <div class="field"><label>Password</label><input id="authPassword" type="password" placeholder="At least 8 characters"></div>
+    <div class="field" id="confirmField"><label>Confirm Password</label><input id="authConfirm" type="password" placeholder="Repeat your password"></div>
     <div class="error" id="authError"></div>
     <div class="modal-actions">
       <button class="modal-btn modal-primary" id="authSubmit" onclick="submitAuth()">Create Demo Account</button>
@@ -466,6 +475,8 @@ function openModal(mode){
   state.mode=mode==="login"?"login":"signup";
   qs("modalTitle").textContent=state.mode==="signup"?"Create Demo Account":"Login";
   qs("nameField").style.display=state.mode==="signup"?"block":"none";
+  qs("confirmField").style.display=state.mode==="signup"?"block":"none";
+  qs("authPassword").placeholder=state.mode==="signup"?"At least 8 characters":"Your password";
   qs("authSubmit").textContent=state.mode==="signup"?"Create Demo Account":"Login";
   qs("authSwitch").textContent=state.mode==="signup"?"Already have an account? Login":"Create Demo Account";
   qs("authError").textContent="";
@@ -474,13 +485,16 @@ function openModal(mode){
 function closeModal(){qs("modal").classList.remove("show")}
 function switchAuth(){openModal(state.mode==="signup"?"login":"signup")}
 function submitAuth(){
-  const name=qs("authName").value.trim(),email=qs("authEmail").value.trim().toLowerCase(),pass=qs("authPassword").value;
+  const name=qs("authName").value.trim(),email=qs("authEmail").value.trim().toLowerCase(),pass=qs("authPassword").value,confirm=qs("authConfirm").value;
   const error=qs("authError");
-  if(!email.includes("@"))return error.textContent="Please enter a valid email.";
-  if(pass.length<6)return error.textContent="Password must be at least 6 characters.";
+  if(state.mode==="signup" && name.length<2)return error.textContent="Please enter your full name.";
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))return error.textContent="Please enter a valid email address.";
+  if(pass.length<8)return error.textContent="Password must be at least 8 characters.";
+  if(state.mode==="signup" && !/[A-Z]/.test(pass))return error.textContent="Password must contain one capital letter.";
+  if(state.mode==="signup" && !/[0-9]/.test(pass))return error.textContent="Password must contain one number.";
+  if(state.mode==="signup" && pass!==confirm)return error.textContent="Passwords do not match.";
   let users=JSON.parse(localStorage.getItem("gvDemoUsers")||"{}");
   if(state.mode==="signup"){
-    if(!name)return error.textContent="Please enter your full name.";
     if(users[email])return error.textContent="This email already has a demo account. Please login.";
     users[email]={name,email,password:pass};
     localStorage.setItem("gvDemoUsers",JSON.stringify(users));
