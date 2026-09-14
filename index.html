@@ -3,8 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="description" content="GV Trading Platform — crypto education and simulated trading dashboard.">
-<title>GV Trading Platform | Dashboard</title>
+<meta name="description" content="GV Trading Platform offers crypto trading education, market information, risk awareness, and simulated demo trading tools.">
+<meta name="keywords" content="GV Trading Platform, GV Trading Website, crypto trading education, simulated trading, trading dashboard, cryptocurrency market guides">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://barakareshmy-cloud.github.io/gv-trading-platform/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="GV Trading Platform | Crypto Trading Education">
+<meta property="og:description" content="Learn about crypto markets and explore a simulated trading dashboard with GV Trading Platform.">
+<meta property="og:url" content="https://barakareshmy-cloud.github.io/gv-trading-platform/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GV Trading Platform | Crypto Trading Education">
+<meta name="twitter:description" content="Crypto education, market guides, risk awareness, and simulated demo trading.">
+<title>GV Trading Platform | Crypto Trading Education & Demo Dashboard</title>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"GV Trading Platform",
+  "alternateName":"GV Trading Website",
+  "url":"https://barakareshmy-cloud.github.io/gv-trading-platform/",
+  "description":"Crypto trading education and simulated trading dashboard."
+}
+</script>
 <style>
 :root{
   --bg:#020b16;--panel:#061528;--panel2:#0a1b2f;--panel3:#0d2239;
@@ -184,6 +204,10 @@ a{color:inherit;text-decoration:none}
       </div>
       <div class="chart-wrap"><canvas id="mainChart"></canvas><div class="chart-price" id="chartPrice">$67,432.18</div></div>
       <div class="timeframes"><button class="active">1m</button><button>5m</button><button>15m</button><button>30m</button><button>1h</button><button>4h</button><button>1D</button></div>
+      <div class="trading-time" style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border-top:1px solid var(--line);background:#06182a;flex-wrap:wrap">
+        <div><small style="color:#9fb2c7;display:block">TRADING TIME</small><strong id="tradingClock" style="font-size:18px">00:30</strong><span style="color:#9fb2c7;font-size:11px;margin-left:8px">Demo session countdown</span></div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap"><button class="tool" onclick="setTradingTime(30)">30s</button><button class="tool" onclick="setTradingTime(60)">1m</button><button class="tool" onclick="setTradingTime(300)">5m</button><button class="tool" onclick="resetTradingTime()">Reset</button></div>
+      </div>
     </section>
 
     <section class="panel trade-panel" id="trade">
@@ -284,7 +308,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <section class="page-section" id="settings">
-  <h2 class="section-title">Risk Disclosure</h2><p class="section-text">Cryptocurrency trading is highly speculative and can result in substantial or total loss of capital. This GV Trading Platform interface is a simulated educational environment. The balances, prices, trades and payouts shown here are examples only; no real transactions are executed and no real money is processed.</p>
+  <h2 class="section-title">Settings</h2><p class="section-text">Manage your demo preferences. These settings are saved only in this browser.</p>
 </section>
 </div>
 
@@ -525,9 +549,42 @@ function restoreUser(){
 document.querySelectorAll(".nav a").forEach(a=>{
   a.addEventListener("click",()=>{document.querySelectorAll(".nav a").forEach(x=>x.classList.remove("active"));a.classList.add("active");if(window.innerWidth<850)qs("sidebar").classList.remove("open")});
 });
+let tradingSeconds=30;
+let tradingTimer=null;
+function renderTradingTime(){
+  const m=String(Math.floor(tradingSeconds/60)).padStart(2,"0");
+  const sec=String(tradingSeconds%60).padStart(2,"0");
+  const el=qs("tradingClock");
+  if(el)el.textContent=m+":"+sec;
+}
+function setTradingTime(seconds){
+  tradingSeconds=Math.max(5,seconds);
+  renderTradingTime();
+  if(tradingTimer)clearInterval(tradingTimer);
+  tradingTimer=setInterval(()=>{
+    tradingSeconds--;
+    renderTradingTime();
+    if(tradingSeconds<=0){clearInterval(tradingTimer);tradingTimer=null;showToast("Demo trading time ended.");}
+  },1000);
+}
+function resetTradingTime(){setTradingTime(30);}
 window.addEventListener("resize",drawChart);
 generatePoints();drawChart();updateStats();restoreUser();selectTradeType("evenodd");
+renderTradingTime();
 setInterval(updatePrices,1500);
 </script>
+
+<div id="routePage" class="route-page" hidden></div>
+<style>
+.route-page{padding:20px;min-height:calc(100vh - 74px)}
+.route-page[hidden]{display:none!important}
+.route-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;max-width:1000px}
+.route-card h2{font-size:25px;margin-bottom:8px}.route-card p{color:var(--muted);font-size:13px;margin-bottom:18px}
+.route-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.route-field{display:flex;flex-direction:column;gap:7px}.route-field label{font-size:12px;color:#b9cce0}.route-field input,.route-field select{background:#06182a;border:1px solid var(--line2);color:white;border-radius:8px;padding:11px}
+.route-toggle{display:flex;align-items:center;justify-content:space-between;padding:14px;border:1px solid var(--line);border-radius:10px;margin:10px 0;color:#dbe8f5}
+.route-back{margin-top:18px}
+@media(max-width:650px){.route-grid{grid-template-columns:1fr}.route-page{padding:12px}}
+</style>
 </body>
-</html>
+</html> 
