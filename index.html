@@ -138,6 +138,7 @@ a{color:inherit;text-decoration:none}
 
   <nav class="nav">
     <a href="#dashboard" class="active"><span class="nav-icon">⌂</span>Dashboard</a>
+    <a href="#founder-story"><span class="nav-icon">★</span>Founder Story</a>
     <a href="#markets"><span class="nav-icon">▥</span>Markets</a>
     <a href="#trade"><span class="nav-icon">⇄</span>Trade</a>
     <a href="#wallet"><span class="nav-icon">▣</span>Wallet</a>
@@ -279,6 +280,37 @@ a{color:inherit;text-decoration:none}
       <div class="promo-icon">🤖</div><h3>Trade Smarter with GV AI</h3><p>Explore simulated market analysis, trend signals and educational insights powered by the GV AI Analyst concept.</p><button onclick="scanMarket()">Try GV AI Analyst</button></section>
   </div>
 </section>
+
+<section class="page-section" id="founder-story" style="padding-top:38px">
+  <div class="panel" style="padding:22px;background:linear-gradient(145deg,#06182a,#03101f);border-color:#16476d">
+    <div style="display:grid;grid-template-columns:minmax(220px,310px) 1fr;gap:26px;align-items:center">
+      <div style="background:#071a2d;border:1px solid #16476d;border-radius:18px;padding:14px;text-align:center">
+        <div style="width:100%;aspect-ratio:1/1;border-radius:14px;overflow:hidden;background:#0b2036">
+          <img src="586905892_17891570517369209_8083705656200244071_n(1).jpg" alt="Gyane Baraka - Founder of GV Trading Platform" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;flex-direction:column;background:radial-gradient(circle,#0b5fb0,#041426);color:#fff">
+            <div style="width:100px;height:100px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#168bff,#00c6ff);font-size:34px;font-weight:900">GB</div>
+            <strong style="margin-top:12px">Gyane Baraka</strong>
+          </div>
+        </div>
+        <h3 style="margin-top:15px;font-size:21px">Gyane Baraka</h3>
+        <p style="color:#00dca8;font-size:11px;font-weight:800;margin-top:4px">Founder — GV Trading Platform</p>
+      </div>
+      <div>
+        <span style="display:inline-block;color:#00e6ad;font-size:10px;font-weight:900;letter-spacing:1.5px;margin-bottom:8px">THE FOUNDER</span>
+        <h2 style="font-size:27px;margin-bottom:10px">The Story Behind GV Trading Platform</h2>
+        <p style="color:#b7c9dc;font-size:13px;line-height:1.8;margin-bottom:12px">GV Trading Platform was created with a simple vision: to make market education easier to understand while giving beginners a place to explore trading concepts through simulation.</p>
+        <p style="color:#b7c9dc;font-size:13px;line-height:1.8;margin-bottom:12px">The platform brings together market information, trading guides, risk awareness and a simulated dashboard so users can learn how trading ideas work without confusing a demo environment with real financial trading.</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:18px">
+          <div style="padding:13px;border:1px solid #123555;border-radius:10px;background:#06182a"><strong style="display:block;font-size:12px">LEARN</strong><small style="color:#8197b0;font-size:9px">Understand markets and trading concepts.</small></div>
+          <div style="padding:13px;border:1px solid #123555;border-radius:10px;background:#06182a"><strong style="display:block;font-size:12px">PRACTICE</strong><small style="color:#8197b0;font-size:9px">Explore ideas using simulated trading.</small></div>
+          <div style="padding:13px;border:1px solid #123555;border-radius:10px;background:#06182a"><strong style="display:block;font-size:12px">RISK AWARENESS</strong><small style="color:#8197b0;font-size:9px">Build responsible decision-making habits.</small></div>
+        </div>
+        <div style="margin-top:18px;padding:13px 15px;border-left:3px solid #00dca8;background:rgba(0,220,168,.06);border-radius:0 9px 9px 0;font-size:12px;font-weight:800">Education first. Responsible decision-making always.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<style>@media(max-width:700px){#founder-story .panel>div{grid-template-columns:1fr!important}#founder-story .panel>div>div:last-child>div{grid-template-columns:1fr!important}}</style>
 
 <section class="page-section" id="wallet">
   <h2 class="section-title">Wallet</h2><p class="section-text">Demo wallet interface. No deposits, withdrawals or real payments are processed.</p>
@@ -587,4 +619,4 @@ setInterval(updatePrices,1500);
 @media(max-width:650px){.route-grid{grid-template-columns:1fr}.route-page{padding:12px}}
 </style>
 </body>
-</html> 
+</html>
