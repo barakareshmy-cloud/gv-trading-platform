@@ -44,6 +44,34 @@ button,input,select{font:inherit}button{cursor:pointer}
 @media(max-width:1050px){.dashboard{grid-template-columns:1fr}.ai-card{order:2}.ticker{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:760px){.app{display:block}.sidebar{position:fixed;left:-235px;transition:.25s;width:220px}.sidebar.open{left:0}.mobile-menu{display:block}.main{padding:12px}.topbar{align-items:flex-start}.ticker{grid-template-columns:1fr 1fr}.lower{grid-template-columns:1fr}.chart-wrap{height:260px}.profile{display:none}}
 @media(max-width:480px){.ticker{grid-template-columns:1fr}.top-actions .pill{display:none}.market-head{align-items:flex-start}.timeframes{overflow:auto}.row{grid-template-columns:1.2fr .8fr .8fr}.order-table{font-size:9px}}
+
+.ai-terminal{display:grid;grid-template-columns:1.25fr .75fr;gap:12px;margin-top:12px}
+.ai-panel,.monitor-panel{background:#071522;border:1px solid #16344f;border-radius:12px;padding:15px}
+.ai-panel h3,.monitor-panel h3{margin:0 0 5px}
+.muted{color:#7890a5;font-size:11px;line-height:1.5}
+.scan-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+.scan-box{background:#06111c;border:1px solid #123149;border-radius:9px;padding:10px}
+.scan-box small{display:block;color:#6f8498;font-size:10px}.scan-box b{display:block;margin-top:5px}
+.progress{height:7px;background:#102638;border-radius:20px;overflow:hidden;margin-top:6px}.progress i{display:block;height:100%;background:linear-gradient(90deg,#0ca5ff,#17e4a0);border-radius:20px}
+.signal-big{display:flex;align-items:center;gap:14px;margin:12px 0}
+.signal-circle{width:90px;height:90px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#15dfa0 0 78%,#163247 78%);position:relative}
+.signal-circle:after{content:"";position:absolute;inset:8px;background:#071522;border-radius:50%}
+.signal-circle span{position:relative;z-index:1;font-size:20px;font-weight:900}
+.detail-list{display:grid;gap:7px;margin-top:12px}
+.detail-line{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #10273a;padding:8px 0;font-size:11px}.detail-line span{color:#70869a}
+.monitor-head{display:flex;justify-content:space-between;align-items:center}
+.live-dot{display:inline-flex;align-items:center;gap:5px;color:#18dfa0;font-size:10px}.live-dot:before{content:"";width:7px;height:7px;border-radius:50%;background:#18dfa0;box-shadow:0 0 10px #18dfa0}
+.bot-state{padding:6px 9px;border-radius:8px;background:#082e26;color:#1be0a0;font-size:10px;font-weight:800}
+.bot-state.off{background:#2b1820;color:#ff6386}
+.execution-feed{height:230px;overflow:auto;margin-top:10px;border:1px solid #102b41;border-radius:9px;background:#04101a}
+.exec{display:grid;grid-template-columns:52px 1fr auto;gap:8px;padding:9px;border-bottom:1px solid #0e2638;font-size:10px}
+.exec:last-child{border:0}.exec .type{font-weight:800;color:#16d9ff}.exec .time{color:#62798d;text-align:right}
+.human-tag{padding:3px 5px;border-radius:7px;background:#1b2732;color:#a6bacb;font-size:9px}.bot-tag{background:#083d35;color:#20e3a4}
+.auto-controls{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.risk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}
+.risk-box{padding:9px;background:#06111c;border-radius:8px;border:1px solid #102b41}.risk-box small{display:block;color:#71879b;font-size:9px}.risk-box b{font-size:12px}
+@media(max-width:850px){.ai-terminal{grid-template-columns:1fr}.scan-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.scan-grid,.risk-grid{grid-template-columns:1fr 1fr}.auto-controls{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -139,7 +167,67 @@ button,input,select{font:inherit}button{cursor:pointer}
   <div id="trading" class="page-card"><h2>Trading</h2><p>Use the dashboard to explore simulated market orders, position sizing and leverage scenarios. All execution on this prototype is simulated.</p></div>
   <div id="markets" class="page-card"><h2>Markets</h2><p>Track BTC, ETH, SOL, XRP and other assets. Market values displayed in this prototype are demonstration values and are not live exchange quotes.</p></div>
   <div id="wallet" class="page-card"><h2>Wallet</h2><p><b>Demo Balance: $25,840.00</b></p><p>M-Pesa and PayPal interfaces can be added here for a future secure payment integration. No money is processed by this prototype.</p></div>
-  <div id="ai" class="page-card"><h2>GV AI Analyst & Auto Trader</h2><p>The demo analyst combines simulated trend, momentum and volatility inputs to generate BUY, SELL or WAIT-style signals. The simulated auto trader can place demo orders and includes an emergency stop.</p><button class="btn primary" onclick="analyze()">Run AI Analysis</button> <button class="btn" onclick="toggleAuto()">Toggle Auto Trader</button></div>
+  <div id="ai" class="page-card">
+  <div style="display:flex;justify-content:space-between;gap:10px;align-items:center">
+    <div><h2 style="margin-bottom:4px">GV AI Analyst & Auto Trading Center</h2><p class="muted">A transparent demo engine that shows what it is analyzing, why it produced a signal, and every simulated order it makes.</p></div>
+    <span class="bot-state" id="aiPageBotState">SIMULATION READY</span>
+  </div>
+
+  <div class="ai-terminal">
+    <section class="ai-panel">
+      <h3>Full Market Analysis</h3>
+      <div class="muted">BTC/USD · 15-minute demo analysis · refreshed automatically</div>
+      <div class="scan-grid">
+        <div class="scan-box"><small>Trend</small><b id="trendValue">Bullish</b><div class="progress"><i style="width:82%"></i></div></div>
+        <div class="scan-box"><small>Momentum</small><b id="momentumValue">Strong</b><div class="progress"><i style="width:76%"></i></div></div>
+        <div class="scan-box"><small>Volatility</small><b id="volValue">Moderate</b><div class="progress"><i style="width:58%"></i></div></div>
+        <div class="scan-box"><small>Liquidity</small><b id="liqValue">Healthy</b><div class="progress"><i style="width:88%"></i></div></div>
+      </div>
+
+      <div class="signal-big">
+        <div class="signal-circle"><span id="fullScore">78%</span></div>
+        <div><div style="font-size:25px;font-weight:900" id="fullSignal">BUY / RISE</div><div class="muted">Demo signal strength · not a profit guarantee</div></div>
+      </div>
+
+      <div class="detail-list">
+        <div class="detail-line"><span>Current demo price</span><b id="analysisPrice">$67,485.03</b></div>
+        <div class="detail-line"><span>Support zone</span><b>$66,800 – $67,050</b></div>
+        <div class="detail-line"><span>Resistance zone</span><b>$68,000 – $68,200</b></div>
+        <div class="detail-line"><span>Momentum reading</span><b class="up">Positive</b></div>
+        <div class="detail-line"><span>Risk state</span><b>Moderate</b></div>
+      </div>
+      <div style="margin-top:12px"><button class="btn primary" onclick="runFullScan()">Run Full AI Scan</button></div>
+    </section>
+
+    <section class="monitor-panel">
+      <div class="monitor-head"><div><h3>Auto Trade Monitor</h3><span class="live-dot">LIVE DEMO ENGINE</span></div><span class="bot-state" id="monitorState">OFF</span></div>
+      <p class="muted">When enabled, the demo engine evaluates the market and places simulated orders according to the displayed rules.</p>
+      <div class="risk-grid">
+        <div class="risk-box"><small>Stake / trade</small><b>$100</b></div>
+        <div class="risk-box"><small>Max trades</small><b>20</b></div>
+        <div class="risk-box"><small>Stop loss</small><b>$500</b></div>
+      </div>
+      <div class="auto-controls">
+        <button class="btn green" onclick="toggleAuto()">Start / Stop Auto</button>
+        <button class="btn red" onclick="emergencyStop()">Emergency Stop</button>
+      </div>
+      <div class="execution-feed" id="executionFeed">
+        <div class="exec"><span class="type">SYSTEM</span><span>Waiting for auto-trade instructions...</span><span class="time">now</span></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="ai-panel" style="margin-top:12px">
+    <h3>Human vs Bot Activity Monitor</h3>
+    <p class="muted">This demo can label <b>its own execution events</b> as AI/Bot or Manual. It cannot reliably determine whether an unknown real-world trader is a human or a bot without verified platform-side telemetry.</p>
+    <div class="scan-grid">
+      <div class="scan-box"><small>Current executor</small><b id="executorType">Manual / User</b></div>
+      <div class="scan-box"><small>Automation state</small><b id="automationType">OFF</b></div>
+      <div class="scan-box"><small>Orders analyzed</small><b id="ordersAnalyzed">0</b></div>
+      <div class="scan-box"><small>Engine status</small><b class="up">Transparent Demo</b></div>
+    </div>
+  </div>
+</div>
   <div id="guides" class="page-card"><h2>Trading Guides</h2><ul><li>Understand market orders, limit orders and stop orders.</li><li>Learn position sizing before using leverage.</li><li>Use stop-loss and daily loss limits to control downside.</li><li>Never treat an AI signal as a guarantee of profit.</li></ul></div>
   <div id="founder" class="page-card"><h2>About the Founder</h2><p><b>Gyane Baraka</b>, born in 1994, is the founder of GV Trading Platform. The platform is designed as a learning-focused digital environment for people interested in crypto markets, market analysis and responsible decision-making.</p><p>GV Trading Platform combines educational material, simulated trading and AI-style market analysis in one responsive experience.</p></div>
   <div id="settings" class="page-card"><h2>Settings</h2><p>Demo preferences and risk controls can be configured here. Live exchange credentials should never be placed in this HTML file.</p></div>
@@ -162,7 +250,7 @@ function placeTrade(side){
   $('ordersBody').prepend(tr);
   const a=document.createElement('div');a.className='activity';a.innerHTML=`<div class="dot">↗</div><div><b>Trade Executed</b><small>BTC/USD · ${side} · $${amount.toFixed(0)} · Demo</small></div>`;
   $('activity').prepend(a);
-  showToast(`${side} demo order placed — no real funds used.`);
+  addExecution(side,`Manual demo order executed: BTC/USD · $${amount.toFixed(0)}`,'MANUAL'); showToast(`${side} demo order placed — no real funds used.`);
 }
 function closeAll(){document.querySelectorAll('#ordersBody tr').forEach(r=>r.remove());trades=0;$('tradeCount').textContent='(0)';showToast('All demo positions closed.')}
 function analyze(){
@@ -178,9 +266,28 @@ function analyze(){
 function toggleAuto(){
   auto=!auto;$('autoSwitch').classList.toggle('on',auto);
   if(auto){
-    showToast('AI Auto Trader ON — simulation only');
-    timer=setInterval(()=>{if(Math.random()>.55)placeTrade(Math.random()>.5?'BUY':'SELL')},7000);
-  }else{clearInterval(timer);showToast('AI Auto Trader OFF')}
+    if($('monitorState')){$('monitorState').textContent='RUNNING';$('monitorState').classList.remove('off')}
+    if($('aiPageBotState'))$('aiPageBotState').textContent='AUTO TRADER RUNNING';
+    if($('automationType'))$('automationType').textContent='ON';
+    if($('executorType'))$('executorType').textContent='GV AI Bot';
+    addExecution('START','Auto trader started. Monitoring BTC/USD demo conditions.','BOT');
+    showToast('GV AI Auto Trader ON — simulation only');
+    timer=setInterval(()=>{
+      if(Math.random()>.48){
+        const side=Math.random()>.5?'BUY':'SELL';
+        placeTrade(side);
+        addExecution(side,`Simulated order executed: BTC/USD · $100 · leverage 2x`,'BOT');
+      }else addExecution('SCAN','No trade: conditions did not meet demo threshold.','BOT');
+    },5000);
+  }else{
+    clearInterval(timer);
+    if($('monitorState')){$('monitorState').textContent='OFF';$('monitorState').classList.add('off')}
+    if($('aiPageBotState'))$('aiPageBotState').textContent='SIMULATION READY';
+    if($('automationType'))$('automationType').textContent='OFF';
+    if($('executorType'))$('executorType').textContent='Manual / User';
+    addExecution('STOP','Auto trader stopped.','BOT');
+    showToast('GV AI Auto Trader OFF');
+  }
 }
 function showPage(name,btn){
   document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');
@@ -190,6 +297,38 @@ function showPage(name,btn){
   $('sidebar').classList.remove('open');
 }
 setInterval(()=>{const p=67485+(Math.random()*70-35);$('livePrice').textContent='$'+p.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})},2500);
+
+function addExecution(type, message, tag='BOT'){
+  const feed=$('executionFeed'); if(!feed) return;
+  const row=document.createElement('div'); row.className='exec';
+  row.innerHTML=`<span class="type">${type}</span><span>${message} <span class="${tag==='BOT'?'human-tag bot-tag':'human-tag'}">${tag}</span></span><span class="time">now</span>`;
+  feed.prepend(row);
+  while(feed.children.length>25) feed.lastElementChild.remove();
+  const n=Number($('ordersAnalyzed')?.textContent||0)+1;if($('ordersAnalyzed'))$('ordersAnalyzed').textContent=n;
+}
+function runFullScan(){
+  const score=Math.floor(62+Math.random()*31);
+  const bullish=score>=72;
+  $('fullScore').textContent=score+'%';
+  $('fullSignal').textContent=bullish?'BUY / RISE':'WAIT / CONFIRM';
+  $('trendValue').textContent=bullish?'Bullish':'Mixed';
+  $('momentumValue').textContent=bullish?'Strong':'Neutral';
+  $('volValue').textContent=score>82?'High':'Moderate';
+  $('liqValue').textContent='Healthy';
+  $('analysisPrice').textContent=$('livePrice')?.textContent||'$67,485.03';
+  addExecution('AI SCAN',`Analyzed trend, momentum, volatility and liquidity → ${bullish?'bullish':'mixed'} signal`,'BOT');
+  showToast('Full GV AI market scan completed.');
+}
+function emergencyStop(){
+  auto=false;clearInterval(timer);
+  const sw=$('autoSwitch');if(sw)sw.classList.remove('on');
+  if($('monitorState')){$('monitorState').textContent='OFF';$('monitorState').classList.add('off')}
+  if($('aiPageBotState'))$('aiPageBotState').textContent='EMERGENCY STOP';
+  if($('automationType'))$('automationType').textContent='STOPPED';
+  if($('executorType'))$('executorType').textContent='Safety Stop';
+  addExecution('STOP','Emergency stop activated. No new demo orders will be placed.','BOT');
+  showToast('Emergency stop activated.');
+}
 </script>
 </body>
 </html>
