@@ -2,621 +2,194 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="description" content="GV Trading Platform offers crypto trading education, market information, risk awareness, and simulated demo trading tools.">
-<meta name="keywords" content="GV Trading Platform, GV Trading Website, crypto trading education, simulated trading, trading dashboard, cryptocurrency market guides">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://barakareshmy-cloud.github.io/gv-trading-platform/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="GV Trading Platform | Crypto Trading Education">
-<meta property="og:description" content="Learn about crypto markets and explore a simulated trading dashboard with GV Trading Platform.">
-<meta property="og:url" content="https://barakareshmy-cloud.github.io/gv-trading-platform/">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GV Trading Platform | Crypto Trading Education">
-<meta name="twitter:description" content="Crypto education, market guides, risk awareness, and simulated demo trading.">
-<title>GV Trading Platform | Crypto Trading Education & Demo Dashboard</title>
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"WebSite",
-  "name":"GV Trading Platform",
-  "alternateName":"GV Trading Website",
-  "url":"https://barakareshmy-cloud.github.io/gv-trading-platform/",
-  "description":"Crypto trading education and simulated trading dashboard."
-}
-</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GV Trading Platform | AI Crypto Dashboard</title>
+<meta name="description" content="GV Trading Platform — AI-powered crypto market analysis and simulated trading dashboard.">
 <style>
 :root{
-  --bg:#020b16;--panel:#061528;--panel2:#0a1b2f;--panel3:#0d2239;
-  --line:#123555;--line2:#1b4770;--text:#f3f7ff;--muted:#8197b0;
-  --blue:#087cff;--cyan:#00bdf5;--green:#10d99a;--red:#f33b62;
-  --purple:#7656ff;--gold:#ffc857;
+  --bg:#030a12;--panel:#071522;--panel2:#0a1a2b;--line:#16344f;
+  --text:#f4f8fc;--muted:#7e94aa;--blue:#1297ff;--cyan:#16d9ff;
+  --green:#16e39a;--red:#ff416d;--gold:#ffbd4a;--shadow:0 12px 35px rgba(0,0,0,.28);
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.4}
-button,input,select{font:inherit}
-button{cursor:pointer}
-button:disabled{cursor:not-allowed;opacity:.55}
-a{color:inherit;text-decoration:none}
-.app{min-height:100vh;display:flex}
-.sidebar{position:fixed;left:0;top:0;bottom:0;width:250px;background:#03101f;border-right:1px solid var(--line);padding:18px 14px;z-index:50;display:flex;flex-direction:column}
-.brand{display:flex;align-items:center;gap:10px;padding:4px 8px 22px}
-.brand-mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#168bff,#00c6ff);display:grid;place-items:center;font-weight:1000;font-size:19px;box-shadow:0 0 24px rgba(0,140,255,.2)}
-.brand-name{font-size:18px;font-weight:900;letter-spacing:-.3px}
-.brand-sub{font-size:10px;color:var(--muted);margin-top:2px}
-.nav{display:flex;flex-direction:column;gap:5px}
-.nav a{display:flex;align-items:center;gap:13px;padding:12px 14px;border-radius:9px;color:#b6c8dc;font-size:14px;transition:.2s}
-.nav a:hover,.nav a.active{background:linear-gradient(90deg,#087dff,#0a66dd);color:#fff;box-shadow:0 6px 18px rgba(0,110,255,.16)}
-.nav-icon{width:20px;text-align:center;font-size:17px}
-.new{margin-left:auto;background:#00c99a;color:#001b16;padding:2px 7px;border-radius:10px;font-size:9px;font-weight:900}
-.sidebar-card{margin-top:auto;border:1px solid #0d4673;background:radial-gradient(circle at 90% 0,#09386a,#04182c);border-radius:11px;padding:17px 15px}
-.sidebar-card strong{display:block;font-size:14px;margin-bottom:8px}.sidebar-card p{color:#b8c7d8;font-size:12px}
-.main{margin-left:250px;flex:1;min-width:0}
-.topbar{height:74px;border-bottom:1px solid var(--line);background:rgba(2,11,22,.96);display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:40}
-.top-left{display:flex;align-items:center;gap:12px}
-.mobile-menu{display:none;border:1px solid var(--line);background:var(--panel);color:white;border-radius:8px;padding:8px 10px}
-.demo-pill{border:1px solid #078e71;background:#04261f;color:#00e6ad;border-radius:20px;padding:8px 13px;font-size:11px;font-weight:800}
-.demo-pill span{color:#819d9a;font-weight:500;margin-left:5px}
-.top-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.auth-top-actions{display:flex;gap:7px;align-items:center}
-.auth-top-actions button{border:1px solid var(--line2);border-radius:8px;padding:9px 12px;font-size:12px;font-weight:800;background:#071a2d;color:#d8e8f8}
-.auth-top-actions .signup-top{background:#087dff;border-color:#087dff;color:white}
-@media(max-width:850px){.auth-top-actions{display:flex}.auth-top-actions button{padding:7px 9px;font-size:11px}.balance-box{display:none}}
-.balance-box,.profile{border:1px solid var(--line2);background:#06182a;border-radius:14px;padding:8px 13px;display:flex;align-items:center;gap:10px}
-.balance-icon{width:32px;height:32px;border-radius:8px;background:#0b5fb0;display:grid;place-items:center}
-.balance-box small,.profile small{display:block;color:var(--muted);font-size:10px}
-.balance-box strong{font-size:15px}
-.icon-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:#071a2d;color:white;position:relative}
-.dot{position:absolute;width:8px;height:8px;border-radius:50%;background:#ff315b;right:8px;top:7px}
-.avatar{width:34px;height:34px;border-radius:50%;background:#0b66d4;display:grid;place-items:center;font-weight:900}
-.profile{padding:6px 9px 6px 6px;min-width:150px;justify-content:space-between}
-.content{padding:20px 20px 12px}
-.page-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:17px}
-.page-head h1{font-size:26px;letter-spacing:-.5px}.page-head p{color:var(--muted);font-size:13px;margin-top:4px}
-.section-actions{display:flex;gap:8px}
-.small-btn{background:var(--panel);border:1px solid var(--line2);color:#b9cce0;border-radius:8px;padding:9px 12px;font-size:12px}
-.small-btn.primary{background:#087dff;color:white;border-color:#087dff}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
-.stat{background:linear-gradient(180deg,#071b30,#051326);border:1px solid var(--line);border-radius:11px;padding:14px 15px;min-height:92px}
-.stat-top{display:flex;justify-content:space-between;align-items:center;color:#a9bbcf;font-size:11px}
-.stat-icon{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;background:#073c70;color:#55b9ff}
-.stat:nth-child(2) .stat-icon{background:#063e35;color:#00e2a7}
-.stat:nth-child(3) .stat-icon{background:#2c1c68;color:#b39cff}
-.stat:nth-child(4) .stat-icon{background:#4c3210;color:#ffc857}
-.stat strong{font-size:21px;display:block;margin-top:6px}.stat em{font-style:normal;font-size:10px;color:var(--muted);margin-left:5px}
-.green{color:var(--green)!important}.red{color:var(--red)!important}
-.workspace{display:grid;grid-template-columns:minmax(0,1fr) 370px;gap:14px}
-.panel{background:#041426;border:1px solid var(--line);border-radius:12px;overflow:hidden}
-.panel-head{display:flex;justify-content:space-between;align-items:center;padding:13px 14px;border-bottom:1px solid var(--line)}
-.panel-head h2{font-size:14px}.sub{font-size:11px;color:var(--muted)}
-.market-head{display:flex;align-items:center;gap:12px}
-.coin-icon{width:36px;height:36px;border-radius:10px;background:#ef9417;display:grid;place-items:center;font-weight:900;font-size:20px}
-.market-price strong{font-size:18px}.market-price small{font-size:11px;color:var(--muted);display:block}.live{font-size:10px;color:var(--green);margin-left:auto}
-.chart-tools{display:flex;gap:7px;padding:9px 12px;border-bottom:1px solid var(--line)}
-.tool{border:1px solid var(--line);background:#07182b;color:#b6c7da;border-radius:7px;padding:6px 10px;font-size:10px}
-.chart-wrap{height:365px;position:relative;background:linear-gradient(180deg,#031323,#04192b)}
-#mainChart{width:100%;height:100%;display:block}
-.chart-price{position:absolute;right:9px;top:45%;background:#087dff;color:#fff;border-radius:7px;padding:7px 9px;font-size:12px;font-weight:900}
-.timeframes{display:flex;gap:5px;padding:9px 12px;border-top:1px solid var(--line)}
-.timeframes button{background:#06182a;border:1px solid var(--line);color:#9fb2c7;padding:7px 13px;border-radius:7px;font-size:10px}
-.timeframes button.active{background:#087dff;color:white;border-color:#087dff}
-.trade-panel{padding-bottom:12px}
-.trade-tabs{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
-.trade-tabs button{padding:11px 5px;background:#06182a;border:0;border-bottom:2px solid transparent;color:#91a8c0;font-size:10px}
-.trade-tabs button.active{background:#087dff;color:#fff;border-bottom-color:#33c7ff}
-.trade-body{padding:12px}
-.label-row{display:flex;justify-content:space-between;align-items:center;color:#b2c4d7;font-size:11px;margin:12px 0 6px}
-.stepper{display:flex;align-items:center;border:1px solid var(--line2);background:#071a2c;border-radius:9px;overflow:hidden}
-.stepper button{width:42px;height:40px;border:0;background:transparent;color:#dbe8f7;font-size:20px}.stepper strong{flex:1;text-align:center;font-size:17px}
-.presets{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:7px}.preset{background:#06182a;border:1px solid var(--line);color:#aac0d6;border-radius:7px;padding:8px 2px;font-size:9px}.preset.active{border-color:#087dff;color:#fff;background:#07305a}
-.payout{display:flex;justify-content:space-between;align-items:center;margin:13px 0 7px;color:#a7b9cd;font-size:11px}.payout strong{font-size:18px;color:white}
-.trade-choice{border:0;width:100%;border-radius:11px;color:white;text-align:left;padding:12px 15px;margin-top:7px}.trade-choice strong{font-size:18px;display:block}.trade-choice small{display:block;font-size:10px;margin-top:2px}.even{background:linear-gradient(135deg,#079d73,#0d8466)}.odd{background:linear-gradient(135deg,#ec1545,#b90d34)}
-.ai-card{margin-top:9px;border:1px solid #343c9c;background:linear-gradient(90deg,#111848,#0a1334);border-radius:11px;padding:10px;display:flex;align-items:center;gap:10px}
-.ai-circle{width:38px;height:38px;border-radius:50%;background:#087dff;display:grid;place-items:center;font-weight:900}.ai-card strong{font-size:12px}.ai-card small{display:block;color:#8395c0;font-size:9px}.scan{margin-left:auto;background:transparent;color:white;border:1px solid #6553d7;border-radius:7px;padding:7px 9px;font-size:9px}
-.lower{display:grid;grid-template-columns:1fr 1.25fr 1.2fr .9fr;gap:12px;margin-top:14px}
-.empty,.watch,.activity,.promo{min-height:245px}
-.empty-body{height:195px;display:grid;place-items:center;text-align:center;padding:20px;color:var(--muted)}.empty-icon{font-size:42px;opacity:.45;margin-bottom:9px}.empty-body strong{display:block;color:white;font-size:13px}
-.watch-list,.activity-list{padding:5px 12px}.watch-row,.activity-row{display:grid;grid-template-columns:1.4fr 1fr .8fr;align-items:center;padding:9px 0;border-bottom:1px solid #0d2842;font-size:10px}.watch-row:last-child,.activity-row:last-child{border-bottom:0}.asset{display:flex;align-items:center;gap:7px}.mini-coin{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:10px;background:#f29b18}.mini-coin.eth{background:#6f61e9}.mini-coin.sol{background:#3a7}.mini-coin.eur{background:#355fd5}.mini-coin.gbp{background:#2d5fb8}.right{text-align:right}.activity-row{grid-template-columns:26px 1fr auto}.act-icon{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:#074b43;color:#00e6ac}.activity-row small{color:var(--muted);font-size:8px}.promo{background:radial-gradient(circle at 80% 10%,#123d70,#041426);border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;justify-content:center}.promo-icon{font-size:38px;margin-bottom:15px}.promo h3{font-size:14px}.promo p{font-size:10px;color:#9db1c8;margin:8px 0 16px}.promo button{background:transparent;border:1px solid #0b96ff;color:white;border-radius:8px;padding:10px;font-size:10px}
-.page-section{padding:34px 0 10px}.section-title{font-size:20px;margin-bottom:10px}.section-text{color:var(--muted);font-size:12px;margin-bottom:15px}
-.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.info-card{background:#041426;border:1px solid var(--line);border-radius:11px;padding:16px}.info-card h3{font-size:13px;margin-bottom:7px}.info-card p{color:var(--muted);font-size:11px}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.78);display:none;place-items:center;z-index:100;padding:20px}.modal.show{display:grid}.modal-box{width:min(430px,100%);background:#06182a;border:1px solid var(--line2);border-radius:14px;padding:22px;box-shadow:0 25px 90px rgba(0,0,0,.5)}.modal-box h2{margin-bottom:4px}.close{float:right;background:none;border:0;color:#91a7bd;font-size:25px}.demo-note{color:#00dca8;font-size:10px;margin-bottom:15px}.field{margin:12px 0}.field label{display:block;color:#a9bbcf;font-size:10px;margin-bottom:6px}.field input{width:100%;background:#071a2d;border:1px solid var(--line2);border-radius:8px;padding:11px;color:white;outline:0}.modal-actions{display:flex;flex-direction:column;gap:8px}.modal-btn{width:100%;padding:11px;border-radius:8px;border:0;font-weight:800}.modal-primary{background:#087dff;color:white}.modal-secondary{background:#0a2035;color:#d9e6f4;border:1px solid var(--line)}.note{font-size:9px;color:#6f849b;margin-top:11px}.error{font-size:10px;color:#ff6480;min-height:15px}
-.toast{position:fixed;right:20px;bottom:20px;background:#082039;border:1px solid #1d5b87;color:white;padding:12px 16px;border-radius:9px;opacity:0;transform:translateY(20px);transition:.25s;z-index:150;font-size:12px}.toast.show{opacity:1;transform:translateY(0)}
-@media(max-width:1150px){.sidebar{width:220px}.main{margin-left:220px}.workspace{grid-template-columns:minmax(0,1fr) 330px}.lower{grid-template-columns:1fr 1fr}.promo{display:none}.stats{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:850px){.sidebar{transform:translateX(-100%);transition:.25s;width:250px}.sidebar.open{transform:translateX(0)}.main{margin-left:0}.mobile-menu{display:block}.topbar{padding:0 12px}.top-left{gap:7px}.demo-pill span{display:none}.profile{min-width:auto}.profile .profile-text{display:none}.workspace{grid-template-columns:1fr}.lower{grid-template-columns:1fr 1fr}.trade-panel{min-height:auto}}
-@media(max-width:600px){.content{padding:13px 10px}.topbar{height:65px}.balance-box{padding:6px 8px}.balance-box strong{font-size:12px}.balance-box small{font-size:8px}.icon-btn{width:35px;height:35px}.page-head{align-items:start;gap:10px}.page-head h1{font-size:22px}.section-actions{display:none}.stats{grid-template-columns:1fr 1fr;gap:8px}.stat{padding:11px;min-height:82px}.stat strong{font-size:17px}.workspace{gap:10px}.chart-wrap{height:290px}.presets{grid-template-columns:repeat(3,1fr)}.lower{grid-template-columns:1fr}.info-grid{grid-template-columns:1fr}.sidebar-card{display:none}}
-.trade-result{margin-top:9px;border:1px solid var(--line2);background:#071a2d;border-radius:9px;padding:10px;font-size:10px;display:none}.trade-result.show{display:block}.trade-result strong{font-size:13px;display:block;margin-bottom:3px}.win{color:var(--green)}.loss{color:var(--red)}</style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 55% 0,#0a2034 0,#030a12 42%);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif}
+button,input,select{font:inherit}button{cursor:pointer}
+.app{display:grid;grid-template-columns:220px 1fr;min-height:100vh}
+.sidebar{position:sticky;top:0;height:100vh;border-right:1px solid var(--line);background:rgba(3,11,19,.94);padding:18px 12px;z-index:5}
+.brand{display:flex;gap:10px;align-items:center;padding:8px 10px 22px;font-weight:900;font-size:20px}
+.logo{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,#0f83ff,#14d9ff);color:white;box-shadow:0 0 25px rgba(18,151,255,.25)}
+.nav{display:grid;gap:6px}.nav button{border:0;background:transparent;color:#8fa4b8;text-align:left;padding:12px 13px;border-radius:10px;display:flex;align-items:center;gap:11px;font-weight:700}
+.nav button:hover,.nav button.active{background:linear-gradient(90deg,#0c5fa9,#0c3151);color:white}
+.icon{width:20px;text-align:center}.profile{position:absolute;left:12px;right:12px;bottom:15px;background:linear-gradient(145deg,#0b2034,#07111c);border:1px solid var(--line);border-radius:14px;padding:12px}
+.avatar{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#183e62,#0c8ed8);font-size:18px;font-weight:900;margin-bottom:8px}
+.profile b{display:block}.profile small{color:var(--muted);line-height:1.45}.profile .year{color:#ffcf68;font-size:11px;margin-top:7px}
+.main{min-width:0;padding:18px 20px 35px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:14px}
+.mobile-menu{display:none}.title h1{margin:0;font-size:22px}.title span{color:var(--muted);font-size:12px}
+.top-actions{display:flex;gap:8px;align-items:center}.pill,.btn{border:1px solid var(--line);background:#0a1b2c;color:#d9e7f2;border-radius:9px;padding:9px 13px}.btn.primary{background:linear-gradient(135deg,#0c9bff,#0b75f5);border-color:#20a6ff;color:#fff;font-weight:800}.btn.green{background:#0c8d67;border-color:#15c991}.btn.red{background:#9f2145;border-color:#d7335d}.btn:hover{filter:brightness(1.12)}
+.ticker{display:grid;grid-template-columns:1.2fr repeat(4,1fr);gap:8px;margin-bottom:10px}.ticker-card{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:11px 13px}.ticker-card small{color:var(--muted);display:block}.ticker-card strong{font-size:15px}.up{color:var(--green)}.down{color:var(--red)}
+.dashboard{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:12px}
+.market-head{display:flex;justify-content:space-between;align-items:center;gap:10px}.market-title{display:flex;align-items:center;gap:10px}.coin{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:#ff9f1a;color:#fff;font-weight:900}.market-title h2{margin:0;font-size:19px}.market-title small{color:var(--muted)}
+.chart-card,.ai-card,.watch-card,.orders-card,.activity-card,.wallet-card,.guide-card{background:rgba(7,21,34,.96);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}
+.chart-card{padding:14px}.timeframes{display:flex;gap:5px}.timeframes button{border:0;background:transparent;color:#7890a5;padding:6px 8px;border-radius:7px}.timeframes button.active{background:#0b3155;color:#fff}
+.chart-wrap{height:330px;margin-top:8px;position:relative;border:1px solid #102a40;border-radius:9px;overflow:hidden;background:linear-gradient(rgba(14,48,72,.28) 1px,transparent 1px),linear-gradient(90deg,rgba(14,48,72,.28) 1px,transparent 1px);background-size:70px 52px}
+.chart-wrap svg{width:100%;height:100%}.price-line{fill:none;stroke:#19d9ff;stroke-width:2.5}.area{fill:url(#areaGrad)}.grid-label{fill:#5d7388;font-size:10px}
+.trade-box{margin-top:12px;background:#06121f;border:1px solid #13314a;border-radius:10px;padding:12px}.tabs{display:flex;gap:5px;margin-bottom:10px}.tabs button{flex:1;border:1px solid var(--line);background:#0a1b2a;color:#879bb0;padding:8px;border-radius:7px}.tabs button.active{background:#0d3657;color:#fff}
+.field{margin-bottom:9px}.field label{display:block;color:#8298ac;font-size:11px;margin-bottom:5px}.field input,.field select{width:100%;border:1px solid #193952;background:#071724;color:#fff;border-radius:7px;padding:9px;outline:none}.trade-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.trade-actions button{padding:10px;border-radius:8px;border:0;color:white;font-weight:900}.buy{background:#08b887}.sell{background:#ef3c68}
+.ai-card{padding:15px}.ai-head{display:flex;align-items:center;justify-content:space-between}.ai-head h3{margin:0}.new{font-size:9px;background:#05b987;padding:3px 6px;border-radius:10px;color:#001c16;font-weight:900}.ai-intro{font-size:12px;color:#8fa4b8;line-height:1.5}.analysis{border:1px solid #16425a;background:linear-gradient(145deg,#081c2d,#06121e);border-radius:10px;padding:12px;margin-top:10px}.analysis-top{display:flex;justify-content:space-between;align-items:center}.badge{font-size:10px;border:1px solid #0d8d6c;color:#27e4a4;padding:4px 7px;border-radius:12px}.strength{display:flex;align-items:center;gap:12px;margin-top:10px}.ring{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--green) 0 78%,#183247 78%);position:relative}.ring:after{content:"";position:absolute;inset:7px;background:#071522;border-radius:50%}.ring b{position:relative;z-index:1}.signal{font-size:21px;font-weight:900}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:10px}.metric{background:#06111c;padding:8px;border-radius:7px}.metric small{color:#6f8498;display:block;font-size:10px}.metric b{font-size:12px}.ai-list{padding-left:16px;color:#91a6ba;font-size:11px;line-height:1.7}.ai-list strong{color:#d9e8f4}.ai-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px}.toggle-row{display:flex;align-items:center;justify-content:space-between;margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}.switch{width:44px;height:24px;border:0;border-radius:20px;background:#263c4e;position:relative}.switch:after{content:"";position:absolute;left:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#d8e4ee;transition:.2s}.switch.on{background:#07956b}.switch.on:after{left:23px}
+.lower{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.card-head{padding:13px 14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}.card-head h3{margin:0;font-size:14px}.card-head a{color:#25aaff;font-size:11px}.watch-list,.activity-list,.orders{padding:5px 14px}.row{display:grid;grid-template-columns:1.5fr 1fr .8fr;gap:7px;align-items:center;padding:10px 0;border-bottom:1px solid #10273a;font-size:12px}.row:last-child{border:0}.coin-mini{display:flex;gap:8px;align-items:center}.coin-mini i{width:25px;height:25px;border-radius:50%;display:grid;place-items:center;background:#173958;font-style:normal;font-size:10px}.row small{color:var(--muted);display:block}.right{text-align:right}
+.orders-card{margin-top:12px}.order-table{width:100%;border-collapse:collapse;font-size:11px}.order-table th,.order-table td{padding:10px 8px;text-align:left;border-bottom:1px solid #10273a}.order-table th{color:#6f8498;font-weight:600}.status{padding:4px 7px;border-radius:10px;background:#0b3a2d;color:#28e5a5}
+.activity-card{margin-top:12px}.activity{display:flex;gap:10px;padding:10px 14px;border-bottom:1px solid #10273a;font-size:11px}.activity:last-child{border:0}.activity .dot{width:22px;height:22px;border-radius:7px;background:#0d3553;display:grid;place-items:center}.activity small{display:block;color:#61778c;margin-top:2px}
+.sections{display:none}.sections.show{display:block}.page-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;margin-top:10px}.page-card h2{margin-top:0}.page-card p,.page-card li{color:#8ea4b8;line-height:1.7}
+.toast{position:fixed;right:20px;bottom:20px;background:#0d2235;border:1px solid #1b4d70;padding:12px 15px;border-radius:9px;box-shadow:var(--shadow);opacity:0;transform:translateY(10px);pointer-events:none;transition:.25s;z-index:20}.toast.show{opacity:1;transform:translateY(0)}
+@media(max-width:1050px){.dashboard{grid-template-columns:1fr}.ai-card{order:2}.ticker{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.app{display:block}.sidebar{position:fixed;left:-235px;transition:.25s;width:220px}.sidebar.open{left:0}.mobile-menu{display:block}.main{padding:12px}.topbar{align-items:flex-start}.ticker{grid-template-columns:1fr 1fr}.lower{grid-template-columns:1fr}.chart-wrap{height:260px}.profile{display:none}}
+@media(max-width:480px){.ticker{grid-template-columns:1fr}.top-actions .pill{display:none}.market-head{align-items:flex-start}.timeframes{overflow:auto}.row{grid-template-columns:1.2fr .8fr .8fr}.order-table{font-size:9px}}
+</style>
 </head>
 <body>
 <div class="app">
-
 <aside class="sidebar" id="sidebar">
-  <div class="brand">
-    <div class="brand-mark">GV</div>
-    <div><div class="brand-name">GV Trading Platform</div><div class="brand-sub">Learn • Trade • Grow</div></div>
-  </div>
-
+  <div class="brand"><div class="logo">GV</div><span>GV Trading</span></div>
   <nav class="nav">
-    <a href="#dashboard" class="active"><span class="nav-icon">⌂</span>Dashboard</a>
-    <a href="#founder-story"><span class="nav-icon">★</span>Founder Story</a>
-    <a href="#markets"><span class="nav-icon">▥</span>Markets</a>
-    <a href="#trade"><span class="nav-icon">⇄</span>Trade</a>
-    <a href="#wallet"><span class="nav-icon">▣</span>Wallet</a>
-    <a href="#ai"><span class="nav-icon">◉</span>GV AI Analyst <span class="new">NEW</span></a>
-    <a href="#history"><span class="nav-icon">◴</span>Trading History</a>
-    <a href="#learn"><span class="nav-icon">▤</span>Learn</a>
-    <a href="#account"><span class="nav-icon">♙</span>My Account</a>
-    <a href="#settings"><span class="nav-icon">⚙</span>Settings</a>
-    <a href="#" onclick="logoutDemo();return false;"><span class="nav-icon">⇥</span>Logout</a>
+    <button class="active" onclick="showPage('dashboard',this)">◈ <span>Dashboard</span></button>
+    <button onclick="showPage('trading',this)">↗ <span>Trading</span></button>
+    <button onclick="showPage('markets',this)">▥ <span>Markets</span></button>
+    <button onclick="showPage('wallet',this)">▣ <span>Wallet</span></button>
+    <button onclick="showPage('ai',this)">◉ <span>GV AI Analyst</span><em class="new">NEW</em></button>
+    <button onclick="showPage('guides',this)">▤ <span>Guides</span></button>
+    <button onclick="showPage('founder',this)">♙ <span>Founder</span></button>
+    <button onclick="showPage('settings',this)">⚙ <span>Settings</span></button>
   </nav>
-
-  <div class="sidebar-card">
-    <strong>GV</strong>
-    <p>Better Skills.<br>Smarter Trades.<br>Bigger Opportunities.</p>
-  </div>
+  <div class="profile"><div class="avatar">GB</div><b>Gyane Baraka</b><small>Founder — GV</small><small>Building a learning-focused digital environment for people interested in crypto markets.</small><div class="year">1994 · Somali & Kenyan Citizen</div></div>
 </aside>
 
 <main class="main">
 <header class="topbar">
-  <div class="top-left">
-    <button class="mobile-menu" onclick="toggleSidebar()">☰</button>
-    <div class="demo-pill">✓ DEMO ACCOUNT <span>Simulated Trading — No Real Money</span></div>
-  </div>
-  <div class="top-right">
-    <div class="auth-top-actions" aria-label="Account access">
-      <button type="button" onclick="openModal('login')">Login</button>
-      <button type="button" class="signup-top" onclick="openModal('signup')">Sign Up</button>
-    </div>
-    <div class="balance-box"><div class="balance-icon">▣</div><div><strong id="topBalance">$10,000.00</strong><small>Demo Balance</small></div></div>
-    <button class="icon-btn" onclick="showToast('No new notifications')">♟<span class="dot"></span></button>
-    <div class="profile">
-      <div class="avatar" id="avatar">RB</div>
-      <div class="profile-text"><strong id="topName">Demo Trader</strong><small id="topEmail">demo account</small></div>
-      <span>⌄</span>
-    </div>
-  </div>
+  <div style="display:flex;align-items:center;gap:10px"><button class="pill mobile-menu" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button><div class="title"><h1 id="pageTitle">Trading Dashboard</h1><span>AI-powered market intelligence · simulated trading</span></div></div>
+  <div class="top-actions"><span class="pill">Demo Balance <b id="balance">$25,840.00</b></span><button class="btn primary" onclick="showToast('Demo account ready.')">Create Demo Account</button></div>
 </header>
 
-<div class="content">
-<section id="dashboard">
-  <div class="page-head">
-    <div><h1>Dashboard</h1><p id="welcome">Welcome to your GV trading overview.</p></div>
-    <div class="section-actions"><button class="small-btn" onclick="showToast('Dashboard refreshed')">↻ Refresh</button><button class="small-btn primary" onclick="openModal('signup')">Create Demo Account</button></div>
+<div id="dashboardPage">
+<div class="ticker">
+  <div class="ticker-card"><small>BTC/USD</small><strong>$67,485.03</strong> <span class="up">+0.81%</span></div>
+  <div class="ticker-card"><small>ETH/USD</small><strong>$3,268.45</strong> <span class="up">+1.24%</span></div>
+  <div class="ticker-card"><small>SOL/USD</small><strong>$164.32</strong> <span class="up">+2.17%</span></div>
+  <div class="ticker-card"><small>EUR/USD</small><strong>1.0724</strong> <span class="down">-0.36%</span></div>
+  <div class="ticker-card"><small>GBP/USD</small><strong>1.2618</strong> <span class="down">-0.21%</span></div>
+</div>
+
+<section class="dashboard">
+<div>
+  <div class="chart-card">
+    <div class="market-head">
+      <div class="market-title"><div class="coin">₿</div><div><h2>BTC/USD <span style="font-size:11px;color:#879caf">⌄</span></h2><small>Bitcoin · Demo Market</small></div><strong class="up" id="livePrice">$67,485.03</strong></div>
+      <div class="timeframes"><button>1m</button><button>5m</button><button class="active">15m</button><button>30m</button><button>1h</button><button>4h</button><button>1d</button></div>
+    </div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 900 330" preserveAspectRatio="none">
+        <defs><linearGradient id="areaGrad" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#13d9ff" stop-opacity=".20"/><stop offset="1" stop-color="#13d9ff" stop-opacity="0"/></linearGradient></defs>
+        <path class="area" d="M0,235 L35,245 L70,210 L105,220 L140,180 L175,195 L210,155 L245,172 L280,160 L315,205 L350,235 L385,205 L420,170 L455,185 L490,155 L525,135 L560,160 L595,125 L630,150 L665,115 L700,132 L735,95 L770,108 L805,82 L840,93 L875,65 L900,72 L900,330 L0,330 Z"/>
+        <path class="price-line" d="M0,235 L35,245 L70,210 L105,220 L140,180 L175,195 L210,155 L245,172 L280,160 L315,205 L350,235 L385,205 L420,170 L455,185 L490,155 L525,135 L560,160 L595,125 L630,150 L665,115 L700,132 L735,95 L770,108 L805,82 L840,93 L875,65 L900,72"/>
+        <text class="grid-label" x="835" y="62">68,000</text><text class="grid-label" x="835" y="130">67,500</text><text class="grid-label" x="835" y="198">67,000</text><text class="grid-label" x="835" y="266">66,500</text>
+        <line x1="0" y1="72" x2="820" y2="72" stroke="#123149"/><line x1="0" y1="140" x2="820" y2="140" stroke="#123149"/><line x1="0" y1="208" x2="820" y2="208" stroke="#123149"/><line x1="0" y1="276" x2="820" y2="276" stroke="#123149"/>
+      </svg>
+    </div>
+    <div class="trade-box">
+      <div class="tabs"><button class="active">Market</button><button>Limit</button><button>Stop</button></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div class="field"><label>Asset</label><select><option>BTC/USD</option><option>ETH/USD</option><option>SOL/USD</option><option>XRP/USD</option></select></div>
+        <div class="field"><label>Amount (USD)</label><input id="amount" type="number" value="100" min="10"></div>
+      </div>
+      <div class="field"><label>Leverage</label><select><option>1x</option><option selected>2x</option><option>5x</option><option>10x</option></select></div>
+      <div class="trade-actions"><button class="buy" onclick="placeTrade('BUY')">BUY</button><button class="sell" onclick="placeTrade('SELL')">SELL</button></div>
+      <div style="font-size:10px;color:#74899d;margin-top:8px">ⓘ Demo only — no real trades or financial transactions are executed.</div>
+    </div>
   </div>
-
-  <div class="stats">
-    <div class="stat"><div class="stat-top"><span>Account Balance</span><span class="stat-icon">▣</span></div><strong id="balance">$10,000.00</strong><small>Demo Balance</small></div>
-    <div class="stat"><div class="stat-top"><span>Total P/L</span><span class="stat-icon">↗</span></div><strong class="green" id="pl">+$0.00</strong><small class="green" id="plPct">(+0.00%)</small></div>
-    <div class="stat"><div class="stat-top"><span>Open Trades</span><span class="stat-icon">▱</span></div><strong id="openCount">0</strong><small>Active Trades</small></div>
-    <div class="stat"><div class="stat-top"><span>Today's Volume</span><span class="stat-icon">▥</span></div><strong id="volume">$0.00</strong><small>Total Volume</small></div>
-  </div>
-
-  <div class="workspace">
-    <section class="panel" id="markets">
-      <div class="panel-head">
-        <div class="market-head">
-          <div class="coin-icon">₿</div>
-          <div class="market-price"><strong id="marketName">Bitcoin (BTC/USD)</strong><small><span id="marketPrice">$67,432.18</span> <span class="green" id="marketChange">+0.81%</span></small></div>
-        </div>
-        <div class="live">● SIMULATED PRICE</div>
-      </div>
-      <div class="chart-tools">
-        <button class="tool">1S⌄</button><button class="tool">⌁</button><button class="tool">▥</button><button class="tool">Indicators⌄</button><button class="tool">◌</button><button class="tool">⛶</button>
-      </div>
-      <div class="chart-wrap"><canvas id="mainChart"></canvas><div class="chart-price" id="chartPrice">$67,432.18</div></div>
-      <div class="timeframes"><button class="active">1m</button><button>5m</button><button>15m</button><button>30m</button><button>1h</button><button>4h</button><button>1D</button></div>
-      <div class="trading-time" style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border-top:1px solid var(--line);background:#06182a;flex-wrap:wrap">
-        <div><small style="color:#9fb2c7;display:block">TRADING TIME</small><strong id="tradingClock" style="font-size:18px">00:30</strong><span style="color:#9fb2c7;font-size:11px;margin-left:8px">Demo session countdown</span></div>
-        <div style="display:flex;gap:6px;flex-wrap:wrap"><button class="tool" onclick="setTradingTime(30)">30s</button><button class="tool" onclick="setTradingTime(60)">1m</button><button class="tool" onclick="setTradingTime(300)">5m</button><button class="tool" onclick="resetTradingTime()">Reset</button></div>
-      </div>
-    </section>
-
-    <section class="panel trade-panel" id="trade">
-      <div class="panel-head"><h2>Trade</h2><span class="sub">Manual demo trading</span></div>
-      <div class="trade-tabs">
-        <button id="tabEvenOdd" class="active" onclick="selectTradeType('evenodd')">Even/Odd</button>
-        <button id="tabMatches" onclick="selectTradeType('matches')">Matches/Differs</button>
-        <button id="tabOver" onclick="selectTradeType('overunder')">Over/Under</button>
-        <button id="tabRise" onclick="selectTradeType('risefall')">Rise/Fall</button>
-      </div>
-      <div class="trade-body">
-        <div class="label-row"><span>Trade Type</span><span id="tradeModeLabel">EVEN / ODD</span></div>
-        <div id="digitControls" style="display:none">
-          <div class="label-row"><span id="digitLabel">Prediction Digit</span><span>0–9</span></div>
-          <div class="presets" style="grid-template-columns:repeat(5,1fr);margin-bottom:8px">
-            <button class="preset digit active" onclick="setDigit(0)">0</button><button class="preset digit" onclick="setDigit(1)">1</button><button class="preset digit" onclick="setDigit(2)">2</button><button class="preset digit" onclick="setDigit(3)">3</button><button class="preset digit" onclick="setDigit(4)">4</button>
-            <button class="preset digit" onclick="setDigit(5)">5</button><button class="preset digit" onclick="setDigit(6)">6</button><button class="preset digit" onclick="setDigit(7)">7</button><button class="preset digit" onclick="setDigit(8)">8</button><button class="preset digit" onclick="setDigit(9)">9</button>
-          </div>
-        </div>
-        <div id="barrierControls" style="display:none">
-          <div class="label-row"><span>Barrier</span><span>Last digit</span></div>
-          <div class="stepper"><button onclick="changeBarrier(-1)">−</button><strong id="barrier">5</strong><button onclick="changeBarrier(1)">+</button></div>
-        </div>
-        <div class="label-row"><span>Stake Amount</span><span>(USD)</span></div>
-        <div class="stepper"><button onclick="changeStake(-1)">−</button><strong id="stake">$10</strong><button onclick="changeStake(1)">+</button></div>
-        <div class="presets">
-          <button class="preset active" onclick="setStake(10)">10</button><button class="preset" onclick="setStake(25)">25</button><button class="preset" onclick="setStake(50)">50</button><button class="preset" onclick="setStake(100)">100</button><button class="preset" onclick="setStake(250)">250</button><button class="preset" onclick="setStake(500)">500</button>
-        </div>
-        <div class="label-row"><span>Duration</span><span>Ticks</span></div>
-        <div class="stepper"><button onclick="changeDuration(-1)">−</button><strong id="duration">5 ticks</strong><button onclick="changeDuration(1)">+</button></div>
-        <div class="payout"><span>Estimated Payout</span><strong id="payoutMultiplier">1.90×</strong></div>
-        <div id="tradeButtons">
-          <button class="trade-choice even" onclick="placeTrade('EVEN')"><strong>EVEN</strong><small>Payout <span class="payoutValue">$19.00</span> • Profit <span class="profitValue">$9.00</span></small></button>
-          <button class="trade-choice odd" onclick="placeTrade('ODD')"><strong>ODD</strong><small>Payout <span class="payoutValue">$19.00</span> • Profit <span class="profitValue">$9.00</span></small></button>
-        </div>
-        <div class="ai-card" id="ai"><div class="ai-circle">AI</div><div><strong>GV AI Scanner</strong><small>Analyze simulated market & get smart insights</small></div><button class="scan" onclick="scanMarket()">Scan Now</button></div>
-        <p class="note">Demo trading only. Orders do not execute in real financial markets and no real funds are used.</p>
-      </div>
-    </section>
-  </div>
-
   <div class="lower">
-    <section class="panel empty" id="history">
-      <div class="panel-head"><h2>Open Trades <span id="openBadge">0</span></h2><span class="sub">Live demo</span></div>
-      <div class="empty-body"><div><div class="empty-icon">▱</div><strong id="emptyTitle">No open trades</strong><p id="emptyText">Your active contracts will appear here.</p></div></div>
-    </section>
-
-    <section class="panel watch">
-      <div class="panel-head"><h2>Market Watchlist</h2><span class="sub">View All</span></div>
-      <div class="watch-list">
-        <div class="watch-row"><div class="asset"><span class="mini-coin">₿</span>BTC/USD</div><div id="btcWatch">$67,432.18</div><div class="right green">+0.81%</div></div>
-        <div class="watch-row"><div class="asset"><span class="mini-coin eth">◆</span>ETH/USD</div><div>$3,268.45</div><div class="right green">+1.24%</div></div>
-        <div class="watch-row"><div class="asset"><span class="mini-coin sol">≋</span>SOL/USD</div><div>$164.32</div><div class="right green">+2.17%</div></div>
-        <div class="watch-row"><div class="asset"><span class="mini-coin eur">€</span>EUR/USD</div><div>1.0724</div><div class="right red">−0.36%</div></div>
-        <div class="watch-row"><div class="asset"><span class="mini-coin gbp">£</span>GBP/USD</div><div>1.2618</div><div class="right red">−0.21%</div></div>
-      </div>
-    </section>
-
-    <section class="panel activity">
-      <div class="panel-head"><h2>Recent Activity</h2><span class="sub">View All</span></div>
-      <div class="activity-list" id="activityList">
-        <div class="activity-row"><span class="act-icon">↗</span><div><strong>Account ready</strong><small>Demo environment initialized</small></div><small>Now</small></div>
-        <div class="activity-row"><span class="act-icon">●</span><div><strong>Market loaded</strong><small>BTC/USD simulated feed</small></div><small>Now</small></div>
-        <div class="activity-row"><span class="act-icon">▣</span><div><strong>Wallet ready</strong><small>Demo balance available</small></div><small>Now</small></div>
-      </div>
-    </section>
-
-    <section class="promo">
-      <div class="promo-icon">🤖</div><h3>Trade Smarter with GV AI</h3><p>Explore simulated market analysis, trend signals and educational insights powered by the GV AI Analyst concept.</p><button onclick="scanMarket()">Try GV AI Analyst</button></section>
+    <div class="watch-card"><div class="card-head"><h3>Market Watchlist</h3><a>View All</a></div><div class="watch-list">
+      <div class="row"><div class="coin-mini"><i>₿</i><div>BTC/USD<small>Bitcoin</small></div></div><b>$67,485.03</b><span class="up right">+0.81%</span></div>
+      <div class="row"><div class="coin-mini"><i>Ξ</i><div>ETH/USD<small>Ethereum</small></div></div><b>$3,268.45</b><span class="up right">+1.24%</span></div>
+      <div class="row"><div class="coin-mini"><i>◎</i><div>SOL/USD<small>Solana</small></div></div><b>$164.32</b><span class="up right">+2.17%</span></div>
+      <div class="row"><div class="coin-mini"><i>✕</i><div>XRP/USD<small>XRP</small></div></div><b>$0.61</b><span class="up right">+0.55%</span></div>
+    </div></div>
+    <div class="orders-card"><div class="card-head"><h3>Open Trades <span class="up" id="tradeCount">(1)</span></h3><a onclick="closeAll()">Close All</a></div><div class="orders"><table class="order-table"><thead><tr><th>Asset</th><th>Type</th><th>Amount</th><th>P/L</th><th>Status</th></tr></thead><tbody id="ordersBody"><tr><td>BTC/USD</td><td class="up">Buy</td><td>$100</td><td class="up">+$0.96</td><td><span class="status">Open</span></td></tr></tbody></table></div></div>
   </div>
-</section>
+  <div class="activity-card"><div class="card-head"><h3>Recent Activity</h3><a>View All</a></div><div id="activity"><div class="activity"><div class="dot">↗</div><div><b>Trade Executed</b><small>BTC/USD · Buy · 100 USD · Demo</small></div></div><div class="activity"><div class="dot">◉</div><div><b>AI Analysis</b><small>Bullish signal detected for BTC/USD</small></div></div><div class="activity"><div class="dot">▣</div><div><b>Wallet Update</b><small>Demo balance synchronized</small></div></div></div></div>
+</div>
 
-<section class="page-section" id="founder-story" style="padding-top:38px">
-  <div class="panel" style="padding:22px;background:linear-gradient(145deg,#06182a,#03101f);border-color:#16476d">
-    <div style="display:grid;grid-template-columns:minmax(220px,310px) 1fr;gap:26px;align-items:center">
-      <div style="background:#071a2d;border:1px solid #16476d;border-radius:18px;padding:14px;text-align:center">
-        <div style="width:100%;aspect-ratio:1/1;border-radius:14px;overflow:hidden;background:#0b2036">
-          <img src="owner-profile.png" alt="Gyane Baraka - Founder of GV Trading Platform" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;flex-direction:column;background:radial-gradient(circle,#0b5fb0,#041426);color:#fff">
-            <div style="width:100px;height:100px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#168bff,#00c6ff);font-size:34px;font-weight:900">GB</div>
-            <strong style="margin-top:12px">Gyane Baraka</strong>
-          </div>
-        </div>
-        <h3 style="margin-top:15px;font-size:21px">Gyane Baraka</h3>
-        <p style="color:#00dca8;font-size:11px;font-weight:800;margin-top:4px">Founder — GV Trading Platform</p>
-      </div>
-      <div>
-        <span style="display:inline-block;color:#00e6ad;font-size:10px;font-weight:900;letter-spacing:1.5px;margin-bottom:8px">THE FOUNDER</span>
-        <h2 style="font-size:27px;margin-bottom:10px">The Story Behind GV Trading Platform</h2>
-        <p style="color:#b7c9dc;font-size:13px;line-height:1.8;margin-bottom:12px">GV Trading Platform was created with a simple vision: to make market education easier to understand while giving beginners a place to explore trading concepts through simulation.</p>
-        <p style="color:#b7c9dc;font-size:13px;line-height:1.8;margin-bottom:12px">The platform brings together market information, trading guides, risk awareness and a simulated dashboard so users can learn how trading ideas work without confusing a demo environment with real financial trading.</p>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:18px">
-          <div style="padding:13px;border:1px solid #123555;border-radius:10px;background:#06182a"><strong style="display:block;font-size:12px">LEARN</strong><small style="color:#8197b0;font-size:9px">Understand markets and trading concepts.</small></div>
-          <div style="padding:13px;border:1px solid #123555;border-radius:10px;background:#06182a"><strong style="display:block;font-size:12px">PRACTICE</strong><small style="color:#8197b0;font-size:9px">Explore ideas using simulated trading.</small></div>
-          <div style="padding:13px;border:1px solid #123555;border-radius:10px;background:#06182a"><strong style="display:block;font-size:12px">RISK AWARENESS</strong><small style="color:#8197b0;font-size:9px">Build responsible decision-making habits.</small></div>
-        </div>
-        <div style="margin-top:18px;padding:13px 15px;border-left:3px solid #00dca8;background:rgba(0,220,168,.06);border-radius:0 9px 9px 0;font-size:12px;font-weight:800">Education first. Responsible decision-making always.</div>
-      </div>
+<aside>
+  <div class="ai-card">
+    <div class="ai-head"><h3>🤖 GV AI Analyst</h3><span class="new">NEW</span></div>
+    <p class="ai-intro">Get AI-powered market analysis, trend signals and trading insights.</p>
+    <div class="analysis">
+      <div class="analysis-top"><b>Market Analysis</b><span class="badge" id="aiBadge">BULLISH</span></div>
+      <p class="ai-intro" id="aiText">BTC/USD is showing positive demo momentum with supportive buying pressure.</p>
+      <div class="strength"><div class="ring"><b id="aiScore">78%</b></div><div><div class="signal up" id="aiSignal">↗ RISE</div><small style="color:#71879a">Signal strength</small></div></div>
+      <ul class="ai-list"><li>Consider a <strong>BUY</strong> position in demo mode</li><li>Key support: <strong>$66,800</strong></li><li>Next resistance: <strong>$68,200</strong></li></ul>
+      <div class="ai-actions"><button class="btn primary" onclick="analyze()">◉ AI Trade</button><button class="btn" onclick="showPage('ai')">AI Report</button></div>
+      <div class="toggle-row"><span>Auto Trade <small style="color:#6f8498">(simulation)</small></span><button class="switch" id="autoSwitch" onclick="toggleAuto()"></button></div>
     </div>
+    <div style="margin-top:13px;background:linear-gradient(135deg,#09233a,#061522);border:1px solid #17405d;border-radius:10px;padding:13px"><b>Trade Smarter with GV AI</b><p class="ai-intro">Real-time style market analysis and educational insights powered by the GV demo engine.</p><button class="btn primary" style="width:100%" onclick="showPage('ai')">Try GV AI Analyst →</button></div>
   </div>
-</section>
-<style>@media(max-width:700px){#founder-story .panel>div{grid-template-columns:1fr!important}#founder-story .panel>div>div:last-child>div{grid-template-columns:1fr!important}}</style>
-
-<section class="page-section" id="wallet">
-  <h2 class="section-title">Wallet</h2><p class="section-text">Demo wallet interface. No deposits, withdrawals or real payments are processed.</p>
-  <div class="info-grid">
-    <div class="info-card"><h3>Demo Balance</h3><p id="walletBalance">$10,000.00 available for simulated activity.</p></div>
-    <div class="info-card"><h3>M-Pesa</h3><p>Payment integration can be connected later through an authorized provider. This prototype does not process money.</p></div>
-    <div class="info-card"><h3>PayPal</h3><p>Payment integration can be connected later through an authorized provider. This prototype does not process money.</p></div>
-  </div>
-</section>
-
-<section class="page-section" id="learn">
-  <h2 class="section-title">Learn</h2><p class="section-text">Build knowledge before taking financial risk.</p>
-  <div class="info-grid">
-    <div class="info-card"><h3>Crypto Basics</h3><p>Understand digital assets, blockchain networks, market volatility and liquidity.</p></div>
-    <div class="info-card"><h3>Risk Management</h3><p>Learn position sizing, exposure, stop-loss concepts and why losses are possible.</p></div>
-    <div class="info-card"><h3>Market Psychology</h3><p>Develop discipline and avoid decisions driven by fear, greed or social-media hype.</p></div>
-  </div>
-</section>
-
-<section class="page-section" id="account">
-  <h2 class="section-title">My Account</h2><p class="section-text">Your demo account information.</p>
-  <div class="info-grid">
-    <div class="info-card"><h3>Name</h3><p id="accountName">Demo Trader</p></div>
-    <div class="info-card"><h3>Email</h3><p id="accountEmail">No demo account created yet.</p></div>
-    <div class="info-card"><h3>Account Type</h3><p>Demo / Simulated Trading</p></div>
-  </div>
-</section>
-
-<section class="page-section" id="settings">
-  <h2 class="section-title">Settings</h2><p class="section-text">Manage your demo preferences. These settings are saved only in this browser.</p>
+</aside>
 </section>
 </div>
 
-<footer style="padding:22px 20px;border-top:1px solid var(--line);color:#70859c;font-size:10px;display:flex;justify-content:space-between;gap:15px">
-  <span>© 2026 GV Trading Platform</span><span>Demo Trading Environment • No real money used or processed</span>
-</footer>
+<div id="otherPages" class="sections">
+  <div id="trading" class="page-card"><h2>Trading</h2><p>Use the dashboard to explore simulated market orders, position sizing and leverage scenarios. All execution on this prototype is simulated.</p></div>
+  <div id="markets" class="page-card"><h2>Markets</h2><p>Track BTC, ETH, SOL, XRP and other assets. Market values displayed in this prototype are demonstration values and are not live exchange quotes.</p></div>
+  <div id="wallet" class="page-card"><h2>Wallet</h2><p><b>Demo Balance: $25,840.00</b></p><p>M-Pesa and PayPal interfaces can be added here for a future secure payment integration. No money is processed by this prototype.</p></div>
+  <div id="ai" class="page-card"><h2>GV AI Analyst & Auto Trader</h2><p>The demo analyst combines simulated trend, momentum and volatility inputs to generate BUY, SELL or WAIT-style signals. The simulated auto trader can place demo orders and includes an emergency stop.</p><button class="btn primary" onclick="analyze()">Run AI Analysis</button> <button class="btn" onclick="toggleAuto()">Toggle Auto Trader</button></div>
+  <div id="guides" class="page-card"><h2>Trading Guides</h2><ul><li>Understand market orders, limit orders and stop orders.</li><li>Learn position sizing before using leverage.</li><li>Use stop-loss and daily loss limits to control downside.</li><li>Never treat an AI signal as a guarantee of profit.</li></ul></div>
+  <div id="founder" class="page-card"><h2>About the Founder</h2><p><b>Gyane Baraka</b>, born in 1994, is the founder of GV Trading Platform. The platform is designed as a learning-focused digital environment for people interested in crypto markets, market analysis and responsible decision-making.</p><p>GV Trading Platform combines educational material, simulated trading and AI-style market analysis in one responsive experience.</p></div>
+  <div id="settings" class="page-card"><h2>Settings</h2><p>Demo preferences and risk controls can be configured here. Live exchange credentials should never be placed in this HTML file.</p></div>
+</div>
 </main>
-</div>
-
-<div class="modal" id="modal">
-  <div class="modal-box">
-    <button class="close" onclick="closeModal()">×</button>
-    <div class="demo-note">DEMO ACCOUNT • NO REAL MONEY</div>
-    <h2 id="modalTitle">Create Demo Account</h2>
-    <p class="note" style="margin-top:3px">Create a local demo account to test the dashboard.</p>
-    <div class="field" id="nameField"><label>Full Name</label><input id="authName" type="text" placeholder="Your full name"></div>
-    <div class="field"><label>Email</label><input id="authEmail" type="email" placeholder="you@example.com"></div>
-    <div class="field"><label>Password</label><input id="authPassword" type="password" placeholder="At least 8 characters"></div>
-    <div class="field" id="confirmField"><label>Confirm Password</label><input id="authConfirm" type="password" placeholder="Repeat your password"></div>
-    <div class="error" id="authError"></div>
-    <div class="modal-actions">
-      <button class="modal-btn modal-primary" id="authSubmit" onclick="submitAuth()">Create Demo Account</button>
-      <button class="modal-btn modal-secondary" id="authSwitch" onclick="switchAuth()">Already have an account? Login</button>
-    </div>
-    <p class="note">This demo stores account information only in this browser using local storage. It is not a secure production authentication system. We will replace it with secure authentication later.</p>
-  </div>
 </div>
 <div class="toast" id="toast"></div>
 
 <script>
-const state={
-  price:67432.18, stake:10, duration:5, balance:10000, volume:0, pl:0, open:0,
-  mode:"signup", points:[], trades:[]
-};
-
-function qs(id){return document.getElementById(id)}
-function money(v){return "$"+Number(v).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}
-
-function generatePoints(){
-  state.points=[];let p=state.price*1.008;
-  for(let i=0;i<95;i++){p += (Math.random()-.50)*state.price*.0028;state.points.push(p)}
+let balance=25840, trades=1, auto=false, timer=null;
+const $=id=>document.getElementById(id);
+function showToast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(window.tt);window.tt=setTimeout(()=>t.classList.remove('show'),2600)}
+function placeTrade(side){
+  const amount=Number($('amount').value)||100;
+  trades++;
+  $('tradeCount').textContent=`(${trades})`;
+  const tr=document.createElement('tr');
+  const pl=(Math.random()*2.4-.65).toFixed(2);
+  tr.innerHTML=`<td>BTC/USD</td><td class="${side==='BUY'?'up':'down'}">${side}</td><td>$${amount.toFixed(0)}</td><td class="${pl>=0?'up':'down'}">${pl>=0?'+':''}$${pl}</td><td><span class="status">Open</span></td>`;
+  $('ordersBody').prepend(tr);
+  const a=document.createElement('div');a.className='activity';a.innerHTML=`<div class="dot">↗</div><div><b>Trade Executed</b><small>BTC/USD · ${side} · $${amount.toFixed(0)} · Demo</small></div>`;
+  $('activity').prepend(a);
+  showToast(`${side} demo order placed — no real funds used.`);
 }
-function drawChart(){
-  const c=qs("mainChart"),r=c.getBoundingClientRect(),d=window.devicePixelRatio||1;
-  c.width=Math.max(1,r.width*d);c.height=Math.max(1,r.height*d);
-  const x=c.getContext("2d"),w=r.width,h=r.height;
-  x.setTransform(d,0,0,d,0,0);x.clearRect(0,0,w,h);
-  x.strokeStyle="#0b2b48";x.lineWidth=1;
-  for(let i=1;i<8;i++){x.beginPath();x.moveTo(0,h*i/8);x.lineTo(w,h*i/8);x.stroke()}
-  for(let i=1;i<12;i++){x.beginPath();x.moveTo(w*i/12,0);x.lineTo(w*i/12,h);x.stroke()}
-  const min=Math.min(...state.points),max=Math.max(...state.points),range=max-min||1;
-  const pts=state.points.map((v,i)=>[i/(state.points.length-1)*w,h-((v-min)/range)*(h-35)-14]);
-  const grad=x.createLinearGradient(0,0,0,h);grad.addColorStop(0,"rgba(0,125,255,.32)");grad.addColorStop(1,"rgba(0,125,255,.03)");
-  x.beginPath();pts.forEach((p,i)=>i?x.lineTo(p[0],p[1]):x.moveTo(p[0],p[1]));x.lineTo(w,h);x.lineTo(0,h);x.closePath();x.fillStyle=grad;x.fill();
-  x.beginPath();pts.forEach((p,i)=>i?x.lineTo(p[0],p[1]):x.moveTo(p[0],p[1]));x.strokeStyle="#1592ff";x.lineWidth=2;x.stroke();
-  const last=pts[pts.length-1];x.beginPath();x.arc(last[0],last[1],3,0,Math.PI*2);x.fillStyle="#16d99b";x.fill();
+function closeAll(){document.querySelectorAll('#ordersBody tr').forEach(r=>r.remove());trades=0;$('tradeCount').textContent='(0)';showToast('All demo positions closed.')}
+function analyze(){
+  const score=Math.floor(68+Math.random()*25);
+  $('aiScore').textContent=score+'%';
+  const bullish=score>=75;
+  $('aiBadge').textContent=bullish?'BULLISH':'NEUTRAL';
+  $('aiSignal').textContent=bullish?'↗ RISE':'→ WAIT';
+  $('aiSignal').className='signal '+(bullish?'up':'');
+  $('aiText').textContent=bullish?'Demo momentum is positive with supportive buying pressure.':'Market inputs are mixed; the demo analyst suggests waiting for confirmation.';
+  showToast('GV AI analysis refreshed.');
 }
-function updatePrices(){
-  state.price += (Math.random()-.48)*state.price*.00055;
-  state.points.push(state.price);if(state.points.length>95)state.points.shift();
-  qs("marketPrice").textContent=money(state.price);
-  qs("chartPrice").textContent=money(state.price);
-  qs("btcWatch").textContent=money(state.price);
-  const change=((state.price-67432.18)/67432.18*100);
-  qs("marketChange").textContent=(change>=0?"+":"")+change.toFixed(2)+"%";
-  drawChart();
+function toggleAuto(){
+  auto=!auto;$('autoSwitch').classList.toggle('on',auto);
+  if(auto){
+    showToast('AI Auto Trader ON — simulation only');
+    timer=setInterval(()=>{if(Math.random()>.55)placeTrade(Math.random()>.5?'BUY':'SELL')},7000);
+  }else{clearInterval(timer);showToast('AI Auto Trader OFF')}
 }
-function updateStats(){
-  qs("balance").textContent=money(state.balance);
-  qs("topBalance").textContent=money(state.balance);
-  qs("walletBalance").textContent=money(state.balance)+" available for simulated activity.";
-  qs("pl").textContent=(state.pl>=0?"+":"")+money(state.pl);
-  qs("plPct").textContent="("+(state.pl/state.balance*100).toFixed(2)+"%)";
-  qs("openCount").textContent=state.open;
-  qs("openBadge").textContent=state.open;
-  qs("volume").textContent=money(state.volume);
+function showPage(name,btn){
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');
+  const dashboard=$('dashboardPage'), other=$('otherPages');
+  if(name==='dashboard'){dashboard.style.display='block';other.classList.remove('show');$('pageTitle').textContent='Trading Dashboard'}
+  else{dashboard.style.display='none';other.classList.add('show');document.querySelectorAll('.page-card').forEach(p=>p.style.display='none');$(name).style.display='block';$('pageTitle').textContent=name==='ai'?'GV AI Analyst':name.charAt(0).toUpperCase()+name.slice(1)}
+  $('sidebar').classList.remove('open');
 }
-function setStake(v){
-  state.stake=Math.max(1,Math.min(500,v));qs("stake").textContent=money(state.stake);
-  document.querySelectorAll(".preset").forEach(b=>b.classList.remove("active"));
-  [...document.querySelectorAll(".preset")].find(b=>Number(b.textContent)===state.stake)?.classList.add("active");
-  updatePayoutDisplay();
-}
-function changeStake(dir){setStake(state.stake+(dir*5))}
-function changeDuration(dir){state.duration=Math.max(1,Math.min(20,state.duration+dir));qs("duration").textContent=state.duration+" ticks"}
-let selectedTradeType="evenodd";
-let selectedDigit=0;
-let barrier=5;
-
-function selectTradeType(type){
-  selectedTradeType=type;
-  document.querySelectorAll(".trade-tabs button").forEach(b=>b.classList.remove("active"));
-  const map={evenodd:"tabEvenOdd",matches:"tabMatches",overunder:"tabOver",risefall:"tabRise"};
-  qs(map[type]).classList.add("active");
-
-  qs("digitControls").style.display=type==="matches"?"block":"none";
-  qs("barrierControls").style.display=type==="overunder"?"block":"none";
-
-  const mode={
-    evenodd:"EVEN / ODD",
-    matches:"MATCHES / DIFFERS",
-    overunder:"OVER / UNDER",
-    risefall:"RISE / FALL"
-  };
-  qs("tradeModeLabel").textContent=mode[type];
-
-  let buttons="";
-  if(type==="evenodd"){
-    buttons='<button class="trade-choice even" onclick="placeTrade(\'EVEN\')"><strong>EVEN</strong><small>Payout <span class="payoutValue">$19.00</span> • Profit <span class="profitValue">$9.00</span></small></button>'+
-             '<button class="trade-choice odd" onclick="placeTrade(\'ODD\')"><strong>ODD</strong><small>Payout <span class="payoutValue">$19.00</span> • Profit <span class="profitValue">$9.00</span></small></button>';
-  }else if(type==="matches"){
-    buttons='<button class="trade-choice even" onclick="placeTrade(\'MATCHES\')"><strong>MATCHES '+selectedDigit+'</strong><small>Payout <span class="payoutValue">$19.00</span> • Profit <span class="profitValue">$9.00</span></small></button>'+
-            '<button class="trade-choice odd" onclick="placeTrade(\'DIFFERS\')"><strong>DIFFERS '+selectedDigit+'</strong><small>Payout <span class="payoutValue">$19.00</span> • Profit <span class="profitValue">$9.00</span></small></button>';
-  }else if(type==="overunder"){
-    buttons='<button class="trade-choice even" onclick="placeTrade(\'OVER\')"><strong>OVER '+barrier+'</strong><small>Payout <span class="payoutValue">$19.00</span> • Profit <span class="profitValue">$9.00</span></small></button>'+
-            '<button class="trade-choice odd" onclick="placeTrade(\'UNDER\')"><strong>UNDER '+barrier+'</strong><small>Payout <span class="payoutValue">$19.00</span> • Profit <span class="profitValue">$9.00</span></small></button>';
-  }else{
-    buttons='<button class="trade-choice even" onclick="placeTrade(\'RISE\')"><strong>RISE</strong><small>Payout <span class="payoutValue">$19.00</span> • Profit <span class="profitValue">$9.00</span></small></button>'+
-            '<button class="trade-choice odd" onclick="placeTrade(\'FALL\')"><strong>FALL</strong><small>Payout <span class="payoutValue">$19.00</span> • Profit <span class="profitValue">$9.00</span></small></button>';
-  }
-  qs("tradeButtons").innerHTML=buttons;
-  updatePayoutDisplay();
-}
-function setDigit(n){
-  selectedDigit=n;
-  document.querySelectorAll(".digit").forEach(b=>b.classList.remove("active"));
-  document.querySelectorAll(".digit")[n].classList.add("active");
-  if(selectedTradeType==="matches")selectTradeType("matches");
-}
-function changeBarrier(dir){
-  barrier=Math.max(0,Math.min(9,barrier+dir));
-  qs("barrier").textContent=barrier;
-  if(selectedTradeType==="overunder")selectTradeType("overunder");
-}
-function updatePayoutDisplay(){
-  const payout=state.stake*1.9,profit=state.stake*.9;
-  document.querySelectorAll(".payoutValue").forEach(e=>e.textContent=money(payout));
-  document.querySelectorAll(".profitValue").forEach(e=>e.textContent=money(profit));
-}
-function placeTrade(type){
-  if(state.stake>state.balance)return showToast("Your demo balance is too low for this stake.");
-  state.balance-=state.stake;state.volume+=state.stake;state.open++;
-  state.trades.unshift({type,stake:state.stake,price:state.price,time:new Date().toLocaleTimeString()});
-  qs("emptyTitle").textContent="Demo trade open";
-  qs("emptyText").textContent=type+" • "+money(state.stake)+" • "+state.duration+" ticks";
-  qs("emptyTitle").style.color="#10d99a";
-  addActivity("Trade Placed",type+" • "+money(state.stake));
-  updateStats();showToast(type+" demo trade placed.");
-
-  // Resolve the simulated contract after a short delay.
-  setTimeout(()=>resolveTrade(type,state.stake),Math.max(1800,state.duration*500));
-}
-function resolveTrade(type,stake){
-  if(state.open>0)state.open--;
-  let digit=Math.floor(Math.random()*10),win=false;
-  if(type==="EVEN")win=digit%2===0;
-  if(type==="ODD")win=digit%2!==0;
-  if(type==="MATCHES")win=digit===selectedDigit;
-  if(type==="DIFFERS")win=digit!==selectedDigit;
-  if(type==="OVER")win=digit>barrier;
-  if(type==="UNDER")win=digit<barrier;
-  if(type==="RISE")win=Math.random()>=0.5;
-  if(type==="FALL")win=Math.random()<0.5;
-
-  const payout=stake*1.9;
-  if(win){state.balance+=payout;state.pl+=stake*.9;addActivity("Trade Closed",type+" • WIN • "+money(stake*.9)+" profit");showToast(type+" won in the simulation.");}
-  else{state.pl-=stake;addActivity("Trade Closed",type+" • LOSS • "+money(stake)+" stake");showToast(type+" lost in the simulation.");}
-
-  qs("emptyTitle").textContent=state.open?"Demo trade open":"No open trades";
-  qs("emptyText").textContent=state.open?"Another simulated trade is active.":"Your active contracts will appear here.";
-  qs("emptyTitle").style.color="";
-  updateStats();
-}
-function addActivity(title,text){
-  const row=document.createElement("div");row.className="activity-row";
-  row.innerHTML='<span class="act-icon">↗</span><div><strong>'+title+'</strong><small>'+text+'</small></div><small>Now</small>';
-  qs("activityList").prepend(row);
-}
-function scanMarket(){
-  const signals=["Bullish momentum","Mixed / wait for confirmation","Volatility elevated","Short-term upward pressure"];
-  const s=signals[Math.floor(Math.random()*signals.length)];
-  addActivity("GV AI Scan",s);showToast("GV AI Analyst: "+s+" — educational signal only.");
-}
-function showToast(t){const e=qs("toast");e.textContent=t;e.classList.add("show");setTimeout(()=>e.classList.remove("show"),2600)}
-function toggleSidebar(){qs("sidebar").classList.toggle("open")}
-
-function openModal(mode){
-  state.mode=mode==="login"?"login":"signup";
-  qs("modalTitle").textContent=state.mode==="signup"?"Create Demo Account":"Login";
-  qs("nameField").style.display=state.mode==="signup"?"block":"none";
-  qs("confirmField").style.display=state.mode==="signup"?"block":"none";
-  qs("authPassword").placeholder=state.mode==="signup"?"At least 8 characters":"Your password";
-  qs("authSubmit").textContent=state.mode==="signup"?"Create Demo Account":"Login";
-  qs("authSwitch").textContent=state.mode==="signup"?"Already have an account? Login":"Create Demo Account";
-  qs("authError").textContent="";
-  qs("modal").classList.add("show");
-}
-function closeModal(){qs("modal").classList.remove("show")}
-function switchAuth(){openModal(state.mode==="signup"?"login":"signup")}
-function submitAuth(){
-  const name=qs("authName").value.trim(),email=qs("authEmail").value.trim().toLowerCase(),pass=qs("authPassword").value,confirm=qs("authConfirm").value;
-  const error=qs("authError");
-  if(state.mode==="signup" && name.length<2)return error.textContent="Please enter your full name.";
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))return error.textContent="Please enter a valid email address.";
-  if(pass.length<8)return error.textContent="Password must be at least 8 characters.";
-  if(state.mode==="signup" && !/[A-Z]/.test(pass))return error.textContent="Password must contain one capital letter.";
-  if(state.mode==="signup" && !/[0-9]/.test(pass))return error.textContent="Password must contain one number.";
-  if(state.mode==="signup" && pass!==confirm)return error.textContent="Passwords do not match.";
-  let users=JSON.parse(localStorage.getItem("gvDemoUsers")||"{}");
-  if(state.mode==="signup"){
-    if(users[email])return error.textContent="This email already has a demo account. Please login.";
-    users[email]={name,email,password:pass};
-    localStorage.setItem("gvDemoUsers",JSON.stringify(users));
-    localStorage.setItem("gvDemoCurrentUser",email);
-    closeModal();applyUser(users[email]);showToast("Demo account created successfully.");
-  }else{
-    if(!users[email]||users[email].password!==pass)return error.textContent="Incorrect email or password.";
-    localStorage.setItem("gvDemoCurrentUser",email);closeModal();applyUser(users[email]);showToast("Welcome back, "+users[email].name+"!");
-  }
-}
-function applyUser(user){
-  const initials=user.name.split(/\s+/).map(x=>x[0]).join("").slice(0,2).toUpperCase();
-  qs("avatar").textContent=initials||"GV";qs("topName").textContent=user.name;qs("topEmail").textContent=user.email;
-  qs("welcome").textContent="Welcome back, "+user.name+"! Here's your trading overview.";
-  qs("accountName").textContent=user.name;qs("accountEmail").textContent=user.email;
-}
-function logoutDemo(){
-  localStorage.removeItem("gvDemoCurrentUser");
-  qs("topName").textContent="Demo Trader";qs("topEmail").textContent="demo account";qs("avatar").textContent="GV";
-  qs("welcome").textContent="Welcome to your GV trading overview.";
-  showToast("Demo account logged out.");
-}
-function restoreUser(){
-  const email=localStorage.getItem("gvDemoCurrentUser"),users=JSON.parse(localStorage.getItem("gvDemoUsers")||"{}");
-  if(email&&users[email])applyUser(users[email]);
-}
-
-document.querySelectorAll(".nav a").forEach(a=>{
-  a.addEventListener("click",()=>{document.querySelectorAll(".nav a").forEach(x=>x.classList.remove("active"));a.classList.add("active");if(window.innerWidth<850)qs("sidebar").classList.remove("open")});
-});
-let tradingSeconds=30;
-let tradingTimer=null;
-function renderTradingTime(){
-  const m=String(Math.floor(tradingSeconds/60)).padStart(2,"0");
-  const sec=String(tradingSeconds%60).padStart(2,"0");
-  const el=qs("tradingClock");
-  if(el)el.textContent=m+":"+sec;
-}
-function setTradingTime(seconds){
-  tradingSeconds=Math.max(5,seconds);
-  renderTradingTime();
-  if(tradingTimer)clearInterval(tradingTimer);
-  tradingTimer=setInterval(()=>{
-    tradingSeconds--;
-    renderTradingTime();
-    if(tradingSeconds<=0){clearInterval(tradingTimer);tradingTimer=null;showToast("Demo trading time ended.");}
-  },1000);
-}
-function resetTradingTime(){setTradingTime(30);}
-window.addEventListener("resize",drawChart);
-generatePoints();drawChart();updateStats();restoreUser();selectTradeType("evenodd");
-renderTradingTime();
-setInterval(updatePrices,1500);
+setInterval(()=>{const p=67485+(Math.random()*70-35);$('livePrice').textContent='$'+p.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})},2500);
 </script>
-
-<div id="routePage" class="route-page" hidden></div>
-<style>
-.route-page{padding:20px;min-height:calc(100vh - 74px)}
-.route-page[hidden]{display:none!important}
-.route-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;max-width:1000px}
-.route-card h2{font-size:25px;margin-bottom:8px}.route-card p{color:var(--muted);font-size:13px;margin-bottom:18px}
-.route-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.route-field{display:flex;flex-direction:column;gap:7px}.route-field label{font-size:12px;color:#b9cce0}.route-field input,.route-field select{background:#06182a;border:1px solid var(--line2);color:white;border-radius:8px;padding:11px}
-.route-toggle{display:flex;align-items:center;justify-content:space-between;padding:14px;border:1px solid var(--line);border-radius:10px;margin:10px 0;color:#dbe8f5}
-.route-back{margin-top:18px}
-@media(max-width:650px){.route-grid{grid-template-columns:1fr}.route-page{padding:12px}}
-</style>
 </body>
 </html>
