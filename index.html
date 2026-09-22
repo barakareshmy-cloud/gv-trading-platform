@@ -93,34 +93,13 @@ button,input,select{font:inherit}button{cursor:pointer}
 </style>
 
 <style>
-.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;padding:18px;z-index:50}.modal-backdrop.show{display:flex}.modal{width:min(520px,100%);background:#071522;border:1px solid #1a4665;border-radius:15px;padding:18px;box-shadow:0 25px 70px rgba(0,0,0,.5)}.modal h3{margin:0 0 6px}.modal p{color:#8ea4b8;font-size:12px;line-height:1.6}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}.modal .field{margin-top:10px}.selected-control{background:#0d3657!important;color:#fff!important;border-color:#1c8ed0!important}.control-note{font-size:10px;color:#6f8498;margin-top:6px}.risk-input{width:100%;background:#071724;border:1px solid #193952;color:#fff;border-radius:7px;padding:7px;outline:none}.risk-box{min-width:0}.risk-box input{margin-top:5px}.status.closed{background:#2b2630;color:#a9b4bf}.market-row{cursor:pointer}.market-row:hover{background:#0a2032}.disabled-btn{opacity:.5;pointer-events:none}
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;padding:18px;z-index:50}.modal-backdrop.show{display:flex}.auth-modal{max-width:460px;width:min(92vw,460px)}
+.auth-modal .field{margin-top:12px}
+.modal{width:min(520px,100%);background:#071522;border:1px solid #1a4665;border-radius:15px;padding:18px;box-shadow:0 25px 70px rgba(0,0,0,.5)}.modal h3{margin:0 0 6px}.modal p{color:#8ea4b8;font-size:12px;line-height:1.6}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}.modal .field{margin-top:10px}.selected-control{background:#0d3657!important;color:#fff!important;border-color:#1c8ed0!important}.control-note{font-size:10px;color:#6f8498;margin-top:6px}.risk-input{width:100%;background:#071724;border:1px solid #193952;color:#fff;border-radius:7px;padding:7px;outline:none}.risk-box{min-width:0}.risk-box input{margin-top:5px}.status.closed{background:#2b2630;color:#a9b4bf}.market-row{cursor:pointer}.market-row:hover{background:#0a2032}.disabled-btn{opacity:.5;pointer-events:none}
 @media(max-width:600px){.modal{padding:15px}.modal-actions{flex-direction:column}.modal-actions .btn{width:100%}}
-
-/* GV AUTH EXPERIENCE */
-.auth-screen{position:fixed;inset:0;z-index:100;background:radial-gradient(circle at 50% 0,#103654 0,#030a12 48%,#02070d 100%);display:none;align-items:center;justify-content:center;padding:24px;overflow:auto}
-.auth-screen.show{display:flex}.auth-wrap{width:min(1000px,100%);display:grid;grid-template-columns:1fr 1fr;background:rgba(7,21,34,.92);border:1px solid #1b4665;border-radius:22px;box-shadow:0 30px 100px rgba(0,0,0,.65);overflow:hidden}.auth-brand{padding:44px;background:linear-gradient(145deg,rgba(10,39,62,.9),rgba(4,15,25,.95));display:flex;flex-direction:column;justify-content:center}.auth-logo{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(135deg,#0f83ff,#14d9ff);font-size:25px;font-weight:1000;box-shadow:0 0 35px rgba(18,151,255,.3);margin-bottom:20px}.auth-brand h1{font-size:34px;margin:0 0 10px}.auth-brand p{color:#8da6ba;line-height:1.7;font-size:13px}.auth-points{display:grid;gap:10px;margin-top:20px}.auth-point{padding:11px 13px;border:1px solid #173b55;background:#071724;border-radius:10px;font-size:12px;color:#c7d8e6}.auth-point b{color:#20dca5}.auth-form{padding:38px 36px;background:#06131f}.auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:#081b2a;border:1px solid #17344f;padding:4px;border-radius:11px;margin-bottom:24px}.auth-tabs button{border:0;background:transparent;color:#718aa0;padding:11px;border-radius:8px;font-weight:800}.auth-tabs button.active{background:#0e5e96;color:#fff}.auth-form h2{margin:0 0 5px;font-size:24px}.auth-sub{color:#718aa0;font-size:11px;margin-bottom:18px}.auth-field{margin-bottom:12px}.auth-field label{display:block;color:#8ca2b5;font-size:11px;margin-bottom:6px}.auth-field input{width:100%;background:#071a29;border:1px solid #1a3b54;color:#fff;border-radius:9px;padding:12px;outline:none}.auth-field input:focus{border-color:#1a9cff;box-shadow:0 0 0 3px rgba(26,156,255,.08)}.auth-submit{width:100%;border:0;border-radius:10px;padding:13px;background:linear-gradient(135deg,#0c9bff,#0b75f5);color:#fff;font-weight:900;margin-top:5px}.auth-note{text-align:center;color:#647e94;font-size:10px;line-height:1.5;margin-top:14px}.auth-close{position:absolute;top:18px;right:20px;border:1px solid #29465d;background:#071522;color:#b8cad8;width:36px;height:36px;border-radius:10px;font-size:18px}.auth-switch{margin-top:14px;text-align:center;font-size:11px;color:#70879b}.auth-switch button{border:0;background:none;color:#20a9ff;font-weight:800}
-@media(max-width:760px){.auth-wrap{grid-template-columns:1fr}.auth-brand{display:none}.auth-form{padding:30px 22px}}
 </style>
 </head>
 <body>
-
-<div class="auth-screen" id="authScreen">
-  <button class="auth-close" onclick="closeAuth()">×</button>
-  <div class="auth-wrap">
-    <div class="auth-brand"><div class="auth-logo">GV</div><h1>GV Trading Platform</h1><p>A premium learning and simulated trading environment designed to help users explore crypto markets with confidence.</p><div class="auth-points"><div class="auth-point">✓ <b>Demo Trading</b> — practice without real funds</div><div class="auth-point">✓ <b>GV AI Analyst</b> — simulated market analysis</div><div class="auth-point">✓ <b>Personal Dashboard</b> — track your demo activity</div></div></div>
-    <div class="auth-form">
-      <div class="auth-tabs"><button id="loginTab" class="active" onclick="authMode('login')">LOGIN</button><button id="registerTab" onclick="authMode('register')">CREATE ACCOUNT</button></div>
-      <h2 id="authTitle">Welcome back</h2><div class="auth-sub" id="authSub">Sign in to your GV demo trading account.</div>
-      <div class="auth-field" id="nameField" style="display:none"><label>FULL NAME</label><input id="authName" type="text" placeholder="Enter your full name"></div>
-      <div class="auth-field"><label>EMAIL ADDRESS</label><input id="authEmail" type="email" placeholder="you@example.com"></div>
-      <div class="auth-field"><label>PASSWORD</label><input id="authPassword" type="password" placeholder="Enter your password"></div>
-      <div class="auth-field" id="confirmField" style="display:none"><label>CONFIRM PASSWORD</label><input id="authConfirm" type="password" placeholder="Confirm your password"></div>
-      <button class="auth-submit" id="authSubmit" onclick="submitAuth()">LOGIN TO GV</button>
-      <div class="auth-note">Demo / Simulation Platform · No real money is processed.</div>
-      <div class="auth-switch" id="authSwitch">New to GV? <button onclick="authMode('register')">Create your account</button></div>
-    </div>
-  </div>
-</div>
 <div class="app">
 <aside class="sidebar" id="sidebar">
   <div class="brand"><div class="logo">GV</div><span>GV Trading</span></div>
@@ -140,7 +119,7 @@ button,input,select{font:inherit}button{cursor:pointer}
 <main class="main">
 <header class="topbar">
   <div style="display:flex;align-items:center;gap:10px"><button class="pill mobile-menu" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button><div class="title"><h1 id="pageTitle">Trading Dashboard</h1><span>AI-powered market intelligence · simulated trading</span></div></div>
-  <div class="top-actions"><span class="pill">Demo Balance <b id="balance">$25,840.00</b></span><button class="btn primary" onclick="openAuth('register')">Create Demo Account</button></div>
+  <div class="top-actions"><span class="pill">Demo Balance <b id="balance">$25,840.00</b></span><button class="btn primary" id="accountButton" onclick="openModal('authModal')">Login / Register</button></div>
 </header>
 
 <div id="dashboardPage">
@@ -390,12 +369,34 @@ button,input,select{font:inherit}button{cursor:pointer}
 </main>
 </div>
 
-<div class="modal-backdrop" id="accountModal" onclick="if(event.target===this)closeModal('accountModal')">
-  <div class="modal">
-    <h3>Create Demo Account</h3><p>Create a local demo profile for this browser. This does not create a real financial account and no password is sent anywhere.</p>
-    <div class="field"><label>Display name</label><input id="demoName" type="text" placeholder="Your name"></div>
-    <div class="field"><label>Email</label><input id="demoEmail" type="email" placeholder="you@example.com"></div>
-    <div class="modal-actions"><button class="btn" onclick="closeModal('accountModal')">Cancel</button><button class="btn primary" onclick="createDemoAccount()">Create Demo Account</button></div>
+<div class="modal-backdrop" id="authModal" onclick="if(event.target===this)closeModal('authModal')">
+  <div class="modal auth-modal">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+      <div><h3 style="margin-bottom:5px">GV Trading Account</h3><p style="margin:0">Create an account or sign in to save your demo profile securely.</p></div>
+      <button class="btn" onclick="closeModal('authModal')">✕</button>
+    </div>
+    <div class="terminal-tabs" style="margin-top:18px">
+      <button class="terminal-tab active" id="loginTab" onclick="setAuthMode('login')">Login</button>
+      <button class="terminal-tab" id="registerTab" onclick="setAuthMode('register')">Register</button>
+    </div>
+    <div id="loginFields">
+      <div class="field"><label>Email</label><input id="loginEmail" type="email" autocomplete="email" placeholder="you@example.com"></div>
+      <div class="field"><label>Password</label><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Your password"></div>
+      <button class="btn primary" style="width:100%;margin-top:8px" onclick="loginUser()">Login</button>
+    </div>
+    <div id="registerFields" style="display:none">
+      <div class="field"><label>Full name</label><input id="registerName" type="text" autocomplete="name" placeholder="Your full name"></div>
+      <div class="field"><label>Email</label><input id="registerEmail" type="email" autocomplete="email" placeholder="you@example.com"></div>
+      <div class="field"><label>Password</label><input id="registerPassword" type="password" autocomplete="new-password" placeholder="At least 6 characters"></div>
+      <button class="btn primary" style="width:100%;margin-top:8px" onclick="registerUser()">Create Account</button>
+    </div>
+    <div id="authStatus" style="margin-top:12px;color:#7e94aa;font-size:13px;line-height:1.5"></div>
+    <div id="loggedInBox" style="display:none">
+      <div style="background:#071522;border:1px solid #16344f;border-radius:10px;padding:14px;margin-top:14px">
+        <strong id="loggedInName">User</strong><br><span id="loggedInEmail" style="color:#7e94aa"></span>
+      </div>
+      <div class="modal-actions"><button class="btn" onclick="closeModal('authModal')">Close</button><button class="btn" onclick="logoutUser()">Logout</button></div>
+    </div>
   </div>
 </div>
 <div class="modal-backdrop" id="walletModal" onclick="if(event.target===this)closeModal('walletModal')">
@@ -407,13 +408,16 @@ button,input,select{font:inherit}button{cursor:pointer}
 </div>
 <div class="toast" id="toast"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+// GV Trading Platform — Supabase configuration
+// ONLY CHANGE NEEDED: paste your Supabase Publishable key below.
+const SUPABASE_URL = "https://uqsjbqgoltufkeflvwgu.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "PASTE_YOUR_SB_PUBLISHABLE_KEY_HERE";
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+</script>
 
-let currentAuthMode='login';
-function openAuth(mode='login'){authMode(mode);$('authScreen').classList.add('show')}
-function closeAuth(){$('authScreen').classList.remove('show')}
-function authMode(mode){currentAuthMode=mode;const reg=mode==='register';$('loginTab').classList.toggle('active',!reg);$('registerTab').classList.toggle('active',reg);$('nameField').style.display=reg?'block':'none';$('confirmField').style.display=reg?'block':'none';$('authTitle').textContent=reg?'Create your GV account':'Welcome back';$('authSub').textContent=reg?'Create a secure demo account to access your dashboard.':'Sign in to your GV demo trading account.';$('authSubmit').textContent=reg?'CREATE DEMO ACCOUNT':'LOGIN TO GV';$('authSwitch').innerHTML=reg?'Already have an account? <button onclick="authMode('login')">Login here</button>':'New to GV? <button onclick="authMode('register')">Create your account</button>'}
-function submitAuth(){const email=$('authEmail').value.trim(),password=$('authPassword').value; if(!email||!password){showToast('Please enter your email and password.');return} if(currentAuthMode==='register'){const name=$('authName').value.trim(),confirm=$('authConfirm').value;if(!name||!confirm){showToast('Please complete all account fields.');return}if(password!==confirm){showToast('Passwords do not match.');return}localStorage.setItem('gvDemoAccount',JSON.stringify({name,email}));showToast('Demo account details saved locally. Supabase connection comes next.');closeAuth();loadSavedAccount();return} showToast('Login design is ready. Supabase authentication comes next.');}
+<script>
 const state={balance:25840,trades:1,auto:false,timer:null,autoTrades:0,autoLoss:0,scanCount:24,orderType:'Market',asset:'BTC/USD',leverage:2,emergency:false,walletAction:null,settings:{demo:true,notifications:true,risk:true,dark:true}};
 const assets={
   'BTC/USD':{price:67485.03,change:0.81,coin:'₿',name:'Bitcoin'},
@@ -426,6 +430,82 @@ function money(n){return '$'+Number(n).toLocaleString(undefined,{minimumFraction
 function showToast(msg){const t=$('toast');if(!t)return;t.textContent=msg;t.classList.add('show');clearTimeout(window.tt);window.tt=setTimeout(()=>t.classList.remove('show'),2600)}
 function openModal(id){$(id)?.classList.add('show')}
 function closeModal(id){$(id)?.classList.remove('show')}
+let authMode='login';
+let currentUser=null;
+function setAuthMode(mode){
+  authMode=mode;
+  $('loginFields').style.display=mode==='login'?'block':'none';
+  $('registerFields').style.display=mode==='register'?'block':'none';
+  $('loginTab').classList.toggle('active',mode==='login');
+  $('registerTab').classList.toggle('active',mode==='register');
+  $('loggedInBox').style.display='none';
+  $('authStatus').textContent='';
+}
+function setAuthStatus(message,error=false){
+  const el=$('authStatus'); if(el){el.textContent=message;el.style.color=error?'#ff6b86':'#7e94aa';}
+}
+function initialsFor(name){return (name||'GV').split(/\s+/).map(x=>x[0]).filter(Boolean).slice(0,2).join('').toUpperCase()||'GV'}
+function applyUserProfile(profile,user){
+  const name=profile?.full_name || user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'GV User';
+  currentUser=user||null;
+  document.querySelectorAll('.avatar').forEach(a=>a.textContent=initialsFor(name));
+  const p=document.querySelector('.profile b'); if(p)p.textContent=name;
+  const sm=document.querySelector('.profile small'); if(sm)sm.textContent=user?'Authenticated Account · GV':'Demo Account · GV';
+  const btn=$('accountButton'); if(btn){btn.textContent=user?'Account / Logout':'Login / Register';}
+  if(user){$('loggedInName').textContent=name;$('loggedInEmail').textContent=user.email||'';}
+}
+async function loadAuthProfile(user){
+  if(!user)return;
+  const {data:profile}=await supabaseClient.from('profiles').select('full_name,email,account_level,demo_balance,created_at').eq('id',user.id).maybeSingle();
+  if(profile){
+    if(typeof profile.demo_balance==='number') state.balance=profile.demo_balance;
+    applyUserProfile(profile,user);
+  }else{
+    applyUserProfile(null,user);
+  }
+  updateBalance();
+}
+async function registerUser(){
+  if(SUPABASE_PUBLISHABLE_KEY.includes('PASTE_YOUR_')){setAuthStatus('Add your Supabase Publishable key in the configuration at the bottom of the page first.',true);return}
+  const name=$('registerName').value.trim(),email=$('registerEmail').value.trim(),password=$('registerPassword').value;
+  if(!name||!email||password.length<6){setAuthStatus('Enter your full name, a valid email and a password of at least 6 characters.',true);return}
+  setAuthStatus('Creating your account...');
+  const {data,error}=await supabaseClient.auth.signUp({email,password,options:{data:{full_name:name}}});
+  if(error){setAuthStatus(error.message,true);return}
+  if(data.user){
+    const {error:profileError}=await supabaseClient.from('profiles').upsert({id:data.user.id,full_name:name,email:email,account_level:'Beginner',demo_balance:25840},{onConflict:'id'});
+    if(profileError){setAuthStatus('Account created, but profile setup needs attention: '+profileError.message,true);return}
+  }
+  if(data.session){
+    await loadAuthProfile(data.user); setAuthMode('login'); setAuthStatus('Account created and you are logged in.');
+  }else{
+    setAuthMode('login'); setAuthStatus('Account created. Check your email to confirm your account, then log in.');
+  }
+}
+async function loginUser(){
+  if(SUPABASE_PUBLISHABLE_KEY.includes('PASTE_YOUR_')){setAuthStatus('Add your Supabase Publishable key in the configuration at the bottom of the page first.',true);return}
+  const email=$('loginEmail').value.trim(),password=$('loginPassword').value;
+  if(!email||!password){setAuthStatus('Enter your email and password.',true);return}
+  setAuthStatus('Signing in...');
+  const {data,error}=await supabaseClient.auth.signInWithPassword({email,password});
+  if(error){setAuthStatus(error.message,true);return}
+  await loadAuthProfile(data.user);
+  $('loginFields').style.display='none';$('registerFields').style.display='none';$('loggedInBox').style.display='block';
+  setAuthStatus(''); showToast('Welcome back to GV Trading.');
+}
+async function logoutUser(){
+  await supabaseClient.auth.signOut(); currentUser=null; applyUserProfile(null,null);
+  $('loggedInBox').style.display='none'; setAuthMode('login'); closeModal('authModal'); showToast('You have been logged out.');
+}
+async function initAuth(){
+  if(SUPABASE_PUBLISHABLE_KEY.includes('PASTE_YOUR_')){setAuthStatus('Supabase is ready. Add your Publishable key to enable registration and login.');return}
+  const {data:{session}}=await supabaseClient.auth.getSession();
+  if(session?.user) await loadAuthProfile(session.user);
+  supabaseClient.auth.onAuthStateChange((_event,session)=>{
+    if(session?.user){setTimeout(()=>loadAuthProfile(session.user),0)}
+  });
+}
+
 function createDemoAccount(){
   const name=$('demoName').value.trim(),email=$('demoEmail').value.trim();
   if(!name||!email||!email.includes('@')){showToast('Enter a valid name and email.');return}
@@ -594,7 +674,16 @@ function showPage(name,btn){
   $('sidebar').classList.remove('open');window.scrollTo({top:0,behavior:'smooth'});
 }
 function addExecution(type,message,tag='BOT'){const feed=$('executionFeed');if(!feed)return;const row=document.createElement('div');row.className='exec';row.innerHTML=`<span class="type">${type}</span><span>${message} <span class="human-tag ${tag==='BOT'?'bot-tag':''}">${tag}</span></span><span class="time">now</span>`;feed.prepend(row);while(feed.children.length>25)feed.lastElementChild.remove();const n=Number($('ordersAnalyzed')?.textContent||0)+1;if($('ordersAnalyzed'))$('ordersAnalyzed').textContent=n}
-function runFullScan(){const score=Math.floor(62+Math.random()*31),bullish=score>=72;$('fullScore').textContent=score+'%';$('fullSignal').textContent=bullish?'BUY / RISE':'WAIT / CONFIRM';$('trendValue').textContent=bullish?'Bullish':'Mixed';$('momentumValue').textContent=bullish?'Strong':'Neutral';$('volValue').textContent=score>82?'High':'Moderate';$('liqValue').textContent='Healthy';$('analysisPrice').textContent=$('livePrice')?.textContent||money(assets[state.asset].price);state.scanCount++;if($('marketScans'))$('marketScans').textContent=state.scanCount;addExecution('AI SCAN',`Analyzed trend, momentum, volatility and liquidity → ${bullish?'bullish':'mixed'} signal`,'BOT');showToast('Full GV AI market scan completed.')}
+function runFullScan(){
+  const steps=['Initializing GV AI market scan…','Scanning BTC/USD…','Scanning ETH/USD…','Scanning SOL/USD…','Scanning XRP/USD…','Checking market momentum…','Checking volatility…','Checking support & resistance…','Checking liquidity…'];
+  let i=0;
+  const setScanText=t=>{const el=document.getElementById('scanStatus')||document.getElementById('fullSignal');if(el)el.textContent=t;};
+  setScanText(steps[0]);
+  const timer=setInterval(()=>{i++;if(i<steps.length){setScanText(steps[i]);return;}clearInterval(timer);
+    const score=Math.floor(62+Math.random()*31),bullish=score>=72;
+    $('fullScore').textContent=score+'%';$('fullSignal').textContent=bullish?'BUY / RISE':'WAIT / CONFIRM';$('trendValue').textContent=bullish?'Bullish':'Mixed';$('momentumValue').textContent=bullish?'Strong':'Neutral';$('volValue').textContent=score>82?'High':'Moderate';$('liqValue').textContent='Healthy';$('analysisPrice').textContent=$('livePrice')?.textContent||money(assets[state.asset].price);state.scanCount++;if($('marketScans'))$('marketScans').textContent=state.scanCount;addExecution('AI SCAN',`Analyzed trend, momentum, volatility and liquidity → ${bullish?'bullish':'mixed'} signal`,'BOT');setScanText('✓ GV AI market scan completed');showToast('GV AI market scan completed.');
+  },700);
+}
 function emergencyStop(){state.emergency=true;stopAuto('Emergency stop activated.');if($('aiPageBotState'))$('aiPageBotState').textContent='EMERGENCY STOP';if($('automationType'))$('automationType').textContent='STOPPED';if($('executorType'))$('executorType').textContent='Safety Stop';const c=document.querySelector('#ai .auto-controls');if(c&&!document.getElementById('resetStop')){const b=document.createElement('button');b.id='resetStop';b.className='btn';b.textContent='Reset Safety Stop';b.onclick=resetEmergency;c.appendChild(b)}showToast('Emergency stop activated. New demo orders are blocked.')}
 function resetEmergency(){state.emergency=false;$('resetStop')?.remove();if($('aiPageBotState'))$('aiPageBotState').textContent='SIMULATION READY';if($('automationType'))$('automationType').textContent='OFF';if($('executorType'))$('executorType').textContent='Manual / User';showToast('Demo safety stop reset.')}
 function walletAction(action){state.walletAction=action;$('walletModalTitle').textContent=`Demo ${action}`;$('walletModalText').textContent=action==='Deposit'?'Add virtual demo funds to the simulated balance.':action==='Withdraw'?'Subtract virtual demo funds from the simulated balance.':'Move a virtual amount and record it as a demo transfer.';$('walletConfirm').textContent=action==='Deposit'?'Add Funds':action==='Withdraw'?'Withdraw':'Transfer';openModal('walletModal')}
@@ -603,7 +692,7 @@ function toggleSetting(el,label){const on=el.classList.toggle('on');state.settin
 function loadSavedAccount(){try{const a=JSON.parse(localStorage.getItem('gvDemoAccount'));if(a?.name){document.querySelectorAll('.avatar').forEach(x=>x.textContent=a.name.split(/\s+/).map(v=>v[0]).slice(0,2).join('').toUpperCase());const p=document.querySelector('.profile b');if(p)p.textContent=a.name;const s=document.querySelector('.profile small');if(s)s.textContent='Demo Account · GV'}}catch(e){}}
 // The chart engine is the single source of demo price movement, so the header price follows it.
 setInterval(()=>{const c=chartModel.candles?.[chartModel.candles.length-1];if(c){const p=c.close;$('livePrice').textContent=money(p);if($('analysisPrice'))$('analysisPrice').textContent=money(p)}},350);
-document.addEventListener('DOMContentLoaded',()=>{loadSavedAccount();updateBalance();renderChart();startChartMotion();terminalUpdatePayout();updateTerminalCounts();renderTerminalChart();document.querySelectorAll('.toggle-demo').forEach((el,i)=>{el.classList.add('on');el.onclick=()=>toggleSetting(el,['demo','notifications','risk','dark'][i])});});
+document.addEventListener('DOMContentLoaded',()=>{loadSavedAccount();updateBalance();initAuth();renderChart();startChartMotion();terminalUpdatePayout();updateTerminalCounts();renderTerminalChart();document.querySelectorAll('.toggle-demo').forEach((el,i)=>{el.classList.add('on');el.onclick=()=>toggleSetting(el,['demo','notifications','risk','dark'][i])});});
 </script>
 </body>
 </html>
