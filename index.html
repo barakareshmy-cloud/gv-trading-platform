@@ -96,6 +96,35 @@ button,input,select{font:inherit}button{cursor:pointer}
 .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;padding:18px;z-index:50}.modal-backdrop.show{display:flex}.modal{width:min(520px,100%);background:#071522;border:1px solid #1a4665;border-radius:15px;padding:18px;box-shadow:0 25px 70px rgba(0,0,0,.5)}.modal h3{margin:0 0 6px}.modal p{color:#8ea4b8;font-size:12px;line-height:1.6}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}.modal .field{margin-top:10px}.selected-control{background:#0d3657!important;color:#fff!important;border-color:#1c8ed0!important}.control-note{font-size:10px;color:#6f8498;margin-top:6px}.risk-input{width:100%;background:#071724;border:1px solid #193952;color:#fff;border-radius:7px;padding:7px;outline:none}.risk-box{min-width:0}.risk-box input{margin-top:5px}.status.closed{background:#2b2630;color:#a9b4bf}.market-row{cursor:pointer}.market-row:hover{background:#0a2032}.disabled-btn{opacity:.5;pointer-events:none}
 @media(max-width:600px){.modal{padding:15px}.modal-actions{flex-direction:column}.modal-actions .btn{width:100%}}
 </style>
+
+<style>
+/* GV ACCOUNT & USER DASHBOARD */
+.auth-modal .modal{width:min(560px,100%)}
+.auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:5px;background:#06121f;border:1px solid #16344f;border-radius:10px;padding:5px;margin:12px 0}
+.auth-tabs button{border:0;background:transparent;color:#7890a5;padding:10px;border-radius:8px;font-weight:800;cursor:pointer}
+.auth-tabs button.active{background:#0d3657;color:#fff}
+.auth-form{display:grid;gap:2px}
+.auth-message{min-height:18px;font-size:11px;color:#ff718e;margin-top:7px}
+.auth-message.ok{color:#20e3a4}
+.auth-check{display:flex;gap:8px;align-items:center;color:#8097aa;font-size:11px;margin-top:5px}
+.account-bar{display:flex;align-items:center;gap:8px}
+.user-chip{display:flex;align-items:center;gap:8px;padding:6px 9px;background:#081a2a;border:1px solid #173750;border-radius:10px}
+.user-chip .mini-avatar{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#0f83ff,#14d9ff);font-size:10px;font-weight:900}
+.user-chip strong{font-size:11px;display:block}.user-chip small{font-size:9px;color:#71879a;display:block}
+.user-menu-btn{border:1px solid #173750;background:#0a1b2c;color:#fff;border-radius:8px;padding:8px 10px;cursor:pointer}
+.user-dashboard{display:none;margin-bottom:12px}
+.user-dashboard.show{display:block}
+.ud-grid{display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:10px}
+.ud-card{background:#071522;border:1px solid #16344f;border-radius:12px;padding:13px}
+.ud-card small{color:#71879a;display:block}.ud-card b{display:block;font-size:19px;margin-top:5px}
+.ud-profile{display:flex;gap:12px;align-items:center}
+.ud-avatar{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#0f83ff,#14d9ff);font-weight:900}
+.ud-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
+.account-status{font-size:10px;color:#20e3a4;margin-top:3px}
+@media(max-width:900px){.ud-grid{grid-template-columns:1fr 1fr}.ud-card:first-child{grid-column:1/-1}}
+@media(max-width:600px){.ud-grid{grid-template-columns:1fr}.ud-card:first-child{grid-column:auto}.user-chip{display:none}}
+</style>
+
 </head>
 <body>
 <div class="app">
@@ -117,10 +146,39 @@ button,input,select{font:inherit}button{cursor:pointer}
 <main class="main">
 <header class="topbar">
   <div style="display:flex;align-items:center;gap:10px"><button class="pill mobile-menu" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button><div class="title"><h1 id="pageTitle">Trading Dashboard</h1><span>AI-powered market intelligence · simulated trading</span></div></div>
-  <div class="top-actions"><span class="pill">Demo Balance <b id="balance">$25,840.00</b></span><button class="btn primary" onclick="openModal('accountModal')">Create Demo Account</button></div>
+  <div class="top-actions">
+    <span class="pill">Demo Balance <b id="balance">$25,840.00</b></span>
+    <div class="account-bar" id="accountBar">
+      <button class="btn primary" onclick="openAuth('register')">Create Account</button>
+      <button class="btn" onclick="openAuth('login')">Login</button>
+    </div>
+  </div>
 </header>
 
 <div id="dashboardPage">
+<div id="userDashboard" class="user-dashboard">
+  <div class="ud-grid">
+    <div class="ud-card">
+      <div class="ud-profile">
+        <div class="ud-avatar" id="udAvatar">GV</div>
+        <div>
+          <small>Welcome back</small>
+          <b id="udName">GV Trader</b>
+          <div class="account-status" id="udStatus">Demo account</div>
+        </div>
+      </div>
+      <div class="ud-actions">
+        <button class="btn primary" onclick="showPage('trading')">Open Trading</button>
+        <button class="btn" onclick="showPage('ai')">Open GV AI</button>
+        <button class="btn" onclick="showPage('settings')">Account Settings</button>
+      </div>
+    </div>
+    <div class="ud-card"><small>Demo Equity</small><b id="udEquity">$25,840.00</b><span class="up">Simulation balance</span></div>
+    <div class="ud-card"><small>Open Trades</small><b id="udTrades">1</b><span class="muted">Current demo positions</span></div>
+    <div class="ud-card"><small>Account Level</small><b>Demo Trader</b><span class="muted">Learning environment</span></div>
+  </div>
+</div>
+
 <div class="ticker">
   <div class="ticker-card"><small>BTC/USD</small><strong>$67,485.03</strong> <span class="up">+0.81%</span></div>
   <div class="ticker-card"><small>ETH/USD</small><strong>$3,268.45</strong> <span class="up">+1.24%</span></div>
@@ -367,6 +425,56 @@ button,input,select{font:inherit}button{cursor:pointer}
 </main>
 </div>
 
+
+<div class="modal-backdrop auth-modal" id="authModal" onclick="if(event.target===this)closeModal('authModal')">
+  <div class="modal">
+    <h3 id="authTitle">Create your GV account</h3>
+    <p id="authIntro">Create a demo profile so your dashboard, preferences and simulated activity can stay connected to your account on this browser.</p>
+
+    <div class="auth-tabs">
+      <button id="registerTab" class="active" onclick="switchAuth('register')">Create Account</button>
+      <button id="loginTab" onclick="switchAuth('login')">Login</button>
+    </div>
+
+    <div id="registerForm" class="auth-form">
+      <div class="field"><label>Full name</label><input id="regName" type="text" autocomplete="name" placeholder="Your full name"></div>
+      <div class="field"><label>Email address</label><input id="regEmail" type="email" autocomplete="email" placeholder="you@example.com"></div>
+      <div class="field"><label>Password</label><input id="regPassword" type="password" autocomplete="new-password" placeholder="At least 6 characters"></div>
+      <div class="field"><label>Confirm password</label><input id="regConfirm" type="password" autocomplete="new-password" placeholder="Repeat your password"></div>
+      <label class="auth-check"><input id="regAgree" type="checkbox"> I understand this is a demo trading account and not a real financial account.</label>
+    </div>
+
+    <div id="loginForm" class="auth-form" style="display:none">
+      <div class="field"><label>Email address</label><input id="loginEmail" type="email" autocomplete="email" placeholder="you@example.com"></div>
+      <div class="field"><label>Password</label><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Your password"></div>
+      <label class="auth-check"><input id="rememberLogin" type="checkbox" checked> Keep me logged in on this browser</label>
+    </div>
+
+    <div id="authMessage" class="auth-message"></div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal('authModal')">Cancel</button>
+      <button class="btn primary" id="authSubmit" onclick="submitAuth()">Create Account</button>
+    </div>
+    <div class="control-note">Local demo authentication only. Passwords are stored locally in this browser for this prototype. Do not use a real password here.</div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="accountMenuModal" onclick="if(event.target===this)closeModal('accountMenuModal')">
+  <div class="modal">
+    <h3 id="menuUserName">GV Trader</h3>
+    <p id="menuUserEmail">Demo account</p>
+    <div class="info-card">
+      <div class="detail-line"><span>Account type</span><b>Demo Trader</b></div>
+      <div class="detail-line"><span>Session</span><b class="up">Active</b></div>
+      <div class="detail-line"><span>Storage</span><b>Browser only</b></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal('accountMenuModal');showPage('settings')">Settings</button>
+      <button class="btn red" onclick="logoutDemo()">Log Out</button>
+    </div>
+  </div>
+</div>
+
 <div class="modal-backdrop" id="accountModal" onclick="if(event.target===this)closeModal('accountModal')">
   <div class="modal">
     <h3>Create Demo Account</h3><p>Create a local demo profile for this browser. This does not create a real financial account and no password is sent anywhere.</p>
@@ -397,15 +505,166 @@ function money(n){return '$'+Number(n).toLocaleString(undefined,{minimumFraction
 function showToast(msg){const t=$('toast');if(!t)return;t.textContent=msg;t.classList.add('show');clearTimeout(window.tt);window.tt=setTimeout(()=>t.classList.remove('show'),2600)}
 function openModal(id){$(id)?.classList.add('show')}
 function closeModal(id){$(id)?.classList.remove('show')}
+
+/* ===== GV ACCOUNT SYSTEM: LOCAL DEMO AUTHENTICATION =====
+   This is intentionally a browser-only prototype.
+   A production login must use a secure backend/auth provider and hashed passwords.
+*/
+const accountStoreKey='gvUsers';
+const sessionKey='gvSession';
+
+function getUsers(){
+  try{return JSON.parse(localStorage.getItem(accountStoreKey)||'[]')}catch(e){return []}
+}
+function saveUsers(users){localStorage.setItem(accountStoreKey,JSON.stringify(users))}
+function initialsFor(name){return (name||'GV').trim().split(/\s+/).map(x=>x[0]).slice(0,2).join('').toUpperCase()||'GV'}
+function currentUser(){
+  try{
+    const email=localStorage.getItem(sessionKey);
+    if(!email)return null;
+    return getUsers().find(u=>u.email.toLowerCase()===email.toLowerCase())||null;
+  }catch(e){return null}
+}
+function openAuth(mode='register'){
+  openModal('authModal');
+  switchAuth(mode);
+}
+function switchAuth(mode){
+  const register=mode==='register';
+  $('registerForm').style.display=register?'grid':'none';
+  $('loginForm').style.display=register?'none':'grid';
+  $('registerTab').classList.toggle('active',register);
+  $('loginTab').classList.toggle('active',!register);
+  $('authTitle').textContent=register?'Create your GV account':'Welcome back to GV Trading';
+  $('authIntro').textContent=register
+    ?'Create a demo profile so your dashboard, preferences and simulated activity can stay connected to your account on this browser.'
+    :'Login to your local GV demo profile and continue your simulated trading session.';
+  $('authSubmit').textContent=register?'Create Account':'Login';
+  $('authMessage').textContent='';
+  $('authMessage').classList.remove('ok');
+}
+function authMessage(msg,ok=false){
+  const el=$('authMessage');el.textContent=msg;el.classList.toggle('ok',ok);
+}
+function submitAuth(){
+  const register=$('registerForm').style.display!=='none';
+  if(register)registerAccount();else loginAccount();
+}
+function registerAccount(){
+  const name=$('regName').value.trim();
+  const email=$('regEmail').value.trim().toLowerCase();
+  const password=$('regPassword').value;
+  const confirm=$('regConfirm').value;
+  if(name.length<2){authMessage('Please enter your full name.');return}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){authMessage('Enter a valid email address.');return}
+  if(password.length<6){authMessage('Password must contain at least 6 characters.');return}
+  if(password!==confirm){authMessage('Passwords do not match.');return}
+  if(!$('regAgree').checked){authMessage('Please confirm that you understand this is a demo account.');return}
+  const users=getUsers();
+  if(users.some(u=>u.email===email)){authMessage('An account with this email already exists. Please log in.');return}
+  const user={
+    id:'GV-'+Date.now().toString(36).toUpperCase(),
+    name,email,
+    /* Prototype only: never store real passwords like this in production. */
+    password,
+    createdAt:new Date().toISOString(),
+    balance:25840,
+    trades:1,
+    scans:24,
+    preferences:{demo:true,notifications:true,risk:true,dark:true}
+  };
+  users.push(user);saveUsers(users);localStorage.setItem(sessionKey,email);
+  applyUserSession(user);
+  closeModal('authModal');
+  showToast('Account created. Welcome to GV Trading.');
+}
+function loginAccount(){
+  const email=$('loginEmail').value.trim().toLowerCase();
+  const password=$('loginPassword').value;
+  const user=getUsers().find(u=>u.email===email);
+  if(!user||user.password!==password){authMessage('Email or password is incorrect.');return}
+  if($('rememberLogin').checked)localStorage.setItem(sessionKey,email);
+  else sessionStorage.setItem(sessionKey,email);
+  applyUserSession(user);
+  closeModal('authModal');
+  showToast('Welcome back, '+user.name+'.');
+}
+function applyUserSession(user){
+  if(!user)return;
+  state.balance=Number(user.balance??25840);
+  state.trades=Number(user.trades??1);
+  state.scanCount=Number(user.scans??24);
+  updateBalance();
+  updateAccountUI(user);
+  updateUserDashboard(user);
+  saveCurrentUser();
+}
+function updateAccountUI(user){
+  const bar=$('accountBar');if(!bar)return;
+  const initials=initialsFor(user.name);
+  bar.innerHTML=`
+    <div class="user-chip">
+      <div class="mini-avatar">${initials}</div>
+      <div><strong>${escapeHtml(user.name)}</strong><small>Demo Trader</small></div>
+    </div>
+    <button class="user-menu-btn" onclick="openModal('accountMenuModal')" aria-label="Account menu">⋮</button>`;
+  document.querySelectorAll('.avatar').forEach(a=>a.textContent=initials);
+  const profileName=document.querySelector('.profile b');if(profileName)profileName.textContent=user.name;
+  const profileRole=document.querySelector('.profile small');if(profileRole)profileRole.textContent='Demo Account · GV';
+}
+function updateUserDashboard(user){
+  const panel=$('userDashboard');if(!panel)return;
+  panel.classList.add('show');
+  $('udAvatar').textContent=initialsFor(user.name);
+  $('udName').textContent=user.name;
+  $('udStatus').textContent=user.email+' · Demo account';
+  $('udEquity').textContent=money(state.balance);
+  $('udTrades').textContent=state.trades;
+}
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+}
+function saveCurrentUser(){
+  const user=currentUser();if(!user)return;
+  user.balance=state.balance;
+  user.trades=state.trades;
+  user.scans=state.scanCount;
+  user.preferences=state.settings;
+  const users=getUsers(),i=users.findIndex(u=>u.email===user.email);
+  if(i>=0){users[i]=user;saveUsers(users)}
+  updateUserDashboard(user);
+}
+function logoutDemo(){
+  saveCurrentUser();
+  localStorage.removeItem(sessionKey);
+  sessionStorage.removeItem(sessionKey);
+  state.balance=25840;state.trades=1;
+  $('userDashboard')?.classList.remove('show');
+  $('accountBar').innerHTML='<button class="btn primary" onclick="openAuth(\'register\')">Create Account</button><button class="btn" onclick="openAuth(\'login\')">Login</button>';
+  document.querySelectorAll('.avatar').forEach(a=>a.textContent='GV');
+  const profileName=document.querySelector('.profile b');if(profileName)profileName.textContent='Guest Trader';
+  const profileRole=document.querySelector('.profile small');if(profileRole)profileRole.textContent='Guest · GV Demo';
+  closeModal('accountMenuModal');
+  updateBalance();
+  showToast('You have been logged out of the GV demo account.');
+}
+function restoreSession(){
+  let email=localStorage.getItem(sessionKey)||sessionStorage.getItem(sessionKey);
+  if(!email)return;
+  const user=getUsers().find(u=>u.email.toLowerCase()===email.toLowerCase());
+  if(user)applyUserSession(user);
+}
+
 function createDemoAccount(){
-  const name=$('demoName').value.trim(),email=$('demoEmail').value.trim();
-  if(!name||!email||!email.includes('@')){showToast('Enter a valid name and email.');return}
-  localStorage.setItem('gvDemoAccount',JSON.stringify({name,email,created:new Date().toISOString()}));
-  const initials=name.split(/\s+/).map(x=>x[0]).slice(0,2).join('').toUpperCase();
-  document.querySelectorAll('.avatar').forEach(a=>a.textContent=initials||'GV');
-  document.querySelector('.profile b').textContent=name;
-  document.querySelector('.profile small').textContent='Demo Account · GV';
-  closeModal('accountModal');showToast('Demo account created on this browser.');
+  // Backward-compatible entry point for the original button.
+  const name=$('demoName')?.value.trim();
+  const email=$('demoEmail')?.value.trim().toLowerCase();
+  if(name && email){
+    $('regName').value=name;
+    $('regEmail').value=email;
+  }
+  closeModal('accountModal');
+  openAuth('register');
 }
 function setOrderType(btn,type){
   state.orderType=type;document.querySelectorAll('#orderTabs button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
@@ -509,7 +768,7 @@ function placeTrade(side,source='MANUAL'){
   $('tradeCount').textContent=`(${state.trades})`;
   const tr=document.createElement('tr');tr.innerHTML=`<td>${state.asset}</td><td class="${side==='BUY'?'up':'down'}">${side}</td><td>${money(amount)}</td><td class="${pl>=0?'up':'down'}">${pl>=0?'+':''}$${pl.toFixed(2)}</td><td><span class="status">Open</span></td>`;$('ordersBody').prepend(tr);
   const a=document.createElement('div');a.className='activity';a.innerHTML=`<div class="dot">${source==='BOT'?'🤖':'↗'}</div><div><b>${source==='BOT'?'Bot Trade Executed':'Trade Executed'}</b><small>${state.asset} · ${side} · ${money(amount)} · ${type} · ${state.leverage}x · Demo</small></div>`;$('activity').prepend(a);
-  state.balance-=Math.max(0,amount*.02);updateBalance();
+  state.balance-=Math.max(0,amount*.02);updateBalance();saveCurrentUser();
   if(source==='BOT'){state.autoTrades++;if(pl<0)state.autoLoss+=Math.abs(pl);addExecution(side,`Automated demo order: ${state.asset} · ${money(amount)} · ${state.leverage}x`,'BOT');}
   else addExecution(side,`Manual demo order: ${state.asset} · ${money(amount)} · ${state.leverage}x`,'MANUAL');
   showToast(`${side} demo order placed — no real funds used.`);return true;
@@ -519,7 +778,7 @@ function closeAll(){document.querySelectorAll('#ordersBody tr').forEach(r=>r.rem
 function analyze(){
   const score=Math.floor(68+Math.random()*25),bullish=score>=75;$('aiScore').textContent=score+'%';$('aiBadge').textContent=bullish?'BULLISH':'NEUTRAL';$('aiSignal').textContent=bullish?'↗ RISE':'→ WAIT';$('aiSignal').className='signal '+(bullish?'up':'');$('aiText').textContent=bullish?'Demo momentum is positive with supportive buying pressure.':'Market inputs are mixed; the demo analyst suggests waiting for confirmation.';addExecution('AI','Quick AI analysis refreshed.','BOT');showToast('GV AI analysis refreshed.');
 }
-function saveRiskSettings(){const s=Number($('stakeInput')?.value||100),m=Number($('maxTradesInput')?.value||20),sl=Number($('stopLossInput')?.value||500);if(s<10||m<1||sl<1){showToast('Risk values must be positive.');return}showToast(`Risk settings saved: ${money(s)} stake · ${m} max trades · ${money(sl)} stop loss.`)}
+function saveRiskSettings(){const s=Number($('stakeInput')?.value||100),m=Number($('maxTradesInput')?.value||20),sl=Number($('stopLossInput')?.value||500);if(s<10||m<1||sl<1){showToast('Risk values must be positive.');return}showToast(`Risk settings saved: ${money(s)} stake · ${m} max trades · ${money(sl)} stop loss.`);saveCurrentUser()}
 function stopAuto(reason='Auto trader stopped.'){
   state.auto=false;clearInterval(state.timer);state.timer=null;$('autoSwitch')?.classList.remove('on');if($('monitorState')){$('monitorState').textContent='OFF';$('monitorState').classList.add('off')};if($('aiPageBotState'))$('aiPageBotState').textContent='SIMULATION READY';if($('automationType'))$('automationType').textContent='OFF';if($('executorType'))$('executorType').textContent='Manual / User';addExecution('STOP',reason,'BOT');showToast(reason);
 }
@@ -560,21 +819,21 @@ function showPage(name,btn){
   document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
   if(btn)btn.classList.add('active');else{const target=[...document.querySelectorAll('.nav button')].find(b=>b.getAttribute('onclick')?.includes(`'${name}'`));if(target)target.classList.add('active')}
   const dashboard=$('dashboardPage'),other=$('otherPages');
-  if(name==='dashboard'){dashboard.style.display='block';other.classList.remove('show');$('pageTitle').textContent='Trading Dashboard'}
+  if(name==='dashboard'){dashboard.style.display='block';other.classList.remove('show');$('pageTitle').textContent='Trading Dashboard';const u=currentUser();if(u)updateUserDashboard(u)}
   else{dashboard.style.display='none';other.classList.add('show');document.querySelectorAll('.page-card').forEach(p=>p.style.display='none');const page=$(name);if(page)page.style.display='block';$('pageTitle').textContent=name==='ai'?'GV AI Analyst':name==='trading'?'GV Trading Terminal':name.charAt(0).toUpperCase()+name.slice(1)}
   $('sidebar').classList.remove('open');window.scrollTo({top:0,behavior:'smooth'});
 }
 function addExecution(type,message,tag='BOT'){const feed=$('executionFeed');if(!feed)return;const row=document.createElement('div');row.className='exec';row.innerHTML=`<span class="type">${type}</span><span>${message} <span class="human-tag ${tag==='BOT'?'bot-tag':''}">${tag}</span></span><span class="time">now</span>`;feed.prepend(row);while(feed.children.length>25)feed.lastElementChild.remove();const n=Number($('ordersAnalyzed')?.textContent||0)+1;if($('ordersAnalyzed'))$('ordersAnalyzed').textContent=n}
-function runFullScan(){const score=Math.floor(62+Math.random()*31),bullish=score>=72;$('fullScore').textContent=score+'%';$('fullSignal').textContent=bullish?'BUY / RISE':'WAIT / CONFIRM';$('trendValue').textContent=bullish?'Bullish':'Mixed';$('momentumValue').textContent=bullish?'Strong':'Neutral';$('volValue').textContent=score>82?'High':'Moderate';$('liqValue').textContent='Healthy';$('analysisPrice').textContent=$('livePrice')?.textContent||money(assets[state.asset].price);state.scanCount++;if($('marketScans'))$('marketScans').textContent=state.scanCount;addExecution('AI SCAN',`Analyzed trend, momentum, volatility and liquidity → ${bullish?'bullish':'mixed'} signal`,'BOT');showToast('Full GV AI market scan completed.')}
+function runFullScan(){const score=Math.floor(62+Math.random()*31),bullish=score>=72;$('fullScore').textContent=score+'%';$('fullSignal').textContent=bullish?'BUY / RISE':'WAIT / CONFIRM';$('trendValue').textContent=bullish?'Bullish':'Mixed';$('momentumValue').textContent=bullish?'Strong':'Neutral';$('volValue').textContent=score>82?'High':'Moderate';$('liqValue').textContent='Healthy';$('analysisPrice').textContent=$('livePrice')?.textContent||money(assets[state.asset].price);state.scanCount++;saveCurrentUser();if($('marketScans'))$('marketScans').textContent=state.scanCount;addExecution('AI SCAN',`Analyzed trend, momentum, volatility and liquidity → ${bullish?'bullish':'mixed'} signal`,'BOT');showToast('Full GV AI market scan completed.')}
 function emergencyStop(){state.emergency=true;stopAuto('Emergency stop activated.');if($('aiPageBotState'))$('aiPageBotState').textContent='EMERGENCY STOP';if($('automationType'))$('automationType').textContent='STOPPED';if($('executorType'))$('executorType').textContent='Safety Stop';const c=document.querySelector('#ai .auto-controls');if(c&&!document.getElementById('resetStop')){const b=document.createElement('button');b.id='resetStop';b.className='btn';b.textContent='Reset Safety Stop';b.onclick=resetEmergency;c.appendChild(b)}showToast('Emergency stop activated. New demo orders are blocked.')}
 function resetEmergency(){state.emergency=false;$('resetStop')?.remove();if($('aiPageBotState'))$('aiPageBotState').textContent='SIMULATION READY';if($('automationType'))$('automationType').textContent='OFF';if($('executorType'))$('executorType').textContent='Manual / User';showToast('Demo safety stop reset.')}
 function walletAction(action){state.walletAction=action;$('walletModalTitle').textContent=`Demo ${action}`;$('walletModalText').textContent=action==='Deposit'?'Add virtual demo funds to the simulated balance.':action==='Withdraw'?'Subtract virtual demo funds from the simulated balance.':'Move a virtual amount and record it as a demo transfer.';$('walletConfirm').textContent=action==='Deposit'?'Add Funds':action==='Withdraw'?'Withdraw':'Transfer';openModal('walletModal')}
-function confirmWalletAction(){const amount=Number($('walletAmount').value)||0;if(amount<=0){showToast('Enter a valid amount.');return}if(state.walletAction==='Deposit'){state.balance+=amount}else if(state.walletAction==='Withdraw'){if(amount>state.balance){showToast('Withdrawal exceeds demo balance.');return}state.balance-=amount}else{if(amount>state.balance){showToast('Transfer exceeds demo balance.');return}}updateBalance();addExecution('WALLET',`${state.walletAction} ${money(amount)} in demo mode.`,'MANUAL');closeModal('walletModal');showToast(`${state.walletAction} completed in demo mode.`)}
+function confirmWalletAction(){const amount=Number($('walletAmount').value)||0;if(amount<=0){showToast('Enter a valid amount.');return}if(state.walletAction==='Deposit'){state.balance+=amount}else if(state.walletAction==='Withdraw'){if(amount>state.balance){showToast('Withdrawal exceeds demo balance.');return}state.balance-=amount}else{if(amount>state.balance){showToast('Transfer exceeds demo balance.');return}}updateBalance();saveCurrentUser();addExecution('WALLET',`${state.walletAction} ${money(amount)} in demo mode.`,'MANUAL');closeModal('walletModal');showToast(`${state.walletAction} completed in demo mode.`)}
 function toggleSetting(el,label){const on=el.classList.toggle('on');state.settings[label]=on;showToast(`${label}: ${on?'ON':'OFF'}`)}
-function loadSavedAccount(){try{const a=JSON.parse(localStorage.getItem('gvDemoAccount'));if(a?.name){document.querySelectorAll('.avatar').forEach(x=>x.textContent=a.name.split(/\s+/).map(v=>v[0]).slice(0,2).join('').toUpperCase());const p=document.querySelector('.profile b');if(p)p.textContent=a.name;const s=document.querySelector('.profile small');if(s)s.textContent='Demo Account · GV'}}catch(e){}}
+function loadSavedAccount(){try{if(currentUser())return;const a=JSON.parse(localStorage.getItem('gvDemoAccount'));if(a?.name){document.querySelectorAll('.avatar').forEach(x=>x.textContent=a.name.split(/\s+/).map(v=>v[0]).slice(0,2).join('').toUpperCase());const p=document.querySelector('.profile b');if(p)p.textContent=a.name;const s=document.querySelector('.profile small');if(s)s.textContent='Demo Account · GV'}}catch(e){}}
 // The chart engine is the single source of demo price movement, so the header price follows it.
 setInterval(()=>{const c=chartModel.candles?.[chartModel.candles.length-1];if(c){const p=c.close;$('livePrice').textContent=money(p);if($('analysisPrice'))$('analysisPrice').textContent=money(p)}},350);
-document.addEventListener('DOMContentLoaded',()=>{loadSavedAccount();updateBalance();renderChart();startChartMotion();terminalUpdatePayout();updateTerminalCounts();renderTerminalChart();document.querySelectorAll('.toggle-demo').forEach((el,i)=>{el.classList.add('on');el.onclick=()=>toggleSetting(el,['demo','notifications','risk','dark'][i])});});
+document.addEventListener('DOMContentLoaded',()=>{loadSavedAccount();restoreSession();updateBalance();renderChart();startChartMotion();terminalUpdatePayout();updateTerminalCounts();renderTerminalChart();document.querySelectorAll('.toggle-demo').forEach((el,i)=>{el.classList.add('on');el.onclick=()=>toggleSetting(el,['demo','notifications','risk','dark'][i])});});
 </script>
 </body>
 </html>
