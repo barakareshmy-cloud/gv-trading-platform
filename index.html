@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- GV Trading Platform: current site + Admin Login/Admin Control Panel -->
 <title>GV Trading Platform | AI Crypto Dashboard</title>
 <meta name="description" content="GV Trading Platform — AI-powered crypto market analysis and simulated trading dashboard.">
 <style>
@@ -93,13 +94,100 @@ button,input,select{font:inherit}button{cursor:pointer}
 </style>
 
 <style>
-.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;padding:18px;z-index:50}.modal-backdrop.show{display:flex}.auth-modal{max-width:460px;width:min(92vw,460px)}
-.auth-modal .field{margin-top:12px}
-.modal{width:min(520px,100%);background:#071522;border:1px solid #1a4665;border-radius:15px;padding:18px;box-shadow:0 25px 70px rgba(0,0,0,.5)}.modal h3{margin:0 0 6px}.modal p{color:#8ea4b8;font-size:12px;line-height:1.6}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}.modal .field{margin-top:10px}.selected-control{background:#0d3657!important;color:#fff!important;border-color:#1c8ed0!important}.control-note{font-size:10px;color:#6f8498;margin-top:6px}.risk-input{width:100%;background:#071724;border:1px solid #193952;color:#fff;border-radius:7px;padding:7px;outline:none}.risk-box{min-width:0}.risk-box input{margin-top:5px}.status.closed{background:#2b2630;color:#a9b4bf}.market-row{cursor:pointer}.market-row:hover{background:#0a2032}.disabled-btn{opacity:.5;pointer-events:none}
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;padding:18px;z-index:50}.modal-backdrop.show{display:flex}.modal{width:min(520px,100%);background:#071522;border:1px solid #1a4665;border-radius:15px;padding:18px;box-shadow:0 25px 70px rgba(0,0,0,.5)}.modal h3{margin:0 0 6px}.modal p{color:#8ea4b8;font-size:12px;line-height:1.6}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}.modal .field{margin-top:10px}.selected-control{background:#0d3657!important;color:#fff!important;border-color:#1c8ed0!important}.control-note{font-size:10px;color:#6f8498;margin-top:6px}.risk-input{width:100%;background:#071724;border:1px solid #193952;color:#fff;border-radius:7px;padding:7px;outline:none}.risk-box{min-width:0}.risk-box input{margin-top:5px}.status.closed{background:#2b2630;color:#a9b4bf}.market-row{cursor:pointer}.market-row:hover{background:#0a2032}.disabled-btn{opacity:.5;pointer-events:none}
 @media(max-width:600px){.modal{padding:15px}.modal-actions{flex-direction:column}.modal-actions .btn{width:100%}}
+
+/* GV AUTH EXPERIENCE */
+.auth-screen{position:fixed;inset:0;z-index:100;background:radial-gradient(circle at 50% 0,#103654 0,#030a12 48%,#02070d 100%);display:none;align-items:center;justify-content:center;padding:24px;overflow:auto}
+.auth-screen.show{display:flex}.auth-wrap{width:min(1000px,100%);display:grid;grid-template-columns:1fr 1fr;background:rgba(7,21,34,.92);border:1px solid #1b4665;border-radius:22px;box-shadow:0 30px 100px rgba(0,0,0,.65);overflow:hidden}.auth-brand{padding:44px;background:linear-gradient(145deg,rgba(10,39,62,.9),rgba(4,15,25,.95));display:flex;flex-direction:column;justify-content:center}.auth-logo{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(135deg,#0f83ff,#14d9ff);font-size:25px;font-weight:1000;box-shadow:0 0 35px rgba(18,151,255,.3);margin-bottom:20px}.auth-brand h1{font-size:34px;margin:0 0 10px}.auth-brand p{color:#8da6ba;line-height:1.7;font-size:13px}.auth-points{display:grid;gap:10px;margin-top:20px}.auth-point{padding:11px 13px;border:1px solid #173b55;background:#071724;border-radius:10px;font-size:12px;color:#c7d8e6}.auth-point b{color:#20dca5}.auth-form{padding:38px 36px;background:#06131f}.auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:#081b2a;border:1px solid #17344f;padding:4px;border-radius:11px;margin-bottom:24px}.auth-tabs button{border:0;background:transparent;color:#718aa0;padding:11px;border-radius:8px;font-weight:800}.auth-tabs button.active{background:#0e5e96;color:#fff}.auth-form h2{margin:0 0 5px;font-size:24px}.auth-sub{color:#718aa0;font-size:11px;margin-bottom:18px}.auth-field{margin-bottom:12px}.auth-field label{display:block;color:#8ca2b5;font-size:11px;margin-bottom:6px}.auth-field input{width:100%;background:#071a29;border:1px solid #1a3b54;color:#fff;border-radius:9px;padding:12px;outline:none}.auth-field input:focus{border-color:#1a9cff;box-shadow:0 0 0 3px rgba(26,156,255,.08)}.auth-submit{width:100%;border:0;border-radius:10px;padding:13px;background:linear-gradient(135deg,#0c9bff,#0b75f5);color:#fff;font-weight:900;margin-top:5px}.auth-note{text-align:center;color:#647e94;font-size:10px;line-height:1.5;margin-top:14px}.auth-close{position:absolute;top:18px;right:20px;border:1px solid #29465d;background:#071522;color:#b8cad8;width:36px;height:36px;border-radius:10px;font-size:18px}.auth-switch{margin-top:14px;text-align:center;font-size:11px;color:#70879b}.auth-switch button{border:0;background:none;color:#20a9ff;font-weight:800}
+@media(max-width:760px){.auth-wrap{grid-template-columns:1fr}.auth-brand{display:none}.auth-form{padding:30px 22px}}
+</style>
+
+<style>
+/* GV ADMIN CONTROL PANEL */
+.admin-backdrop{position:fixed;inset:0;background:rgba(1,7,13,.94);backdrop-filter:blur(10px);display:none;z-index:100;padding:20px;overflow:auto}.admin-backdrop.show{display:block}
+.admin-shell{max-width:1180px;margin:0 auto;min-height:calc(100vh - 40px);background:#050f19;border:1px solid #1b4564;border-radius:18px;box-shadow:0 30px 90px rgba(0,0,0,.55);overflow:hidden}
+.admin-login{min-height:calc(100vh - 80px);display:grid;place-items:center;padding:30px}.admin-login-card{width:min(430px,100%);background:linear-gradient(145deg,#091b2b,#06111c);border:1px solid #1a4868;border-radius:18px;padding:28px;box-shadow:0 20px 60px rgba(0,0,0,.45)}
+.admin-logo{width:62px;height:62px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(135deg,#0f83ff,#14d9ff);font-size:24px;font-weight:1000;box-shadow:0 0 35px rgba(18,151,255,.28);margin-bottom:18px}.admin-login-card h2{margin:0 0 7px;font-size:25px}.admin-login-card>p{color:#7891a7;font-size:12px;line-height:1.6;margin:0 0 20px}.admin-field{margin:12px 0}.admin-field label{display:block;color:#91a8bb;font-size:11px;margin-bottom:6px}.admin-field input{width:100%;padding:12px;border-radius:9px;border:1px solid #1b3b55;background:#06121e;color:#fff;outline:none}.admin-field input:focus{border-color:#16baff;box-shadow:0 0 0 3px rgba(22,186,255,.08)}.admin-login-btn{width:100%;padding:12px;border:0;border-radius:9px;background:linear-gradient(135deg,#0c9bff,#0b75f5);color:#fff;font-weight:900;margin-top:8px}.admin-demo-note{margin-top:12px;padding:9px;border:1px solid #173750;border-radius:8px;color:#688299;font-size:10px;text-align:center}.admin-error{display:none;color:#ff6a88;font-size:11px;margin-top:9px}.admin-error.show{display:block}
+.admin-app{display:none;min-height:760px}.admin-app.show{display:grid;grid-template-columns:215px 1fr}.admin-side{background:#040d16;border-right:1px solid #15344d;padding:18px 12px;position:relative}.admin-brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:18px;padding:5px 8px 24px}.admin-brand .admin-mini-logo{width:35px;height:35px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(135deg,#0f83ff,#14d9ff);font-weight:1000}.admin-side nav{display:grid;gap:6px}.admin-side nav button{border:0;background:transparent;color:#7891a7;text-align:left;padding:11px 12px;border-radius:9px;font-weight:700}.admin-side nav button.active,.admin-side nav button:hover{background:#0b2f4b;color:#fff}.admin-secure{position:absolute;bottom:15px;left:12px;right:12px;border:1px solid #173750;background:#071722;border-radius:11px;padding:11px;color:#7d95a8;font-size:10px;line-height:1.5}.admin-main{min-width:0;padding:20px}.admin-top{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid #16344f;padding-bottom:15px}.admin-top h2{margin:0;font-size:21px}.admin-top small{color:#71889d}.admin-top-actions{display:flex;gap:7px}.admin-btn{border:1px solid #1b3b55;background:#091b2a;color:#dce9f3;border-radius:8px;padding:9px 12px;font-size:11px;font-weight:800}.admin-btn.danger{border-color:#6d2940;color:#ff7b96}.admin-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}.admin-stat{background:#071723;border:1px solid #153650;border-radius:11px;padding:14px}.admin-stat small{display:block;color:#71899e;font-size:10px}.admin-stat b{display:block;font-size:22px;margin-top:6px}.admin-stat span{font-size:9px;color:#19dda0}.admin-content-grid{display:grid;grid-template-columns:1.45fr .75fr;gap:12px}.admin-panel{background:#071723;border:1px solid #153650;border-radius:12px;overflow:hidden}.admin-panel-head{padding:13px 14px;border-bottom:1px solid #153650;display:flex;justify-content:space-between;align-items:center}.admin-panel-head h3{margin:0;font-size:13px}.admin-panel-head small{color:#668097}.admin-table-wrap{overflow:auto}.admin-table{width:100%;border-collapse:collapse;font-size:10px}.admin-table th,.admin-table td{padding:11px 9px;text-align:left;border-bottom:1px solid #102b40;white-space:nowrap}.admin-table th{color:#627b91;font-weight:700}.admin-user{display:flex;align-items:center;gap:8px}.admin-avatar{width:27px;height:27px;border-radius:8px;display:grid;place-items:center;background:#124269;color:#fff;font-weight:900;font-size:9px}.admin-badge{display:inline-block;padding:4px 7px;border-radius:10px;background:#0a382d;color:#22dfa2;font-size:9px}.admin-badge.pending{background:#382e17;color:#ffcb5b}.admin-activity{padding:4px 14px}.admin-activity-row{padding:10px 0;border-bottom:1px solid #102b40;font-size:10px}.admin-activity-row:last-child{border:0}.admin-activity-row b{display:block;color:#dce8f2}.admin-activity-row span{display:block;color:#647d92;margin-top:3px}.admin-quick{display:grid;gap:7px;margin-top:10px}.admin-quick button{border:1px solid #183a53;background:#091c2b;color:#cfe0ec;border-radius:8px;padding:10px;text-align:left;font-size:10px;font-weight:800}.admin-quick button:hover{border-color:#168fd0;background:#0b2639}.admin-section{display:none}.admin-section.active{display:block}.admin-empty{padding:28px;text-align:center;color:#70879b;font-size:11px}.admin-close-mobile{display:none}
+@media(max-width:900px){.admin-app.show{grid-template-columns:1fr}.admin-side{display:none}.admin-content-grid{grid-template-columns:1fr}.admin-grid{grid-template-columns:repeat(2,1fr)}.admin-close-mobile{display:block}.admin-top-actions .admin-btn:not(.danger){display:none}}
+@media(max-width:520px){.admin-backdrop{padding:8px}.admin-shell{min-height:calc(100vh - 16px)}.admin-login{padding:15px}.admin-login-card{padding:22px}.admin-main{padding:12px}.admin-grid{grid-template-columns:1fr 1fr}.admin-stat b{font-size:18px}}
 </style>
 </head>
 <body>
+
+<div class="auth-screen" id="authScreen">
+  <button class="auth-close" onclick="closeAuth()">×</button>
+  <div class="auth-wrap">
+    <div class="auth-brand"><div class="auth-logo">GV</div><h1>GV Trading Platform</h1><p>A premium learning and simulated trading environment designed to help users explore crypto markets with confidence.</p><div class="auth-points"><div class="auth-point">✓ <b>Demo Trading</b> — practice without real funds</div><div class="auth-point">✓ <b>GV AI Analyst</b> — simulated market analysis</div><div class="auth-point">✓ <b>Personal Dashboard</b> — track your demo activity</div></div></div>
+    <div class="auth-form">
+      <div class="auth-tabs"><button id="loginTab" class="active" onclick="authMode('login')">LOGIN</button><button id="registerTab" onclick="authMode('register')">CREATE ACCOUNT</button></div>
+      <h2 id="authTitle">Welcome back</h2><div class="auth-sub" id="authSub">Sign in to your GV demo trading account.</div>
+      <div class="auth-field" id="nameField" style="display:none"><label>FULL NAME</label><input id="authName" type="text" placeholder="Enter your full name"></div>
+      <div class="auth-field"><label>EMAIL ADDRESS</label><input id="authEmail" type="email" placeholder="you@example.com"></div>
+      <div class="auth-field"><label>PASSWORD</label><input id="authPassword" type="password" placeholder="Enter your password"></div>
+      <div class="auth-field" id="confirmField" style="display:none"><label>CONFIRM PASSWORD</label><input id="authConfirm" type="password" placeholder="Confirm your password"></div>
+      <button class="auth-submit" id="authSubmit" onclick="submitAuth()">LOGIN TO GV</button>
+      <div class="auth-note">Demo / Simulation Platform · No real money is processed.</div>
+      <div class="auth-switch" id="authSwitch">New to GV? <button onclick="authMode('register')">Create your account</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- GV ADMIN CONTROL PANEL -->
+<div class="admin-backdrop" id="adminBackdrop">
+  <div class="admin-shell">
+    <div class="admin-login" id="adminLoginView">
+      <div class="admin-login-card">
+        <div class="admin-logo">GV</div>
+        <h2>GV Admin Control</h2>
+        <p>Administrator access for managing the GV Trading Platform demo environment.</p>
+        <div class="admin-field"><label>Admin Email</label><input id="adminEmail" type="email" placeholder="admin@gvtrading.com"></div>
+        <div class="admin-field"><label>Admin Password</label><input id="adminPassword" type="password" placeholder="Enter admin password"></div>
+        <button class="admin-login-btn" onclick="adminLogin()">SIGN IN TO ADMIN</button>
+        <div class="admin-error" id="adminError">Please enter the admin credentials.</div>
+        <div class="admin-demo-note">DEMO ADMIN UI · Authentication will be securely connected to Supabase in the next stage.</div>
+      </div>
+    </div>
+    <div class="admin-app" id="adminApp">
+      <aside class="admin-side">
+        <div class="admin-brand"><div class="admin-mini-logo">GV</div><span>Admin Control</span></div>
+        <nav>
+          <button class="active" onclick="adminSection('overview',this)">▣ &nbsp; Overview</button>
+          <button onclick="adminSection('users',this)">♙ &nbsp; Users</button>
+          <button onclick="adminSection('trades',this)">↗ &nbsp; Demo Trades</button>
+          <button onclick="adminSection('ai',this)">◉ &nbsp; AI Activity</button>
+          <button onclick="adminSection('settings',this)">⚙ &nbsp; Settings</button>
+        </nav>
+        <div class="admin-secure">🔒 <b>Admin Area</b><br>Restricted control interface<br>Demo environment only</div>
+      </aside>
+      <main class="admin-main">
+        <div class="admin-top">
+          <div><h2 id="adminPageTitle">Admin Overview</h2><small>GV Trading Platform · Control Center</small></div>
+          <div class="admin-top-actions"><button class="admin-btn admin-close-mobile" onclick="closeAdmin()">Close</button><button class="admin-btn danger" onclick="adminLogout()">Log Out</button></div>
+        </div>
+        <section class="admin-section active" id="adminOverview">
+          <div class="admin-grid">
+            <div class="admin-stat"><small>Total Users</small><b id="adminUsersCount">1</b><span>● Demo database</span></div>
+            <div class="admin-stat"><small>Active Sessions</small><b id="adminSessions">1</b><span>● Current demo</span></div>
+            <div class="admin-stat"><small>Demo Trades</small><b id="adminTradesCount">0</b><span>● Simulated</span></div>
+            <div class="admin-stat"><small>AI Scans</small><b id="adminScansCount">0</b><span>● GV AI demo</span></div>
+          </div>
+          <div class="admin-content-grid">
+            <div class="admin-panel"><div class="admin-panel-head"><h3>Recent Users</h3><small>Latest accounts</small></div><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>User</th><th>Email</th><th>Level</th><th>Status</th></tr></thead><tbody id="adminUsersBody"><tr><td><div class="admin-user"><div class="admin-avatar">GB</div><b>Gyane Baraka</b></div></td><td>Demo founder</td><td>Admin</td><td><span class="admin-badge">Active</span></td></tr></tbody></table></div></div>
+            <div class="admin-panel"><div class="admin-panel-head"><h3>Quick Controls</h3></div><div style="padding:12px"><div class="admin-quick"><button onclick="showToast('User management will be connected to Supabase next.')">♙ Manage Users</button><button onclick="showToast('Demo trading controls ready for the next stage.')">↗ Review Trades</button><button onclick="showToast('AI monitoring panel opened.')">◉ Monitor GV AI</button><button onclick="showToast('Platform settings selected.')">⚙ Platform Settings</button></div></div></div>
+          </div>
+          <div class="admin-panel" style="margin-top:12px"><div class="admin-panel-head"><h3>Admin Activity</h3><small>Live demo events</small></div><div class="admin-activity" id="adminActivity"><div class="admin-activity-row"><b>Admin panel initialized</b><span>System · just now</span></div><div class="admin-activity-row"><b>GV demo environment ready</b><span>System · just now</span></div></div></div>
+        </section>
+        <section class="admin-section" id="adminUsers"><div class="admin-panel"><div class="admin-panel-head"><h3>User Management</h3><small>Accounts will appear here</small></div><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>User</th><th>Email</th><th>Account Level</th><th>Demo Balance</th><th>Status</th></tr></thead><tbody id="adminFullUsersBody"><tr><td>Gyane Baraka</td><td>Founder demo</td><td>Admin</td><td>$25,840.00</td><td><span class="admin-badge">Active</span></td></tr></tbody></table></div></div></section>
+        <section class="admin-section" id="adminTrades"><div class="admin-panel"><div class="admin-panel-head"><h3>Demo Trade Monitor</h3><small>Simulated activity only</small></div><div class="admin-empty">No additional demo trades have been recorded yet.<br>Once users trade, their simulated activity can be displayed here.</div></div></section>
+        <section class="admin-section" id="adminAi"><div class="admin-panel"><div class="admin-panel-head"><h3>GV AI Activity Monitor</h3><small>Demo analysis events</small></div><div class="admin-empty">AI scan activity will be connected here so administrators can monitor demo analysis events.</div></div></section>
+        <section class="admin-section" id="adminSettings"><div class="admin-panel"><div class="admin-panel-head"><h3>Platform Settings</h3><small>Administration controls</small></div><div style="padding:14px"><div class="admin-quick"><button onclick="showToast('Demo mode remains enabled.')">● Demo Mode: ON</button><button onclick="showToast('User registration settings will be connected next.')">♙ Registration Settings</button><button onclick="showToast('Maintenance controls prepared.')">⚙ Maintenance Controls</button></div></div></div></section>
+      </main>
+    </div>
+  </div>
+</div>
+
 <div class="app">
 <aside class="sidebar" id="sidebar">
   <div class="brand"><div class="logo">GV</div><span>GV Trading</span></div>
@@ -119,7 +207,7 @@ button,input,select{font:inherit}button{cursor:pointer}
 <main class="main">
 <header class="topbar">
   <div style="display:flex;align-items:center;gap:10px"><button class="pill mobile-menu" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button><div class="title"><h1 id="pageTitle">Trading Dashboard</h1><span>AI-powered market intelligence · simulated trading</span></div></div>
-  <div class="top-actions"><span class="pill">Demo Balance <b id="balance">$25,840.00</b></span><button class="btn primary" id="accountButton" onclick="openModal('authModal')">Login / Register</button></div>
+  <div class="top-actions"><button class="btn" onclick="openAdmin()">⚙ Admin</button><span class="pill">Demo Balance <b id="balance">$25,840.00</b></span><button class="btn primary" onclick="openAuth('register')">Create Demo Account</button></div>
 </header>
 
 <div id="dashboardPage">
@@ -369,34 +457,12 @@ button,input,select{font:inherit}button{cursor:pointer}
 </main>
 </div>
 
-<div class="modal-backdrop" id="authModal" onclick="if(event.target===this)closeModal('authModal')">
-  <div class="modal auth-modal">
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
-      <div><h3 style="margin-bottom:5px">GV Trading Account</h3><p style="margin:0">Create an account or sign in to save your demo profile securely.</p></div>
-      <button class="btn" onclick="closeModal('authModal')">✕</button>
-    </div>
-    <div class="terminal-tabs" style="margin-top:18px">
-      <button class="terminal-tab active" id="loginTab" onclick="setAuthMode('login')">Login</button>
-      <button class="terminal-tab" id="registerTab" onclick="setAuthMode('register')">Register</button>
-    </div>
-    <div id="loginFields">
-      <div class="field"><label>Email</label><input id="loginEmail" type="email" autocomplete="email" placeholder="you@example.com"></div>
-      <div class="field"><label>Password</label><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Your password"></div>
-      <button class="btn primary" style="width:100%;margin-top:8px" onclick="loginUser()">Login</button>
-    </div>
-    <div id="registerFields" style="display:none">
-      <div class="field"><label>Full name</label><input id="registerName" type="text" autocomplete="name" placeholder="Your full name"></div>
-      <div class="field"><label>Email</label><input id="registerEmail" type="email" autocomplete="email" placeholder="you@example.com"></div>
-      <div class="field"><label>Password</label><input id="registerPassword" type="password" autocomplete="new-password" placeholder="At least 6 characters"></div>
-      <button class="btn primary" style="width:100%;margin-top:8px" onclick="registerUser()">Create Account</button>
-    </div>
-    <div id="authStatus" style="margin-top:12px;color:#7e94aa;font-size:13px;line-height:1.5"></div>
-    <div id="loggedInBox" style="display:none">
-      <div style="background:#071522;border:1px solid #16344f;border-radius:10px;padding:14px;margin-top:14px">
-        <strong id="loggedInName">User</strong><br><span id="loggedInEmail" style="color:#7e94aa"></span>
-      </div>
-      <div class="modal-actions"><button class="btn" onclick="closeModal('authModal')">Close</button><button class="btn" onclick="logoutUser()">Logout</button></div>
-    </div>
+<div class="modal-backdrop" id="accountModal" onclick="if(event.target===this)closeModal('accountModal')">
+  <div class="modal">
+    <h3>Create Demo Account</h3><p>Create a local demo profile for this browser. This does not create a real financial account and no password is sent anywhere.</p>
+    <div class="field"><label>Display name</label><input id="demoName" type="text" placeholder="Your name"></div>
+    <div class="field"><label>Email</label><input id="demoEmail" type="email" placeholder="you@example.com"></div>
+    <div class="modal-actions"><button class="btn" onclick="closeModal('accountModal')">Cancel</button><button class="btn primary" onclick="createDemoAccount()">Create Demo Account</button></div>
   </div>
 </div>
 <div class="modal-backdrop" id="walletModal" onclick="if(event.target===this)closeModal('walletModal')">
@@ -408,16 +474,13 @@ button,input,select{font:inherit}button{cursor:pointer}
 </div>
 <div class="toast" id="toast"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-// GV Trading Platform — Supabase configuration
-// ONLY CHANGE NEEDED: paste your Supabase Publishable key below.
-const SUPABASE_URL = "https://uqsjbqgoltufkeflvwgu.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "PASTE_YOUR_SB_PUBLISHABLE_KEY_HERE";
-const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
-</script>
 
-<script>
+let currentAuthMode='login';
+function openAuth(mode='login'){authMode(mode);$('authScreen').classList.add('show')}
+function closeAuth(){$('authScreen').classList.remove('show')}
+function authMode(mode){currentAuthMode=mode;const reg=mode==='register';$('loginTab').classList.toggle('active',!reg);$('registerTab').classList.toggle('active',reg);$('nameField').style.display=reg?'block':'none';$('confirmField').style.display=reg?'block':'none';$('authTitle').textContent=reg?'Create your GV account':'Welcome back';$('authSub').textContent=reg?'Create a secure demo account to access your dashboard.':'Sign in to your GV demo trading account.';$('authSubmit').textContent=reg?'CREATE DEMO ACCOUNT':'LOGIN TO GV';$('authSwitch').innerHTML=reg?'Already have an account? <button onclick="authMode('login')">Login here</button>':'New to GV? <button onclick="authMode('register')">Create your account</button>'}
+function submitAuth(){const email=$('authEmail').value.trim(),password=$('authPassword').value; if(!email||!password){showToast('Please enter your email and password.');return} if(currentAuthMode==='register'){const name=$('authName').value.trim(),confirm=$('authConfirm').value;if(!name||!confirm){showToast('Please complete all account fields.');return}if(password!==confirm){showToast('Passwords do not match.');return}localStorage.setItem('gvDemoAccount',JSON.stringify({name,email}));showToast('Demo account details saved locally. Supabase connection comes next.');closeAuth();loadSavedAccount();return} showToast('Login design is ready. Supabase authentication comes next.');}
 const state={balance:25840,trades:1,auto:false,timer:null,autoTrades:0,autoLoss:0,scanCount:24,orderType:'Market',asset:'BTC/USD',leverage:2,emergency:false,walletAction:null,settings:{demo:true,notifications:true,risk:true,dark:true}};
 const assets={
   'BTC/USD':{price:67485.03,change:0.81,coin:'₿',name:'Bitcoin'},
@@ -430,82 +493,6 @@ function money(n){return '$'+Number(n).toLocaleString(undefined,{minimumFraction
 function showToast(msg){const t=$('toast');if(!t)return;t.textContent=msg;t.classList.add('show');clearTimeout(window.tt);window.tt=setTimeout(()=>t.classList.remove('show'),2600)}
 function openModal(id){$(id)?.classList.add('show')}
 function closeModal(id){$(id)?.classList.remove('show')}
-let authMode='login';
-let currentUser=null;
-function setAuthMode(mode){
-  authMode=mode;
-  $('loginFields').style.display=mode==='login'?'block':'none';
-  $('registerFields').style.display=mode==='register'?'block':'none';
-  $('loginTab').classList.toggle('active',mode==='login');
-  $('registerTab').classList.toggle('active',mode==='register');
-  $('loggedInBox').style.display='none';
-  $('authStatus').textContent='';
-}
-function setAuthStatus(message,error=false){
-  const el=$('authStatus'); if(el){el.textContent=message;el.style.color=error?'#ff6b86':'#7e94aa';}
-}
-function initialsFor(name){return (name||'GV').split(/\s+/).map(x=>x[0]).filter(Boolean).slice(0,2).join('').toUpperCase()||'GV'}
-function applyUserProfile(profile,user){
-  const name=profile?.full_name || user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'GV User';
-  currentUser=user||null;
-  document.querySelectorAll('.avatar').forEach(a=>a.textContent=initialsFor(name));
-  const p=document.querySelector('.profile b'); if(p)p.textContent=name;
-  const sm=document.querySelector('.profile small'); if(sm)sm.textContent=user?'Authenticated Account · GV':'Demo Account · GV';
-  const btn=$('accountButton'); if(btn){btn.textContent=user?'Account / Logout':'Login / Register';}
-  if(user){$('loggedInName').textContent=name;$('loggedInEmail').textContent=user.email||'';}
-}
-async function loadAuthProfile(user){
-  if(!user)return;
-  const {data:profile}=await supabaseClient.from('profiles').select('full_name,email,account_level,demo_balance,created_at').eq('id',user.id).maybeSingle();
-  if(profile){
-    if(typeof profile.demo_balance==='number') state.balance=profile.demo_balance;
-    applyUserProfile(profile,user);
-  }else{
-    applyUserProfile(null,user);
-  }
-  updateBalance();
-}
-async function registerUser(){
-  if(SUPABASE_PUBLISHABLE_KEY.includes('PASTE_YOUR_')){setAuthStatus('Add your Supabase Publishable key in the configuration at the bottom of the page first.',true);return}
-  const name=$('registerName').value.trim(),email=$('registerEmail').value.trim(),password=$('registerPassword').value;
-  if(!name||!email||password.length<6){setAuthStatus('Enter your full name, a valid email and a password of at least 6 characters.',true);return}
-  setAuthStatus('Creating your account...');
-  const {data,error}=await supabaseClient.auth.signUp({email,password,options:{data:{full_name:name}}});
-  if(error){setAuthStatus(error.message,true);return}
-  if(data.user){
-    const {error:profileError}=await supabaseClient.from('profiles').upsert({id:data.user.id,full_name:name,email:email,account_level:'Beginner',demo_balance:25840},{onConflict:'id'});
-    if(profileError){setAuthStatus('Account created, but profile setup needs attention: '+profileError.message,true);return}
-  }
-  if(data.session){
-    await loadAuthProfile(data.user); setAuthMode('login'); setAuthStatus('Account created and you are logged in.');
-  }else{
-    setAuthMode('login'); setAuthStatus('Account created. Check your email to confirm your account, then log in.');
-  }
-}
-async function loginUser(){
-  if(SUPABASE_PUBLISHABLE_KEY.includes('PASTE_YOUR_')){setAuthStatus('Add your Supabase Publishable key in the configuration at the bottom of the page first.',true);return}
-  const email=$('loginEmail').value.trim(),password=$('loginPassword').value;
-  if(!email||!password){setAuthStatus('Enter your email and password.',true);return}
-  setAuthStatus('Signing in...');
-  const {data,error}=await supabaseClient.auth.signInWithPassword({email,password});
-  if(error){setAuthStatus(error.message,true);return}
-  await loadAuthProfile(data.user);
-  $('loginFields').style.display='none';$('registerFields').style.display='none';$('loggedInBox').style.display='block';
-  setAuthStatus(''); showToast('Welcome back to GV Trading.');
-}
-async function logoutUser(){
-  await supabaseClient.auth.signOut(); currentUser=null; applyUserProfile(null,null);
-  $('loggedInBox').style.display='none'; setAuthMode('login'); closeModal('authModal'); showToast('You have been logged out.');
-}
-async function initAuth(){
-  if(SUPABASE_PUBLISHABLE_KEY.includes('PASTE_YOUR_')){setAuthStatus('Supabase is ready. Add your Publishable key to enable registration and login.');return}
-  const {data:{session}}=await supabaseClient.auth.getSession();
-  if(session?.user) await loadAuthProfile(session.user);
-  supabaseClient.auth.onAuthStateChange((_event,session)=>{
-    if(session?.user){setTimeout(()=>loadAuthProfile(session.user),0)}
-  });
-}
-
 function createDemoAccount(){
   const name=$('demoName').value.trim(),email=$('demoEmail').value.trim();
   if(!name||!email||!email.includes('@')){showToast('Enter a valid name and email.');return}
@@ -674,16 +661,7 @@ function showPage(name,btn){
   $('sidebar').classList.remove('open');window.scrollTo({top:0,behavior:'smooth'});
 }
 function addExecution(type,message,tag='BOT'){const feed=$('executionFeed');if(!feed)return;const row=document.createElement('div');row.className='exec';row.innerHTML=`<span class="type">${type}</span><span>${message} <span class="human-tag ${tag==='BOT'?'bot-tag':''}">${tag}</span></span><span class="time">now</span>`;feed.prepend(row);while(feed.children.length>25)feed.lastElementChild.remove();const n=Number($('ordersAnalyzed')?.textContent||0)+1;if($('ordersAnalyzed'))$('ordersAnalyzed').textContent=n}
-function runFullScan(){
-  const steps=['Initializing GV AI market scan…','Scanning BTC/USD…','Scanning ETH/USD…','Scanning SOL/USD…','Scanning XRP/USD…','Checking market momentum…','Checking volatility…','Checking support & resistance…','Checking liquidity…'];
-  let i=0;
-  const setScanText=t=>{const el=document.getElementById('scanStatus')||document.getElementById('fullSignal');if(el)el.textContent=t;};
-  setScanText(steps[0]);
-  const timer=setInterval(()=>{i++;if(i<steps.length){setScanText(steps[i]);return;}clearInterval(timer);
-    const score=Math.floor(62+Math.random()*31),bullish=score>=72;
-    $('fullScore').textContent=score+'%';$('fullSignal').textContent=bullish?'BUY / RISE':'WAIT / CONFIRM';$('trendValue').textContent=bullish?'Bullish':'Mixed';$('momentumValue').textContent=bullish?'Strong':'Neutral';$('volValue').textContent=score>82?'High':'Moderate';$('liqValue').textContent='Healthy';$('analysisPrice').textContent=$('livePrice')?.textContent||money(assets[state.asset].price);state.scanCount++;if($('marketScans'))$('marketScans').textContent=state.scanCount;addExecution('AI SCAN',`Analyzed trend, momentum, volatility and liquidity → ${bullish?'bullish':'mixed'} signal`,'BOT');setScanText('✓ GV AI market scan completed');showToast('GV AI market scan completed.');
-  },700);
-}
+function runFullScan(){const score=Math.floor(62+Math.random()*31),bullish=score>=72;$('fullScore').textContent=score+'%';$('fullSignal').textContent=bullish?'BUY / RISE':'WAIT / CONFIRM';$('trendValue').textContent=bullish?'Bullish':'Mixed';$('momentumValue').textContent=bullish?'Strong':'Neutral';$('volValue').textContent=score>82?'High':'Moderate';$('liqValue').textContent='Healthy';$('analysisPrice').textContent=$('livePrice')?.textContent||money(assets[state.asset].price);state.scanCount++;if($('marketScans'))$('marketScans').textContent=state.scanCount;addExecution('AI SCAN',`Analyzed trend, momentum, volatility and liquidity → ${bullish?'bullish':'mixed'} signal`,'BOT');showToast('Full GV AI market scan completed.')}
 function emergencyStop(){state.emergency=true;stopAuto('Emergency stop activated.');if($('aiPageBotState'))$('aiPageBotState').textContent='EMERGENCY STOP';if($('automationType'))$('automationType').textContent='STOPPED';if($('executorType'))$('executorType').textContent='Safety Stop';const c=document.querySelector('#ai .auto-controls');if(c&&!document.getElementById('resetStop')){const b=document.createElement('button');b.id='resetStop';b.className='btn';b.textContent='Reset Safety Stop';b.onclick=resetEmergency;c.appendChild(b)}showToast('Emergency stop activated. New demo orders are blocked.')}
 function resetEmergency(){state.emergency=false;$('resetStop')?.remove();if($('aiPageBotState'))$('aiPageBotState').textContent='SIMULATION READY';if($('automationType'))$('automationType').textContent='OFF';if($('executorType'))$('executorType').textContent='Manual / User';showToast('Demo safety stop reset.')}
 function walletAction(action){state.walletAction=action;$('walletModalTitle').textContent=`Demo ${action}`;$('walletModalText').textContent=action==='Deposit'?'Add virtual demo funds to the simulated balance.':action==='Withdraw'?'Subtract virtual demo funds from the simulated balance.':'Move a virtual amount and record it as a demo transfer.';$('walletConfirm').textContent=action==='Deposit'?'Add Funds':action==='Withdraw'?'Withdraw':'Transfer';openModal('walletModal')}
@@ -692,7 +670,16 @@ function toggleSetting(el,label){const on=el.classList.toggle('on');state.settin
 function loadSavedAccount(){try{const a=JSON.parse(localStorage.getItem('gvDemoAccount'));if(a?.name){document.querySelectorAll('.avatar').forEach(x=>x.textContent=a.name.split(/\s+/).map(v=>v[0]).slice(0,2).join('').toUpperCase());const p=document.querySelector('.profile b');if(p)p.textContent=a.name;const s=document.querySelector('.profile small');if(s)s.textContent='Demo Account · GV'}}catch(e){}}
 // The chart engine is the single source of demo price movement, so the header price follows it.
 setInterval(()=>{const c=chartModel.candles?.[chartModel.candles.length-1];if(c){const p=c.close;$('livePrice').textContent=money(p);if($('analysisPrice'))$('analysisPrice').textContent=money(p)}},350);
-document.addEventListener('DOMContentLoaded',()=>{loadSavedAccount();updateBalance();initAuth();renderChart();startChartMotion();terminalUpdatePayout();updateTerminalCounts();renderTerminalChart();document.querySelectorAll('.toggle-demo').forEach((el,i)=>{el.classList.add('on');el.onclick=()=>toggleSetting(el,['demo','notifications','risk','dark'][i])});});
+document.addEventListener('DOMContentLoaded',()=>{loadSavedAccount();updateBalance();renderChart();startChartMotion();terminalUpdatePayout();updateTerminalCounts();renderTerminalChart();document.querySelectorAll('.toggle-demo').forEach((el,i)=>{el.classList.add('on');el.onclick=()=>toggleSetting(el,['demo','notifications','risk','dark'][i])});});
+</script>
+
+<script>
+function openAdmin(){document.getElementById('adminBackdrop').classList.add('show');document.getElementById('adminLoginView').style.display='grid';document.getElementById('adminApp').classList.remove('show');setTimeout(()=>document.getElementById('adminEmail')?.focus(),100)}
+function closeAdmin(){document.getElementById('adminBackdrop').classList.remove('show')}
+function adminLogin(){const e=document.getElementById('adminEmail').value.trim(),p=document.getElementById('adminPassword').value.trim(),err=document.getElementById('adminError');if(!e||!p){err.classList.add('show');return}err.classList.remove('show');document.getElementById('adminLoginView').style.display='none';document.getElementById('adminApp').classList.add('show');adminActivity('Admin session opened',e)}
+function adminLogout(){document.getElementById('adminApp').classList.remove('show');document.getElementById('adminLoginView').style.display='grid';document.getElementById('adminPassword').value='';showToast('Admin session closed.')}
+function adminSection(name,btn){document.querySelectorAll('.admin-section').forEach(x=>x.classList.remove('active'));const map={overview:'adminOverview',users:'adminUsers',trades:'adminTrades',ai:'adminAi',settings:'adminSettings'};document.getElementById(map[name])?.classList.add('active');document.querySelectorAll('.admin-side nav button').forEach(x=>x.classList.remove('active'));btn?.classList.add('active');const titles={overview:'Admin Overview',users:'User Management',trades:'Demo Trade Monitor',ai:'GV AI Activity',settings:'Platform Settings'};document.getElementById('adminPageTitle').textContent=titles[name]||'Admin Control'}
+function adminActivity(title,detail){const box=document.getElementById('adminActivity');if(!box)return;const row=document.createElement('div');row.className='admin-activity-row';row.innerHTML=`<b>${title}</b><span>${detail} · just now</span>`;box.prepend(row);while(box.children.length>8)box.lastElementChild.remove()}
 </script>
 </body>
 </html>
