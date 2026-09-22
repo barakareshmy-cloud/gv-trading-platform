@@ -679,7 +679,7 @@ function runFullScan(){
   let i=0;
   const setScanText=t=>{const el=document.getElementById('scanStatus')||document.getElementById('fullSignal');if(el)el.textContent=t;};
   setScanText(steps[0]);
-  const timer=setInterval(()=>{i++;if(i<steps.length){setScanText(steps[i]);return;}clearInterval(timer);
+  const timer=setInterval(()=>{i++;if(i<steps.length){setScanText(steps[i]);return;}clearInterval(timer)
     const score=Math.floor(62+Math.random()*31),bullish=score>=72;
     $('fullScore').textContent=score+'%';$('fullSignal').textContent=bullish?'BUY / RISE':'WAIT / CONFIRM';$('trendValue').textContent=bullish?'Bullish':'Mixed';$('momentumValue').textContent=bullish?'Strong':'Neutral';$('volValue').textContent=score>82?'High':'Moderate';$('liqValue').textContent='Healthy';$('analysisPrice').textContent=$('livePrice')?.textContent||money(assets[state.asset].price);state.scanCount++;if($('marketScans'))$('marketScans').textContent=state.scanCount;addExecution('AI SCAN',`Analyzed trend, momentum, volatility and liquidity → ${bullish?'bullish':'mixed'} signal`,'BOT');setScanText('✓ GV AI market scan completed');showToast('GV AI market scan completed.');
   },700);
@@ -696,3 +696,4 @@ document.addEventListener('DOMContentLoaded',()=>{loadSavedAccount();updateBalan
 </script>
 </body>
 </html>
+
