@@ -834,6 +834,23 @@ function loadSavedAccount(){try{if(currentUser())return;const a=JSON.parse(local
 // The chart engine is the single source of demo price movement, so the header price follows it.
 setInterval(()=>{const c=chartModel.candles?.[chartModel.candles.length-1];if(c){const p=c.close;$('livePrice').textContent=money(p);if($('analysisPrice'))$('analysisPrice').textContent=money(p)}},350);
 document.addEventListener('DOMContentLoaded',()=>{loadSavedAccount();restoreSession();updateBalance();renderChart();startChartMotion();terminalUpdatePayout();updateTerminalCounts();renderTerminalChart();document.querySelectorAll('.toggle-demo').forEach((el,i)=>{el.classList.add('on');el.onclick=()=>toggleSetting(el,['demo','notifications','risk','dark'][i])});});
+</script><script>
+   ...
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "YOUR PROJECT URL";
+const SUPABASE_ANON_KEY = "YOUR PUBLISHABLE KEY";
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY
+);
+</script>
+
+</body>
+</html>
 </body>
 </html>
