@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- GV Trading Platform: current site + Admin Login/Admin Control Panel -->
 <title>GV Trading Platform | AI Crypto Dashboard</title>
 <meta name="description" content="GV Trading Platform — AI-powered crypto market analysis and simulated trading dashboard.">
 <style>
@@ -102,17 +101,6 @@ button,input,select{font:inherit}button{cursor:pointer}
 .auth-screen.show{display:flex}.auth-wrap{width:min(1000px,100%);display:grid;grid-template-columns:1fr 1fr;background:rgba(7,21,34,.92);border:1px solid #1b4665;border-radius:22px;box-shadow:0 30px 100px rgba(0,0,0,.65);overflow:hidden}.auth-brand{padding:44px;background:linear-gradient(145deg,rgba(10,39,62,.9),rgba(4,15,25,.95));display:flex;flex-direction:column;justify-content:center}.auth-logo{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(135deg,#0f83ff,#14d9ff);font-size:25px;font-weight:1000;box-shadow:0 0 35px rgba(18,151,255,.3);margin-bottom:20px}.auth-brand h1{font-size:34px;margin:0 0 10px}.auth-brand p{color:#8da6ba;line-height:1.7;font-size:13px}.auth-points{display:grid;gap:10px;margin-top:20px}.auth-point{padding:11px 13px;border:1px solid #173b55;background:#071724;border-radius:10px;font-size:12px;color:#c7d8e6}.auth-point b{color:#20dca5}.auth-form{padding:38px 36px;background:#06131f}.auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:#081b2a;border:1px solid #17344f;padding:4px;border-radius:11px;margin-bottom:24px}.auth-tabs button{border:0;background:transparent;color:#718aa0;padding:11px;border-radius:8px;font-weight:800}.auth-tabs button.active{background:#0e5e96;color:#fff}.auth-form h2{margin:0 0 5px;font-size:24px}.auth-sub{color:#718aa0;font-size:11px;margin-bottom:18px}.auth-field{margin-bottom:12px}.auth-field label{display:block;color:#8ca2b5;font-size:11px;margin-bottom:6px}.auth-field input{width:100%;background:#071a29;border:1px solid #1a3b54;color:#fff;border-radius:9px;padding:12px;outline:none}.auth-field input:focus{border-color:#1a9cff;box-shadow:0 0 0 3px rgba(26,156,255,.08)}.auth-submit{width:100%;border:0;border-radius:10px;padding:13px;background:linear-gradient(135deg,#0c9bff,#0b75f5);color:#fff;font-weight:900;margin-top:5px}.auth-note{text-align:center;color:#647e94;font-size:10px;line-height:1.5;margin-top:14px}.auth-close{position:absolute;top:18px;right:20px;border:1px solid #29465d;background:#071522;color:#b8cad8;width:36px;height:36px;border-radius:10px;font-size:18px}.auth-switch{margin-top:14px;text-align:center;font-size:11px;color:#70879b}.auth-switch button{border:0;background:none;color:#20a9ff;font-weight:800}
 @media(max-width:760px){.auth-wrap{grid-template-columns:1fr}.auth-brand{display:none}.auth-form{padding:30px 22px}}
 </style>
-
-<style>
-/* GV ADMIN CONTROL PANEL */
-.admin-backdrop{position:fixed;inset:0;background:rgba(1,7,13,.94);backdrop-filter:blur(10px);display:none;z-index:100;padding:20px;overflow:auto}.admin-backdrop.show{display:block}
-.admin-shell{max-width:1180px;margin:0 auto;min-height:calc(100vh - 40px);background:#050f19;border:1px solid #1b4564;border-radius:18px;box-shadow:0 30px 90px rgba(0,0,0,.55);overflow:hidden}
-.admin-login{min-height:calc(100vh - 80px);display:grid;place-items:center;padding:30px}.admin-login-card{width:min(430px,100%);background:linear-gradient(145deg,#091b2b,#06111c);border:1px solid #1a4868;border-radius:18px;padding:28px;box-shadow:0 20px 60px rgba(0,0,0,.45)}
-.admin-logo{width:62px;height:62px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(135deg,#0f83ff,#14d9ff);font-size:24px;font-weight:1000;box-shadow:0 0 35px rgba(18,151,255,.28);margin-bottom:18px}.admin-login-card h2{margin:0 0 7px;font-size:25px}.admin-login-card>p{color:#7891a7;font-size:12px;line-height:1.6;margin:0 0 20px}.admin-field{margin:12px 0}.admin-field label{display:block;color:#91a8bb;font-size:11px;margin-bottom:6px}.admin-field input{width:100%;padding:12px;border-radius:9px;border:1px solid #1b3b55;background:#06121e;color:#fff;outline:none}.admin-field input:focus{border-color:#16baff;box-shadow:0 0 0 3px rgba(22,186,255,.08)}.admin-login-btn{width:100%;padding:12px;border:0;border-radius:9px;background:linear-gradient(135deg,#0c9bff,#0b75f5);color:#fff;font-weight:900;margin-top:8px}.admin-demo-note{margin-top:12px;padding:9px;border:1px solid #173750;border-radius:8px;color:#688299;font-size:10px;text-align:center}.admin-error{display:none;color:#ff6a88;font-size:11px;margin-top:9px}.admin-error.show{display:block}
-.admin-app{display:none;min-height:760px}.admin-app.show{display:grid;grid-template-columns:215px 1fr}.admin-side{background:#040d16;border-right:1px solid #15344d;padding:18px 12px;position:relative}.admin-brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:18px;padding:5px 8px 24px}.admin-brand .admin-mini-logo{width:35px;height:35px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(135deg,#0f83ff,#14d9ff);font-weight:1000}.admin-side nav{display:grid;gap:6px}.admin-side nav button{border:0;background:transparent;color:#7891a7;text-align:left;padding:11px 12px;border-radius:9px;font-weight:700}.admin-side nav button.active,.admin-side nav button:hover{background:#0b2f4b;color:#fff}.admin-secure{position:absolute;bottom:15px;left:12px;right:12px;border:1px solid #173750;background:#071722;border-radius:11px;padding:11px;color:#7d95a8;font-size:10px;line-height:1.5}.admin-main{min-width:0;padding:20px}.admin-top{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid #16344f;padding-bottom:15px}.admin-top h2{margin:0;font-size:21px}.admin-top small{color:#71889d}.admin-top-actions{display:flex;gap:7px}.admin-btn{border:1px solid #1b3b55;background:#091b2a;color:#dce9f3;border-radius:8px;padding:9px 12px;font-size:11px;font-weight:800}.admin-btn.danger{border-color:#6d2940;color:#ff7b96}.admin-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}.admin-stat{background:#071723;border:1px solid #153650;border-radius:11px;padding:14px}.admin-stat small{display:block;color:#71899e;font-size:10px}.admin-stat b{display:block;font-size:22px;margin-top:6px}.admin-stat span{font-size:9px;color:#19dda0}.admin-content-grid{display:grid;grid-template-columns:1.45fr .75fr;gap:12px}.admin-panel{background:#071723;border:1px solid #153650;border-radius:12px;overflow:hidden}.admin-panel-head{padding:13px 14px;border-bottom:1px solid #153650;display:flex;justify-content:space-between;align-items:center}.admin-panel-head h3{margin:0;font-size:13px}.admin-panel-head small{color:#668097}.admin-table-wrap{overflow:auto}.admin-table{width:100%;border-collapse:collapse;font-size:10px}.admin-table th,.admin-table td{padding:11px 9px;text-align:left;border-bottom:1px solid #102b40;white-space:nowrap}.admin-table th{color:#627b91;font-weight:700}.admin-user{display:flex;align-items:center;gap:8px}.admin-avatar{width:27px;height:27px;border-radius:8px;display:grid;place-items:center;background:#124269;color:#fff;font-weight:900;font-size:9px}.admin-badge{display:inline-block;padding:4px 7px;border-radius:10px;background:#0a382d;color:#22dfa2;font-size:9px}.admin-badge.pending{background:#382e17;color:#ffcb5b}.admin-activity{padding:4px 14px}.admin-activity-row{padding:10px 0;border-bottom:1px solid #102b40;font-size:10px}.admin-activity-row:last-child{border:0}.admin-activity-row b{display:block;color:#dce8f2}.admin-activity-row span{display:block;color:#647d92;margin-top:3px}.admin-quick{display:grid;gap:7px;margin-top:10px}.admin-quick button{border:1px solid #183a53;background:#091c2b;color:#cfe0ec;border-radius:8px;padding:10px;text-align:left;font-size:10px;font-weight:800}.admin-quick button:hover{border-color:#168fd0;background:#0b2639}.admin-section{display:none}.admin-section.active{display:block}.admin-empty{padding:28px;text-align:center;color:#70879b;font-size:11px}.admin-close-mobile{display:none}
-@media(max-width:900px){.admin-app.show{grid-template-columns:1fr}.admin-side{display:none}.admin-content-grid{grid-template-columns:1fr}.admin-grid{grid-template-columns:repeat(2,1fr)}.admin-close-mobile{display:block}.admin-top-actions .admin-btn:not(.danger){display:none}}
-@media(max-width:520px){.admin-backdrop{padding:8px}.admin-shell{min-height:calc(100vh - 16px)}.admin-login{padding:15px}.admin-login-card{padding:22px}.admin-main{padding:12px}.admin-grid{grid-template-columns:1fr 1fr}.admin-stat b{font-size:18px}}
-</style>
 </head>
 <body>
 
@@ -133,61 +121,6 @@ button,input,select{font:inherit}button{cursor:pointer}
     </div>
   </div>
 </div>
-
-<!-- GV ADMIN CONTROL PANEL -->
-<div class="admin-backdrop" id="adminBackdrop">
-  <div class="admin-shell">
-    <div class="admin-login" id="adminLoginView">
-      <div class="admin-login-card">
-        <div class="admin-logo">GV</div>
-        <h2>GV Admin Control</h2>
-        <p>Administrator access for managing the GV Trading Platform demo environment.</p>
-        <div class="admin-field"><label>Admin Email</label><input id="adminEmail" type="email" placeholder="admin@gvtrading.com"></div>
-        <div class="admin-field"><label>Admin Password</label><input id="adminPassword" type="password" placeholder="Enter admin password"></div>
-        <button class="admin-login-btn" onclick="adminLogin()">SIGN IN TO ADMIN</button>
-        <div class="admin-error" id="adminError">Please enter the admin credentials.</div>
-        <div class="admin-demo-note">DEMO ADMIN UI · Authentication will be securely connected to Supabase in the next stage.</div>
-      </div>
-    </div>
-    <div class="admin-app" id="adminApp">
-      <aside class="admin-side">
-        <div class="admin-brand"><div class="admin-mini-logo">GV</div><span>Admin Control</span></div>
-        <nav>
-          <button class="active" onclick="adminSection('overview',this)">▣ &nbsp; Overview</button>
-          <button onclick="adminSection('users',this)">♙ &nbsp; Users</button>
-          <button onclick="adminSection('trades',this)">↗ &nbsp; Demo Trades</button>
-          <button onclick="adminSection('ai',this)">◉ &nbsp; AI Activity</button>
-          <button onclick="adminSection('settings',this)">⚙ &nbsp; Settings</button>
-        </nav>
-        <div class="admin-secure">🔒 <b>Admin Area</b><br>Restricted control interface<br>Demo environment only</div>
-      </aside>
-      <main class="admin-main">
-        <div class="admin-top">
-          <div><h2 id="adminPageTitle">Admin Overview</h2><small>GV Trading Platform · Control Center</small></div>
-          <div class="admin-top-actions"><button class="admin-btn admin-close-mobile" onclick="closeAdmin()">Close</button><button class="admin-btn danger" onclick="adminLogout()">Log Out</button></div>
-        </div>
-        <section class="admin-section active" id="adminOverview">
-          <div class="admin-grid">
-            <div class="admin-stat"><small>Total Users</small><b id="adminUsersCount">1</b><span>● Demo database</span></div>
-            <div class="admin-stat"><small>Active Sessions</small><b id="adminSessions">1</b><span>● Current demo</span></div>
-            <div class="admin-stat"><small>Demo Trades</small><b id="adminTradesCount">0</b><span>● Simulated</span></div>
-            <div class="admin-stat"><small>AI Scans</small><b id="adminScansCount">0</b><span>● GV AI demo</span></div>
-          </div>
-          <div class="admin-content-grid">
-            <div class="admin-panel"><div class="admin-panel-head"><h3>Recent Users</h3><small>Latest accounts</small></div><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>User</th><th>Email</th><th>Level</th><th>Status</th></tr></thead><tbody id="adminUsersBody"><tr><td><div class="admin-user"><div class="admin-avatar">GB</div><b>Gyane Baraka</b></div></td><td>Demo founder</td><td>Admin</td><td><span class="admin-badge">Active</span></td></tr></tbody></table></div></div>
-            <div class="admin-panel"><div class="admin-panel-head"><h3>Quick Controls</h3></div><div style="padding:12px"><div class="admin-quick"><button onclick="showToast('User management will be connected to Supabase next.')">♙ Manage Users</button><button onclick="showToast('Demo trading controls ready for the next stage.')">↗ Review Trades</button><button onclick="showToast('AI monitoring panel opened.')">◉ Monitor GV AI</button><button onclick="showToast('Platform settings selected.')">⚙ Platform Settings</button></div></div></div>
-          </div>
-          <div class="admin-panel" style="margin-top:12px"><div class="admin-panel-head"><h3>Admin Activity</h3><small>Live demo events</small></div><div class="admin-activity" id="adminActivity"><div class="admin-activity-row"><b>Admin panel initialized</b><span>System · just now</span></div><div class="admin-activity-row"><b>GV demo environment ready</b><span>System · just now</span></div></div></div>
-        </section>
-        <section class="admin-section" id="adminUsers"><div class="admin-panel"><div class="admin-panel-head"><h3>User Management</h3><small>Accounts will appear here</small></div><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>User</th><th>Email</th><th>Account Level</th><th>Demo Balance</th><th>Status</th></tr></thead><tbody id="adminFullUsersBody"><tr><td>Gyane Baraka</td><td>Founder demo</td><td>Admin</td><td>$25,840.00</td><td><span class="admin-badge">Active</span></td></tr></tbody></table></div></div></section>
-        <section class="admin-section" id="adminTrades"><div class="admin-panel"><div class="admin-panel-head"><h3>Demo Trade Monitor</h3><small>Simulated activity only</small></div><div class="admin-empty">No additional demo trades have been recorded yet.<br>Once users trade, their simulated activity can be displayed here.</div></div></section>
-        <section class="admin-section" id="adminAi"><div class="admin-panel"><div class="admin-panel-head"><h3>GV AI Activity Monitor</h3><small>Demo analysis events</small></div><div class="admin-empty">AI scan activity will be connected here so administrators can monitor demo analysis events.</div></div></section>
-        <section class="admin-section" id="adminSettings"><div class="admin-panel"><div class="admin-panel-head"><h3>Platform Settings</h3><small>Administration controls</small></div><div style="padding:14px"><div class="admin-quick"><button onclick="showToast('Demo mode remains enabled.')">● Demo Mode: ON</button><button onclick="showToast('User registration settings will be connected next.')">♙ Registration Settings</button><button onclick="showToast('Maintenance controls prepared.')">⚙ Maintenance Controls</button></div></div></div></section>
-      </main>
-    </div>
-  </div>
-</div>
-
 <div class="app">
 <aside class="sidebar" id="sidebar">
   <div class="brand"><div class="logo">GV</div><span>GV Trading</span></div>
@@ -207,7 +140,7 @@ button,input,select{font:inherit}button{cursor:pointer}
 <main class="main">
 <header class="topbar">
   <div style="display:flex;align-items:center;gap:10px"><button class="pill mobile-menu" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button><div class="title"><h1 id="pageTitle">Trading Dashboard</h1><span>AI-powered market intelligence · simulated trading</span></div></div>
-  <div class="top-actions"><button class="btn" onclick="openAdmin()">⚙ Admin</button><span class="pill">Demo Balance <b id="balance">$25,840.00</b></span><button class="btn primary" onclick="openAuth('register')">Create Demo Account</button></div>
+  <div class="top-actions"><span class="pill">Demo Balance <b id="balance">$25,840.00</b></span><button class="btn primary" onclick="openAuth('register')">Create Demo Account</button></div>
 </header>
 
 <div id="dashboardPage">
@@ -671,15 +604,6 @@ function loadSavedAccount(){try{const a=JSON.parse(localStorage.getItem('gvDemoA
 // The chart engine is the single source of demo price movement, so the header price follows it.
 setInterval(()=>{const c=chartModel.candles?.[chartModel.candles.length-1];if(c){const p=c.close;$('livePrice').textContent=money(p);if($('analysisPrice'))$('analysisPrice').textContent=money(p)}},350);
 document.addEventListener('DOMContentLoaded',()=>{loadSavedAccount();updateBalance();renderChart();startChartMotion();terminalUpdatePayout();updateTerminalCounts();renderTerminalChart();document.querySelectorAll('.toggle-demo').forEach((el,i)=>{el.classList.add('on');el.onclick=()=>toggleSetting(el,['demo','notifications','risk','dark'][i])});});
-</script>
-
-<script>
-function openAdmin(){document.getElementById('adminBackdrop').classList.add('show');document.getElementById('adminLoginView').style.display='grid';document.getElementById('adminApp').classList.remove('show');setTimeout(()=>document.getElementById('adminEmail')?.focus(),100)}
-function closeAdmin(){document.getElementById('adminBackdrop').classList.remove('show')}
-function adminLogin(){const e=document.getElementById('adminEmail').value.trim(),p=document.getElementById('adminPassword').value.trim(),err=document.getElementById('adminError');if(!e||!p){err.classList.add('show');return}err.classList.remove('show');document.getElementById('adminLoginView').style.display='none';document.getElementById('adminApp').classList.add('show');adminActivity('Admin session opened',e)}
-function adminLogout(){document.getElementById('adminApp').classList.remove('show');document.getElementById('adminLoginView').style.display='grid';document.getElementById('adminPassword').value='';showToast('Admin session closed.')}
-function adminSection(name,btn){document.querySelectorAll('.admin-section').forEach(x=>x.classList.remove('active'));const map={overview:'adminOverview',users:'adminUsers',trades:'adminTrades',ai:'adminAi',settings:'adminSettings'};document.getElementById(map[name])?.classList.add('active');document.querySelectorAll('.admin-side nav button').forEach(x=>x.classList.remove('active'));btn?.classList.add('active');const titles={overview:'Admin Overview',users:'User Management',trades:'Demo Trade Monitor',ai:'GV AI Activity',settings:'Platform Settings'};document.getElementById('adminPageTitle').textContent=titles[name]||'Admin Control'}
-function adminActivity(title,detail){const box=document.getElementById('adminActivity');if(!box)return;const row=document.createElement('div');row.className='admin-activity-row';row.innerHTML=`<b>${title}</b><span>${detail} · just now</span>`;box.prepend(row);while(box.children.length>8)box.lastElementChild.remove()}
 </script>
 </body>
 </html>
