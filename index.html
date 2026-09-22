@@ -3,165 +3,98 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GV Trading Platform</title>
-<meta name="description" content="GV Trading Platform demo trading dashboard.">
+<title>GV Trading Platform | AI Crypto Dashboard</title>
+<meta name="description" content="GV Trading Platform — AI-powered crypto market analysis and simulated trading dashboard.">
 <style>
-:root{--bg:#050f18;--panel:#061625;--panel2:#0a1b2c;--line:#17344d;--text:#f5f8fb;--muted:#82a0b8;--blue:#1488f5;--green:#09ad83;--red:#ee335e;--purple:#5840ba}
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text)}button,input,select{font:inherit}button{cursor:pointer}
-.app{display:grid;grid-template-columns:220px 1fr;min-height:100vh}.sidebar{position:sticky;top:0;height:100vh;background:#030c14;border-right:1px solid #153049;padding:18px 11px;z-index:30}.brand{display:flex;align-items:center;gap:10px;padding:6px 10px 22px;font-size:21px;font-weight:900}.logo{width:48px;height:48px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,#158cff,#14d8ff);font-size:25px;font-weight:900;box-shadow:0 8px 30px rgba(18,142,255,.24)}.nav{display:grid;gap:7px}.nav button{width:100%;border:0;background:transparent;color:#97acbe;border-radius:11px;padding:13px 14px;display:flex;align-items:center;gap:11px;text-align:left;font-weight:800}.nav button:hover,.nav button.active{background:linear-gradient(90deg,#0d5e9f,#0e3356);color:#fff}.nav .new{margin-left:auto;background:#05b787;color:#002319;border-radius:10px;font-size:9px;padding:4px 8px}.profile{position:absolute;left:12px;right:12px;bottom:14px;padding:12px;background:#081725;border:1px solid var(--line);border-radius:13px}.avatar{width:45px;height:45px;border-radius:50%;display:grid;place-items:center;background:#173d60;font-weight:900;margin-bottom:7px}.profile b{display:block}.profile small{display:block;color:var(--muted);line-height:1.45}.main{min-width:0;padding:18px}.topbar{height:52px;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}.top-left{display:flex;align-items:center;gap:10px}.title h1{margin:0;font-size:22px}.title small{color:var(--muted)}.top-actions{display:flex;gap:8px;align-items:center}.pill,.btn{border:1px solid var(--line);background:#0a1b2b;color:#deebf5;border-radius:9px;padding:9px 12px}.btn.primary{background:#0d83f1;border-color:#1da0ff;color:#fff;font-weight:900}.mobile-menu{display:none}
-.page{display:none}.page.active{display:block}
-.dashboard-layout{display:grid;grid-template-columns:190px minmax(0,1fr) 340px;gap:8px;height:calc(100vh - 100px);min-height:680px}.pane{background:#061523;border:1px solid #17344d;border-radius:14px;overflow:hidden;min-width:0}.left-pane{display:flex;flex-direction:column}.left-tabs{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}.left-tabs button{border:0;background:transparent;color:#8ba2b8;padding:17px 6px;font-weight:900;border-bottom:3px solid transparent}.left-tabs button.active{color:#fff;border-bottom-color:#138cf2}.left-body{padding:14px 12px;display:flex;flex-direction:column;height:100%;gap:10px}.sub{color:#7d95aa;font-size:13px}.empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#7890a6}.empty-icon{width:48px;height:48px;border-radius:50%;border:4px solid #7f92aa;display:grid;place-items:center;font-size:18px;margin-bottom:15px}.empty strong{color:#fff;font-size:14px;margin-bottom:5px}.empty span{font-size:11px;line-height:1.5}.history{border:0;border-radius:10px;padding:11px;background:#0a1726;color:#fff;font-weight:800}.activity-list{max-height:190px;overflow:auto}.activity-item{background:#091b2b;border:1px solid #16344d;border-radius:8px;padding:8px;margin-bottom:6px;font-size:10px}.activity-item small{display:block;color:#73899d;margin-top:3px}
-.chart-pane{display:flex;flex-direction:column;background:#04111c}.chart-tools{height:58px;display:flex;align-items:center;gap:8px;padding:8px 10px;border-bottom:1px solid #17344d}.tool,.select{height:40px;min-width:40px;border:1px solid #1a3953;background:#0a1b2b;color:#d9e8f4;border-radius:10px;padding:0 11px}.chart-wrap{position:relative;flex:1;min-height:0}.chart-wrap canvas{width:100%;height:100%;display:block}.symbol-card{position:absolute;left:10px;top:14px;background:#1a2a40;border:1px solid #2b4862;border-radius:13px;padding:12px 15px;width:290px;z-index:2}.symbol{display:flex;align-items:center;gap:10px}.coin{width:38px;height:38px;border-radius:9px;display:grid;place-items:center;background:#17445b;color:#24dfff;font-weight:900}.symbol b{display:block;font-size:17px}.symbol small{display:block;margin-top:2px}.down{color:#ff4b72}.price-badge{position:absolute;right:10px;top:44%;background:#117ee7;border-radius:7px;padding:8px 11px;font-weight:900;box-shadow:0 5px 20px rgba(17,126,231,.28)}.digits{display:grid;grid-template-columns:repeat(10,1fr);gap:9px;padding:14px 12px 15px}.digit{width:54px;height:54px;max-width:100%;justify-self:center;border:6px solid #3d4e66;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#071622;position:relative}.digit b{font-size:17px}.digit small{font-size:8px;color:#8095a9}.digit.active{border-top-color:#10d6a0}.digit.active:before{content:"";position:absolute;top:-14px;left:50%;transform:translateX(-50%);border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:8px solid #ff416b}
-.right-pane{padding:10px 11px;display:flex;flex-direction:column;gap:10px}.right-head{display:flex;align-items:center;justify-content:space-between}.right-head h3{margin:0;font-size:18px}.right-head span{color:#7690a7;font-size:11px}.mode-tabs{display:grid;grid-template-columns:repeat(4,1fr);background:#07131f;border:1px solid #17344d;border-radius:9px;overflow:hidden}.mode-tabs button{border:0;background:transparent;color:#87a0b5;padding:12px 3px;font-size:9px}.mode-tabs button.active{background:#1486ee;color:#fff;font-weight:900}.label{display:flex;justify-content:space-between;color:#88a1b7;font-size:11px;margin-bottom:6px}.stepper{display:grid;grid-template-columns:42px 1fr 42px;border:1px solid #1a3953;border-radius:10px;background:#081824;overflow:hidden}.stepper button{border:0;background:transparent;color:#fff;font-size:21px}.stepper input{width:100%;border:0;background:transparent;color:#fff;text-align:center;outline:0;font-size:20px;font-weight:900;padding:10px}.quick{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:7px}.quick button{border:1px solid #1a334b;background:#071522;color:#8ca4b8;border-radius:8px;padding:9px 3px;font-size:9px}.quick button.active{border-color:#1594ff;color:#27a4ff}.payout{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #143149;padding-top:10px;color:#86a0b6;font-size:11px}.payout b{font-size:18px;color:#fff}.contracts{display:grid;gap:8px}.contract{border:0;border-radius:12px;padding:14px;text-align:left;color:#fff}.contract.green{background:linear-gradient(135deg,#0da87e,#0d8a68)}.contract.red{background:linear-gradient(135deg,#db0d40,#b90e35)}.contract strong{display:block;font-size:23px;line-height:1}.contract span{display:block;font-size:10px;margin-top:7px}.scanner{margin-top:auto;padding:11px;border:1px solid #4a3fb2;border-radius:12px;background:linear-gradient(135deg,#0c1633,#17114c)}.scanner-top{display:flex;justify-content:space-between;align-items:center;gap:8px}.scanner-left{display:flex;align-items:center;gap:9px}.ai{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#118cf2;font-weight:900}.scanner small{display:block;color:#89a3b9;font-size:9px}.scanner button{border:1px solid #8f76ff;background:transparent;color:#fff;border-radius:8px;padding:8px 11px;font-size:10px}.scanner-note{margin-top:8px;color:#b8adff;font-size:10px}.ai-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}.ai-box{background:#071724;border:1px solid #183952;border-radius:11px;padding:13px}.ai-box small{display:block;color:#7892a8;font-size:10px}.ai-box b{display:block;margin-top:5px;font-size:17px}.ai-box span{display:block;margin-top:4px;color:#93aabe;font-size:10px}.ai-signal{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px;padding:15px;border-radius:12px;border:1px solid #244866;background:linear-gradient(135deg,#0b1b30,#071420)}.ai-signal-badge{font-size:18px;font-weight:900;padding:10px 14px;border-radius:10px;background:#23344b;color:#fff}.ai-signal-badge.buy{background:#0d9f77}.ai-signal-badge.sell{background:#c62a4e}.ai-signal-badge.wait{background:#7b6320}.ai-reason{color:#91a7ba;font-size:11px;line-height:1.5}.scan-time{color:#6f879b;font-size:10px;margin-top:8px}@media(max-width:900px){.ai-grid{grid-template-columns:1fr 1fr}}@media(max-width:650px){.ai-grid{grid-template-columns:1fr 1fr}}.note{font-size:9px;color:#6f879b;line-height:1.4}
-.card{background:#071724;border:1px solid #17344d;border-radius:13px;padding:18px}.hero{background:linear-gradient(135deg,#0a243a,#071522);border:1px solid #19415f;border-radius:13px;padding:18px}.hero h2{margin:0 0 6px}.hero p{margin:0;color:#8ea4b8;line-height:1.6}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.stat{background:#081a29;border:1px solid #153b56;border-radius:10px;padding:14px}.stat small{display:block;color:#748b9f}.stat b{display:block;font-size:20px;margin-top:5px}.market-table{width:100%;border-collapse:collapse}.market-table th,.market-table td{padding:12px 8px;border-bottom:1px solid #102b40;text-align:left}.market-table th{font-size:11px;color:#71889c}.market-row{cursor:pointer}.market-row:hover{background:#0a1f32}.guide{padding:13px 0;border-bottom:1px solid #102c41}.guide:last-child{border-bottom:0}.guide b{display:block;margin-bottom:4px}.muted{color:#8ea4b8;line-height:1.65}.settings .row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 0;border-bottom:1px solid #102c41}.settings .row:last-child{border:0}.switch{width:44px;height:24px;border:0;border-radius:20px;background:#24384a;position:relative}.switch:after{content:"";position:absolute;left:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#d7e3ec;transition:.2s}.switch.on{background:#07946b}.switch.on:after{left:23px}.wallet-balance{font-size:34px;font-weight:900;margin:8px 0}.wallet-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}.modal{position:fixed;inset:0;background:rgba(0,0,0,.74);display:none;align-items:center;justify-content:center;padding:18px;z-index:100}.modal.show{display:flex}.dialog{width:min(500px,100%);background:#071724;border:1px solid #1a4a6a;border-radius:14px;padding:18px}.dialog h3{margin:0}.field{margin-top:10px}.field label{display:block;color:#8ba4b8;font-size:11px;margin-bottom:5px}.field input{width:100%;border:1px solid #1a3953;border-radius:8px;background:#081722;color:#fff;padding:10px;outline:0}.dialog-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}.toast{position:fixed;right:20px;bottom:20px;background:#0d2133;border:1px solid #1d4f72;border-radius:9px;padding:11px 14px;opacity:0;transform:translateY(10px);transition:.2s;z-index:120}.toast.show{opacity:1;transform:translateY(0)}
-@media(max-width:1100px){.dashboard-layout{grid-template-columns:165px minmax(0,1fr) 300px}.digits{gap:5px}.digit{width:48px;height:48px}.cards{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:900px){.app{grid-template-columns:1fr}.sidebar{position:fixed;left:-235px;width:220px;transition:.2s}.sidebar.open{left:0}.mobile-menu{display:inline-block}.dashboard-layout{height:auto;grid-template-columns:160px minmax(0,1fr)}.right-pane{grid-column:1/-1;min-height:450px}.chart-wrap{height:570px}.digits{overflow:auto;grid-template-columns:repeat(10,55px);justify-content:start}.topbar{height:auto}.top-actions .pill{display:none}.stats{grid-template-columns:1fr 1fr}}
-@media(max-width:650px){.main{padding:8px}.dashboard-layout{display:flex;flex-direction:column;min-height:0}.left-pane{min-height:330px}.chart-pane{height:560px}.right-pane{min-height:460px}.symbol-card{width:250px}.digits{grid-template-columns:repeat(10,55px)}.wallet-actions{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}}
+:root{
+  --bg:#030a12;--panel:#071522;--panel2:#0a1a2b;--line:#16344f;
+  --text:#f4f8fc;--muted:#7e94aa;--blue:#1297ff;--cyan:#16d9ff;
+  --green:#16e39a;--red:#ff416d;--gold:#ffbd4a;--shadow:0 12px 35px rgba(0,0,0,.28);
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 55% 0,#0a2034 0,#030a12 42%);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif}
+button,input,select{font:inherit}button{cursor:pointer}
+.app{display:grid;grid-template-columns:220px 1fr;min-height:100vh}
+.sidebar{position:sticky;top:0;height:100vh;border-right:1px solid var(--line);background:rgba(3,11,19,.94);padding:18px 12px;z-index:5}
+.brand{display:flex;gap:10px;align-items:center;padding:8px 10px 22px;font-weight:900;font-size:20px}
+.logo{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,#0f83ff,#14d9ff);color:white;box-shadow:0 0 25px rgba(18,151,255,.25)}
+.nav{display:grid;gap:6px}.nav button{border:0;background:transparent;color:#8fa4b8;text-align:left;padding:12px 13px;border-radius:10px;display:flex;align-items:center;gap:11px;font-weight:700}
+.nav button:hover,.nav button.active{background:linear-gradient(90deg,#0c5fa9,#0c3151);color:white}
+.icon{width:20px;text-align:center}.profile{position:absolute;left:12px;right:12px;bottom:15px;background:linear-gradient(145deg,#0b2034,#07111c);border:1px solid var(--line);border-radius:14px;padding:12px}
+.avatar{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#183e62,#0c8ed8);font-size:18px;font-weight:900;margin-bottom:8px}
+.profile b{display:block}.profile small{color:var(--muted);line-height:1.45}.profile .year{color:#ffcf68;font-size:11px;margin-top:7px}
+.main{min-width:0;padding:18px 20px 35px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:14px}
+.mobile-menu{display:none}.title h1{margin:0;font-size:22px}.title span{color:var(--muted);font-size:12px}
+.top-actions{display:flex;gap:8px;align-items:center}.pill,.btn{border:1px solid var(--line);background:#0a1b2c;color:#d9e7f2;border-radius:9px;padding:9px 13px}.btn.primary{background:linear-gradient(135deg,#0c9bff,#0b75f5);border-color:#20a6ff;color:#fff;font-weight:800}.btn.green{background:#0c8d67;border-color:#15c991}.btn.red{background:#9f2145;border-color:#d7335d}.btn:hover{filter:brightness(1.12)}
+.ticker{display:grid;grid-template-columns:1.2fr repeat(4,1fr);gap:8px;margin-bottom:10px}.ticker-card{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:11px 13px}.ticker-card small{color:var(--muted);display:block}.ticker-card strong{font-size:15px}.up{color:var(--green)}.down{color:var(--red)}
+.dashboard{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:12px}
+.market-head{display:flex;justify-content:space-between;align-items:center;gap:10px}.market-title{display:flex;align-items:center;gap:10px}.coin{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:#ff9f1a;color:#fff;font-weight:900}.market-title h2{margin:0;font-size:19px}.market-title small{color:var(--muted)}
+.chart-card,.ai-card,.watch-card,.orders-card,.activity-card,.wallet-card,.guide-card{background:rgba(7,21,34,.96);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}
+.chart-card{padding:14px}.timeframes{display:flex;gap:5px}.timeframes button{border:0;background:transparent;color:#7890a5;padding:6px 8px;border-radius:7px}.timeframes button.active{background:#0b3155;color:#fff}
+.chart-wrap{height:390px;margin-top:8px;position:relative;border:1px solid #102a40;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#06121d 0%,#040e17 100%)}
+.chart-wrap:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 15%,rgba(19,151,255,.08),transparent 35%);pointer-events:none}
+.chart-wrap svg{width:100%;height:100%;display:block}.chart-grid{stroke:#123149;stroke-width:1;stroke-opacity:.65}.axis-label{fill:#61788d;font-size:10px;font-family:Inter,Segoe UI,Arial,sans-serif}.axis-label.strong{fill:#9eb1c1}.wick-up{stroke:#17d9a0;stroke-width:1.3}.body-up{fill:#17c993}.wick-down{stroke:#ff4a70;stroke-width:1.3}.body-down{fill:#ef4168}.ema-fast{fill:none;stroke:#1bdcff;stroke-width:1.8;opacity:.95}.ema-slow{fill:none;stroke:#f6bf55;stroke-width:1.4;opacity:.85}.price-marker{stroke:#16d9ff;stroke-width:1;stroke-dasharray:5 4;opacity:.9}.price-pill{fill:#0e7ebd;stroke:#35d8ff;stroke-width:.8}.price-text{fill:#fff;font-size:10px;font-weight:800}.volume-up{fill:#16c994;opacity:.34}.volume-down{fill:#ff416d;opacity:.30}.chart-badge{fill:#081b2a;stroke:#1a4967;stroke-width:1}.chart-badge-text{fill:#9bb0c1;font-size:10px;font-weight:700}.chart-signal{fill:#0a3327;stroke:#15a980;stroke-width:1}.chart-signal-text{fill:#26e4a4;font-size:10px;font-weight:800}
+.trade-box{margin-top:12px;background:#06121f;border:1px solid #13314a;border-radius:10px;padding:12px}.tabs{display:flex;gap:5px;margin-bottom:10px}.tabs button{flex:1;border:1px solid var(--line);background:#0a1b2a;color:#879bb0;padding:8px;border-radius:7px}.tabs button.active{background:#0d3657;color:#fff}
+.field{margin-bottom:9px}.field label{display:block;color:#8298ac;font-size:11px;margin-bottom:5px}.field input,.field select{width:100%;border:1px solid #193952;background:#071724;color:#fff;border-radius:7px;padding:9px;outline:none}.trade-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.trade-actions button{padding:10px;border-radius:8px;border:0;color:white;font-weight:900}.buy{background:#08b887}.sell{background:#ef3c68}
+.ai-card{padding:15px}.ai-head{display:flex;align-items:center;justify-content:space-between}.ai-head h3{margin:0}.new{font-size:9px;background:#05b987;padding:3px 6px;border-radius:10px;color:#001c16;font-weight:900}.ai-intro{font-size:12px;color:#8fa4b8;line-height:1.5}.analysis{border:1px solid #16425a;background:linear-gradient(145deg,#081c2d,#06121e);border-radius:10px;padding:12px;margin-top:10px}.analysis-top{display:flex;justify-content:space-between;align-items:center}.badge{font-size:10px;border:1px solid #0d8d6c;color:#27e4a4;padding:4px 7px;border-radius:12px}.strength{display:flex;align-items:center;gap:12px;margin-top:10px}.ring{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--green) 0 78%,#183247 78%);position:relative}.ring:after{content:"";position:absolute;inset:7px;background:#071522;border-radius:50%}.ring b{position:relative;z-index:1}.signal{font-size:21px;font-weight:900}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:10px}.metric{background:#06111c;padding:8px;border-radius:7px}.metric small{color:#6f8498;display:block;font-size:10px}.metric b{font-size:12px}.ai-list{padding-left:16px;color:#91a6ba;font-size:11px;line-height:1.7}.ai-list strong{color:#d9e8f4}.ai-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px}.toggle-row{display:flex;align-items:center;justify-content:space-between;margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}.switch{width:44px;height:24px;border:0;border-radius:20px;background:#263c4e;position:relative}.switch:after{content:"";position:absolute;left:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#d8e4ee;transition:.2s}.switch.on{background:#07956b}.switch.on:after{left:23px}
+.lower{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.card-head{padding:13px 14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}.card-head h3{margin:0;font-size:14px}.card-head a{color:#25aaff;font-size:11px}.watch-list,.activity-list,.orders{padding:5px 14px}.row{display:grid;grid-template-columns:1.5fr 1fr .8fr;gap:7px;align-items:center;padding:10px 0;border-bottom:1px solid #10273a;font-size:12px}.row:last-child{border:0}.coin-mini{display:flex;gap:8px;align-items:center}.coin-mini i{width:25px;height:25px;border-radius:50%;display:grid;place-items:center;background:#173958;font-style:normal;font-size:10px}.row small{color:var(--muted);display:block}.right{text-align:right}
+.orders-card{margin-top:12px}.order-table{width:100%;border-collapse:collapse;font-size:11px}.order-table th,.order-table td{padding:10px 8px;text-align:left;border-bottom:1px solid #10273a}.order-table th{color:#6f8498;font-weight:600}.status{padding:4px 7px;border-radius:10px;background:#0b3a2d;color:#28e5a5}
+.activity-card{margin-top:12px}.activity{display:flex;gap:10px;padding:10px 14px;border-bottom:1px solid #10273a;font-size:11px}.activity:last-child{border:0}.activity .dot{width:22px;height:22px;border-radius:7px;background:#0d3553;display:grid;place-items:center}.activity small{display:block;color:#61778c;margin-top:2px}
+.sections{display:none}.sections.show{display:block}.page-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;margin-top:10px}.page-card h2{margin-top:0}.page-card p,.page-card li{color:#8ea4b8;line-height:1.7}
+.toast{position:fixed;right:20px;bottom:20px;background:#0d2235;border:1px solid #1b4d70;padding:12px 15px;border-radius:9px;box-shadow:var(--shadow);opacity:0;transform:translateY(10px);pointer-events:none;transition:.25s;z-index:20}.toast.show{opacity:1;transform:translateY(0)}
+@media(max-width:1050px){.dashboard{grid-template-columns:1fr}.ai-card{order:2}.ticker{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.app{display:block}.sidebar{position:fixed;left:-235px;transition:.25s;width:220px}.sidebar.open{left:0}.mobile-menu{display:block}.main{padding:12px}.topbar{align-items:flex-start}.ticker{grid-template-columns:1fr 1fr}.lower{grid-template-columns:1fr}.chart-wrap{height:260px}.profile{display:none}}
+@media(max-width:480px){.ticker{grid-template-columns:1fr}.top-actions .pill{display:none}.market-head{align-items:flex-start}.timeframes{overflow:auto}.row{grid-template-columns:1.2fr .8fr .8fr}.order-table{font-size:9px}}
 
-/* Final dashboard layout override: dashboard redesigned without changing GV AI Analyst logic/UI */
-.dashboard-layout{grid-template-columns:190px minmax(560px,1fr) 400px;gap:8px;height:calc(100vh - 92px);min-height:650px}
-.dashboard-layout .pane{border-radius:13px}
-.chart-pane{min-height:650px}
-.chart-tools{height:56px;padding:7px 9px}
-.chart-tools .select{min-width:78px}
-.right-pane{padding:11px 12px;gap:10px}
-.right-head h3{font-size:19px}
-.mode-tabs button{font-size:10px;padding:13px 4px}
-.contract{padding:15px}
-.contract strong{font-size:24px}
-.scanner{margin-top:2px}
-.note{margin-top:auto}
-@media(max-width:1250px){.dashboard-layout{grid-template-columns:175px minmax(0,1fr) 360px}.digits{gap:6px}.digit{width:50px;height:50px}}
-@media(max-width:1000px){.dashboard-layout{grid-template-columns:155px minmax(0,1fr) 330px}.symbol-card{width:280px}.right-pane{font-size:12px}}
-@media(max-width:900px){.dashboard-layout{grid-template-columns:160px minmax(0,1fr);height:auto;min-height:0}.right-pane{grid-column:1/-1}.chart-pane{min-height:560px}.chart-wrap{height:560px}}
-@media(max-width:650px){.dashboard-layout{display:flex;flex-direction:column}.left-pane{min-height:320px}.chart-pane{height:540px;min-height:540px}.right-pane{min-height:470px}.symbol-card{width:calc(100% - 20px);max-width:290px}}
+.ai-terminal{display:grid;grid-template-columns:1.25fr .75fr;gap:12px;margin-top:12px}
+.ai-panel,.monitor-panel{background:#071522;border:1px solid #16344f;border-radius:12px;padding:15px}
+.ai-panel h3,.monitor-panel h3{margin:0 0 5px}
+.muted{color:#7890a5;font-size:11px;line-height:1.5}
+.scan-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+.scan-box{background:#06111c;border:1px solid #123149;border-radius:9px;padding:10px}
+.scan-box small{display:block;color:#6f8498;font-size:10px}.scan-box b{display:block;margin-top:5px}
+.progress{height:7px;background:#102638;border-radius:20px;overflow:hidden;margin-top:6px}.progress i{display:block;height:100%;background:linear-gradient(90deg,#0ca5ff,#17e4a0);border-radius:20px}
+.signal-big{display:flex;align-items:center;gap:14px;margin:12px 0}
+.signal-circle{width:90px;height:90px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#15dfa0 0 78%,#163247 78%);position:relative}
+.signal-circle:after{content:"";position:absolute;inset:8px;background:#071522;border-radius:50%}
+.signal-circle span{position:relative;z-index:1;font-size:20px;font-weight:900}
+.detail-list{display:grid;gap:7px;margin-top:12px}
+.detail-line{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #10273a;padding:8px 0;font-size:11px}.detail-line span{color:#70869a}
+.monitor-head{display:flex;justify-content:space-between;align-items:center}
+.live-dot{display:inline-flex;align-items:center;gap:5px;color:#18dfa0;font-size:10px}.live-dot:before{content:"";width:7px;height:7px;border-radius:50%;background:#18dfa0;box-shadow:0 0 10px #18dfa0}
+.bot-state{padding:6px 9px;border-radius:8px;background:#082e26;color:#1be0a0;font-size:10px;font-weight:800}
+.bot-state.off{background:#2b1820;color:#ff6386}
+.execution-feed{height:230px;overflow:auto;margin-top:10px;border:1px solid #102b41;border-radius:9px;background:#04101a}
+.exec{display:grid;grid-template-columns:52px 1fr auto;gap:8px;padding:9px;border-bottom:1px solid #0e2638;font-size:10px}
+.exec:last-child{border:0}.exec .type{font-weight:800;color:#16d9ff}.exec .time{color:#62798d;text-align:right}
+.human-tag{padding:3px 5px;border-radius:7px;background:#1b2732;color:#a6bacb;font-size:9px}.bot-tag{background:#083d35;color:#20e3a4}
+.auto-controls{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.risk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}
+.risk-box{padding:9px;background:#06111c;border-radius:8px;border:1px solid #102b41}.risk-box small{display:block;color:#71879b;font-size:9px}.risk-box b{font-size:12px}
+@media(max-width:850px){.ai-terminal{grid-template-columns:1fr}.scan-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.scan-grid,.risk-grid{grid-template-columns:1fr 1fr}.auto-controls{grid-template-columns:1fr}}
 
+/* GV Trading Terminal — screenshot-inspired 3-panel layout */
+.trade-terminal{display:grid;grid-template-columns:185px minmax(0,1fr) 310px;gap:10px;height:700px;min-height:700px;margin-top:14px}
+.terminal-pane{background:#06131f;border:1px solid #173550;border-radius:14px;overflow:hidden;min-width:0}
+.terminal-left{display:flex;flex-direction:column}.terminal-tabs{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #173550}
+.terminal-tab{padding:18px 8px;text-align:center;color:#7893aa;font-weight:800;cursor:pointer;border-bottom:3px solid transparent}.terminal-tab.active{color:#fff;border-bottom-color:#1597ff}
+.terminal-left-body{padding:16px 12px;display:flex;flex-direction:column;gap:12px;height:100%}
+.terminal-subtitle{color:#7892a8;font-size:12px}.terminal-empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#6f879d;padding:10px}.terminal-empty .empty-icon{width:45px;height:45px;border:4px solid #8091a8;border-radius:50%;display:grid;place-items:center;margin-bottom:15px;font-size:19px;color:#8091a8}.terminal-empty strong{color:#fff;font-size:14px;margin-bottom:6px}.terminal-empty span{font-size:11px;line-height:1.5}
+.terminal-history-btn{margin-top:auto;width:100%;border:0;background:#0a1726;color:#fff;padding:11px 8px;border-radius:10px;font-weight:800;cursor:pointer}
+.terminal-center{display:flex;flex-direction:column;background:#04101b}.terminal-toolbar{height:56px;display:flex;align-items:center;gap:8px;padding:8px 10px;border-bottom:1px solid #173550}.terminal-tool{height:38px;min-width:38px;border:1px solid #1b3750;border-radius:10px;background:#0b1c2b;color:#d7e7f5;padding:0 10px;cursor:pointer}.terminal-tool:hover{filter:brightness(1.12)}.terminal-select{height:38px;border:1px solid #1b3750;border-radius:10px;background:#0b1c2b;color:#fff;padding:0 10px;font-weight:700}.terminal-symbol-card{position:absolute;left:18px;top:14px;background:#1a2c42;border:1px solid #2b4864;border-radius:12px;padding:12px 14px;width:280px;z-index:2;box-shadow:0 10px 30px rgba(0,0,0,.2)}.terminal-symbol-line{display:flex;align-items:center;gap:10px}.terminal-symbol-icon{width:38px;height:38px;border-radius:9px;background:#153e57;color:#1edcff;display:grid;place-items:center;font-size:18px;font-weight:900}.terminal-symbol-card strong{display:block;font-size:14px}.terminal-symbol-card small{color:#fff;font-weight:700}.terminal-price-down{color:#ff4e74;font-size:11px;margin-left:4px}.terminal-chart-wrap{position:relative;flex:1;min-height:0;border-bottom:1px solid #102b43;background:linear-gradient(180deg,#04101a,#03101a)}.terminal-chart-wrap svg{width:100%;height:100%;display:block}.terminal-grid{stroke:#173248;stroke-width:1;opacity:.55}.terminal-chart-line{fill:none;stroke:#3e9dff;stroke-width:2.2}.terminal-chart-area{fill:url(#tradeAreaGradient);opacity:.34}.terminal-price-line{stroke:#1379cb;stroke-width:1;stroke-dasharray:4 4;opacity:.9}.terminal-axis{fill:#5f7891;font-size:10px;font-family:Inter,Segoe UI,Arial,sans-serif}.terminal-price-pill{fill:#147be2;stroke:#147be2}.terminal-price-text{fill:#fff;font-weight:900;font-size:11px}.terminal-time-label{fill:#5e7891;font-size:9px}.terminal-market-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;padding:9px;border-top:1px solid #102b43}.terminal-stat{background:#071521;border:1px solid #12304a;border-radius:9px;padding:7px;text-align:center}.terminal-stat small{display:block;color:#638099;font-size:8px}.terminal-stat b{font-size:12px}
+.terminal-right{padding:14px;display:flex;flex-direction:column;gap:12px}.terminal-right-head{display:flex;justify-content:space-between;gap:8px;align-items:center}.terminal-right-head h3{margin:0;font-size:16px}.manual-label{color:#7290a8;font-size:11px}.terminal-mode-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;background:#07131f;border:1px solid #162b40;border-radius:9px;padding:4px}.terminal-mode-tabs button{border:0;background:transparent;color:#7890a5;padding:9px 4px;font-size:9px;border-radius:7px;cursor:pointer}.terminal-mode-tabs button.active{background:#1686ee;color:#fff;font-weight:800}.stake-label,.duration-label{display:flex;justify-content:space-between;color:#82a0b7;font-size:11px;margin-bottom:6px}.stepper{display:grid;grid-template-columns:42px 1fr 42px;border:1px solid #1b3550;border-radius:10px;overflow:hidden;background:#081824}.stepper button{border:0;background:transparent;color:#fff;font-size:20px;cursor:pointer}.stepper input{width:100%;text-align:center;background:transparent;border:0;color:#fff;font-size:20px;font-weight:900;outline:none;padding:11px}.quick-stakes{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:7px}.quick-stakes button{border:1px solid #1a3249;background:#081523;color:#8da3b7;border-radius:8px;padding:9px 4px;font-size:9px;cursor:pointer}.quick-stakes button.active{border-color:#1a9cff;color:#1aa5ff;background:#071e35}.payout-row{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#83a0b5;border-top:1px solid #132b41;padding-top:10px}.payout-row b{font-size:18px;color:#fff}.terminal-contract{display:grid;gap:8px}.contract-btn{border:0;border-radius:12px;padding:12px 14px;text-align:left;color:#fff;cursor:pointer}.contract-btn.green{background:linear-gradient(135deg,#0f9f79,#0d8668)}.contract-btn.red{background:linear-gradient(135deg,#d70c3f,#bd0d35)}.contract-btn strong{display:block;font-size:22px;line-height:1}.contract-btn span{display:block;margin-top:7px;font-size:10px}.terminal-ai{margin-top:auto;border:1px solid #3d3aa9;border-radius:12px;background:linear-gradient(135deg,#0d1536,#15104e);padding:12px}.terminal-ai-head{display:flex;justify-content:space-between;align-items:center}.terminal-ai-chip{width:34px;height:34px;border-radius:50%;background:#118bf6;color:#fff;display:grid;place-items:center;font-weight:900}.terminal-ai small{color:#86a1b8}.terminal-ai button{border:1px solid #8a71ff;background:transparent;color:#fff;border-radius:8px;padding:7px 11px;cursor:pointer;font-weight:700}.terminal-ai-score{margin-top:8px;color:#b8a6ff;font-size:11px}
+@media(max-width:1050px){.trade-terminal{grid-template-columns:170px minmax(0,1fr);height:auto;min-height:760px}.terminal-right{grid-column:1/-1;min-height:420px}.terminal-ai{margin-top:0}}
+@media(max-width:760px){.trade-terminal{display:flex;flex-direction:column;min-height:0}.terminal-pane{min-height:320px}.terminal-center{height:510px}.terminal-right{min-height:430px}.terminal-symbol-card{width:250px}.quick-stakes{grid-template-columns:repeat(3,1fr)}}
+</style>
 
+<style>
+.page-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}.info-card{background:#071521;border:1px solid #15344b;border-radius:14px;padding:18px}.info-card h3{margin:0 0 8px}.info-card p,.info-card li{color:#8ea4b8;line-height:1.65}.stat-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}.mini-stat{background:#081a29;border:1px solid #15344b;border-radius:12px;padding:14px}.mini-stat small{display:block;color:#71879a}.mini-stat b{display:block;font-size:19px;margin-top:5px}.market-table{width:100%;border-collapse:collapse;margin-top:10px}.market-table th,.market-table td{padding:12px 8px;border-bottom:1px solid #102b3e;text-align:left}.market-table th{color:#71879a;font-size:11px}.market-table td{font-size:13px}.action-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.guide-item{padding:12px 0;border-bottom:1px solid #102b3e}.guide-item:last-child{border-bottom:0}.guide-item b{display:block;margin-bottom:4px}.profile-large{display:flex;gap:14px;align-items:center;margin-bottom:16px}.profile-large .avatar{width:64px;height:64px;font-size:22px}.setting-row{display:flex;justify-content:space-between;gap:15px;align-items:center;padding:14px 0;border-bottom:1px solid #102b3e}.setting-row:last-child{border-bottom:0}.setting-row small{display:block;color:#71879a;margin-top:4px}.toggle-demo{width:42px;height:22px;border-radius:20px;background:#15344b;position:relative}.toggle-demo:after{content:'';position:absolute;width:16px;height:16px;border-radius:50%;background:#8ea4b8;left:3px;top:3px;transition:.2s}.toggle-demo.on{background:#07956b}.toggle-demo.on:after{left:23px;background:#dffaf2}.page-hero{padding:18px;background:linear-gradient(135deg,#09233a,#061522);border:1px solid #17405d;border-radius:14px}.page-hero h2{margin:0 0 6px}.page-hero p{margin:0}.wallet-balance{font-size:32px;font-weight:900;margin:8px 0}.wallet-action{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid #102b3e}.wallet-action:last-child{border-bottom:0}@media(max-width:900px){.page-grid{grid-template-columns:1fr}.stat-row{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){.stat-row{grid-template-columns:1fr 1fr}.market-table{font-size:12px}.market-table th:nth-child(4),.market-table td:nth-child(4){display:none}}
+</style>
 
-/* ===== GV DASHBOARD TERMINAL REDESIGN =====
-   This block changes only the Dashboard presentation.
-   The GV AI Analyst HTML and analysis JavaScript below remain untouched. */
-#dashboardPage{width:100%;}
-#dashboardPage .dashboard-layout{
-  grid-template-columns:300px minmax(0,1fr) 430px;
-  gap:10px;
-  height:calc(100vh - 92px);
-  min-height:620px;
-}
-#dashboardPage .pane{
-  background:#03111d;
-  border:1px solid #173954;
-  border-radius:14px;
-  box-shadow:0 8px 24px rgba(0,0,0,.16);
-}
-#dashboardPage .left-pane{min-width:0;}
-#dashboardPage .left-tabs{height:62px;}
-#dashboardPage .left-tabs button{font-size:15px;padding:18px 10px;}
-#dashboardPage .left-body{padding:14px 14px 12px;}
-#dashboardPage .sub{font-size:14px;color:#8ba5bb;margin-bottom:4px;}
-#dashboardPage .empty-icon{width:52px;height:52px;border-width:3px;color:#93a5bb;}
-#dashboardPage .empty strong{font-size:16px;}
-#dashboardPage .empty span{font-size:12px;max-width:190px;}
-#dashboardPage .activity-list{max-height:240px;}
-#dashboardPage .history{font-size:13px;padding:12px;background:#0a1a2a;border:1px solid #102f48;}
-
-#dashboardPage .chart-pane{background:#020f1a;overflow:hidden;}
-#dashboardPage .chart-tools{
-  height:58px;
-  background:#03101b;
-  border-bottom:1px solid #17334a;
-  padding:7px 10px;
-  gap:8px;
-}
-#dashboardPage .chart-tools .select,
-#dashboardPage .chart-tools .tool{
-  height:42px;
-  background:#071827;
-  border-color:#193c59;
-  border-radius:10px;
-  color:#dce8f2;
-  box-shadow:none;
-}
-#dashboardPage .chart-tools .select{min-width:78px;font-weight:800;}
-#dashboardPage .chart-tools .tool{min-width:42px;font-size:14px;}
-#dashboardPage .chart-tools .tool:hover,
-#dashboardPage .chart-tools .select:hover{border-color:#2b6b96;background:#0a2032;}
-#dashboardPage .chart-wrap{background:#020f1a;}
-#dashboardPage .symbol-card{
-  left:12px;top:14px;width:390px;
-  background:#17263a;
-  border:1px solid #2a4561;
-  border-radius:14px;
-  padding:13px 15px;
-}
-#dashboardPage .coin{background:#173c52;}
-#dashboardPage .symbol b{font-size:19px;}
-#dashboardPage .symbol small{font-size:12px;color:#bdcddb;}
-#dashboardPage .price-badge{right:12px;top:44%;font-size:16px;padding:9px 13px;}
-#dashboardPage .digits{
-  grid-template-columns:repeat(10,1fr);
-  gap:8px;
-  padding:13px 11px 15px;
-  background:#03101b;
-  border-top:1px solid #17334a;
-}
-#dashboardPage .digit{
-  width:58px;height:58px;
-  border-width:5px;
-  background:#061521;
-}
-#dashboardPage .digit b{font-size:17px;}
-#dashboardPage .digit small{font-size:8px;}
-
-#dashboardPage .right-pane{
-  background:#03111d;
-  padding:12px 12px 10px;
-  gap:10px;
-}
-#dashboardPage .right-head{padding:2px 1px;}
-#dashboardPage .right-head h3{font-size:19px;}
-#dashboardPage .right-head span{font-size:13px;}
-#dashboardPage .mode-tabs{min-height:49px;}
-#dashboardPage .mode-tabs button{font-size:10px;padding:12px 4px;}
-#dashboardPage .label{font-size:13px;margin-bottom:7px;}
-#dashboardPage .stepper{min-height:52px;background:#061521;}
-#dashboardPage .stepper input{font-size:20px;}
-#dashboardPage .quick button{padding:10px 3px;font-size:10px;}
-#dashboardPage .payout{font-size:13px;}
-#dashboardPage .payout b{font-size:20px;}
-#dashboardPage .contract{padding:16px;border-radius:13px;min-height:88px;}
-#dashboardPage .contract strong{font-size:24px;}
-#dashboardPage .contract span{font-size:11px;}
-#dashboardPage .scanner{padding:12px;}
-#dashboardPage .scanner small{font-size:10px;}
-#dashboardPage .scanner button{font-size:10px;}
-#dashboardPage .note{font-size:10px;padding:4px 1px 1px;}
-
-@media(min-width:901px){
-  body:has(#dashboardPage.active) .main{padding:8px;}
-  body:has(#dashboardPage.active) .topbar{display:none;}
-  body:has(#dashboardPage.active) #dashboardPage .dashboard-layout{height:calc(100vh - 16px);min-height:0;}
-}
-@media(max-width:1200px){
-  #dashboardPage .dashboard-layout{grid-template-columns:250px minmax(0,1fr) 390px;}
-  #dashboardPage .symbol-card{width:340px;}
-}
-@media(max-width:1000px){
-  #dashboardPage .dashboard-layout{grid-template-columns:210px minmax(0,1fr) 340px;}
-  #dashboardPage .symbol-card{width:300px;}
-}
-@media(max-width:900px){
-  #dashboardPage .dashboard-layout{grid-template-columns:160px minmax(0,1fr);height:auto;min-height:0;}
-  #dashboardPage .right-pane{grid-column:1/-1;}
-}
-@media(max-width:650px){
-  #dashboardPage .dashboard-layout{display:flex;flex-direction:column;}
-  #dashboardPage .left-pane{min-height:320px;}
-  #dashboardPage .chart-pane{height:560px;min-height:560px;}
-  #dashboardPage .right-pane{min-height:470px;}
-  #dashboardPage .symbol-card{width:calc(100% - 24px);max-width:390px;}
-  #dashboardPage .digits{grid-template-columns:repeat(10,55px);overflow:auto;justify-content:start;}
-}
+<style>
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;padding:18px;z-index:50}.modal-backdrop.show{display:flex}.modal{width:min(520px,100%);background:#071522;border:1px solid #1a4665;border-radius:15px;padding:18px;box-shadow:0 25px 70px rgba(0,0,0,.5)}.modal h3{margin:0 0 6px}.modal p{color:#8ea4b8;font-size:12px;line-height:1.6}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}.modal .field{margin-top:10px}.selected-control{background:#0d3657!important;color:#fff!important;border-color:#1c8ed0!important}.control-note{font-size:10px;color:#6f8498;margin-top:6px}.risk-input{width:100%;background:#071724;border:1px solid #193952;color:#fff;border-radius:7px;padding:7px;outline:none}.risk-box{min-width:0}.risk-box input{margin-top:5px}.status.closed{background:#2b2630;color:#a9b4bf}.market-row{cursor:pointer}.market-row:hover{background:#0a2032}.disabled-btn{opacity:.5;pointer-events:none}
+@media(max-width:600px){.modal{padding:15px}.modal-actions{flex-direction:column}.modal-actions .btn{width:100%}}
 </style>
 </head>
 <body>
@@ -178,117 +111,470 @@
     <button onclick="showPage('founder',this)">♙ <span>Founder</span></button>
     <button onclick="showPage('settings',this)">⚙ <span>Settings</span></button>
   </nav>
-  <div class="profile"><div class="avatar">GB</div><b>Gyane Baraka</b><small>Founder · GV Trading</small><small>Crypto market learning & demo trading platform.</small></div>
+  <div class="profile"><div class="avatar">GB</div><b>Gyane Baraka</b><small>Founder — GV</small><small>Building a learning-focused digital environment for people interested in crypto markets.</small><div class="year">1994 · Somali & Kenyan Citizen</div></div>
 </aside>
+
 <main class="main">
-<header class="topbar"><div class="top-left"><button class="pill mobile-menu" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button><div class="title"><h1 id="pageTitle">Trading Dashboard</h1><small>AI market intelligence · simulated trading</small></div></div><div class="top-actions"><span class="pill">Demo Balance <b id="balanceTop">$25,840.00</b></span><button class="btn primary" onclick="openModal('accountModal')">Create Demo Account</button></div></header>
+<header class="topbar">
+  <div style="display:flex;align-items:center;gap:10px"><button class="pill mobile-menu" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button><div class="title"><h1 id="pageTitle">Trading Dashboard</h1><span>AI-powered market intelligence · simulated trading</span></div></div>
+  <div class="top-actions"><span class="pill">Demo Balance <b id="balance">$25,840.00</b></span><button class="btn primary" onclick="openModal('accountModal')">Create Demo Account</button></div>
+</header>
 
-<section id="dashboardPage" class="page active">
-<div class="dashboard-layout">
-  <section class="pane left-pane">
-    <div class="left-tabs"><button class="active" id="openTab" onclick="switchLeft('open')">Open <span id="openCount">(0)</span></button><button id="closedTab" onclick="switchLeft('closed')">Closed <span id="closedCount">(0)</span></button></div>
-    <div class="left-body"><div class="sub">Recent activity</div>
-      <div id="openView" class="empty"><div class="empty-icon">◎</div><strong>No open trades</strong><span>Your active demo contract will appear here.</span></div>
-      <div id="closedView" class="empty" style="display:none"><div class="empty-icon">✓</div><strong>No closed trades</strong><span>Completed demo contracts will appear here.</span></div>
-      <div id="dashActivity" class="activity-list"></div>
-      <button class="history" onclick="toast('Demo history is stored only in this browser.')">◷ View all history</button>
-    </div>
-  </section>
-
-  <section class="pane chart-pane">
-    <div class="chart-tools"><select id="tf" class="select" onchange="changeTF(this.value)"><option>1s</option><option>5s</option><option>15s</option><option>30s</option><option>1m</option></select><button class="tool" onclick="resetChart()">⌁</button><button class="tool" id="gridBtn" onclick="toggleGrid()">▥</button><button class="tool" onclick="toast('Indicators are hidden for the clean dashboard.')">Indicators⌄</button><button class="tool" onclick="scanDashboard()">◎</button><button class="tool" onclick="fullChart()">⛶</button></div>
-    <div class="chart-wrap" id="chartWrap"><div class="symbol-card"><div class="symbol"><div class="coin" id="coin">▣</div><div><b id="symbolTitle">Volatility 100 (1s) Index</b><small><span id="symbolPrice">885.65</span> <span class="down" id="symbolChange">-0.07% ↗</span></small></div></div></div><canvas id="chart"></canvas><div class="price-badge" id="priceBadge">885.65</div></div>
-    <div class="digits" id="digits"></div>
-  </section>
-
-  <aside class="pane right-pane">
-    <div class="right-head"><h3>Trade Type</h3><span>Manual trading</span></div>
-    <div class="mode-tabs" id="modes"><button class="active" onclick="setMode(this,'Even/Odd')">Even/Odd</button><button onclick="setMode(this,'Matches/Differs')">Matches/Differs</button><button onclick="setMode(this,'Over/Under')">Over/Under</button><button onclick="setMode(this,'Rise/Fall')">Rise/Fall</button></div>
-    <div><div class="label"><span>Stake Amount</span><span>(USD)</span></div><div class="stepper"><button onclick="adjustStake(-10)">−</button><input id="stake" value="10" type="number" min="10"><button onclick="adjustStake(10)">+</button></div><div class="quick" id="quick"><button class="active" onclick="setStake(10,this)">10</button><button onclick="setStake(25,this)">25</button><button onclick="setStake(50,this)">50</button><button onclick="setStake(100,this)">100</button><button onclick="setStake(250,this)">250</button><button onclick="setStake(500,this)">500</button></div></div>
-    <div><div class="label"><span>Duration</span><span>Demo ticks</span></div><div class="stepper"><button onclick="adjustDuration(-1)">−</button><input id="duration" value="5 ticks" readonly><button onclick="adjustDuration(1)">+</button></div></div>
-    <div class="payout"><span>Estimated payout</span><b id="payout">1.90×</b></div>
-    <div class="contracts"><button class="contract green" onclick="placeContract('EVEN')"><strong id="greenTitle">EVEN</strong><span>Payout <b id="greenPayout">19.00 USD</b></span><span>Profit <b id="greenProfit">9.00 USD</b></span></button><button class="contract red" onclick="placeContract('ODD')"><strong id="redTitle">ODD</strong><span>Payout <b id="redPayout">19.00 USD</b></span><span>Profit <b id="redProfit">9.00 USD</b></span></button></div>
-    <div class="scanner"><div class="scanner-top"><div class="scanner-left"><div class="ai">AI</div><div><b>AI Scanner</b><small>Analyze market & get smart insights</small></div></div><button onclick="scanDashboard()">Scan Now</button></div><div class="scanner-note" id="scanNote">Signal strength: 78% · demo analysis only.</div></div>
-    <div class="note">ⓘ Demo trading only. No real trades, payments or financial transactions are executed.</div>
-  </aside>
+<div id="dashboardPage">
+<div class="ticker">
+  <div class="ticker-card"><small>BTC/USD</small><strong>$67,485.03</strong> <span class="up">+0.81%</span></div>
+  <div class="ticker-card"><small>ETH/USD</small><strong>$3,268.45</strong> <span class="up">+1.24%</span></div>
+  <div class="ticker-card"><small>SOL/USD</small><strong>$164.32</strong> <span class="up">+2.17%</span></div>
+  <div class="ticker-card"><small>EUR/USD</small><strong>1.0724</strong> <span class="down">-0.36%</span></div>
+  <div class="ticker-card"><small>GBP/USD</small><strong>1.2618</strong> <span class="down">-0.21%</span></div>
 </div>
+
+<section class="dashboard">
+<div>
+  <div class="chart-card">
+    <div class="market-head">
+      <div class="market-title"><div class="coin">₿</div><div><h2>BTC/USD <span style="font-size:11px;color:#879caf">⌄</span></h2><small>Bitcoin · Demo Market</small></div><strong class="up" id="livePrice">$67,485.03</strong></div>
+      <div class="timeframes" id="timeframes"><button onclick="setTimeframe(this,'1m')">1m</button><button onclick="setTimeframe(this,'5m')">5m</button><button class="active" onclick="setTimeframe(this,'15m')">15m</button><button onclick="setTimeframe(this,'30m')">30m</button><button onclick="setTimeframe(this,'1h')">1h</button><button onclick="setTimeframe(this,'4h')">4h</button><button onclick="setTimeframe(this,'1d')">1d</button></div>
+    </div>
+    <div class="chart-wrap">
+      <svg id="priceChart" viewBox="0 0 1000 390" preserveAspectRatio="none" aria-label="GV Trading candlestick demo chart">
+        <g id="chartGrid"></g>
+        <g id="chartVolume"></g>
+        <g id="chartCandles"></g>
+        <g id="pricePill"><rect class="price-pill" x="906" y="110" width="88" height="21" rx="4"></rect><text id="chartPriceText" class="price-text" x="914" y="124">$67,485.03</text></g>
+        <g id="chartLabels"></g>
+        <g id="chartLegend"></g>
+      </svg>
+    </div>
+    <div class="trade-box">
+      <div class="tabs" id="orderTabs"><button class="active" onclick="setOrderType(this,'Market')">Market</button><button onclick="setOrderType(this,'Limit')">Limit</button><button onclick="setOrderType(this,'Stop')">Stop</button></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div class="field"><label>Asset</label><select id="asset" onchange="selectAsset(this.value)"><option>BTC/USD</option><option>ETH/USD</option><option>SOL/USD</option><option>XRP/USD</option></select></div>
+        <div class="field"><label>Amount (USD)</label><input id="amount" type="number" value="100" min="10" step="10"></div>
+      </div>
+      <div class="field"><label>Leverage</label><select id="leverage" onchange="updateLeverage()"><option>1x</option><option selected>2x</option><option>5x</option><option>10x</option></select></div>
+      <div class="trade-actions"><button class="buy" onclick="placeTrade('BUY')">BUY</button><button class="sell" onclick="placeTrade('SELL')">SELL</button></div>
+      <div class="control-note" id="orderHint">ⓘ Market order · Demo only — no real trades or financial transactions are executed.</div>
+    </div>
+  </div>
+  <div class="lower">
+    <div class="watch-card"><div class="card-head"><h3>Market Watchlist</h3><a href="#" onclick="showPage('markets');return false">View All</a></div><div class="watch-list">
+      <div class="row"><div class="coin-mini"><i>₿</i><div>BTC/USD<small>Bitcoin</small></div></div><b>$67,485.03</b><span class="up right">+0.81%</span></div>
+      <div class="row"><div class="coin-mini"><i>Ξ</i><div>ETH/USD<small>Ethereum</small></div></div><b>$3,268.45</b><span class="up right">+1.24%</span></div>
+      <div class="row"><div class="coin-mini"><i>◎</i><div>SOL/USD<small>Solana</small></div></div><b>$164.32</b><span class="up right">+2.17%</span></div>
+      <div class="row"><div class="coin-mini"><i>✕</i><div>XRP/USD<small>XRP</small></div></div><b>$0.61</b><span class="up right">+0.55%</span></div>
+    </div></div>
+    <div class="orders-card"><div class="card-head"><h3>Open Trades <span class="up" id="tradeCount">(1)</span></h3><a onclick="closeAll()">Close All</a></div><div class="orders"><table class="order-table"><thead><tr><th>Asset</th><th>Type</th><th>Amount</th><th>P/L</th><th>Status</th></tr></thead><tbody id="ordersBody"><tr><td>BTC/USD</td><td class="up">Buy</td><td>$100</td><td class="up">+$0.96</td><td><span class="status">Open</span></td></tr></tbody></table></div></div>
+  </div>
+  <div class="activity-card"><div class="card-head"><h3>Recent Activity</h3><a href="#" onclick="showToast('Showing the latest demo activity in this panel.');return false">View All</a></div><div id="activity"><div class="activity"><div class="dot">↗</div><div><b>Trade Executed</b><small>BTC/USD · Buy · 100 USD · Demo</small></div></div><div class="activity"><div class="dot">◉</div><div><b>AI Analysis</b><small>Bullish signal detected for BTC/USD</small></div></div><div class="activity"><div class="dot">▣</div><div><b>Wallet Update</b><small>Demo balance synchronized</small></div></div></div></div>
+</div>
+
+<aside>
+  <div class="ai-card">
+    <div class="ai-head"><h3>🤖 GV AI Analyst</h3><span class="new">NEW</span></div>
+    <p class="ai-intro">Get AI-powered market analysis, trend signals and trading insights.</p>
+    <div class="analysis">
+      <div class="analysis-top"><b>Market Analysis</b><span class="badge" id="aiBadge">BULLISH</span></div>
+      <p class="ai-intro" id="aiText">BTC/USD is showing positive demo momentum with supportive buying pressure.</p>
+      <div class="strength"><div class="ring"><b id="aiScore">78%</b></div><div><div class="signal up" id="aiSignal">↗ RISE</div><small style="color:#71879a">Signal strength</small></div></div>
+      <ul class="ai-list"><li>Consider a <strong>BUY</strong> position in demo mode</li><li>Key support: <strong>$66,800</strong></li><li>Next resistance: <strong>$68,200</strong></li></ul>
+      <div class="ai-actions"><button class="btn primary" onclick="analyze()">◉ AI Trade</button><button class="btn" onclick="showPage('ai')">AI Report</button></div>
+      <div class="toggle-row"><span>Auto Trade <small style="color:#6f8498">(simulation)</small></span><button class="switch" id="autoSwitch" onclick="toggleAuto()"></button></div>
+    </div>
+    <div style="margin-top:13px;background:linear-gradient(135deg,#09233a,#061522);border:1px solid #17405d;border-radius:10px;padding:13px"><b>Trade Smarter with GV AI</b><p class="ai-intro">Real-time style market analysis and educational insights powered by the GV demo engine.</p><button class="btn primary" style="width:100%" onclick="showPage('ai')">Try GV AI Analyst →</button></div>
+  </div>
+</aside>
 </section>
+</div>
 
-<section id="tradingPage" class="page"><div class="hero"><h2>GV Trading Terminal</h2><p>Practice demo contracts using the same account and simulated balance. Choose a market type, stake and duration, then record a local demo result.</p></div><div class="stats"><div class="stat"><small>Demo Balance</small><b id="tradingBalance">$25,840.00</b></div><div class="stat"><small>Open Contracts</small><b id="tradingOpen">0</b></div><div class="stat"><small>Closed Contracts</small><b id="tradingClosed">0</b></div><div class="stat"><small>Session P/L</small><b id="tradingPL">$0.00</b></div></div><div class="cards"><div class="card"><h3>Order Controls</h3><p class="muted">This demo terminal mirrors the dashboard controls. Use the buttons on the Dashboard to place simulated EVEN/ODD contracts.</p><button class="btn primary" onclick="showPage('dashboard')">Open Dashboard Trading</button></div><div class="card"><h3>Risk Reminder</h3><p class="muted">Set a stake you can afford to lose in a real setting. The values here are virtual and no real transaction is executed.</p></div></div></section>
+<div id="otherPages" class="sections">
+  <div id="trading" class="page-card">
+    <div class="page-hero"><h2>GV Trading Terminal</h2><p>Practice fast demo trades in a three-panel terminal inspired by modern trading interfaces. All activity on this page is simulated.</p></div>
+    <div class="trade-terminal">
+      <section class="terminal-pane terminal-left">
+        <div class="terminal-tabs">
+          <button class="terminal-tab active" id="openTab" onclick="switchTerminalTab('open')">Open <span id="terminalOpenCount">(0)</span></button>
+          <button class="terminal-tab" id="closedTab" onclick="switchTerminalTab('closed')">Closed <span id="terminalClosedCount">(0)</span></button>
+        </div>
+        <div class="terminal-left-body">
+          <div class="terminal-subtitle">Recent activity</div>
+          <div id="terminalOpenView" class="terminal-empty">
+            <div class="empty-icon">◎</div>
+            <strong id="terminalEmptyTitle">No open demo trades</strong>
+            <span id="terminalEmptyText">Your active simulated contract will appear here.</span>
+          </div>
+          <div id="terminalClosedView" class="terminal-empty" style="display:none">
+            <div class="empty-icon">✓</div>
+            <strong>No closed trades</strong>
+            <span>Completed or closed demo contracts will appear here.</span>
+          </div>
+          <div id="terminalActivity" style="display:grid;gap:7px"></div>
+          <button class="terminal-history-btn" onclick="showToast('Demo history opened. Full history is stored only in this browser session.')">◷ View all history</button>
+        </div>
+      </section>
 
-<section id="marketsPage" class="page"><div class="hero"><h2>Markets</h2><p>Sample market watchlist for GV demo activity. Quotes below are simulated and are not live exchange prices.</p></div><div class="card" style="margin-top:12px"><table class="market-table"><thead><tr><th>Asset</th><th>Price</th><th>Change</th><th>Trend</th><th>Action</th></tr></thead><tbody id="marketRows"></tbody></table></div></section>
+      <section class="terminal-pane terminal-center">
+        <div class="terminal-toolbar">
+          <select class="terminal-select" id="terminalTf" onchange="setTerminalTimeframe(this.value)"><option value="1s">1s</option><option value="5s">5s</option><option value="15s">15s</option><option value="30s">30s</option><option value="1m">1m</option></select>
+          <button class="terminal-tool" onclick="showToast('Chart view refreshed.')">⌁</button>
+          <button class="terminal-tool" onclick="toggleTerminalGrid(this)">▥</button>
+          <button class="terminal-tool" onclick="showToast('Indicators are disabled in the clean demo chart.')">Indicators⌄</button>
+          <button class="terminal-tool" onclick="showToast('AI scanner is reading demo price movement.')">◎</button>
+          <button class="terminal-tool" onclick="toggleTerminalFullscreen()">⛶</button>
+        </div>
+        <div class="terminal-chart-wrap" id="terminalChartWrap">
+          <div class="terminal-symbol-card">
+            <div class="terminal-symbol-line"><div class="terminal-symbol-icon">₿</div><div><strong id="terminalChartTitle">BTC/USD (1s) Demo</strong><small><span id="terminalChartPrice">$67,485.03</span> <span id="terminalChartChange" class="terminal-price-down">-0.07% ↗</span></small></div></div>
+          </div>
+          <svg id="terminalChart" viewBox="0 0 1000 560" preserveAspectRatio="none" aria-label="GV Trading terminal demo chart">
+            <defs><linearGradient id="tradeAreaGradient" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#1d82ff" stop-opacity=".48"/><stop offset="100%" stop-color="#1d82ff" stop-opacity="0"/></linearGradient></defs>
+            <g id="terminalGrid"></g><path id="terminalArea" class="terminal-chart-area"></path><path id="terminalLine" class="terminal-chart-line"></path><line id="terminalPriceLine" class="terminal-price-line" x1="0" x2="1000" y1="180" y2="180"></line><g id="terminalAxes"></g><g id="terminalPricePill"><rect class="terminal-price-pill" x="908" y="160" width="84" height="28" rx="7"></rect><text id="terminalPriceText" class="terminal-price-text" x="918" y="178">$67,485.03</text></g>
+          </svg>
+        </div>
+        <div class="terminal-market-stats">
+          <div class="terminal-stat"><small>0</small><b id="digit0">9.1%</b></div><div class="terminal-stat"><small>1</small><b id="digit1">10.7%</b></div><div class="terminal-stat"><small>2</small><b id="digit2">11.4%</b></div><div class="terminal-stat"><small>3</small><b id="digit3">9.6%</b></div>
+        </div>
+      </section>
 
-<section id="walletPage" class="page"><div class="hero"><h2>Demo Wallet</h2><p>Virtual wallet for testing the interface. Deposit, withdraw and transfer actions change only the local demo balance.</p></div><div class="card" style="margin-top:12px"><div class="muted">Available demo balance</div><div class="wallet-balance" id="walletBalance">$25,840.00</div><div class="wallet-actions"><button class="btn primary" onclick="walletAction('Deposit')">Deposit</button><button class="btn" onclick="walletAction('Withdraw')">Withdraw</button><button class="btn" onclick="walletAction('Transfer')">Transfer</button></div></div><div class="cards"><div class="card"><h3>M-Pesa</h3><p class="muted">Interface placeholder for a future secure backend integration. No M-Pesa payment is processed by this prototype.</p></div><div class="card"><h3>PayPal</h3><p class="muted">Interface placeholder for a future secure backend integration. No PayPal transaction is processed by this prototype.</p></div></div></section>
+      <aside class="terminal-pane terminal-right">
+        <div class="terminal-right-head"><h3>Trade Type</h3><span class="manual-label">Manual demo</span></div>
+        <div class="terminal-mode-tabs" id="terminalModes">
+          <button class="active" onclick="setTerminalMode(this,'Rise/Fall')">Rise/Fall</button><button onclick="setTerminalMode(this,'Higher/Lower')">Higher/Lower</button><button onclick="setTerminalMode(this,'Even/Odd')">Even/Odd</button><button onclick="setTerminalMode(this,'Match/Differ')">Match/Differ</button>
+        </div>
+        <div>
+          <div class="stake-label"><span>Stake Amount</span><span>(USD)</span></div>
+          <div class="stepper"><button onclick="changeTerminalStake(-10)">−</button><input id="terminalStake" value="10" inputmode="decimal"><button onclick="changeTerminalStake(10)">+</button></div>
+          <div class="quick-stakes"><button class="active" onclick="setTerminalStake(10,this)">10</button><button onclick="setTerminalStake(25,this)">25</button><button onclick="setTerminalStake(50,this)">50</button><button onclick="setTerminalStake(100,this)">100</button><button onclick="setTerminalStake(250,this)">250</button><button onclick="setTerminalStake(500,this)">500</button></div>
+        </div>
+        <div>
+          <div class="duration-label"><span>Duration</span><span>Demo ticks</span></div>
+          <div class="stepper"><button onclick="changeTerminalDuration(-1)">−</button><input id="terminalDuration" value="5 ticks"><button onclick="changeTerminalDuration(1)">+</button></div>
+        </div>
+        <div class="payout-row"><span>Estimated payout</span><b id="terminalPayout">1.90×</b></div>
+        <div class="terminal-contract">
+          <button class="contract-btn green" onclick="placeTerminalContract('RISE')"><strong>RISE</strong><span>Payout <b id="risePayout">19.00 USD</b></span><span>Demo profit <b id="riseProfit">9.00 USD</b></span></button>
+          <button class="contract-btn red" onclick="placeTerminalContract('FALL')"><strong>FALL</strong><span>Payout <b id="fallPayout">19.00 USD</b></span><span>Demo profit <b id="fallProfit">9.00 USD</b></span></button>
+        </div>
+        <div class="terminal-ai">
+          <div class="terminal-ai-head"><div style="display:flex;align-items:center;gap:10px"><div class="terminal-ai-chip">AI</div><div><b>AI Scanner</b><small style="display:block">Analyze demo market & get smart insights</small></div></div><button onclick="terminalAIScan()">Scan Now</button></div>
+          <div class="terminal-ai-score" id="terminalAIScore">Signal strength: 78% · Market conditions are simulated.</div>
+        </div>
+        <div class="control-note">ⓘ Demo trading only. No real trades, payments or financial transactions are executed.</div>
+      </aside>
+    </div>
+  </div>
 
-<section id="aiPage" class="page"><div class="hero"><h2>GV AI Analyst</h2><p>GV AI Demo Engine reads the current simulated chart and calculates trend, momentum, volatility and a confidence-based signal. It does not connect to a live exchange.</p></div><div class="stats"><div class="stat"><small>Signal strength</small><b id="aiScore">--</b></div><div class="stat"><small>Trend</small><b id="aiTrend">Analyzing…</b></div><div class="stat"><small>Momentum</small><b id="aiMomentum">Analyzing…</b></div><div class="stat"><small>Risk</small><b id="aiRisk">Analyzing…</b></div></div><div class="ai-grid"><div class="ai-box"><small>Current Price</small><b id="aiPrice">--</b><span>From the active demo chart</span></div><div class="ai-box"><small>Volatility</small><b id="aiVolatility">--</b><span>Recent price movement</span></div><div class="ai-box"><small>Market Bias</small><b id="aiBias">--</b><span>Based on moving averages</span></div><div class="ai-box"><small>Confidence</small><b id="aiConfidence">--</b><span>Signal confidence estimate</span></div></div><div class="ai-signal"><div><div style="font-weight:900;margin-bottom:5px">Current AI Signal</div><div class="ai-reason" id="aiReason">Waiting for the first chart analysis…</div><div class="scan-time" id="aiLastScan">Last scan: --</div></div><div class="ai-signal-badge wait" id="aiSignal">ANALYZING</div></div><div class="cards"><div class="card"><h3>Full AI Scan</h3><p class="muted" id="aiText">The analyst will calculate a signal from the latest demo candles.</p><button class="btn primary" onclick="runAI()">Run Full Scan</button></div><div class="card"><h3>Auto Trader</h3><p class="muted">When enabled, the demo bot uses the same analysis result and only creates local simulated contracts when confidence passes its demo threshold.</p><button class="btn green" id="autoBtn" onclick="toggleAuto()">Start Demo Auto Trader</button><button class="btn red" style="margin-left:6px" onclick="emergencyStop()">Emergency Stop</button><div class="muted" id="autoStatus" style="margin-top:8px">Status: Ready</div></div></div></section>
+  <div id="markets" class="page-card">
+    <div class="page-hero"><h2>Markets</h2><p>Explore the demo market board and compare price movement, momentum and market conditions.</p></div>
+    <div class="stat-row"><div class="mini-stat"><small>Market Status</small><b class="up">OPEN · DEMO</b></div><div class="mini-stat"><small>Assets Tracked</small><b>8</b></div><div class="mini-stat"><small>AI Scans Today</small><b id="marketScans">24</b></div><div class="mini-stat"><small>Data Mode</small><b>Demo</b></div></div>
+    <div class="info-card" style="margin-top:14px"><h3>Market Watch</h3><table class="market-table"><tr><th>Asset</th><th>Price</th><th>24h</th><th>Trend</th><th>Demo Signal</th></tr><tr><td><b>BTC/USD</b><br><small>Bitcoin</small></td><td>$67,485.03</td><td class="up">+0.81%</td><td>↗ Bullish</td><td class="up">RISE</td></tr><tr><td><b>ETH/USD</b><br><small>Ethereum</small></td><td>$3,268.45</td><td class="up">+1.24%</td><td>↗ Bullish</td><td class="up">RISE</td></tr><tr><td><b>SOL/USD</b><br><small>Solana</small></td><td>$164.32</td><td class="up">+2.17%</td><td>↗ Strong</td><td class="up">RISE</td></tr><tr><td><b>XRP/USD</b><br><small>XRP</small></td><td>$0.61</td><td class="up">+0.55%</td><td>→ Neutral</td><td>WAIT</td></tr><tr><td><b>EUR/USD</b><br><small>Euro</small></td><td>1.0724</td><td class="down">-0.36%</td><td>↘ Weak</td><td class="down">WAIT</td></tr></table></div>
+    <div class="page-grid"><div class="info-card"><h3>What the indicators mean</h3><p><b>Trend:</b> the direction shown by the demo price path.</p><p><b>Momentum:</b> the strength of recent movement.</p><p><b>Volatility:</b> how quickly price may move up or down.</p></div><div class="info-card"><h3>Important</h3><p>Prices and signals on this page are demonstration values. They are not live exchange quotes and should not be treated as investment advice.</p><div class="action-row"><button class="btn primary" onclick="showPage('ai')">Run AI Market Scan →</button></div></div></div>
+  </div>
 
-<section id="guidesPage" class="page"><div class="hero"><h2>Trading Guides</h2><p>Simple learning material for people getting familiar with trading interfaces and market concepts.</p></div><div class="cards"><div class="card"><div class="guide"><b>1. Market Orders</b><span class="muted">A market order is designed to execute at the current available price in a trading system.</span></div><div class="guide"><b>2. Limit Orders</b><span class="muted">A limit order sets a price condition rather than asking for immediate execution.</span></div><div class="guide"><b>3. Support & Resistance</b><span class="muted">These are price areas traders often watch for repeated reactions.</span></div></div><div class="card"><div class="guide"><b>4. Position Size</b><span class="muted">Use a consistent risk budget and understand the amount exposed before opening a position.</span></div><div class="guide"><b>5. Reading Momentum</b><span class="muted">Momentum describes how quickly price is changing over a chosen observation period.</span></div><div class="guide"><b>6. Demo First</b><span class="muted">Practice with virtual funds before making decisions involving real money.</span></div></div></div></section>
+  <div id="wallet" class="page-card">
+    <div class="page-hero"><h2>GV Demo Wallet</h2><p>Manage your simulated trading balance and review demo wallet activity.</p></div>
+    <div class="info-card" style="margin-top:14px"><small class="muted">Available Demo Balance</small><div class="wallet-balance">$25,840.00</div><span class="up">+ $486.25 today's demo P/L</span></div>
+    <div class="page-grid">
+      <div class="info-card"><h3>Wallet Actions</h3><div class="wallet-action"><span><b>Deposit</b><small>Add virtual demo funds</small></span><button class="btn" onclick="walletAction('Deposit')">Add Funds</button></div><div class="wallet-action"><span><b>Withdraw</b><small>Practice a simulated withdrawal</small></span><button class="btn" onclick="walletAction('Withdraw')">Withdraw</button></div><div class="wallet-action"><span><b>Transfer</b><small>Move demo funds between areas</small></span><button class="btn" onclick="walletAction('Transfer')">Transfer</button></div></div>
+      <div class="info-card"><h3>Payment Integrations</h3><p><b>M-Pesa</b> — interface placeholder for a future secure integration.</p><p><b>PayPal</b> — interface placeholder for a future secure integration.</p><p style="color:#f0b44d">No real money is processed by this prototype.</p><div class="action-row"><button class="btn primary" onclick="showToast('Secure payment integration is not connected in demo mode.')">Payment Details</button></div></div>
+    </div>
+    <div class="info-card" style="margin-top:14px"><h3>Recent Wallet Activity</h3><table class="market-table"><tr><th>Date</th><th>Activity</th><th>Amount</th><th>Status</th></tr><tr><td>Today</td><td>Demo trading profit</td><td class="up">+$486.25</td><td>Completed</td></tr><tr><td>Today</td><td>Demo account funding</td><td>+$25,000.00</td><td>Simulated</td></tr><tr><td>Yesterday</td><td>Trading allocation</td><td>-$1,000.00</td><td>Simulated</td></tr></table></div>
+  </div>
+  <div id="ai" class="page-card">
+  <div style="display:flex;justify-content:space-between;gap:10px;align-items:center">
+    <div><h2 style="margin-bottom:4px">GV AI Analyst & Auto Trading Center</h2><p class="muted">A transparent demo engine that shows what it is analyzing, why it produced a signal, and every simulated order it makes.</p></div>
+    <span class="bot-state" id="aiPageBotState">SIMULATION READY</span>
+  </div>
 
-<section id="founderPage" class="page"><div class="hero"><h2>Founder</h2><p>About the person behind GV Trading Platform.</p></div><div class="card" style="margin-top:12px"><div style="display:flex;gap:14px;align-items:center"><div class="avatar" style="width:70px;height:70px;font-size:22px">GB</div><div><h2 style="margin:0">Gyane Baraka</h2><div class="muted">Born 1994 · GV Trading Platform Founder</div></div></div><p class="muted" style="margin-top:15px">GV Trading Platform is being developed as a learning-focused digital environment for people who want to understand markets, trading tools and risk management through a clear demo interface.</p><div class="stats"><div class="stat"><small>Focus</small><b>Crypto</b></div><div class="stat"><small>Platform</small><b>GV Trading</b></div><div class="stat"><small>Year</small><b>1994</b></div><div class="stat"><small>Contact</small><b>0727271122</b></div></div><p class="muted" style="margin-top:12px">Email: barakareshmy@gmail.com</p></div></section>
+  <div class="ai-terminal">
+    <section class="ai-panel">
+      <h3>Full Market Analysis</h3>
+      <div class="muted">BTC/USD · 15-minute demo analysis · refreshed automatically</div>
+      <div class="scan-grid">
+        <div class="scan-box"><small>Trend</small><b id="trendValue">Bullish</b><div class="progress"><i style="width:82%"></i></div></div>
+        <div class="scan-box"><small>Momentum</small><b id="momentumValue">Strong</b><div class="progress"><i style="width:76%"></i></div></div>
+        <div class="scan-box"><small>Volatility</small><b id="volValue">Moderate</b><div class="progress"><i style="width:58%"></i></div></div>
+        <div class="scan-box"><small>Liquidity</small><b id="liqValue">Healthy</b><div class="progress"><i style="width:88%"></i></div></div>
+      </div>
 
-<section id="settingsPage" class="page"><div class="hero"><h2>Settings</h2><p>Control local demo preferences for this browser.</p></div><div class="card settings" style="margin-top:12px"><div class="row"><div><b>Demo Mode</b><small class="muted">Keep all trades virtual.</small></div><button class="switch on" onclick="toggleSetting(this,'Demo Mode')"></button></div><div class="row"><div><b>Notifications</b><small class="muted">Show interface notifications.</small></div><button class="switch on" onclick="toggleSetting(this,'Notifications')"></button></div><div class="row"><div><b>Risk Alerts</b><small class="muted">Show demo risk reminders.</small></div><button class="switch on" onclick="toggleSetting(this,'Risk Alerts')"></button></div><div class="row"><div><b>Dark Interface</b><small class="muted">Use the GV dark trading layout.</small></div><button class="switch on" onclick="toggleSetting(this,'Dark Interface')"></button></div></div></section>
+      <div class="signal-big">
+        <div class="signal-circle"><span id="fullScore">78%</span></div>
+        <div><div style="font-size:25px;font-weight:900" id="fullSignal">BUY / RISE</div><div class="muted">Demo signal strength · not a profit guarantee</div></div>
+      </div>
 
-</main></div>
+      <div class="detail-list">
+        <div class="detail-line"><span>Current demo price</span><b id="analysisPrice">$67,485.03</b></div>
+        <div class="detail-line"><span>Support zone</span><b>$66,800 – $67,050</b></div>
+        <div class="detail-line"><span>Resistance zone</span><b>$68,000 – $68,200</b></div>
+        <div class="detail-line"><span>Momentum reading</span><b class="up">Positive</b></div>
+        <div class="detail-line"><span>Risk state</span><b>Moderate</b></div>
+      </div>
+      <div style="margin-top:12px"><button class="btn primary" onclick="runFullScan()">Run Full AI Scan</button></div>
+    </section>
 
-<div class="modal" id="accountModal"><div class="dialog"><h3>Create Demo Account</h3><p class="muted">This creates a local demo profile in this browser. No password or payment information is sent anywhere.</p><div class="field"><label>Name</label><input id="nameInput" placeholder="Your name"></div><div class="field"><label>Email</label><input id="emailInput" type="email" placeholder="you@example.com"></div><div class="dialog-actions"><button class="btn" onclick="closeModal('accountModal')">Cancel</button><button class="btn primary" onclick="createAccount()">Create Account</button></div></div></div>
-<div class="modal" id="walletModal"><div class="dialog"><h3 id="walletTitle">Demo Wallet</h3><p class="muted" id="walletDesc"></p><div class="field"><label>Amount (USD)</label><input id="walletAmount" type="number" min="1" value="100"></div><div class="dialog-actions"><button class="btn" onclick="closeModal('walletModal')">Cancel</button><button class="btn primary" onclick="confirmWallet()">Confirm</button></div></div></div>
+    <section class="monitor-panel">
+      <div class="monitor-head"><div><h3>Auto Trade Monitor</h3><span class="live-dot">LIVE DEMO ENGINE</span></div><span class="bot-state" id="monitorState">OFF</span></div>
+      <p class="muted">When enabled, the demo engine evaluates the market and places simulated orders according to the displayed rules.</p>
+      <div class="risk-grid">
+        <div class="risk-box"><small>Stake / trade</small><input class="risk-input" id="stakeInput" type="number" min="10" step="10" value="100" onchange="saveRiskSettings()"></div>
+        <div class="risk-box"><small>Max trades</small><input class="risk-input" id="maxTradesInput" type="number" min="1" max="100" value="20" onchange="saveRiskSettings()"></div>
+        <div class="risk-box"><small>Stop loss</small><input class="risk-input" id="stopLossInput" type="number" min="1" step="10" value="500" onchange="saveRiskSettings()"></div>
+      </div>
+      <div class="control-note" id="riskStatus">Auto-trader limits apply to this demo session.</div>
+      <div class="auto-controls">
+        <button class="btn green" onclick="toggleAuto()">Start / Stop Auto</button>
+        <button class="btn red" onclick="emergencyStop()">Emergency Stop</button>
+      </div>
+      <div class="execution-feed" id="executionFeed">
+        <div class="exec"><span class="type">SYSTEM</span><span>Waiting for auto-trade instructions...</span><span class="time">now</span></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="ai-panel" style="margin-top:12px">
+    <h3>Human vs Bot Activity Monitor</h3>
+    <p class="muted">This demo can label <b>its own execution events</b> as AI/Bot or Manual. It cannot reliably determine whether an unknown real-world trader is a human or a bot without verified platform-side telemetry.</p>
+    <div class="scan-grid">
+      <div class="scan-box"><small>Current executor</small><b id="executorType">Manual / User</b></div>
+      <div class="scan-box"><small>Automation state</small><b id="automationType">OFF</b></div>
+      <div class="scan-box"><small>Orders analyzed</small><b id="ordersAnalyzed">0</b></div>
+      <div class="scan-box"><small>Engine status</small><b class="up">Transparent Demo</b></div>
+    </div>
+  </div>
+</div>
+  <div id="guides" class="page-card">
+    <div class="page-hero"><h2>GV Trading Guides</h2><p>Learn the basics of markets, demo trading, technical analysis and risk management.</p></div>
+    <div class="page-grid">
+      <div class="info-card"><div class="guide-item"><b>01 · Market Orders</b><span class="muted">A market order is designed to execute at the available demo price. Learn how execution price can differ as markets move.</span></div><div class="guide-item"><b>02 · Limit Orders</b><span class="muted">A limit order specifies a desired price level. In this demo, use it to understand how conditional execution works.</span></div><div class="guide-item"><b>03 · Stop Orders</b><span class="muted">A stop order can be used as part of an exit or entry plan when price reaches a chosen level.</span></div></div>
+      <div class="info-card"><div class="guide-item"><b>04 · Position Sizing</b><span class="muted">Decide how much capital you are willing to expose before selecting leverage.</span></div><div class="guide-item"><b>05 · Support & Resistance</b><span class="muted">Support and resistance are commonly used price zones for understanding where buying or selling interest may appear.</span></div><div class="guide-item"><b>06 · AI Signals</b><span class="muted">A signal is an analytical output, not a guarantee. Review the underlying conditions before making a decision.</span></div></div>
+    </div>
+    <div class="info-card" style="margin-top:14px"><h3>Beginner Learning Path</h3><p>Start with market terminology → understand charts → practice demo trades → study risk management → review your trade history → learn how automated systems work.</p><div class="action-row"><button class="btn primary" onclick="showPage('trading')">Practice Demo Trading →</button><button class="btn" onclick="showPage('ai')">Study AI Analysis</button></div></div>
+  </div>
+
+  <div id="founder" class="page-card">
+    <div class="page-hero"><h2>About GV Trading Platform</h2><p>The story, purpose and learning vision behind the platform.</p></div>
+    <div class="info-card" style="margin-top:14px"><div class="profile-large"><div class="avatar">GB</div><div><h2 style="margin:0">Gyane Baraka</h2><p style="margin:4px 0 0">Founder · GV Trading Platform</p></div></div><p><b>Gyane Baraka</b>, born in 1994, is the founder of GV Trading Platform. He is a citizen of both Somalia and Kenya. The platform was created as a learning-focused digital environment for people interested in crypto markets, market analysis and responsible decision-making.</p><p>GV Trading Platform brings together educational guides, simulated trading, market dashboards and AI-style analysis in one place. The goal of the demo environment is to make complex trading concepts easier to explore without presenting simulated activity as guaranteed financial results.</p></div>
+    <div class="page-grid"><div class="info-card"><h3>Platform Vision</h3><p>Build an accessible place where beginners can learn market concepts, test ideas and understand the importance of risk management.</p></div><div class="info-card"><h3>Platform Principles</h3><ul><li>Education before execution.</li><li>Clear demo/simulation labeling.</li><li>Transparent risk information.</li><li>No promise of guaranteed profit.</li></ul></div></div>
+    <div class="info-card" style="margin-top:14px"><h3>Contact</h3><p>Phone: <b>0727271122</b></p><p>Email: <b>barakareshmy@gmail.com</b></p></div>
+  </div>
+
+  <div id="settings" class="page-card">
+    <div class="page-hero"><h2>Settings</h2><p>Customize your demo experience and review platform safety information.</p></div>
+    <div class="info-card" style="margin-top:14px"><div class="setting-row"><div><b>Demo Trading Mode</b><small>Keep all orders simulated</small></div><div class="toggle-demo"></div></div><div class="setting-row"><div><b>AI Notifications</b><small>Show analysis and execution updates</small></div><div class="toggle-demo"></div></div><div class="setting-row"><div><b>Risk Alerts</b><small>Display warnings before simulated high-risk actions</small></div><div class="toggle-demo"></div></div><div class="setting-row"><div><b>Dark Terminal Theme</b><small>Use the GV dark trading interface</small></div><div class="toggle-demo"></div></div></div>
+    <div class="page-grid"><div class="info-card"><h3>Security</h3><p>Never place exchange API keys, payment credentials or private wallet keys directly inside this front-end HTML file. Real integrations should use a secure backend.</p></div><div class="info-card"><h3>Demo Data</h3><p>Market prices, balances, AI scores and automated trades are demonstration values. They do not represent live exchange activity.</p><button class="btn primary" onclick="showToast('Demo settings saved for this session.')">Save Demo Preferences</button></div></div>
+  </div>
+</div>
+</main>
+</div>
+
+<div class="modal-backdrop" id="accountModal" onclick="if(event.target===this)closeModal('accountModal')">
+  <div class="modal">
+    <h3>Create Demo Account</h3><p>Create a local demo profile for this browser. This does not create a real financial account and no password is sent anywhere.</p>
+    <div class="field"><label>Display name</label><input id="demoName" type="text" placeholder="Your name"></div>
+    <div class="field"><label>Email</label><input id="demoEmail" type="email" placeholder="you@example.com"></div>
+    <div class="modal-actions"><button class="btn" onclick="closeModal('accountModal')">Cancel</button><button class="btn primary" onclick="createDemoAccount()">Create Demo Account</button></div>
+  </div>
+</div>
+<div class="modal-backdrop" id="walletModal" onclick="if(event.target===this)closeModal('walletModal')">
+  <div class="modal">
+    <h3 id="walletModalTitle">Demo Wallet Action</h3><p id="walletModalText">This action changes only the simulated balance shown in this browser.</p>
+    <div class="field"><label>Amount (USD)</label><input id="walletAmount" type="number" min="1" step="10" value="100"></div>
+    <div class="modal-actions"><button class="btn" onclick="closeModal('walletModal')">Cancel</button><button class="btn primary" id="walletConfirm" onclick="confirmWalletAction()">Confirm</button></div>
+  </div>
+</div>
 <div class="toast" id="toast"></div>
 
 <script>
-const state={balance:25840,open:0,closed:0,pl:0,mode:'Even/Odd',stake:10,duration:5,tf:'1s',auto:false,autoTimer:null,stopped:false,grid:true,asset:'Volatility 100',ai:{score:50,signal:'WAIT',trend:'Mixed',momentum:'Neutral',risk:'Moderate',volatility:0,bias:'Neutral',confidence:50,reason:'Waiting for enough chart data.'}};
+const state={balance:25840,trades:1,auto:false,timer:null,autoTrades:0,autoLoss:0,scanCount:24,orderType:'Market',asset:'BTC/USD',leverage:2,emergency:false,walletAction:null,settings:{demo:true,notifications:true,risk:true,dark:true}};
 const assets={
- 'Volatility 100':{price:885.65,change:-0.07,coin:'▤'},
- 'BTC/USD':{price:67485.03,change:0.81,coin:'₿'},
- 'ETH/USD':{price:3268.45,change:1.24,coin:'Ξ'},
- 'SOL/USD':{price:164.32,change:2.17,coin:'◎'},
- 'XRP/USD':{price:0.61,change:0.55,coin:'✕'}
+  'BTC/USD':{price:67485.03,change:0.81,coin:'₿',name:'Bitcoin'},
+  'ETH/USD':{price:3268.45,change:1.24,coin:'Ξ',name:'Ethereum'},
+  'SOL/USD':{price:164.32,change:2.17,coin:'◎',name:'Solana'},
+  'XRP/USD':{price:0.61,change:0.55,coin:'✕',name:'XRP'}
 };
-let series=[]; let noise=0; let lastPrice=assets[state.asset].price; let tick=0;
 const $=id=>document.getElementById(id);
-function money(v){return '$'+Number(v).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}
-function toast(msg){const x=$('toast');x.textContent=msg;x.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>x.classList.remove('show'),2400)}
-function openModal(id){$(id).classList.add('show')}function closeModal(id){$(id).classList.remove('show')}
-function showPage(name,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));const el=$(name+'Page');if(el)el.classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');const title={dashboard:'Trading Dashboard',trading:'GV Trading Terminal',markets:'Markets',wallet:'Wallet',ai:'GV AI Analyst',guides:'Guides',founder:'Founder',settings:'Settings'}[name]||'GV Trading';$('pageTitle').textContent=title;document.getElementById('sidebar').classList.remove('open');window.scrollTo({top:0});if(name==='markets')renderMarkets()}
-function setMode(btn,mode){state.mode=mode;document.querySelectorAll('#modes button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const t=mode==='Even/Odd'?['EVEN','ODD']:mode==='Matches/Differs'?['MATCH','DIFFER']:mode==='Over/Under'?['OVER','UNDER']:['RISE','FALL'];$('greenTitle').textContent=t[0];$('redTitle').textContent=t[1];updatePayout();toast(mode+' selected for demo trading.')}
-function setStake(v,btn){state.stake=Math.max(10,Number(v)||10);$('stake').value=state.stake;document.querySelectorAll('#quick button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');updatePayout()}
-function adjustStake(d){setStake(Number($('stake').value||10)+d);const hit=[...document.querySelectorAll('#quick button')].find(b=>Number(b.textContent)===state.stake);document.querySelectorAll('#quick button').forEach(b=>b.classList.remove('active'));if(hit)hit.classList.add('active')}
-function adjustDuration(d){state.duration=Math.min(60,Math.max(1,state.duration+d));$('duration').value=state.duration+' ticks'}
-function updatePayout(){const mult=state.mode==='Matches/Differs'?1.88:1.90;const payout=state.stake*mult;const profit=payout-state.stake;$('payout').textContent=mult.toFixed(2)+'×';$('greenPayout').textContent=payout.toFixed(2)+' USD';$('redPayout').textContent=payout.toFixed(2)+' USD';$('greenProfit').textContent=profit.toFixed(2)+' USD';$('redProfit').textContent=profit.toFixed(2)+' USD'}
-function addActivity(title,detail){const box=$('dashActivity');const row=document.createElement('div');row.className='activity-item';row.innerHTML='<b>'+title+'</b><small>'+detail+'</small>';box.prepend(row);while(box.children.length>6)box.lastElementChild.remove()}
-function updateBalances(){const b=money(state.balance);$('balanceTop').textContent=b;$('walletBalance').textContent=b;$('tradingBalance').textContent=b;$('openCount').textContent='('+state.open+')';$('closedCount').textContent='('+state.closed+')';$('tradingOpen').textContent=state.open;$('tradingClosed').textContent=state.closed;$('tradingPL').textContent=money(state.pl)}
-function switchLeft(which){$('openView').style.display=which==='open'?'flex':'none';$('closedView').style.display=which==='closed'?'flex':'none';$('openTab').classList.toggle('active',which==='open');$('closedTab').classList.toggle('active',which==='closed')}
-function placeContract(direction){if(state.stopped){toast('Emergency stop is active. Reset it from GV AI Analyst.');return}const stake=Math.max(10,Number($('stake').value)||10);if(stake>state.balance){toast('Stake exceeds demo balance.');return}state.stake=stake;state.balance-=stake;state.open++;updateBalances();addActivity(direction+' demo contract',state.mode+' · '+money(stake)+' · '+state.duration+' ticks');toast(direction+' contract placed in demo mode.');setTimeout(()=>{state.open=Math.max(0,state.open-1);state.closed++;const win=Math.random()>.45;const profit=win?stake*.9:-stake;state.balance+=win?stake+profit:0;state.pl+=profit;updateBalances();addActivity('Contract closed',win?'Simulated WIN · '+money(profit)+' profit':'Simulated LOSS · '+money(Math.abs(profit))+' loss');},Math.max(1400,state.duration*500))}
-function changeTF(tf){state.tf=tf;resetSeries();$('symbolTitle').textContent=state.asset+' ('+tf+') Index';toast('Chart timeframe set to '+tf)}
-function resetSeries(){const a=assets[state.asset]||assets['Volatility 100'];lastPrice=a.price;series=[];for(let i=0;i<150;i++){lastPrice=Math.max(0.0001,lastPrice*(1+(Math.random()-.5)*0.004));series.push(lastPrice)}lastPrice=a.price;series[series.length-1]=lastPrice}
-function resetChart(){resetSeries();toast('Chart refreshed.')}
-function toggleGrid(){state.grid=!state.grid;$('gridBtn').style.opacity=state.grid?'1':'.45'}
-function fullChart(){const el=$('chartWrap');if(!document.fullscreenElement)el.requestFullscreen?.();else document.exitFullscreen?.()}
-function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
-function avg(arr){return arr.length?arr.reduce((a,b)=>a+b,0)/arr.length:0}
-function std(arr){if(arr.length<2)return 0;const m=avg(arr),v=avg(arr.map(x=>(x-m)**2));return Math.sqrt(v)}
-function analyzeMarket(){if(series.length<30)resetSeries();const p=series[series.length-1],s8=avg(series.slice(-8)),s21=avg(series.slice(-21)),s5=avg(series.slice(-5)),old=series[series.length-11]||p;const momentum=((p-old)/Math.max(old,1))*100;const returns=[];for(let i=Math.max(1,series.length-25);i<series.length;i++){returns.push((series[i]-series[i-1])/Math.max(series[i-1],1))}const volatility=std(returns)*100;const trendBias=((s8-s21)/Math.max(s21,1))*100;let score=50+trendBias*220+momentum*120;score=clamp(score,1,99);if(momentum>0.35)score+=6;else if(momentum<-0.35)score-=6;score=clamp(score,1,99);const signal=score>=72?'BUY / RISE':score<=28?'SELL / FALL':'WAIT / CONFIRM';const trend=trendBias>0.04?'Bullish':trendBias<-0.04?'Bearish':'Mixed';const mom=momentum>0.18?'Strong bullish':momentum<-0.18?'Strong bearish':'Neutral';const risk=volatility>0.18?'High':volatility>0.09?'Moderate':'Low';const bias=trendBias>0.04?'Upward':trendBias<-0.04?'Downward':'Sideways';const confidence=Math.round(Math.max(score,100-score));let reason='Short-term averages are close, so the demo model is waiting for confirmation.';if(signal.startsWith('BUY'))reason='Short-term price is above its recent average and momentum is positive; the demo model detects upward pressure.';if(signal.startsWith('SELL'))reason='Short-term price is below its recent average and momentum is negative; the demo model detects downward pressure.';state.ai={score,signal,trend,momentum:mom,risk,volatility,bias,confidence,reason,price:p};return state.ai}
-function updateAIUI(a){if(!a)return;const badge=$('aiSignal');badge.textContent=a.signal;badge.className='ai-signal-badge '+(a.signal.startsWith('BUY')?'buy':a.signal.startsWith('SELL')?'sell':'wait');$('aiScore').textContent=Math.round(a.score)+'%';$('aiTrend').textContent=a.trend;$('aiMomentum').textContent=a.momentum;$('aiRisk').textContent=a.risk;$('aiPrice').textContent=Number(a.price||series.at(-1)||0).toFixed(2);$('aiVolatility').textContent=a.volatility.toFixed(3)+'%';$('aiBias').textContent=a.bias;$('aiConfidence').textContent=Math.round(a.confidence)+'%';$('aiReason').textContent=a.reason;$('aiText').textContent='Analysis for '+state.asset+': '+a.signal+'. Score '+Math.round(a.score)+'% with '+a.trend.toLowerCase()+' trend, '+a.momentum.toLowerCase()+' momentum and '+a.risk.toLowerCase()+' volatility.';$('aiLastScan').textContent='Last scan: '+new Date().toLocaleTimeString();}
-function scanDashboard(){const a=analyzeMarket();$('scanNote').textContent='Signal: '+a.signal+' · confidence '+Math.round(a.confidence)+'% · '+a.trend+' · demo analysis only.';updateAIUI(a);toast('GV AI Scanner completed a chart-based demo analysis.')}
-function renderDigits(){const box=$('digits');if(box.children.length)return;for(let i=0;i<10;i++){const d=document.createElement('div');d.className='digit'+(i===2?' active':'');d.innerHTML='<b>'+i+'</b><small>9.'+(1+i%4)+'%</small>';box.appendChild(d)}}
-function drawChart(){const c=$('chart'),ctx=c.getContext('2d');const r=c.getBoundingClientRect();const dpr=window.devicePixelRatio||1;c.width=Math.max(1,Math.floor(r.width*dpr));c.height=Math.max(1,Math.floor(r.height*dpr));ctx.setTransform(dpr,0,0,dpr,0,0);const w=r.width,h=r.height;ctx.clearRect(0,0,w,h);ctx.fillStyle='#04111c';ctx.fillRect(0,0,w,h);const left=28,right=58,top=22,bottom=36,ph=h-top-bottom,pw=w-left-right;const hi=Math.max(...series),lo=Math.min(...series),pad=(hi-lo)*.15||1,min=lo-pad,max=hi+pad;const X=i=>left+i/(series.length-1)*pw,Y=v=>top+(max-v)/(max-min)*ph;
-ctx.strokeStyle='#173248';ctx.lineWidth=1;if(state.grid){for(let i=0;i<=7;i++){const y=top+i*ph/7;ctx.beginPath();ctx.moveTo(left,y);ctx.lineTo(left+pw,y);ctx.stroke()}for(let i=0;i<=8;i++){const x=left+i*pw/8;ctx.beginPath();ctx.moveTo(x,top);ctx.lineTo(x,top+ph);ctx.stroke()}}
-ctx.beginPath();series.forEach((v,i)=>{const x=X(i),y=Y(v);if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y)});const linePath=new Path2D(ctx.__dashPath||'');
-ctx.beginPath();series.forEach((v,i)=>{const x=X(i),y=Y(v);if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y)});ctx.lineTo(X(series.length-1),top+ph);ctx.lineTo(X(0),top+ph);ctx.closePath();const grad=ctx.createLinearGradient(0,top,0,top+ph);grad.addColorStop(0,'rgba(18,126,235,.36)');grad.addColorStop(1,'rgba(18,126,235,.02)');ctx.fillStyle=grad;ctx.fill();
-ctx.beginPath();series.forEach((v,i)=>{const x=X(i),y=Y(v);if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y)});ctx.strokeStyle='#349cff';ctx.lineWidth=2;ctx.stroke();
-const cur=series[series.length-1],py=Y(cur);ctx.strokeStyle='#176ab2';ctx.setLineDash([4,4]);ctx.beginPath();ctx.moveTo(left,py);ctx.lineTo(left+pw,py);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#5f7891';ctx.font='10px Segoe UI,Arial';for(let i=0;i<=4;i++){const v=max-(max-min)*i/4;ctx.fillText(v.toFixed(state.asset==='Volatility 100'?2:2),w-right+8,top+i*ph/4+3)}
-ctx.fillStyle='#5e7891';['10:27:20','10:27:35','10:27:50','10:28:05','10:28:20','10:28:35','10:28:50','10:29:05'].forEach((t,i)=>ctx.fillText(t,left+i*pw/7,h-10));$('priceBadge').textContent=cur.toFixed(2);$('symbolPrice').textContent=cur.toFixed(2);$('symbolChange').textContent=((cur-series[Math.max(0,series.length-9)])/series[Math.max(0,series.length-9)]*100).toFixed(2)+'% ↗';}
-function moveChart(){if(!series.length)resetSeries();const a=assets[state.asset]||assets['Volatility 100'];const prev=series[series.length-1];const drift=a.change/100*0.00045;const wave=Math.sin(tick/6)*0.00022;const step=(Math.random()-.5)*0.0014+drift+wave;const next=Math.max(.0001,prev*(1+step));series.push(next);if(series.length>150)series.shift();tick++;drawChart();if(tick%10===0){const aii=analyzeMarket();updateAIUI(aii);}}
-function renderMarkets(){const tbody=$('marketRows');tbody.innerHTML='';Object.entries(assets).forEach(([k,a])=>{const tr=document.createElement('tr');tr.className='market-row';tr.onclick=()=>{state.asset=k;resetSeries();$('symbolTitle').textContent=k+' ('+state.tf+') Index';$('coin').textContent=a.coin;showPage('dashboard');};tr.innerHTML='<td><b>'+k+'</b></td><td>'+a.price+'</td><td style="color:'+(a.change>=0?'#12d9a0':'#ff496f')+'">'+(a.change>=0?'+':'')+a.change+'%</td><td>'+ (a.change>=0?'Bullish':'Mixed') +'</td><td><button class="btn primary" onclick="event.stopPropagation();state.asset=\''+k+'\';resetSeries();showPage(\'dashboard\')">Open</button></td>';tbody.appendChild(tr)});}
-function createAccount(){const n=$('nameInput').value.trim(),e=$('emailInput').value.trim();if(!n||!e.includes('@')){toast('Enter a valid name and email.');return}localStorage.setItem('gvDemoAccount',JSON.stringify({n,e}));document.querySelectorAll('.avatar').forEach(x=>x.textContent=n.split(/\s+/).map(y=>y[0]).slice(0,2).join('').toUpperCase());document.querySelector('.profile b').textContent=n;closeModal('accountModal');toast('Demo account saved in this browser.')}
-let walletMode='';function walletAction(action){walletMode=action;$('walletTitle').textContent='Demo '+action;$('walletDesc').textContent=action==='Deposit'?'Add virtual funds to the demo balance.':action==='Withdraw'?'Remove virtual funds from the demo balance.':'Record a local demo transfer.';openModal('walletModal')}
-function confirmWallet(){const amount=Number($('walletAmount').value)||0;if(amount<=0){toast('Enter a valid amount.');return}if(walletMode==='Deposit')state.balance+=amount;else if(walletMode==='Withdraw'){if(amount>state.balance){toast('Amount exceeds demo balance.');return}state.balance-=amount}else{if(amount>state.balance){toast('Transfer exceeds demo balance.');return}}updateBalances();closeModal('walletModal');toast(walletMode+' completed in demo mode.')}
-function runAI(){const a=analyzeMarket();updateAIUI(a);toast('GV AI Full Scan completed.')}
-function toggleAuto(){if(state.stopped){toast('Emergency stop is active.');return}state.auto=!state.auto;$('autoBtn').textContent=state.auto?'Stop Demo Auto Trader':'Start Demo Auto Trader';$('autoStatus').textContent='Status: '+(state.auto?'Running — analyzing every cycle':'Ready');if(state.auto){clearInterval(state.autoTimer);state.autoTimer=setInterval(()=>{if(!state.auto)return;const a=analyzeMarket();updateAIUI(a);if(a.score>=78){addActivity('BOT BUY / RISE','GV AI · '+state.asset+' · confidence '+Math.round(a.confidence)+'%');placeContract('RISE')}else if(a.score<=22){addActivity('BOT SELL / FALL','GV AI · '+state.asset+' · confidence '+Math.round(a.confidence)+'%');placeContract('FALL')}else{addActivity('BOT WAIT','GV AI · '+state.asset+' · score '+Math.round(a.score)+'%');}},4000)}else clearInterval(state.autoTimer)}
-function emergencyStop(){state.auto=false;clearInterval(state.autoTimer);state.stopped=true;$('autoBtn').textContent='Auto Trader Stopped';$('autoStatus').textContent='Status: EMERGENCY STOP';toast('Emergency stop activated. Refresh the page to reset the demo stop.')}
-function toggleSetting(el,label){el.classList.toggle('on');toast(label+': '+(el.classList.contains('on')?'ON':'OFF'))}
-function loadAccount(){try{const a=JSON.parse(localStorage.getItem('gvDemoAccount'));if(a?.n){document.querySelectorAll('.avatar').forEach(x=>x.textContent=a.n.split(/\s+/).map(y=>y[0]).slice(0,2).join('').toUpperCase());document.querySelector('.profile b').textContent=a.n}}catch(e){}}
-window.addEventListener('resize',drawChart);
-document.addEventListener('DOMContentLoaded',()=>{loadAccount();renderDigits();renderMarkets();updatePayout();updateBalances();resetSeries();$('coin').textContent=assets[state.asset].coin;drawChart();updateAIUI(analyzeMarket());setInterval(moveChart,500);});
+function money(n){return '$'+Number(n).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}
+function showToast(msg){const t=$('toast');if(!t)return;t.textContent=msg;t.classList.add('show');clearTimeout(window.tt);window.tt=setTimeout(()=>t.classList.remove('show'),2600)}
+function openModal(id){$(id)?.classList.add('show')}
+function closeModal(id){$(id)?.classList.remove('show')}
+function createDemoAccount(){
+  const name=$('demoName').value.trim(),email=$('demoEmail').value.trim();
+  if(!name||!email||!email.includes('@')){showToast('Enter a valid name and email.');return}
+  localStorage.setItem('gvDemoAccount',JSON.stringify({name,email,created:new Date().toISOString()}));
+  const initials=name.split(/\s+/).map(x=>x[0]).slice(0,2).join('').toUpperCase();
+  document.querySelectorAll('.avatar').forEach(a=>a.textContent=initials||'GV');
+  document.querySelector('.profile b').textContent=name;
+  document.querySelector('.profile small').textContent='Demo Account · GV';
+  closeModal('accountModal');showToast('Demo account created on this browser.');
+}
+function setOrderType(btn,type){
+  state.orderType=type;document.querySelectorAll('#orderTabs button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+  $('orderHint').textContent=(type==='Market'?'ⓘ Market order executes immediately in the simulation.':type==='Limit'?'ⓘ Limit order: enter a target price below.':'ⓘ Stop order: enter a trigger price below.')+' Demo only — no real transactions.';
+  let old=$('triggerPrice');
+  if(type==='Market'&&old){old.closest('.field')?.remove();}
+  if(type!=='Market'&&!old){
+    const f=document.createElement('div');f.className='field';f.innerHTML=`<label>${type} Price (USD)</label><input id="triggerPrice" type="number" step="0.01" value="${assets[state.asset].price.toFixed(2)}"><div class="control-note">This price is used only by the demo order logic.</div>`;
+    $('amount').closest('.field').after(f);
+  }
+}
+let chartModel={key:'',candles:[],tick:0,lastTick:0};
+let chartMotionTimer=null;
+function chartSeed(asset,tf){const a=assets[asset]||assets['BTC/USD'];let n=0;for(const c of asset+tf)n=(n*31+c.charCodeAt(0))>>>0;return (n+(Math.round(a.price)%100000))>>>0;}
+function seeded(seed){let x=seed>>>0;return()=>{x=(1664525*x+1013904223)>>>0;return x/4294967296}}
+function chartSettings(tf){return {
+  '1m':{vol:.0010, interval:900, barsPerCandle:5, label:'1m'},
+  '5m':{vol:.0015, interval:900, barsPerCandle:6, label:'5m'},
+  '15m':{vol:.0022, interval:900, barsPerCandle:7, label:'15m'},
+  '30m':{vol:.0030, interval:900, barsPerCandle:8, label:'30m'},
+  '1h':{vol:.0042, interval:900, barsPerCandle:9, label:'1h'},
+  '4h':{vol:.0065, interval:900, barsPerCandle:10, label:'4h'},
+  '1d':{vol:.0100, interval:900, barsPerCandle:12, label:'1d'}
+}[tf]||{vol:.0022,interval:900,barsPerCandle:7,label:tf}}
+function createChartSeries(asset,tf){
+  const a=assets[asset]||assets['BTC/USD'];const rand=seeded(chartSeed(asset,tf));const count=62;const candles=[];let last=a.price*(1+(rand()-.5)*.015);
+  const volatility=chartSettings(tf).vol;
+  for(let i=0;i<count;i++){const drift=(a.change/100)*0.002;const open=last;const move=(rand()-.49)*volatility+drift*(rand()-.25);const close=Math.max(.0001,open*(1+move));const high=Math.max(open,close)*(1+rand()*volatility*.7);const low=Math.min(open,close)*(1-rand()*volatility*.7);const volume=35+rand()*65;candles.push({open,high,low,close,volume});last=close;}
+  return candles;
+}
+function renderChart(){
+  const asset=state.asset,tf=document.querySelector('#timeframes button.active')?.textContent||'15m',a=assets[asset]||assets['BTC/USD'];
+  const key=asset+'|'+tf;if(chartModel.key!==key||!chartModel.candles.length){chartModel={key,candles:createChartSeries(asset,tf),tick:0,lastTick:Date.now()};}
+  const candles=chartModel.candles;const count=candles.length;
+  const values=candles.flatMap(c=>[c.high,c.low]);const min=Math.min(...values),max=Math.max(...values),pad=(max-min)*.12||1;const lo=min-pad,hi=max+pad;const plot={x:24,y:18,w:870,h:274,volY:312,volH:55};
+  const y=v=>plot.y+(hi-v)/(hi-lo)*plot.h;const maxVol=Math.max(...candles.map(c=>c.volume));const xStep=plot.w/(count+1);
+  const grid=$('chartGrid'),vol=$('chartVolume'),cg=$('chartCandles'),labels=$('chartLabels');
+  grid.innerHTML='';vol.innerHTML='';cg.innerHTML='';labels.innerHTML='';
+  const gridYs=[0,.25,.5,.75,1];gridYs.forEach(r=>{const yy=plot.y+r*plot.h;grid.innerHTML+=`<line class="chart-grid" x1="${plot.x}" x2="${plot.x+plot.w}" y1="${yy.toFixed(1)}" y2="${yy.toFixed(1)}"/>`;const val=hi-(hi-lo)*r;labels.innerHTML+=`<text class="axis-label" x="906" y="${yy+3}">${money(val).replace('$','')}</text>`});
+  for(let i=1;i<=5;i++){const xx=plot.x+i*(plot.w/6);grid.innerHTML+=`<line class="chart-grid" x1="${xx.toFixed(1)}" x2="${xx.toFixed(1)}" y1="${plot.y}" y2="${plot.volY+plot.volH}"/>`;}
+  grid.innerHTML+=`<line x1="${plot.x}" x2="${plot.x+plot.w}" y1="${plot.volY-8}" y2="${plot.volY-8}" stroke="#16344f" stroke-width="1"/>`;
+  candles.forEach((c,i)=>{const xx=plot.x+(i+1)*xStep;const up=c.close>=c.open;const top=y(Math.max(c.open,c.close)),bottom=y(Math.min(c.open,c.close));const h=Math.max(2,bottom-top);const width=Math.max(5,xStep*.55);const bodyX=xx-width/2;cg.innerHTML+=`<line class="${up?'wick-up':'wick-down'}" x1="${xx.toFixed(1)}" x2="${xx.toFixed(1)}" y1="${y(c.high).toFixed(1)}" y2="${y(c.low).toFixed(1)}"/><rect class="${up?'body-up':'body-down'}" x="${bodyX.toFixed(1)}" y="${top.toFixed(1)}" width="${width.toFixed(1)}" height="${h.toFixed(1)}" rx="1.3"/>`;const vh=(c.volume/maxVol)*plot.volH;vol.innerHTML+=`<rect class="${up?'volume-up':'volume-down'}" x="${bodyX.toFixed(1)}" y="${plot.volY+plot.volH-vh}" width="${width.toFixed(1)}" height="${vh.toFixed(1)}" rx="1"/>`;});
+  const closes=candles.map(c=>c.close);const current=closes[closes.length-1];const py=Math.max(plot.y+2,Math.min(plot.y+plot.h-2,y(current)));$('chartPriceText').textContent=money(current);$('pricePill').querySelector('rect').setAttribute('y',py-10);$('pricePill').querySelector('text').setAttribute('y',py+4);
+  const labelsText=[{x:plot.x+18,t:'Earlier'},{x:plot.x+plot.w*.31,t:'Recent'},{x:plot.x+plot.w*.63,t:'Current'},{x:plot.x+plot.w-55,t:tf}];labelsText.forEach(o=>labels.innerHTML+=`<text class="axis-label" x="${o.x}" y="384">${o.t}</text>`);
+  const bull=current>=candles[0].close;const legend=$('chartLegend');legend.innerHTML=`<rect class="chart-badge" x="24" y="8" width="175" height="22" rx="5"/><text class="chart-badge-text" x="34" y="23">Live Demo Candles · ${tf}</text><rect class="chart-signal" x="210" y="8" width="88" height="22" rx="5"/><text class="chart-signal-text" x="223" y="23">${bull?'BULLISH':'MIXED'}</text>`;
+}
+function advanceChart(){
+  const tf=document.querySelector('#timeframes button.active')?.textContent||'15m';
+  const a=assets[state.asset]||assets['BTC/USD'];const cfg=chartSettings(tf);
+  if(!chartModel.candles.length)return;
+  const c=chartModel.candles[chartModel.candles.length-1];
+  const previous=c.close||a.price;
+  const longDrift=(a.change/100)*0.00035;
+  const microNoise=(Math.random()-.5)*cfg.vol*0.32;
+  const momentum=((previous-(c.open||previous))/(c.open||previous))*0.06;
+  const next=Math.max(.0001,previous*(1+longDrift+momentum+microNoise));
+  c.close=next;
+  c.high=Math.max(c.high,next,previous);
+  c.low=Math.min(c.low,next,previous);
+  c.volume=Math.min(100,c.volume+(2+Math.random()*5));
+  chartModel.tick++;
+  chartModel.lastTick=Date.now();
+
+  // Every few ticks, close the current candle and start a new one.
+  // This makes the chart scroll naturally instead of freezing on one candle.
+  if(chartModel.tick>=cfg.barsPerCandle){
+    const open=next;
+    const openWiggle=(Math.random()-.5)*cfg.vol*0.12;
+    const nextOpen=Math.max(.0001,open*(1+openWiggle));
+    chartModel.candles.push({open:nextOpen,high:nextOpen,low:nextOpen,close:nextOpen,volume:20+Math.random()*35});
+    if(chartModel.candles.length>62)chartModel.candles.shift();
+    chartModel.tick=0;
+  }
+  // Keep the displayed market price synchronized with the latest candle.
+  assets[state.asset].price=next;
+  const priceText=money(next);
+  if($('livePrice'))$('livePrice').textContent=priceText;
+  if($('analysisPrice'))$('analysisPrice').textContent=priceText;
+  renderChart();
+}
+function startChartMotion(){
+  clearInterval(chartMotionTimer);
+  const tf=document.querySelector('#timeframes button.active')?.textContent||'15m';
+  const delay=chartSettings(tf).interval;
+  chartMotionTimer=setInterval(advanceChart,delay);
+}
+function setTimeframe(btn,tf){document.querySelectorAll('#timeframes button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderChart();startChartMotion();showToast(`Chart timeframe changed to ${tf}.`);}
+function selectAsset(asset){state.asset=asset;const d=assets[asset];$('livePrice').textContent=money(d.price);$('analysisPrice').textContent=money(d.price);const coin=document.querySelector('.coin');if(coin)coin.textContent=d.coin;const title=document.querySelector('.market-title h2');if(title)title.innerHTML=`${asset} <span style="font-size:11px;color:#879caf">⌄</span>`;const sub=document.querySelector('.market-title small');if(sub)sub.textContent=`${d.name} · Demo Market`;renderChart();showToast(`${asset} selected.`);startChartMotion();}
+function updateLeverage(){state.leverage=Number(($('leverage')?.value||'2').replace('x',''));showToast(`Demo leverage set to ${state.leverage}x.`)}
+function placeTrade(side,source='MANUAL'){
+  if(state.emergency){showToast('Emergency stop is active. Reset it before new demo orders.');return false}
+  if(source==='BOT'){
+    const max=Number($('maxTradesInput')?.value||20);if(state.autoTrades>=max){stopAuto('Maximum demo auto-trades reached.');return false}
+  }
+  const amount=Math.max(10,Number($('amount')?.value)||100);
+  if(amount>state.balance){showToast('Demo balance is too low for this order.');return false}
+  const d=assets[state.asset],type=state.orderType,trigger=$('triggerPrice')?.value;
+  if(type!=='Market'&&!trigger){showToast(`Enter a ${type.toLowerCase()} price first.`);return false}
+  const pl=Number((Math.random()*4-1.4).toFixed(2));
+  state.trades++;
+  $('tradeCount').textContent=`(${state.trades})`;
+  const tr=document.createElement('tr');tr.innerHTML=`<td>${state.asset}</td><td class="${side==='BUY'?'up':'down'}">${side}</td><td>${money(amount)}</td><td class="${pl>=0?'up':'down'}">${pl>=0?'+':''}$${pl.toFixed(2)}</td><td><span class="status">Open</span></td>`;$('ordersBody').prepend(tr);
+  const a=document.createElement('div');a.className='activity';a.innerHTML=`<div class="dot">${source==='BOT'?'🤖':'↗'}</div><div><b>${source==='BOT'?'Bot Trade Executed':'Trade Executed'}</b><small>${state.asset} · ${side} · ${money(amount)} · ${type} · ${state.leverage}x · Demo</small></div>`;$('activity').prepend(a);
+  state.balance-=Math.max(0,amount*.02);updateBalance();
+  if(source==='BOT'){state.autoTrades++;if(pl<0)state.autoLoss+=Math.abs(pl);addExecution(side,`Automated demo order: ${state.asset} · ${money(amount)} · ${state.leverage}x`,'BOT');}
+  else addExecution(side,`Manual demo order: ${state.asset} · ${money(amount)} · ${state.leverage}x`,'MANUAL');
+  showToast(`${side} demo order placed — no real funds used.`);return true;
+}
+function updateBalance(){const b=$('balance');if(b)b.textContent=money(state.balance);document.querySelectorAll('.wallet-balance').forEach(x=>x.textContent=money(state.balance));}
+function closeAll(){document.querySelectorAll('#ordersBody tr').forEach(r=>r.remove());state.trades=0;$('tradeCount').textContent='(0)';addExecution('CLOSE','All open demo positions closed.','MANUAL');showToast('All demo positions closed.')}
+function analyze(){
+  const score=Math.floor(68+Math.random()*25),bullish=score>=75;$('aiScore').textContent=score+'%';$('aiBadge').textContent=bullish?'BULLISH':'NEUTRAL';$('aiSignal').textContent=bullish?'↗ RISE':'→ WAIT';$('aiSignal').className='signal '+(bullish?'up':'');$('aiText').textContent=bullish?'Demo momentum is positive with supportive buying pressure.':'Market inputs are mixed; the demo analyst suggests waiting for confirmation.';addExecution('AI','Quick AI analysis refreshed.','BOT');showToast('GV AI analysis refreshed.');
+}
+function saveRiskSettings(){const s=Number($('stakeInput')?.value||100),m=Number($('maxTradesInput')?.value||20),sl=Number($('stopLossInput')?.value||500);if(s<10||m<1||sl<1){showToast('Risk values must be positive.');return}showToast(`Risk settings saved: ${money(s)} stake · ${m} max trades · ${money(sl)} stop loss.`)}
+function stopAuto(reason='Auto trader stopped.'){
+  state.auto=false;clearInterval(state.timer);state.timer=null;$('autoSwitch')?.classList.remove('on');if($('monitorState')){$('monitorState').textContent='OFF';$('monitorState').classList.add('off')};if($('aiPageBotState'))$('aiPageBotState').textContent='SIMULATION READY';if($('automationType'))$('automationType').textContent='OFF';if($('executorType'))$('executorType').textContent='Manual / User';addExecution('STOP',reason,'BOT');showToast(reason);
+}
+function toggleAuto(){
+  if(state.emergency){showToast('Emergency stop is active. Use Reset Demo Safety Stop first.');return}
+  if(state.auto){stopAuto('GV AI Auto Trader OFF');return}
+  const max=Number($('maxTradesInput')?.value||20);if(state.autoTrades>=max){showToast('Maximum demo auto-trades already reached.');return}
+  state.auto=true;$('autoSwitch')?.classList.add('on');if($('monitorState')){$('monitorState').textContent='RUNNING';$('monitorState').classList.remove('off')};if($('aiPageBotState'))$('aiPageBotState').textContent='AUTO TRADER RUNNING';if($('automationType'))$('automationType').textContent='ON';if($('executorType'))$('executorType').textContent='GV AI Bot';addExecution('START','Auto trader started. Monitoring demo conditions.','BOT');showToast('GV AI Auto Trader ON — simulation only');
+  clearInterval(state.timer);state.timer=setInterval(autoCycle,5000);autoCycle();
+}
+function autoCycle(){
+  if(!state.auto)return;const max=Number($('maxTradesInput')?.value||20),sl=Number($('stopLossInput')?.value||500),stake=Number($('stakeInput')?.value||100);
+  if(state.autoTrades>=max){stopAuto('Maximum demo auto-trades reached.');return}
+  if(state.autoLoss>=sl){stopAuto('Demo stop-loss limit reached.');return}
+  const score=Math.floor(55+Math.random()*45);addExecution('SCAN',`AI checked ${state.asset}: score ${score}%.`,'BOT');
+  if(score>=72){const side=Math.random()>.5?'BUY':'SELL';$('amount').value=stake;const ok=placeTrade(side,'BOT');if(!ok)return;}else addExecution('WAIT','No trade: demo conditions did not meet the threshold.','BOT');
+}
+const terminalState={mode:'Rise/Fall',stake:10,duration:5,closed:0,open:0,history:[],grid:true,tf:'1s'};
+function terminalMoney(n){return '$'+Number(n).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}
+function switchTerminalTab(tab){const open=$('terminalOpenView'),closed=$('terminalClosedView'),ob=$('openTab'),cb=$('closedTab');if(!open||!closed)return;const isOpen=tab==='open';open.style.display=isOpen?'flex':'none';closed.style.display=isOpen?'none':'flex';ob.classList.toggle('active',isOpen);cb.classList.toggle('active',!isOpen)}
+function terminalAddActivity(title,details){const box=$('terminalActivity');if(!box)return;const row=document.createElement('div');row.style.cssText='padding:8px 0;border-top:1px solid #10273a;font-size:10px';row.innerHTML=`<b style="color:#dce9f4">${title}</b><span style="display:block;color:#668097;margin-top:2px">${details}</span>`;box.prepend(row);while(box.children.length>5)box.lastElementChild.remove()}
+function updateTerminalCounts(){if($('terminalOpenCount'))$('terminalOpenCount').textContent=`(${terminalState.open})`;if($('terminalClosedCount'))$('terminalClosedCount').textContent=`(${terminalState.closed})`;if($('terminalEmptyTitle'))$('terminalEmptyTitle').textContent=terminalState.open?`${terminalState.open} open demo trade${terminalState.open>1?'s':''}`:'No open demo trades';if($('terminalEmptyText'))$('terminalEmptyText').textContent=terminalState.open?'Active simulated contracts are shown in this panel.':'Your active simulated contract will appear here.'}
+function terminalPrice(){return Number((assets[state.asset]||assets['BTC/USD']).price)}
+function setTerminalMode(btn,mode){terminalState.mode=mode;document.querySelectorAll('#terminalModes button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');terminalUpdatePayout();showToast(`${mode} selected for demo trading.`)}
+function setTerminalStake(v,btn){terminalState.stake=Math.max(10,Number(v)||10);$('terminalStake').value=terminalState.stake;document.querySelectorAll('.quick-stakes button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');terminalUpdatePayout()}
+function changeTerminalStake(delta){setTerminalStake(Math.max(10,Number($('terminalStake')?.value||10)+delta));const active=[...document.querySelectorAll('.quick-stakes button')].find(b=>Number(b.textContent)===terminalState.stake);document.querySelectorAll('.quick-stakes button').forEach(b=>b.classList.remove('active'));if(active)active.classList.add('active')}
+function changeTerminalDuration(delta){terminalState.duration=Math.min(60,Math.max(1,terminalState.duration+delta));$('terminalDuration').value=`${terminalState.duration} ticks`;terminalUpdatePayout()}
+function terminalUpdatePayout(){const multiplier=terminalState.mode==='Even/Odd'?1.9:terminalState.mode==='Match/Differ'?1.88:1.9;const payout=terminalState.stake*multiplier;const profit=payout-terminalState.stake;$('terminalPayout').textContent=`${multiplier.toFixed(2)}×`;['rise','fall'].forEach(id=>{if($(id+'Payout'))$(id+'Payout').textContent=terminalMoney(payout);if($(id+'Profit'))$(id+'Profit').textContent=terminalMoney(profit)})}
+function placeTerminalContract(direction){if(state.emergency){showToast('Emergency stop is active. Reset it from the AI page first.');return}const stake=Math.max(10,Number($('terminalStake')?.value||10));terminalState.stake=stake;terminalState.open++;updateTerminalCounts();terminalAddActivity(`${direction} demo contract`,`${state.asset} · ${terminalState.mode} · ${terminalMoney(stake)} · ${terminalState.duration} ticks`);showToast(`${direction} demo contract placed — no real funds used.`);setTimeout(()=>{terminalState.open=Math.max(0,terminalState.open-1);terminalState.closed++;updateTerminalCounts();terminalAddActivity('Contract closed',`${direction} · simulated result recorded locally`);},Math.max(1800,terminalState.duration*650))}
+function terminalAIScan(){const score=Math.floor(55+Math.random()*42),dir=score>=72?'RISE':'WAIT';$('terminalAIScore').textContent=`Signal strength: ${score}% · ${dir} · demo analysis only.`;showToast('GV AI Scanner completed a demo scan.');}
+function setTerminalTimeframe(tf){terminalState.tf=tf;renderTerminalChart();showToast(`Chart timeframe set to ${tf}.`)}
+function toggleTerminalGrid(btn){terminalState.grid=!terminalState.grid;btn.style.opacity=terminalState.grid?'1':'.45';renderTerminalChart()}
+function toggleTerminalFullscreen(){const el=$('terminalChartWrap');if(!el)return;if(!document.fullscreenElement&&el.requestFullscreen)el.requestFullscreen();else if(document.exitFullscreen)document.exitFullscreen()}
+function renderTerminalChart(){const svg=$('terminalChart');if(!svg)return;const width=1000,height=560,pl=28,pr=72,pt=24,pb=30;const w=width-pl-pr,h=height-pt-pb;const series=(chartModel.candles||[]).slice(-90).map(c=>c.close);if(series.length<2)return;const hi=Math.max(...series),lo=Math.min(...series),range=Math.max(hi-lo,0.000001);const y=v=>pt+(hi-v)/range*h;const x=i=>pl+i/(series.length-1)*w;let grid='',axes='';if(terminalState.grid){for(let i=0;i<=6;i++){const yy=pt+i*h/6;grid+=`<line class="terminal-grid" x1="${pl}" x2="${pl+w}" y1="${yy}" y2="${yy}"/>`}for(let i=0;i<=7;i++){const xx=pl+i*w/7;grid+=`<line class="terminal-grid" x1="${xx}" x2="${xx}" y1="${pt}" y2="${pt+h}"/>`}}for(let i=0;i<=4;i++){const v=hi-(hi-lo)*i/4;axes+=`<text class="terminal-axis" x="${width-58}" y="${y(v)+3}">${terminalMoney(v).replace('$','')}</text>`}let d='';series.forEach((v,i)=>{d+=(i?'L':'M')+x(i).toFixed(2)+' '+y(v).toFixed(2)+' '});const area=d+`L ${x(series.length-1).toFixed(2)} ${pt+h} L ${x(0).toFixed(2)} ${pt+h} Z`;$('terminalGrid').innerHTML=grid;$('terminalAxes').innerHTML=axes;$('terminalLine').setAttribute('d',d);$('terminalArea').setAttribute('d',area);const cur=series[series.length-1],py=y(cur);$('terminalPriceLine').setAttribute('y1',py);$('terminalPriceLine').setAttribute('y2',py);$('terminalPriceText').textContent=terminalMoney(cur);$('terminalPricePill').querySelector('rect').setAttribute('y',Math.max(pt,Math.min(pt+h-28,py-14)));$('terminalPricePill').querySelector('text').setAttribute('y',Math.max(pt+18,Math.min(pt+h-8,py+4)));const asset=assets[state.asset]||assets['BTC/USD'];$('terminalChartTitle').textContent=`${state.asset} (${terminalState.tf}) Demo`;$('terminalChartPrice').textContent=terminalMoney(cur);const delta=((cur-series[Math.max(0,series.length-8)])/series[Math.max(0,series.length-8)])*100;$('terminalChartChange').textContent=`${delta>=0?'+':''}${delta.toFixed(2)}% ↗`;$('terminalChartChange').style.color=delta>=0?'#24e0a0':'#ff4e74';for(let i=0;i<4;i++)$('digit'+i).textContent=(8.9+Math.random()*2.8).toFixed(1)+'%';}
+setInterval(renderTerminalChart,900);
+
+function showPage(name,btn){
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');else{const target=[...document.querySelectorAll('.nav button')].find(b=>b.getAttribute('onclick')?.includes(`'${name}'`));if(target)target.classList.add('active')}
+  const dashboard=$('dashboardPage'),other=$('otherPages');
+  if(name==='dashboard'){dashboard.style.display='block';other.classList.remove('show');$('pageTitle').textContent='Trading Dashboard'}
+  else{dashboard.style.display='none';other.classList.add('show');document.querySelectorAll('.page-card').forEach(p=>p.style.display='none');const page=$(name);if(page)page.style.display='block';$('pageTitle').textContent=name==='ai'?'GV AI Analyst':name==='trading'?'GV Trading Terminal':name.charAt(0).toUpperCase()+name.slice(1)}
+  $('sidebar').classList.remove('open');window.scrollTo({top:0,behavior:'smooth'});
+}
+function addExecution(type,message,tag='BOT'){const feed=$('executionFeed');if(!feed)return;const row=document.createElement('div');row.className='exec';row.innerHTML=`<span class="type">${type}</span><span>${message} <span class="human-tag ${tag==='BOT'?'bot-tag':''}">${tag}</span></span><span class="time">now</span>`;feed.prepend(row);while(feed.children.length>25)feed.lastElementChild.remove();const n=Number($('ordersAnalyzed')?.textContent||0)+1;if($('ordersAnalyzed'))$('ordersAnalyzed').textContent=n}
+function runFullScan(){const score=Math.floor(62+Math.random()*31),bullish=score>=72;$('fullScore').textContent=score+'%';$('fullSignal').textContent=bullish?'BUY / RISE':'WAIT / CONFIRM';$('trendValue').textContent=bullish?'Bullish':'Mixed';$('momentumValue').textContent=bullish?'Strong':'Neutral';$('volValue').textContent=score>82?'High':'Moderate';$('liqValue').textContent='Healthy';$('analysisPrice').textContent=$('livePrice')?.textContent||money(assets[state.asset].price);state.scanCount++;if($('marketScans'))$('marketScans').textContent=state.scanCount;addExecution('AI SCAN',`Analyzed trend, momentum, volatility and liquidity → ${bullish?'bullish':'mixed'} signal`,'BOT');showToast('Full GV AI market scan completed.')}
+function emergencyStop(){state.emergency=true;stopAuto('Emergency stop activated.');if($('aiPageBotState'))$('aiPageBotState').textContent='EMERGENCY STOP';if($('automationType'))$('automationType').textContent='STOPPED';if($('executorType'))$('executorType').textContent='Safety Stop';const c=document.querySelector('#ai .auto-controls');if(c&&!document.getElementById('resetStop')){const b=document.createElement('button');b.id='resetStop';b.className='btn';b.textContent='Reset Safety Stop';b.onclick=resetEmergency;c.appendChild(b)}showToast('Emergency stop activated. New demo orders are blocked.')}
+function resetEmergency(){state.emergency=false;$('resetStop')?.remove();if($('aiPageBotState'))$('aiPageBotState').textContent='SIMULATION READY';if($('automationType'))$('automationType').textContent='OFF';if($('executorType'))$('executorType').textContent='Manual / User';showToast('Demo safety stop reset.')}
+function walletAction(action){state.walletAction=action;$('walletModalTitle').textContent=`Demo ${action}`;$('walletModalText').textContent=action==='Deposit'?'Add virtual demo funds to the simulated balance.':action==='Withdraw'?'Subtract virtual demo funds from the simulated balance.':'Move a virtual amount and record it as a demo transfer.';$('walletConfirm').textContent=action==='Deposit'?'Add Funds':action==='Withdraw'?'Withdraw':'Transfer';openModal('walletModal')}
+function confirmWalletAction(){const amount=Number($('walletAmount').value)||0;if(amount<=0){showToast('Enter a valid amount.');return}if(state.walletAction==='Deposit'){state.balance+=amount}else if(state.walletAction==='Withdraw'){if(amount>state.balance){showToast('Withdrawal exceeds demo balance.');return}state.balance-=amount}else{if(amount>state.balance){showToast('Transfer exceeds demo balance.');return}}updateBalance();addExecution('WALLET',`${state.walletAction} ${money(amount)} in demo mode.`,'MANUAL');closeModal('walletModal');showToast(`${state.walletAction} completed in demo mode.`)}
+function toggleSetting(el,label){const on=el.classList.toggle('on');state.settings[label]=on;showToast(`${label}: ${on?'ON':'OFF'}`)}
+function loadSavedAccount(){try{const a=JSON.parse(localStorage.getItem('gvDemoAccount'));if(a?.name){document.querySelectorAll('.avatar').forEach(x=>x.textContent=a.name.split(/\s+/).map(v=>v[0]).slice(0,2).join('').toUpperCase());const p=document.querySelector('.profile b');if(p)p.textContent=a.name;const s=document.querySelector('.profile small');if(s)s.textContent='Demo Account · GV'}}catch(e){}}
+// The chart engine is the single source of demo price movement, so the header price follows it.
+setInterval(()=>{const c=chartModel.candles?.[chartModel.candles.length-1];if(c){const p=c.close;$('livePrice').textContent=money(p);if($('analysisPrice'))$('analysisPrice').textContent=money(p)}},350);
+document.addEventListener('DOMContentLoaded',()=>{loadSavedAccount();updateBalance();renderChart();startChartMotion();terminalUpdatePayout();updateTerminalCounts();renderTerminalChart();document.querySelectorAll('.toggle-demo').forEach((el,i)=>{el.classList.add('on');el.onclick=()=>toggleSetting(el,['demo','notifications','risk','dark'][i])});});
 </script>
 </body>
 </html>
