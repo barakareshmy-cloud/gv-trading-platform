@@ -52,6 +52,20 @@ button,input,select{font:inherit}button{cursor:pointer}
 .muted{color:#7890a5;font-size:11px;line-height:1.5}
 .scan-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
 .scan-box{background:#06111c;border:1px solid #123149;border-radius:9px;padding:10px}
+.ai-scanning{position:relative;overflow:hidden;animation:aiPulse 1s ease-in-out infinite}
+.ai-scanning::before{content:'';position:absolute;width:12px;height:12px;border:2px solid rgba(22,217,255,.25);border-top-color:#16d9ff;border-right-color:#16d9ff;border-radius:50%;animation:scanSpin .7s linear infinite;top:8px;left:9px;box-sizing:border-box}
+.ai-scanning::after{content:'SCANNING';position:absolute;right:10px;top:9px;font-size:9px;font-weight:900;letter-spacing:1px;color:#16d9ff;animation:scanBlink .8s ease-in-out infinite}
+button.ai-scanning{padding-left:30px}
+button.ai-scanning::before{top:50%;left:11px;transform:translateY(-50%);width:13px;height:13px}
+.scan-box.ai-scanning{padding-left:30px}
+.scan-status{margin-top:10px;padding:9px 11px;border:1px solid #123149;border-radius:8px;background:#06111c;color:#8fa4b8;font-size:11px}
+.scan-status.scanning{position:relative;padding-left:32px;color:#16d9ff;border-color:#167aa0;box-shadow:0 0 16px rgba(22,217,255,.12);overflow:hidden}
+.scan-status.scanning::before{content:'';position:absolute;width:13px;height:13px;border:2px solid rgba(22,217,255,.25);border-top-color:#16d9ff;border-right-color:#16d9ff;border-radius:50%;animation:scanSpin .7s linear infinite;left:11px;top:50%;transform:translateY(-50%);box-sizing:border-box}
+@keyframes aiPulse{0%,100%{box-shadow:0 0 0 rgba(22,217,255,0)}50%{box-shadow:0 0 18px rgba(22,217,255,.12)}}
+@keyframes scanSpin{to{transform:rotate(360deg)}}
+button.ai-scanning::before{animation:scanSpin .7s linear infinite,scanButtonCenter .01s linear forwards}
+@keyframes scanButtonCenter{to{transform:translateY(-50%) rotate(0deg)}}
+@keyframes scanBlink{0%,100%{opacity:.35}50%{opacity:1}}
 .scan-box small{display:block;color:#6f8498;font-size:10px}.scan-box b{display:block;margin-top:5px}
 .progress{height:7px;background:#102638;border-radius:20px;overflow:hidden;margin-top:6px}.progress i{display:block;height:100%;background:linear-gradient(90deg,#0ca5ff,#17e4a0);border-radius:20px}
 .signal-big{display:flex;align-items:center;gap:14px;margin:12px 0}
@@ -77,8 +91,8 @@ button,input,select{font:inherit}button{cursor:pointer}
 /* GV Trading Terminal — screenshot-inspired 3-panel layout */
 .trade-terminal{display:grid;grid-template-columns:185px minmax(0,1fr) 310px;gap:10px;height:700px;min-height:700px;margin-top:14px}
 .terminal-pane{background:#06131f;border:1px solid #173550;border-radius:14px;overflow:hidden;min-width:0}
-.terminal-left{display:flex;flex-direction:column}.terminal-tabs{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #173550}
-.terminal-tab{padding:18px 8px;text-align:center;color:#7893aa;font-weight:800;cursor:pointer;border-bottom:3px solid transparent}.terminal-tab.active{color:#fff;border-bottom-color:#1597ff}
+.terminal-left{display:flex;flex-direction:column}.terminal-tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:6px;background:#06131f;border-bottom:1px solid #173550}
+.terminal-tab{padding:14px 8px;text-align:center;color:#7893aa;font-weight:800;cursor:pointer;border:1px solid #173550;border-radius:9px;background:#081824;transition:.2s ease;box-shadow:none}.terminal-tab:hover{background:#0b2235;color:#dceaf5;border-color:#205276}.terminal-tab.active{color:#fff;background:linear-gradient(135deg,#0d3657,#0a2440);border-color:#1597ff;box-shadow:0 0 14px rgba(21,151,255,.16)}
 .terminal-left-body{padding:16px 12px;display:flex;flex-direction:column;gap:12px;height:100%}
 .terminal-subtitle{color:#7892a8;font-size:12px}.terminal-empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#6f879d;padding:10px}.terminal-empty .empty-icon{width:45px;height:45px;border:4px solid #8091a8;border-radius:50%;display:grid;place-items:center;margin-bottom:15px;font-size:19px;color:#8091a8}.terminal-empty strong{color:#fff;font-size:14px;margin-bottom:6px}.terminal-empty span{font-size:11px;line-height:1.5}
 .terminal-history-btn{margin-top:auto;width:100%;border:0;background:#0a1726;color:#fff;padding:11px 8px;border-radius:10px;font-weight:800;cursor:pointer}
@@ -314,8 +328,8 @@ button,input,select{font:inherit}button{cursor:pointer}
           <button class="contract-btn red" onclick="placeTerminalContract('FALL')"><strong>FALL</strong><span>Payout <b id="fallPayout">19.00 USD</b></span><span>Demo profit <b id="fallProfit">9.00 USD</b></span></button>
         </div>
         <div class="terminal-ai">
-          <div class="terminal-ai-head"><div style="display:flex;align-items:center;gap:10px"><div class="terminal-ai-chip">AI</div><div><b>AI Scanner</b><small style="display:block">Analyze demo market & get smart insights</small></div></div><button onclick="terminalAIScan()">Scan Now</button></div>
-          <div class="terminal-ai-score" id="terminalAIScore">Signal strength: 78% · Market conditions are simulated.</div>
+          <div class="terminal-ai-head"><div style="display:flex;align-items:center;gap:10px"><div class="terminal-ai-chip">AI</div><div><b>AI Scanner</b><small style="display:block">Analyze demo market & get smart insights</small></div></div><button id="terminalScanBtn" onclick="terminalAIScan()">Scan Now</button></div>
+          <div class="terminal-ai-score" id="terminalAIScore">Ready to scan the demo market.</div>
         </div>
         <div class="control-note">ⓘ Demo trading only. No real trades, payments or financial transactions are executed.</div>
       </aside>
@@ -367,7 +381,7 @@ button,input,select{font:inherit}button{cursor:pointer}
         <div class="detail-line"><span>Momentum reading</span><b class="up">Positive</b></div>
         <div class="detail-line"><span>Risk state</span><b>Moderate</b></div>
       </div>
-      <div style="margin-top:12px"><button class="btn primary" onclick="runFullScan()">Run Full AI Scan</button></div>
+      <div style="margin-top:12px"><button id="fullScanBtn" class="btn primary" onclick="runFullScan()">Run Full AI Scan</button><div id="fullScanStatus" class="scan-status">Ready to scan the demo market.</div></div>
     </section>
 
     <section class="monitor-panel">
@@ -811,7 +825,18 @@ function changeTerminalStake(delta){setTerminalStake(Math.max(10,Number($('termi
 function changeTerminalDuration(delta){terminalState.duration=Math.min(60,Math.max(1,terminalState.duration+delta));$('terminalDuration').value=`${terminalState.duration} ticks`;terminalUpdatePayout()}
 function terminalUpdatePayout(){const multiplier=terminalState.mode==='Even/Odd'?1.9:terminalState.mode==='Match/Differ'?1.88:1.9;const payout=terminalState.stake*multiplier;const profit=payout-terminalState.stake;$('terminalPayout').textContent=`${multiplier.toFixed(2)}×`;['rise','fall'].forEach(id=>{if($(id+'Payout'))$(id+'Payout').textContent=terminalMoney(payout);if($(id+'Profit'))$(id+'Profit').textContent=terminalMoney(profit)})}
 function placeTerminalContract(direction){if(state.emergency){showToast('Emergency stop is active. Reset it from the AI page first.');return}const stake=Math.max(10,Number($('terminalStake')?.value||10));terminalState.stake=stake;terminalState.open++;updateTerminalCounts();terminalAddActivity(`${direction} demo contract`,`${state.asset} · ${terminalState.mode} · ${terminalMoney(stake)} · ${terminalState.duration} ticks`);showToast(`${direction} demo contract placed — no real funds used.`);setTimeout(()=>{terminalState.open=Math.max(0,terminalState.open-1);terminalState.closed++;updateTerminalCounts();terminalAddActivity('Contract closed',`${direction} · simulated result recorded locally`);},Math.max(1800,terminalState.duration*650))}
-function terminalAIScan(){const score=Math.floor(55+Math.random()*42),dir=score>=72?'RISE':'WAIT';$('terminalAIScore').textContent=`Signal strength: ${score}% · ${dir} · demo analysis only.`;showToast('GV AI Scanner completed a demo scan.');}
+function terminalAIScan(){
+  const btn=$('terminalScanBtn'),box=$('terminalAIScore');
+  if(!btn||!box)return;
+  if(btn.disabled)return;
+  btn.disabled=true;btn.classList.add('ai-scanning');btn.textContent='Scanning...';
+  box.classList.add('scanning');box.textContent='Scanning demo market... reading trend, momentum, volatility and liquidity.';
+  setTimeout(()=>{
+    const score=Math.floor(55+Math.random()*42),dir=score>=72?'RISE':'WAIT';
+    box.classList.remove('scanning');box.textContent=`Signal strength: ${score}% · ${dir} · demo analysis only.`;
+    btn.disabled=false;btn.classList.remove('ai-scanning');btn.textContent='Scan Now';
+  },2400);
+}
 function setTerminalTimeframe(tf){terminalState.tf=tf;renderTerminalChart();showToast(`Chart timeframe set to ${tf}.`)}
 function toggleTerminalGrid(btn){terminalState.grid=!terminalState.grid;btn.style.opacity=terminalState.grid?'1':'.45';renderTerminalChart()}
 function toggleTerminalFullscreen(){const el=$('terminalChartWrap');if(!el)return;if(!document.fullscreenElement&&el.requestFullscreen)el.requestFullscreen();else if(document.exitFullscreen)document.exitFullscreen()}
@@ -827,7 +852,26 @@ function showPage(name,btn){
   $('sidebar').classList.remove('open');window.scrollTo({top:0,behavior:'smooth'});
 }
 function addExecution(type,message,tag='BOT'){const feed=$('executionFeed');if(!feed)return;const row=document.createElement('div');row.className='exec';row.innerHTML=`<span class="type">${type}</span><span>${message} <span class="human-tag ${tag==='BOT'?'bot-tag':''}">${tag}</span></span><span class="time">now</span>`;feed.prepend(row);while(feed.children.length>25)feed.lastElementChild.remove();const n=Number($('ordersAnalyzed')?.textContent||0)+1;if($('ordersAnalyzed'))$('ordersAnalyzed').textContent=n}
-function runFullScan(){const score=Math.floor(62+Math.random()*31),bullish=score>=72;$('fullScore').textContent=score+'%';$('fullSignal').textContent=bullish?'BUY / RISE':'WAIT / CONFIRM';$('trendValue').textContent=bullish?'Bullish':'Mixed';$('momentumValue').textContent=bullish?'Strong':'Neutral';$('volValue').textContent=score>82?'High':'Moderate';$('liqValue').textContent='Healthy';$('analysisPrice').textContent=$('livePrice')?.textContent||money(assets[state.asset].price);state.scanCount++;saveCurrentUser();if($('marketScans'))$('marketScans').textContent=state.scanCount;addExecution('AI SCAN',`Analyzed trend, momentum, volatility and liquidity → ${bullish?'bullish':'mixed'} signal`,'BOT');showToast('Full GV AI market scan completed.')}
+function runFullScan(){
+  const btn=$('fullScanBtn'),status=$('fullScanStatus');
+  if(!btn||!status)return;
+  if(btn.disabled)return;
+  btn.disabled=true;btn.classList.add('ai-scanning');btn.textContent='Scanning...';
+  status.classList.add('scanning');status.textContent='Scanning demo market... analyzing trend, momentum, volatility and liquidity.';
+  document.querySelectorAll('#ai .scan-box').forEach(el=>el.classList.add('ai-scanning'));
+  setTimeout(()=>{
+    const score=Math.floor(62+Math.random()*31),bullish=score>=72;
+    $('fullScore').textContent=score+'%';$('fullSignal').textContent=bullish?'BUY / RISE':'WAIT / CONFIRM';
+    $('trendValue').textContent=bullish?'Bullish':'Mixed';$('momentumValue').textContent=bullish?'Strong':'Neutral';
+    $('volValue').textContent=score>82?'High':'Moderate';$('liqValue').textContent='Healthy';
+    $('analysisPrice').textContent=$('livePrice')?.textContent||money(assets[state.asset].price);
+    state.scanCount++;saveCurrentUser();if($('marketScans'))$('marketScans').textContent=state.scanCount;
+    addExecution('AI SCAN',`Analyzed trend, momentum, volatility and liquidity → ${bullish?'bullish':'mixed'} signal`,'BOT');
+    status.classList.remove('scanning');status.textContent='Scan complete. Results are shown above.';
+    btn.disabled=false;btn.classList.remove('ai-scanning');btn.textContent='Run Full AI Scan';
+    document.querySelectorAll('#ai .scan-box').forEach(el=>el.classList.remove('ai-scanning'));
+  },2600);
+}
 function emergencyStop(){state.emergency=true;stopAuto('Emergency stop activated.');if($('aiPageBotState'))$('aiPageBotState').textContent='EMERGENCY STOP';if($('automationType'))$('automationType').textContent='STOPPED';if($('executorType'))$('executorType').textContent='Safety Stop';const c=document.querySelector('#ai .auto-controls');if(c&&!document.getElementById('resetStop')){const b=document.createElement('button');b.id='resetStop';b.className='btn';b.textContent='Reset Safety Stop';b.onclick=resetEmergency;c.appendChild(b)}showToast('Emergency stop activated. New demo orders are blocked.')}
 function resetEmergency(){state.emergency=false;$('resetStop')?.remove();if($('aiPageBotState'))$('aiPageBotState').textContent='SIMULATION READY';if($('automationType'))$('automationType').textContent='OFF';if($('executorType'))$('executorType').textContent='Manual / User';showToast('Demo safety stop reset.')}
 function walletAction(action){state.walletAction=action;$('walletModalTitle').textContent=`Demo ${action}`;$('walletModalText').textContent=action==='Deposit'?'Add virtual demo funds to the simulated balance.':action==='Withdraw'?'Subtract virtual demo funds from the simulated balance.':'Move a virtual amount and record it as a demo transfer.';$('walletConfirm').textContent=action==='Deposit'?'Add Funds':action==='Withdraw'?'Withdraw':'Transfer';openModal('walletModal')}
