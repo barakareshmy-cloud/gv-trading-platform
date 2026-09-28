@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>GV Trading Platform | AI Crypto Dashboard</title>
-<meta name="description" content="GV Trading Platform — AI-powered crypto market analysis and simulated trading dashboard.">
+<meta content="GV Trading Platform — AI-powered crypto market analysis and simulated trading dashboard." name="description"/>
 <style>
 :root{
   --bg:#030a12;--panel:#071522;--panel2:#0a1a2b;--line:#16344f;
@@ -101,16 +102,13 @@ button.ai-scanning::before{animation:scanSpin .7s linear infinite,scanButtonCent
 @media(max-width:1050px){.trade-terminal{grid-template-columns:170px minmax(0,1fr);height:auto;min-height:760px}.terminal-right{grid-column:1/-1;min-height:420px}.terminal-ai{margin-top:0}}
 @media(max-width:760px){.trade-terminal{display:flex;flex-direction:column;min-height:0}.terminal-pane{min-height:320px}.terminal-center{height:510px}.terminal-right{min-height:430px}.terminal-symbol-card{width:250px}.quick-stakes{grid-template-columns:repeat(3,1fr)}}
 </style>
-
 <style>
 .page-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}.info-card{background:#071521;border:1px solid #15344b;border-radius:14px;padding:18px}.info-card h3{margin:0 0 8px}.info-card p,.info-card li{color:#8ea4b8;line-height:1.65}.stat-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}.mini-stat{background:#081a29;border:1px solid #15344b;border-radius:12px;padding:14px}.mini-stat small{display:block;color:#71879a}.mini-stat b{display:block;font-size:19px;margin-top:5px}.market-table{width:100%;border-collapse:collapse;margin-top:10px}.market-table th,.market-table td{padding:12px 8px;border-bottom:1px solid #102b3e;text-align:left}.market-table th{color:#71879a;font-size:11px}.market-table td{font-size:13px}.action-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.guide-item{padding:12px 0;border-bottom:1px solid #102b3e}.guide-item:last-child{border-bottom:0}.guide-item b{display:block;margin-bottom:4px}.profile-large{display:flex;gap:14px;align-items:center;margin-bottom:16px}.profile-large .avatar{width:64px;height:64px;font-size:22px}.setting-row{display:flex;justify-content:space-between;gap:15px;align-items:center;padding:14px 0;border-bottom:1px solid #102b3e}.setting-row:last-child{border-bottom:0}.setting-row small{display:block;color:#71879a;margin-top:4px}.toggle-demo{width:42px;height:22px;border-radius:20px;background:#15344b;position:relative}.toggle-demo:after{content:'';position:absolute;width:16px;height:16px;border-radius:50%;background:#8ea4b8;left:3px;top:3px;transition:.2s}.toggle-demo.on{background:#07956b}.toggle-demo.on:after{left:23px;background:#dffaf2}.page-hero{padding:18px;background:linear-gradient(135deg,#09233a,#061522);border:1px solid #17405d;border-radius:14px}.page-hero h2{margin:0 0 6px}.page-hero p{margin:0}.wallet-balance{font-size:32px;font-weight:900;margin:8px 0}.wallet-action{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid #102b3e}.wallet-action:last-child{border-bottom:0}@media(max-width:900px){.page-grid{grid-template-columns:1fr}.stat-row{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){.stat-row{grid-template-columns:1fr 1fr}.market-table{font-size:12px}.market-table th:nth-child(4),.market-table td:nth-child(4){display:none}}
 </style>
-
 <style>
 .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;padding:18px;z-index:50}.modal-backdrop.show{display:flex}.modal{width:min(520px,100%);background:#071522;border:1px solid #1a4665;border-radius:15px;padding:18px;box-shadow:0 25px 70px rgba(0,0,0,.5)}.modal h3{margin:0 0 6px}.modal p{color:#8ea4b8;font-size:12px;line-height:1.6}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}.modal .field{margin-top:10px}.selected-control{background:#0d3657!important;color:#fff!important;border-color:#1c8ed0!important}.control-note{font-size:10px;color:#6f8498;margin-top:6px}.risk-input{width:100%;background:#071724;border:1px solid #193952;color:#fff;border-radius:7px;padding:7px;outline:none}.risk-box{min-width:0}.risk-box input{margin-top:5px}.status.closed{background:#2b2630;color:#a9b4bf}.market-row{cursor:pointer}.market-row:hover{background:#0a2032}.disabled-btn{opacity:.5;pointer-events:none}
 @media(max-width:600px){.modal{padding:15px}.modal-actions{flex-direction:column}.modal-actions .btn{width:100%}}
 </style>
-
 <style>
 /* GV ACCOUNT & USER DASHBOARD */
 .auth-modal .modal{width:min(560px,100%)}
@@ -182,461 +180,485 @@ button.ai-scanning::before{animation:scanSpin .7s linear infinite,scanButtonCent
 .control-feed{max-height:240px;overflow:auto}
 .control-feed-row{display:grid;grid-template-columns:28px 1fr auto;gap:8px;padding:9px 0;border-bottom:1px solid #10273a;font-size:10px}
 .control-feed-row:last-child{border:0}.feed-icon{width:24px;height:24px;border-radius:7px;background:#0d3553;display:grid;place-items:center}.feed-copy b{display:block;color:#dce8f2}.feed-copy small{display:block;color:#60788d;margin-top:2px}.feed-time{color:#60788d}
+
+.graph-control-panel{grid-column:1/-1}
+.graph-controls{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.graph-control-card{background:#06111c;border:1px solid #123149;border-radius:10px;padding:11px}
+.graph-control-card label{display:block;color:#71889d;font-size:9px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px}
+.graph-control-card select,.graph-control-card input{width:100%;background:#081a29;border:1px solid #1a3c56;color:#e5f1f8;border-radius:7px;padding:8px;font-size:11px}
+.graph-control-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.graph-control-actions .btn{min-width:110px}
+.graph-status{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;padding:10px;border:1px solid #102b41;border-radius:9px;background:#06111c}
+.graph-status b{color:#19dda0}.graph-status.paused b{color:#ffcb63}
+@media(max-width:900px){.graph-controls{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.graph-controls{grid-template-columns:1fr}.graph-status{align-items:flex-start;flex-direction:column}}
+
 .control-note-box{margin-top:12px;border:1px solid #28445a;background:#06111c;border-radius:10px;padding:11px;color:#7f96aa;font-size:10px;line-height:1.6}
 @media(max-width:900px){.control-grid{grid-template-columns:1fr}.control-stats{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.control-hero{align-items:flex-start;flex-direction:column}.control-stats{grid-template-columns:1fr}.control-search{width:100%}.control-users{font-size:9px}.control-users th:nth-child(4),.control-users td:nth-child(4){display:none}}
 
-</head>
+<style>
+/* GV Control Center — organized admin layout */
+.control-page{max-width:1400px!important;margin:0 auto;padding:22px!important}
+.control-hero{padding:22px 24px!important;margin-bottom:16px!important;border-radius:16px!important;background:linear-gradient(135deg,#071522,#0a1c2c)!important;border:1px solid #173b55!important;box-shadow:0 10px 30px rgba(0,0,0,.18)!important}
+.control-hero h2{font-size:25px!important;margin:0 0 6px!important;letter-spacing:.2px}.control-hero p{max-width:760px!important;line-height:1.6!important}
+.admin-badge{white-space:nowrap!important;padding:9px 13px!important;border-radius:9px!important;font-weight:800!important;letter-spacing:.7px!important}
+.control-stats{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:12px!important;margin-bottom:16px!important}
+.control-stat{min-height:104px!important;padding:16px!important;border-radius:14px!important;background:#081827!important;border:1px solid #173b55!important;display:flex!important;flex-direction:column!important;justify-content:center!important}
+.control-stat small{text-transform:uppercase;letter-spacing:.7px;font-size:9px!important;color:#71889d!important}.control-stat b{font-size:23px!important;margin:7px 0 3px!important}.control-stat span{font-size:10px!important;color:#60788d!important}
+.control-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important;align-items:start!important}
+.control-panel{min-width:0!important;border-radius:14px!important;overflow:hidden!important;background:#071521!important;border:1px solid #16384f!important;box-shadow:0 8px 22px rgba(0,0,0,.14)!important}
+.control-panel-head{min-height:68px!important;padding:15px 17px!important;background:#0a1c2b!important;border-bottom:1px solid #16384f!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important}
+.control-panel-head h3{font-size:14px!important;margin:0 0 4px!important}.control-panel-head small{color:#668097!important;font-size:10px!important;line-height:1.4!important}
+.control-panel-body{padding:16px!important}.control-search{min-width:190px!important;background:#06111c!important;border:1px solid #21455e!important;border-radius:8px!important;padding:9px 10px!important;color:#e8f2f8!important}
+.control-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:9px!important}.control-action{min-height:66px!important;padding:11px!important;background:#06111c!important;border:1px solid #123149!important;border-radius:10px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:10px!important}.control-action b{font-size:11px!important}.control-action small{display:block!important;margin-top:4px!important;color:#60788d!important;font-size:9px!important}
+.control-danger{width:100%!important;margin-top:11px!important;min-height:42px!important;border-radius:9px!important}
+.graph-control-panel{grid-column:1/-1!important}.graph-controls{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:11px!important}.graph-control-card{min-height:86px!important;padding:13px!important;border-radius:11px!important}.graph-control-card label{font-size:9px!important;margin-bottom:9px!important}.graph-control-actions{padding-top:2px!important}.graph-control-actions .btn{min-height:40px!important}.graph-status{margin-top:12px!important;min-height:48px!important}.control-note-box{margin-top:12px!important;padding:11px 12px!important;border-radius:9px!important}
+.control-system{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important}.system-line{min-height:44px!important;padding:10px 11px!important;background:#06111c!important;border:1px solid #123149!important;border-radius:8px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:8px!important}.system-line span{font-size:10px!important;color:#8399aa!important}.system-line b{font-size:10px!important}
+.control-users{width:100%!important;border-collapse:collapse!important}.control-users th,.control-users td{padding:11px 9px!important;border-bottom:1px solid #112c40!important;text-align:left!important}.control-users th{font-size:9px!important;text-transform:uppercase!important;letter-spacing:.6px!important;color:#668097!important}.control-users td{font-size:10px!important;color:#d7e4ec!important}.control-feed{max-height:260px!important;overflow:auto!important;padding-right:4px!important}
+@media(max-width:950px){.control-stats{grid-template-columns:1fr 1fr!important}.control-grid{grid-template-columns:1fr!important}.graph-control-panel{grid-column:auto!important}.graph-controls{grid-template-columns:1fr 1fr!important}}
+@media(max-width:600px){.control-page{padding:12px!important}.control-stats,.control-actions,.control-system,.graph-controls{grid-template-columns:1fr!important}.control-panel-head{align-items:flex-start!important;flex-direction:column!important}.control-search{width:100%!important;min-width:0!important}.admin-badge{font-size:9px!important}.control-stat{min-height:90px!important}}
+<style>
+/* GV ADMIN ACCESS */
+#adminControlNav{display:none!important}
+#adminControlNav.admin-visible{display:flex!important}
+.admin-only-hidden{display:none!important}
+</style>
+</style></head>
 <body>
 <div class="app">
 <aside class="sidebar" id="sidebar">
-  <div class="brand"><div class="logo">GV</div><span>GV Trading</span></div>
-  <nav class="nav">
-    <button class="active" onclick="showPage('dashboard',this)">◈ <span>Dashboard</span></button>
-    <button onclick="showPage('trading',this)">↗ <span>Trading</span></button>
-    <button onclick="showPage('markets',this)">▥ <span>Markets</span></button>
-    <button onclick="showPage('wallet',this)">▣ <span>Wallet</span></button>
-    <button onclick="showPage('ai',this)">◉ <span>GV AI Analyst</span><em class="new">NEW</em></button>
-    <button onclick="showPage('guides',this)">▤ <span>Guides</span></button>
-    <button onclick="showPage('founder',this)">♙ <span>Founder</span></button>
-    <button onclick="showPage('settings',this)">⚙ <span>Settings</span></button>
-    <button onclick="showPage('control',this)">▣ <span>Control Center</span><em class="new">ADMIN</em></button>
-  </nav>
-  <div class="profile"><div class="avatar">GB</div><b>Gyane Baraka</b><small>Founder — GV</small><small>Building a learning-focused digital environment for people interested in crypto markets.</small><div class="year">1994 · Somali & Kenyan Citizen</div></div>
+<div class="brand"><div class="logo">GV</div><span>GV Trading</span></div>
+<nav class="nav">
+<button class="active" onclick="showPage('dashboard',this)">◈ <span>Dashboard</span></button>
+<button onclick="showPage('trading',this)">↗ <span>Trading</span></button>
+<button onclick="showPage('markets',this)">▥ <span>Markets</span></button>
+<button onclick="showPage('wallet',this)">▣ <span>Wallet</span></button>
+<button onclick="showPage('ai',this)">◉ <span>GV AI Analyst</span><em class="new">NEW</em></button>
+<button onclick="showPage('guides',this)">▤ <span>Guides</span></button>
+<button onclick="showPage('founder',this)">♙ <span>Founder</span></button>
+<button onclick="showPage('settings',this)">⚙ <span>Settings</span></button>
+<button id="adminControlNav" style="display:none" onclick="showPage('control',this)">▣ <span>Control Center</span><em class="new">ADMIN</em></button>
+</nav>
+<div class="profile"><div class="avatar">GB</div><b>Gyane Baraka</b><small>Founder — GV</small><small>Building a learning-focused digital environment for people interested in crypto markets.</small><div class="year">1994 · Somali &amp; Kenyan Citizen</div></div>
 </aside>
-
 <main class="main">
 <header class="topbar">
-  <div style="display:flex;align-items:center;gap:10px"><button class="pill mobile-menu" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button><div class="title"><h1 id="pageTitle">Trading Dashboard</h1><span>AI-powered market intelligence · simulated trading</span></div></div>
-  <div class="top-actions">
-    <span class="pill">Demo Balance <b id="balance">$25,840.00</b></span>
-    <div class="account-bar" id="accountBar">
-      <button class="btn primary" onclick="openAuth('register')">Create Account</button>
-      <button class="btn" onclick="openAuth('login')">Login</button>
-    </div>
-  </div>
+<div style="display:flex;align-items:center;gap:10px"><button class="pill mobile-menu" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button><div class="title"><h1 id="pageTitle">Trading Dashboard</h1><span>AI-powered market intelligence · simulated trading</span></div></div>
+<div class="top-actions">
+<span class="pill">Demo Balance <b id="balance">$25,840.00</b></span>
+<div class="account-bar" id="accountBar">
+<button class="btn primary" onclick="openAuth('register')">Create Account</button>
+<button class="btn" onclick="openAuth('login')">Login</button>
+</div>
+</div>
 </header>
-
 <div id="dashboardPage">
-<div id="userDashboard" class="user-dashboard">
-  <div class="ud-grid">
-    <div class="ud-card">
-      <div class="ud-profile">
-        <div class="ud-avatar" id="udAvatar">GV</div>
-        <div>
-          <small>Welcome back</small>
-          <b id="udName">GV Trader</b>
-          <div class="account-status" id="udStatus">Demo account</div>
-        </div>
-      </div>
-      <div class="ud-actions">
-        <button class="btn primary" onclick="showPage('trading')">Open Trading</button>
-        <button class="btn" onclick="showPage('ai')">Open GV AI</button>
-        <button class="btn" onclick="showPage('settings')">Account Settings</button>
-      </div>
-    </div>
-    <div class="ud-card"><small>Demo Equity</small><b id="udEquity">$25,840.00</b><span class="up">Simulation balance</span></div>
-    <div class="ud-card"><small>Open Trades</small><b id="udTrades">1</b><span class="muted">Current demo positions</span></div>
-    <div class="ud-card"><small>Account Level</small><b>Demo Trader</b><span class="muted">Learning environment</span></div>
-  </div>
+<div class="user-dashboard" id="userDashboard">
+<div class="ud-grid">
+<div class="ud-card">
+<div class="ud-profile">
+<div class="ud-avatar" id="udAvatar">GV</div>
+<div>
+<small>Welcome back</small>
+<b id="udName">GV Trader</b>
+<div class="account-status" id="udStatus">Demo account</div>
 </div>
-
+</div>
+<div class="ud-actions">
+<button class="btn primary" onclick="showPage('trading')">Open Trading</button>
+<button class="btn" onclick="showPage('ai')">Open GV AI</button>
+<button class="btn" onclick="showPage('settings')">Account Settings</button>
+</div>
+</div>
+<div class="ud-card"><small>Demo Equity</small><b id="udEquity">$25,840.00</b><span class="up">Simulation balance</span></div>
+<div class="ud-card"><small>Open Trades</small><b id="udTrades">1</b><span class="muted">Current demo positions</span></div>
+<div class="ud-card"><small>Account Level</small><b>Demo Trader</b><span class="muted">Learning environment</span></div>
+</div>
+</div>
 <div class="ticker">
-  <div class="ticker-card"><small>BTC/USD</small><strong>$67,485.03</strong> <span class="up">+0.81%</span></div>
-  <div class="ticker-card"><small>ETH/USD</small><strong>$3,268.45</strong> <span class="up">+1.24%</span></div>
-  <div class="ticker-card"><small>SOL/USD</small><strong>$164.32</strong> <span class="up">+2.17%</span></div>
-  <div class="ticker-card"><small>EUR/USD</small><strong>1.0724</strong> <span class="down">-0.36%</span></div>
-  <div class="ticker-card"><small>GBP/USD</small><strong>1.2618</strong> <span class="down">-0.21%</span></div>
+<div class="ticker-card"><small>BTC/USD</small><strong>$67,485.03</strong> <span class="up">+0.81%</span></div>
+<div class="ticker-card"><small>ETH/USD</small><strong>$3,268.45</strong> <span class="up">+1.24%</span></div>
+<div class="ticker-card"><small>SOL/USD</small><strong>$164.32</strong> <span class="up">+2.17%</span></div>
+<div class="ticker-card"><small>EUR/USD</small><strong>1.0724</strong> <span class="down">-0.36%</span></div>
+<div class="ticker-card"><small>GBP/USD</small><strong>1.2618</strong> <span class="down">-0.21%</span></div>
 </div>
-
 <section class="dashboard">
 <div>
-  <div class="chart-card">
-    <div class="market-head">
-      <div class="market-title"><div class="coin">₿</div><div><h2>BTC/USD <span style="font-size:11px;color:#879caf">⌄</span></h2><small>Bitcoin · Demo Market</small></div><strong class="up" id="livePrice">$67,485.03</strong></div>
-      <div class="timeframes" id="timeframes"><button onclick="setTimeframe(this,'1m')">1m</button><button onclick="setTimeframe(this,'5m')">5m</button><button class="active" onclick="setTimeframe(this,'15m')">15m</button><button onclick="setTimeframe(this,'30m')">30m</button><button onclick="setTimeframe(this,'1h')">1h</button><button onclick="setTimeframe(this,'4h')">4h</button><button onclick="setTimeframe(this,'1d')">1d</button></div>
-    </div>
-    <div class="chart-wrap">
-      <svg id="priceChart" viewBox="0 0 1000 390" preserveAspectRatio="none" aria-label="GV Trading candlestick demo chart">
-        <g id="chartGrid"></g>
-        <g id="chartVolume"></g>
-        <g id="chartCandles"></g>
-        <g id="pricePill"><rect class="price-pill" x="906" y="110" width="88" height="21" rx="4"></rect><text id="chartPriceText" class="price-text" x="914" y="124">$67,485.03</text></g>
-        <g id="chartLabels"></g>
-        <g id="chartLegend"></g>
-      </svg>
-    </div>
-    <div class="trade-box">
-      <div class="tabs" id="orderTabs"><button class="active" onclick="setOrderType(this,'Market')">Market</button><button onclick="setOrderType(this,'Limit')">Limit</button><button onclick="setOrderType(this,'Stop')">Stop</button></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-        <div class="field"><label>Asset</label><select id="asset" onchange="selectAsset(this.value)"><option>BTC/USD</option><option>ETH/USD</option><option>SOL/USD</option><option>XRP/USD</option></select></div>
-        <div class="field"><label>Amount (USD)</label><input id="amount" type="number" value="100" min="10" step="10"></div>
-      </div>
-      <div class="field"><label>Leverage</label><select id="leverage" onchange="updateLeverage()"><option>1x</option><option selected>2x</option><option>5x</option><option>10x</option></select></div>
-      <div class="trade-actions"><button class="buy" onclick="placeTrade('BUY')">BUY</button><button class="sell" onclick="placeTrade('SELL')">SELL</button></div>
-      <div class="control-note" id="orderHint">ⓘ Market order · Demo only — no real trades or financial transactions are executed.</div>
-    </div>
-  </div>
-  <div class="lower">
-    <div class="watch-card"><div class="card-head"><h3>Market Watchlist</h3><a href="#" onclick="showPage('markets');return false">View All</a></div><div class="watch-list">
-      <div class="row"><div class="coin-mini"><i>₿</i><div>BTC/USD<small>Bitcoin</small></div></div><b>$67,485.03</b><span class="up right">+0.81%</span></div>
-      <div class="row"><div class="coin-mini"><i>Ξ</i><div>ETH/USD<small>Ethereum</small></div></div><b>$3,268.45</b><span class="up right">+1.24%</span></div>
-      <div class="row"><div class="coin-mini"><i>◎</i><div>SOL/USD<small>Solana</small></div></div><b>$164.32</b><span class="up right">+2.17%</span></div>
-      <div class="row"><div class="coin-mini"><i>✕</i><div>XRP/USD<small>XRP</small></div></div><b>$0.61</b><span class="up right">+0.55%</span></div>
-    </div></div>
-    <div class="orders-card"><div class="card-head"><h3>Open Trades <span class="up" id="tradeCount">(1)</span></h3><a onclick="closeAll()">Close All</a></div><div class="orders"><table class="order-table"><thead><tr><th>Asset</th><th>Type</th><th>Amount</th><th>P/L</th><th>Status</th></tr></thead><tbody id="ordersBody"><tr><td>BTC/USD</td><td class="up">Buy</td><td>$100</td><td class="up">+$0.96</td><td><span class="status">Open</span></td></tr></tbody></table></div></div>
-  </div>
-  <div class="activity-card"><div class="card-head"><h3>Recent Activity</h3><a href="#" onclick="showToast('Showing the latest demo activity in this panel.');return false">View All</a></div><div id="activity"><div class="activity"><div class="dot">↗</div><div><b>Trade Executed</b><small>BTC/USD · Buy · 100 USD · Demo</small></div></div><div class="activity"><div class="dot">◉</div><div><b>AI Analysis</b><small>Bullish signal detected for BTC/USD</small></div></div><div class="activity"><div class="dot">▣</div><div><b>Wallet Update</b><small>Demo balance synchronized</small></div></div></div></div>
+<div class="chart-card">
+<div class="market-head">
+<div class="market-title"><div class="coin">₿</div><div><h2>BTC/USD <span style="font-size:11px;color:#879caf">⌄</span></h2><small>Bitcoin · Demo Market</small></div><strong class="up" id="livePrice">$67,485.03</strong></div>
+<div class="timeframes" id="timeframes"><button onclick="setTimeframe(this,'1m')">1m</button><button onclick="setTimeframe(this,'5m')">5m</button><button class="active" onclick="setTimeframe(this,'15m')">15m</button><button onclick="setTimeframe(this,'30m')">30m</button><button onclick="setTimeframe(this,'1h')">1h</button><button onclick="setTimeframe(this,'4h')">4h</button><button onclick="setTimeframe(this,'1d')">1d</button></div>
 </div>
-
+<div class="chart-wrap">
+<svg aria-label="GV Trading candlestick demo chart" id="priceChart" preserveaspectratio="none" viewbox="0 0 1000 390">
+<g id="chartGrid"></g>
+<g id="chartVolume"></g>
+<g id="chartCandles"></g>
+<g id="pricePill"><rect class="price-pill" height="21" rx="4" width="88" x="906" y="110"></rect><text class="price-text" id="chartPriceText" x="914" y="124">$67,485.03</text></g>
+<g id="chartLabels"></g>
+<g id="chartLegend"></g>
+</svg>
+</div>
+<div class="trade-box">
+<div class="tabs" id="orderTabs"><button class="active" onclick="setOrderType(this,'Market')">Market</button><button onclick="setOrderType(this,'Limit')">Limit</button><button onclick="setOrderType(this,'Stop')">Stop</button></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+<div class="field"><label>Asset</label><select id="asset" onchange="selectAsset(this.value)"><option>BTC/USD</option><option>ETH/USD</option><option>SOL/USD</option><option>XRP/USD</option></select></div>
+<div class="field"><label>Amount (USD)</label><input id="amount" min="10" step="10" type="number" value="100"/></div>
+</div>
+<div class="field"><label>Leverage</label><select id="leverage" onchange="updateLeverage()"><option>1x</option><option selected="">2x</option><option>5x</option><option>10x</option></select></div>
+<div class="trade-actions"><button class="buy" onclick="placeTrade('BUY')">BUY</button><button class="sell" onclick="placeTrade('SELL')">SELL</button></div>
+<div class="control-note" id="orderHint">ⓘ Market order · Demo only — no real trades or financial transactions are executed.</div>
+</div>
+</div>
+<div class="lower">
+<div class="watch-card"><div class="card-head"><h3>Market Watchlist</h3><a href="#" onclick="showPage('markets');return false">View All</a></div><div class="watch-list">
+<div class="row"><div class="coin-mini"><i>₿</i><div>BTC/USD<small>Bitcoin</small></div></div><b>$67,485.03</b><span class="up right">+0.81%</span></div>
+<div class="row"><div class="coin-mini"><i>Ξ</i><div>ETH/USD<small>Ethereum</small></div></div><b>$3,268.45</b><span class="up right">+1.24%</span></div>
+<div class="row"><div class="coin-mini"><i>◎</i><div>SOL/USD<small>Solana</small></div></div><b>$164.32</b><span class="up right">+2.17%</span></div>
+<div class="row"><div class="coin-mini"><i>✕</i><div>XRP/USD<small>XRP</small></div></div><b>$0.61</b><span class="up right">+0.55%</span></div>
+</div></div>
+<div class="orders-card"><div class="card-head"><h3>Open Trades <span class="up" id="tradeCount">(1)</span></h3><a onclick="closeAll()">Close All</a></div><div class="orders"><table class="order-table"><thead><tr><th>Asset</th><th>Type</th><th>Amount</th><th>P/L</th><th>Status</th></tr></thead><tbody id="ordersBody"><tr><td>BTC/USD</td><td class="up">Buy</td><td>$100</td><td class="up">+$0.96</td><td><span class="status">Open</span></td></tr></tbody></table></div></div>
+</div>
+<div class="activity-card"><div class="card-head"><h3>Recent Activity</h3><a href="#" onclick="showToast('Showing the latest demo activity in this panel.');return false">View All</a></div><div id="activity"><div class="activity"><div class="dot">↗</div><div><b>Trade Executed</b><small>BTC/USD · Buy · 100 USD · Demo</small></div></div><div class="activity"><div class="dot">◉</div><div><b>AI Analysis</b><small>Bullish signal detected for BTC/USD</small></div></div><div class="activity"><div class="dot">▣</div><div><b>Wallet Update</b><small>Demo balance synchronized</small></div></div></div></div>
+</div>
 <aside>
-  <div class="ai-card">
-    <div class="ai-head"><h3>🤖 GV AI Analyst</h3><span class="new">NEW</span></div>
-    <p class="ai-intro">Get AI-powered market analysis, trend signals and trading insights.</p>
-    <div class="analysis">
-      <div class="analysis-top"><b>Market Analysis</b><span class="badge" id="aiBadge">BULLISH</span></div>
-      <p class="ai-intro" id="aiText">BTC/USD is showing positive demo momentum with supportive buying pressure.</p>
-      <div class="strength"><div class="ring"><b id="aiScore">78%</b></div><div><div class="signal up" id="aiSignal">↗ RISE</div><small style="color:#71879a">Signal strength</small></div></div>
-      <ul class="ai-list"><li>Consider a <strong>BUY</strong> position in demo mode</li><li>Key support: <strong>$66,800</strong></li><li>Next resistance: <strong>$68,200</strong></li></ul>
-      <div class="ai-actions"><button class="btn primary" onclick="analyze()">◉ AI Trade</button><button class="btn" onclick="showPage('ai')">AI Report</button></div>
-      <div class="toggle-row"><span>Auto Trade <small style="color:#6f8498">(simulation)</small></span><button class="switch" id="autoSwitch" onclick="toggleAuto()"></button></div>
-    </div>
-    <div style="margin-top:13px;background:linear-gradient(135deg,#09233a,#061522);border:1px solid #17405d;border-radius:10px;padding:13px"><b>Trade Smarter with GV AI</b><p class="ai-intro">Real-time style market analysis and educational insights powered by the GV demo engine.</p><button class="btn primary" style="width:100%" onclick="showPage('ai')">Try GV AI Analyst →</button></div>
-  </div>
+<div class="ai-card">
+<div class="ai-head"><h3>🤖 GV AI Analyst</h3><span class="new">NEW</span></div>
+<p class="ai-intro">Get AI-powered market analysis, trend signals and trading insights.</p>
+<div class="analysis">
+<div class="analysis-top"><b>Market Analysis</b><span class="badge" id="aiBadge">BULLISH</span></div>
+<p class="ai-intro" id="aiText">BTC/USD is showing positive demo momentum with supportive buying pressure.</p>
+<div class="strength"><div class="ring"><b id="aiScore">78%</b></div><div><div class="signal up" id="aiSignal">↗ RISE</div><small style="color:#71879a">Signal strength</small></div></div>
+<ul class="ai-list"><li>Consider a <strong>BUY</strong> position in demo mode</li><li>Key support: <strong>$66,800</strong></li><li>Next resistance: <strong>$68,200</strong></li></ul>
+<div class="ai-actions"><button class="btn primary" onclick="analyze()">◉ AI Trade</button><button class="btn" onclick="showPage('ai')">AI Report</button></div>
+<div class="toggle-row"><span>Auto Trade <small style="color:#6f8498">(simulation)</small></span><button class="switch" id="autoSwitch" onclick="toggleAuto()"></button></div>
+</div>
+<div style="margin-top:13px;background:linear-gradient(135deg,#09233a,#061522);border:1px solid #17405d;border-radius:10px;padding:13px"><b>Trade Smarter with GV AI</b><p class="ai-intro">Real-time style market analysis and educational insights powered by the GV demo engine.</p><button class="btn primary" onclick="showPage('ai')" style="width:100%">Try GV AI Analyst →</button></div>
+</div>
 </aside>
 </section>
 </div>
-
-<div id="otherPages" class="sections">
-  <div id="trading" class="page-card">
-    <div class="page-hero"><h2>GV Trading Terminal</h2><p>Practice fast demo trades in a three-panel terminal inspired by modern trading interfaces. All activity on this page is simulated.</p></div>
-    <div class="trade-terminal">
-      <section class="terminal-pane terminal-left">
-        <div class="terminal-tabs">
-          <button class="terminal-tab active" id="openTab" onclick="switchTerminalTab('open')">Open <span id="terminalOpenCount">(0)</span></button>
-          <button class="terminal-tab" id="closedTab" onclick="switchTerminalTab('closed')">Closed <span id="terminalClosedCount">(0)</span></button>
-        </div>
-        <div class="terminal-left-body">
-          <div class="terminal-subtitle">Recent activity</div>
-          <div id="terminalOpenView" class="terminal-empty">
-            <div class="empty-icon">◎</div>
-            <strong id="terminalEmptyTitle">No open demo trades</strong>
-            <span id="terminalEmptyText">Your active simulated contract will appear here.</span>
-          </div>
-          <div id="terminalClosedView" class="terminal-empty" style="display:none">
-            <div class="empty-icon">✓</div>
-            <strong>No closed trades</strong>
-            <span>Completed or closed demo contracts will appear here.</span>
-          </div>
-          <div id="terminalActivity" style="display:grid;gap:7px"></div>
-          <button class="terminal-history-btn" onclick="showToast('Demo history opened. Full history is stored only in this browser session.')">◷ View all history</button>
-        </div>
-      </section>
-
-      <section class="terminal-pane terminal-center">
-        <div class="terminal-toolbar">
-          <select class="terminal-select" id="terminalTf" onchange="setTerminalTimeframe(this.value)"><option value="1s">1s</option><option value="5s">5s</option><option value="15s">15s</option><option value="30s">30s</option><option value="1m">1m</option></select>
-          <button class="terminal-tool" onclick="showToast('Chart view refreshed.')">⌁</button>
-          <button class="terminal-tool" onclick="toggleTerminalGrid(this)">▥</button>
-          <button class="terminal-tool" onclick="showToast('Indicators are disabled in the clean demo chart.')">Indicators⌄</button>
-          <button class="terminal-tool" onclick="showToast('AI scanner is reading demo price movement.')">◎</button>
-          <button class="terminal-tool" onclick="toggleTerminalFullscreen()">⛶</button>
-        </div>
-        <div class="terminal-chart-wrap" id="terminalChartWrap">
-          <div class="terminal-symbol-card">
-            <div class="terminal-symbol-line"><div class="terminal-symbol-icon">₿</div><div><strong id="terminalChartTitle">BTC/USD (1s) Demo</strong><small><span id="terminalChartPrice">$67,485.03</span> <span id="terminalChartChange" class="terminal-price-down">-0.07% ↗</span></small></div></div>
-          </div>
-          <svg id="terminalChart" viewBox="0 0 1000 560" preserveAspectRatio="none" aria-label="GV Trading terminal demo chart">
-            <defs><linearGradient id="tradeAreaGradient" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#1d82ff" stop-opacity=".48"/><stop offset="100%" stop-color="#1d82ff" stop-opacity="0"/></linearGradient></defs>
-            <g id="terminalGrid"></g><path id="terminalArea" class="terminal-chart-area"></path><path id="terminalLine" class="terminal-chart-line"></path><line id="terminalPriceLine" class="terminal-price-line" x1="0" x2="1000" y1="180" y2="180"></line><g id="terminalAxes"></g><g id="terminalPricePill"><rect class="terminal-price-pill" x="908" y="160" width="84" height="28" rx="7"></rect><text id="terminalPriceText" class="terminal-price-text" x="918" y="178">$67,485.03</text></g>
-          </svg>
-        </div>
-        <div class="terminal-market-stats">
-          <div class="terminal-stat"><small>0</small><b id="digit0">9.1%</b></div><div class="terminal-stat"><small>1</small><b id="digit1">10.7%</b></div><div class="terminal-stat"><small>2</small><b id="digit2">11.4%</b></div><div class="terminal-stat"><small>3</small><b id="digit3">9.6%</b></div>
-        </div>
-      </section>
-
-      <aside class="terminal-pane terminal-right">
-        <div class="terminal-right-head"><h3>Trade Type</h3><span class="manual-label">Manual demo</span></div>
-        <div class="terminal-mode-tabs" id="terminalModes">
-          <button class="active" onclick="setTerminalMode(this,'Rise/Fall')">Rise/Fall</button><button onclick="setTerminalMode(this,'Higher/Lower')">Higher/Lower</button><button onclick="setTerminalMode(this,'Even/Odd')">Even/Odd</button><button onclick="setTerminalMode(this,'Match/Differ')">Match/Differ</button>
-        </div>
-        <div>
-          <div class="stake-label"><span>Stake Amount</span><span>(USD)</span></div>
-          <div class="stepper"><button onclick="changeTerminalStake(-10)">−</button><input id="terminalStake" value="10" inputmode="decimal"><button onclick="changeTerminalStake(10)">+</button></div>
-          <div class="quick-stakes"><button class="active" onclick="setTerminalStake(10,this)">10</button><button onclick="setTerminalStake(25,this)">25</button><button onclick="setTerminalStake(50,this)">50</button><button onclick="setTerminalStake(100,this)">100</button><button onclick="setTerminalStake(250,this)">250</button><button onclick="setTerminalStake(500,this)">500</button></div>
-        </div>
-        <div>
-          <div class="duration-label"><span>Duration</span><span>Demo ticks</span></div>
-          <div class="stepper"><button onclick="changeTerminalDuration(-1)">−</button><input id="terminalDuration" value="5 ticks"><button onclick="changeTerminalDuration(1)">+</button></div>
-        </div>
-        <div class="payout-row"><span>Estimated payout</span><b id="terminalPayout">1.90×</b></div>
-        <div class="terminal-contract">
-          <button class="contract-btn green" onclick="placeTerminalContract('RISE')"><strong>RISE</strong><span>Payout <b id="risePayout">19.00 USD</b></span><span>Demo profit <b id="riseProfit">9.00 USD</b></span></button>
-          <button class="contract-btn red" onclick="placeTerminalContract('FALL')"><strong>FALL</strong><span>Payout <b id="fallPayout">19.00 USD</b></span><span>Demo profit <b id="fallProfit">9.00 USD</b></span></button>
-        </div>
-        <div class="terminal-ai">
-          <div class="terminal-ai-head"><div style="display:flex;align-items:center;gap:10px"><div class="terminal-ai-chip">AI</div><div><b>AI Scanner</b><small style="display:block">Analyze demo market & get smart insights</small></div></div><button id="terminalScanBtn" onclick="terminalAIScan()">Scan Now</button></div>
-          <div class="terminal-ai-score" id="terminalAIScore">Ready to scan the demo market.</div>
-        </div>
-        <div class="control-note">ⓘ Demo trading only. No real trades, payments or financial transactions are executed.</div>
-      </aside>
-    </div>
-  </div>
-
-  <div id="markets" class="page-card">
-    <div class="page-hero"><h2>Markets</h2><p>Explore the demo market board and compare price movement, momentum and market conditions.</p></div>
-    <div class="stat-row"><div class="mini-stat"><small>Market Status</small><b class="up">OPEN · DEMO</b></div><div class="mini-stat"><small>Assets Tracked</small><b>8</b></div><div class="mini-stat"><small>AI Scans Today</small><b id="marketScans">24</b></div><div class="mini-stat"><small>Data Mode</small><b>Demo</b></div></div>
-    <div class="info-card" style="margin-top:14px"><h3>Market Watch</h3><table class="market-table"><tr><th>Asset</th><th>Price</th><th>24h</th><th>Trend</th><th>Demo Signal</th></tr><tr><td><b>BTC/USD</b><br><small>Bitcoin</small></td><td>$67,485.03</td><td class="up">+0.81%</td><td>↗ Bullish</td><td class="up">RISE</td></tr><tr><td><b>ETH/USD</b><br><small>Ethereum</small></td><td>$3,268.45</td><td class="up">+1.24%</td><td>↗ Bullish</td><td class="up">RISE</td></tr><tr><td><b>SOL/USD</b><br><small>Solana</small></td><td>$164.32</td><td class="up">+2.17%</td><td>↗ Strong</td><td class="up">RISE</td></tr><tr><td><b>XRP/USD</b><br><small>XRP</small></td><td>$0.61</td><td class="up">+0.55%</td><td>→ Neutral</td><td>WAIT</td></tr><tr><td><b>EUR/USD</b><br><small>Euro</small></td><td>1.0724</td><td class="down">-0.36%</td><td>↘ Weak</td><td class="down">WAIT</td></tr></table></div>
-    <div class="page-grid"><div class="info-card"><h3>What the indicators mean</h3><p><b>Trend:</b> the direction shown by the demo price path.</p><p><b>Momentum:</b> the strength of recent movement.</p><p><b>Volatility:</b> how quickly price may move up or down.</p></div><div class="info-card"><h3>Important</h3><p>Prices and signals on this page are demonstration values. They are not live exchange quotes and should not be treated as investment advice.</p><div class="action-row"><button class="btn primary" onclick="showPage('ai')">Run AI Market Scan →</button></div></div></div>
-  </div>
-
-  <div id="wallet" class="page-card">
-    <div class="page-hero"><h2>GV Demo Wallet</h2><p>Manage your simulated trading balance and review demo wallet activity.</p></div>
-    <div class="info-card" style="margin-top:14px"><small class="muted">Available Demo Balance</small><div class="wallet-balance">$25,840.00</div><span class="up">+ $486.25 today's demo P/L</span></div>
-    <div class="page-grid">
-      <div class="info-card"><h3>Wallet Actions</h3><div class="wallet-action"><span><b>Deposit</b><small>Add virtual demo funds</small></span><button class="btn" onclick="walletAction('Deposit')">Add Funds</button></div><div class="wallet-action"><span><b>Withdraw</b><small>Practice a simulated withdrawal</small></span><button class="btn" onclick="walletAction('Withdraw')">Withdraw</button></div><div class="wallet-action"><span><b>Transfer</b><small>Move demo funds between areas</small></span><button class="btn" onclick="walletAction('Transfer')">Transfer</button></div></div>
-      <div class="info-card"><h3>Payment Integrations</h3><p><b>M-Pesa</b> — interface placeholder for a future secure integration.</p><p><b>PayPal</b> — interface placeholder for a future secure integration.</p><p style="color:#f0b44d">No real money is processed by this prototype.</p><div class="action-row"><button class="btn primary" onclick="showToast('Secure payment integration is not connected in demo mode.')">Payment Details</button></div></div>
-    </div>
-    <div class="info-card" style="margin-top:14px"><h3>Recent Wallet Activity</h3><table class="market-table"><tr><th>Date</th><th>Activity</th><th>Amount</th><th>Status</th></tr><tr><td>Today</td><td>Demo trading profit</td><td class="up">+$486.25</td><td>Completed</td></tr><tr><td>Today</td><td>Demo account funding</td><td>+$25,000.00</td><td>Simulated</td></tr><tr><td>Yesterday</td><td>Trading allocation</td><td>-$1,000.00</td><td>Simulated</td></tr></table></div>
-  </div>
-  <div id="ai" class="page-card">
-  <div style="display:flex;justify-content:space-between;gap:10px;align-items:center">
-    <div><h2 style="margin-bottom:4px">GV AI Analyst & Auto Trading Center</h2><p class="muted">A transparent demo engine that shows what it is analyzing, why it produced a signal, and every simulated order it makes.</p></div>
-    <span class="bot-state" id="aiPageBotState">SIMULATION READY</span>
-  </div>
-
-  <div class="ai-terminal">
-    <section class="ai-panel">
-      <h3>Full Market Analysis</h3>
-      <div class="muted">BTC/USD · 15-minute demo analysis · refreshed automatically</div>
-      <div class="scan-grid">
-        <div class="scan-box"><small>Trend</small><b id="trendValue">Bullish</b><div class="progress"><i style="width:82%"></i></div></div>
-        <div class="scan-box"><small>Momentum</small><b id="momentumValue">Strong</b><div class="progress"><i style="width:76%"></i></div></div>
-        <div class="scan-box"><small>Volatility</small><b id="volValue">Moderate</b><div class="progress"><i style="width:58%"></i></div></div>
-        <div class="scan-box"><small>Liquidity</small><b id="liqValue">Healthy</b><div class="progress"><i style="width:88%"></i></div></div>
-      </div>
-
-      <div class="signal-big">
-        <div class="signal-circle"><span id="fullScore">78%</span></div>
-        <div><div style="font-size:25px;font-weight:900" id="fullSignal">BUY / RISE</div><div class="muted">Demo signal strength · not a profit guarantee</div></div>
-      </div>
-
-      <div class="detail-list">
-        <div class="detail-line"><span>Current demo price</span><b id="analysisPrice">$67,485.03</b></div>
-        <div class="detail-line"><span>Support zone</span><b>$66,800 – $67,050</b></div>
-        <div class="detail-line"><span>Resistance zone</span><b>$68,000 – $68,200</b></div>
-        <div class="detail-line"><span>Momentum reading</span><b class="up">Positive</b></div>
-        <div class="detail-line"><span>Risk state</span><b>Moderate</b></div>
-      </div>
-      <div style="margin-top:12px"><button id="fullScanBtn" class="btn primary" onclick="runFullScan()">Run Full AI Scan</button><div id="fullScanStatus" class="scan-status">Ready to scan the demo market.</div></div>
-    </section>
-
-    <section class="monitor-panel">
-      <div class="monitor-head"><div><h3>Auto Trade Monitor</h3><span class="live-dot">LIVE DEMO ENGINE</span></div><span class="bot-state" id="monitorState">OFF</span></div>
-      <p class="muted">When enabled, the demo engine evaluates the market and places simulated orders according to the displayed rules.</p>
-      <div class="risk-grid">
-        <div class="risk-box"><small>Stake / trade</small><input class="risk-input" id="stakeInput" type="number" min="10" step="10" value="100" onchange="saveRiskSettings()"></div>
-        <div class="risk-box"><small>Max trades</small><input class="risk-input" id="maxTradesInput" type="number" min="1" max="100" value="20" onchange="saveRiskSettings()"></div>
-        <div class="risk-box"><small>Stop loss</small><input class="risk-input" id="stopLossInput" type="number" min="1" step="10" value="500" onchange="saveRiskSettings()"></div>
-      </div>
-      <div class="control-note" id="riskStatus">Auto-trader limits apply to this demo session.</div>
-      <div class="auto-controls">
-        <button class="btn green" onclick="toggleAuto()">Start / Stop Auto</button>
-        <button class="btn red" onclick="emergencyStop()">Emergency Stop</button>
-      </div>
-      <div class="execution-feed" id="executionFeed">
-        <div class="exec"><span class="type">SYSTEM</span><span>Waiting for auto-trade instructions...</span><span class="time">now</span></div>
-      </div>
-    </section>
-  </div>
-
-  <div class="ai-panel" style="margin-top:12px">
-    <h3>Human vs Bot Activity Monitor</h3>
-    <p class="muted">This demo can label <b>its own execution events</b> as AI/Bot or Manual. It cannot reliably determine whether an unknown real-world trader is a human or a bot without verified platform-side telemetry.</p>
-    <div class="scan-grid">
-      <div class="scan-box"><small>Current executor</small><b id="executorType">Manual / User</b></div>
-      <div class="scan-box"><small>Automation state</small><b id="automationType">OFF</b></div>
-      <div class="scan-box"><small>Orders analyzed</small><b id="ordersAnalyzed">0</b></div>
-      <div class="scan-box"><small>Engine status</small><b class="up">Transparent Demo</b></div>
-    </div>
-  </div>
+<div class="sections" id="otherPages">
+<div class="page-card" id="trading">
+<div class="page-hero"><h2>GV Trading Terminal</h2><p>Practice fast demo trades in a three-panel terminal inspired by modern trading interfaces. All activity on this page is simulated.</p></div>
+<div class="trade-terminal">
+<section class="terminal-pane terminal-left">
+<div class="terminal-tabs">
+<button class="terminal-tab active" id="openTab" onclick="switchTerminalTab('open')">Open <span id="terminalOpenCount">(0)</span></button>
+<button class="terminal-tab" id="closedTab" onclick="switchTerminalTab('closed')">Closed <span id="terminalClosedCount">(0)</span></button>
 </div>
-  <div id="guides" class="page-card">
-    <div class="page-hero"><h2>GV Trading Guides</h2><p>Learn the basics of markets, demo trading, technical analysis and risk management.</p></div>
-    <div class="page-grid">
-      <div class="info-card"><div class="guide-item"><b>01 · Market Orders</b><span class="muted">A market order is designed to execute at the available demo price. Learn how execution price can differ as markets move.</span></div><div class="guide-item"><b>02 · Limit Orders</b><span class="muted">A limit order specifies a desired price level. In this demo, use it to understand how conditional execution works.</span></div><div class="guide-item"><b>03 · Stop Orders</b><span class="muted">A stop order can be used as part of an exit or entry plan when price reaches a chosen level.</span></div></div>
-      <div class="info-card"><div class="guide-item"><b>04 · Position Sizing</b><span class="muted">Decide how much capital you are willing to expose before selecting leverage.</span></div><div class="guide-item"><b>05 · Support & Resistance</b><span class="muted">Support and resistance are commonly used price zones for understanding where buying or selling interest may appear.</span></div><div class="guide-item"><b>06 · AI Signals</b><span class="muted">A signal is an analytical output, not a guarantee. Review the underlying conditions before making a decision.</span></div></div>
-    </div>
-    <div class="info-card" style="margin-top:14px"><h3>Beginner Learning Path</h3><p>Start with market terminology → understand charts → practice demo trades → study risk management → review your trade history → learn how automated systems work.</p><div class="action-row"><button class="btn primary" onclick="showPage('trading')">Practice Demo Trading →</button><button class="btn" onclick="showPage('ai')">Study AI Analysis</button></div></div>
-  </div>
+<div class="terminal-left-body">
+<div class="terminal-subtitle">Recent activity</div>
+<div class="terminal-empty" id="terminalOpenView">
+<div class="empty-icon">◎</div>
+<strong id="terminalEmptyTitle">No open demo trades</strong>
+<span id="terminalEmptyText">Your active simulated contract will appear here.</span>
+</div>
+<div class="terminal-empty" id="terminalClosedView" style="display:none">
+<div class="empty-icon">✓</div>
+<strong>No closed trades</strong>
+<span>Completed or closed demo contracts will appear here.</span>
+</div>
+<div id="terminalActivity" style="display:grid;gap:7px"></div>
+<button class="terminal-history-btn" onclick="showToast('Demo history opened. Full history is stored only in this browser session.')">◷ View all history</button>
+</div>
+</section>
+<section class="terminal-pane terminal-center">
+<div class="terminal-toolbar">
+<select class="terminal-select" id="terminalTf" onchange="setTerminalTimeframe(this.value)"><option value="1s">1s</option><option value="5s">5s</option><option value="15s">15s</option><option value="30s">30s</option><option value="1m">1m</option></select>
+<button class="terminal-tool" onclick="showToast('Chart view refreshed.')">⌁</button>
+<button class="terminal-tool" onclick="toggleTerminalGrid(this)">▥</button>
+<button class="terminal-tool" onclick="showToast('Indicators are disabled in the clean demo chart.')">Indicators⌄</button>
+<button class="terminal-tool" onclick="showToast('AI scanner is reading demo price movement.')">◎</button>
+<button class="terminal-tool" onclick="toggleTerminalFullscreen()">⛶</button>
+</div>
+<div class="terminal-chart-wrap" id="terminalChartWrap">
+<div class="terminal-symbol-card">
+<div class="terminal-symbol-line"><div class="terminal-symbol-icon">₿</div><div><strong id="terminalChartTitle">BTC/USD (1s) Demo</strong><small><span id="terminalChartPrice">$67,485.03</span> <span class="terminal-price-down" id="terminalChartChange">-0.07% ↗</span></small></div></div>
+</div>
+<svg aria-label="GV Trading terminal demo chart" id="terminalChart" preserveaspectratio="none" viewbox="0 0 1000 560">
+<defs><lineargradient id="tradeAreaGradient" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#1d82ff" stop-opacity=".48"></stop><stop offset="100%" stop-color="#1d82ff" stop-opacity="0"></stop></lineargradient></defs>
+<g id="terminalGrid"></g><path class="terminal-chart-area" id="terminalArea"></path><path class="terminal-chart-line" id="terminalLine"></path><line class="terminal-price-line" id="terminalPriceLine" x1="0" x2="1000" y1="180" y2="180"></line><g id="terminalAxes"></g><g id="terminalPricePill"><rect class="terminal-price-pill" height="28" rx="7" width="84" x="908" y="160"></rect><text class="terminal-price-text" id="terminalPriceText" x="918" y="178">$67,485.03</text></g>
+</svg>
+</div>
+<div class="terminal-market-stats">
+<div class="terminal-stat"><small>0</small><b id="digit0">9.1%</b></div><div class="terminal-stat"><small>1</small><b id="digit1">10.7%</b></div><div class="terminal-stat"><small>2</small><b id="digit2">11.4%</b></div><div class="terminal-stat"><small>3</small><b id="digit3">9.6%</b></div>
+</div>
+</section>
+<aside class="terminal-pane terminal-right">
+<div class="terminal-right-head"><h3>Trade Type</h3><span class="manual-label">Manual demo</span></div>
+<div class="terminal-mode-tabs" id="terminalModes">
+<button class="active" onclick="setTerminalMode(this,'Rise/Fall')">Rise/Fall</button><button onclick="setTerminalMode(this,'Higher/Lower')">Higher/Lower</button><button onclick="setTerminalMode(this,'Even/Odd')">Even/Odd</button><button onclick="setTerminalMode(this,'Match/Differ')">Match/Differ</button>
+</div>
+<div>
+<div class="stake-label"><span>Stake Amount</span><span>(USD)</span></div>
+<div class="stepper"><button onclick="changeTerminalStake(-10)">−</button><input id="terminalStake" inputmode="decimal" value="10"/><button onclick="changeTerminalStake(10)">+</button></div>
+<div class="quick-stakes"><button class="active" onclick="setTerminalStake(10,this)">10</button><button onclick="setTerminalStake(25,this)">25</button><button onclick="setTerminalStake(50,this)">50</button><button onclick="setTerminalStake(100,this)">100</button><button onclick="setTerminalStake(250,this)">250</button><button onclick="setTerminalStake(500,this)">500</button></div>
+</div>
+<div>
+<div class="duration-label"><span>Duration</span><span>Demo ticks</span></div>
+<div class="stepper"><button onclick="changeTerminalDuration(-1)">−</button><input id="terminalDuration" value="5 ticks"/><button onclick="changeTerminalDuration(1)">+</button></div>
+</div>
+<div class="payout-row"><span>Estimated payout</span><b id="terminalPayout">1.90×</b></div>
+<div class="terminal-contract">
+<button class="contract-btn green" onclick="placeTerminalContract('RISE')"><strong>RISE</strong><span>Payout <b id="risePayout">19.00 USD</b></span><span>Demo profit <b id="riseProfit">9.00 USD</b></span></button>
+<button class="contract-btn red" onclick="placeTerminalContract('FALL')"><strong>FALL</strong><span>Payout <b id="fallPayout">19.00 USD</b></span><span>Demo profit <b id="fallProfit">9.00 USD</b></span></button>
+</div>
+<div class="terminal-ai">
+<div class="terminal-ai-head"><div style="display:flex;align-items:center;gap:10px"><div class="terminal-ai-chip">AI</div><div><b>AI Scanner</b><small style="display:block">Analyze demo market &amp; get smart insights</small></div></div><button id="terminalScanBtn" onclick="terminalAIScan()">Scan Now</button></div>
+<div class="terminal-ai-score" id="terminalAIScore">Ready to scan the demo market.</div>
+</div>
+<div class="control-note">ⓘ Demo trading only. No real trades, payments or financial transactions are executed.</div>
+</aside>
+</div>
+</div>
+<div class="page-card" id="markets">
+<div class="page-hero"><h2>Markets</h2><p>Explore the demo market board and compare price movement, momentum and market conditions.</p></div>
+<div class="stat-row"><div class="mini-stat"><small>Market Status</small><b class="up">OPEN · DEMO</b></div><div class="mini-stat"><small>Assets Tracked</small><b>8</b></div><div class="mini-stat"><small>AI Scans Today</small><b id="marketScans">24</b></div><div class="mini-stat"><small>Data Mode</small><b>Demo</b></div></div>
+<div class="info-card" style="margin-top:14px"><h3>Market Watch</h3><table class="market-table"><tr><th>Asset</th><th>Price</th><th>24h</th><th>Trend</th><th>Demo Signal</th></tr><tr><td><b>BTC/USD</b><br/><small>Bitcoin</small></td><td>$67,485.03</td><td class="up">+0.81%</td><td>↗ Bullish</td><td class="up">RISE</td></tr><tr><td><b>ETH/USD</b><br/><small>Ethereum</small></td><td>$3,268.45</td><td class="up">+1.24%</td><td>↗ Bullish</td><td class="up">RISE</td></tr><tr><td><b>SOL/USD</b><br/><small>Solana</small></td><td>$164.32</td><td class="up">+2.17%</td><td>↗ Strong</td><td class="up">RISE</td></tr><tr><td><b>XRP/USD</b><br/><small>XRP</small></td><td>$0.61</td><td class="up">+0.55%</td><td>→ Neutral</td><td>WAIT</td></tr><tr><td><b>EUR/USD</b><br/><small>Euro</small></td><td>1.0724</td><td class="down">-0.36%</td><td>↘ Weak</td><td class="down">WAIT</td></tr></table></div>
+<div class="page-grid"><div class="info-card"><h3>What the indicators mean</h3><p><b>Trend:</b> the direction shown by the demo price path.</p><p><b>Momentum:</b> the strength of recent movement.</p><p><b>Volatility:</b> how quickly price may move up or down.</p></div><div class="info-card"><h3>Important</h3><p>Prices and signals on this page are demonstration values. They are not live exchange quotes and should not be treated as investment advice.</p><div class="action-row"><button class="btn primary" onclick="showPage('ai')">Run AI Market Scan →</button></div></div></div>
+</div>
+<div class="page-card" id="wallet">
+<div class="page-hero"><h2>GV Demo Wallet</h2><p>Manage your simulated trading balance and review demo wallet activity.</p></div>
+<div class="info-card" style="margin-top:14px"><small class="muted">Available Demo Balance</small><div class="wallet-balance">$25,840.00</div><span class="up">+ $486.25 today's demo P/L</span></div>
+<div class="page-grid">
+<div class="info-card"><h3>Wallet Actions</h3><div class="wallet-action"><span><b>Deposit</b><small>Add virtual demo funds</small></span><button class="btn" onclick="walletAction('Deposit')">Add Funds</button></div><div class="wallet-action"><span><b>Withdraw</b><small>Practice a simulated withdrawal</small></span><button class="btn" onclick="walletAction('Withdraw')">Withdraw</button></div><div class="wallet-action"><span><b>Transfer</b><small>Move demo funds between areas</small></span><button class="btn" onclick="walletAction('Transfer')">Transfer</button></div></div>
+<div class="info-card"><h3>Payment Integrations</h3><p><b>M-Pesa</b> — interface placeholder for a future secure integration.</p><p><b>PayPal</b> — interface placeholder for a future secure integration.</p><p style="color:#f0b44d">No real money is processed by this prototype.</p><div class="action-row"><button class="btn primary" onclick="showToast('Secure payment integration is not connected in demo mode.')">Payment Details</button></div></div>
+</div>
+<div class="info-card" style="margin-top:14px"><h3>Recent Wallet Activity</h3><table class="market-table"><tr><th>Date</th><th>Activity</th><th>Amount</th><th>Status</th></tr><tr><td>Today</td><td>Demo trading profit</td><td class="up">+$486.25</td><td>Completed</td></tr><tr><td>Today</td><td>Demo account funding</td><td>+$25,000.00</td><td>Simulated</td></tr><tr><td>Yesterday</td><td>Trading allocation</td><td>-$1,000.00</td><td>Simulated</td></tr></table></div>
+</div>
+<div class="page-card" id="ai">
+<div style="display:flex;justify-content:space-between;gap:10px;align-items:center">
+<div><h2 style="margin-bottom:4px">GV AI Analyst &amp; Auto Trading Center</h2><p class="muted">A transparent demo engine that shows what it is analyzing, why it produced a signal, and every simulated order it makes.</p></div>
+<span class="bot-state" id="aiPageBotState">SIMULATION READY</span>
+</div>
+<div class="ai-terminal">
+<section class="ai-panel">
+<h3>Full Market Analysis</h3>
+<div class="muted">BTC/USD · 15-minute demo analysis · refreshed automatically</div>
+<div class="scan-grid">
+<div class="scan-box"><small>Trend</small><b id="trendValue">Bullish</b><div class="progress"><i style="width:82%"></i></div></div>
+<div class="scan-box"><small>Momentum</small><b id="momentumValue">Strong</b><div class="progress"><i style="width:76%"></i></div></div>
+<div class="scan-box"><small>Volatility</small><b id="volValue">Moderate</b><div class="progress"><i style="width:58%"></i></div></div>
+<div class="scan-box"><small>Liquidity</small><b id="liqValue">Healthy</b><div class="progress"><i style="width:88%"></i></div></div>
+</div>
+<div class="signal-big">
+<div class="signal-circle"><span id="fullScore">78%</span></div>
+<div><div id="fullSignal" style="font-size:25px;font-weight:900">BUY / RISE</div><div class="muted">Demo signal strength · not a profit guarantee</div></div>
+</div>
+<div class="detail-list">
+<div class="detail-line"><span>Current demo price</span><b id="analysisPrice">$67,485.03</b></div>
+<div class="detail-line"><span>Support zone</span><b>$66,800 – $67,050</b></div>
+<div class="detail-line"><span>Resistance zone</span><b>$68,000 – $68,200</b></div>
+<div class="detail-line"><span>Momentum reading</span><b class="up">Positive</b></div>
+<div class="detail-line"><span>Risk state</span><b>Moderate</b></div>
+</div>
+<div style="margin-top:12px"><button class="btn primary" id="fullScanBtn" onclick="runFullScan()">Run Full AI Scan</button><div class="scan-status" id="fullScanStatus">Ready to scan the demo market.</div></div>
+</section>
+<section class="monitor-panel">
+<div class="monitor-head"><div><h3>Auto Trade Monitor</h3><span class="live-dot">LIVE DEMO ENGINE</span></div><span class="bot-state" id="monitorState">OFF</span></div>
+<p class="muted">When enabled, the demo engine evaluates the market and places simulated orders according to the displayed rules.</p>
+<div class="risk-grid">
+<div class="risk-box"><small>Stake / trade</small><input class="risk-input" id="stakeInput" min="10" onchange="saveRiskSettings()" step="10" type="number" value="100"/></div>
+<div class="risk-box"><small>Max trades</small><input class="risk-input" id="maxTradesInput" max="100" min="1" onchange="saveRiskSettings()" type="number" value="20"/></div>
+<div class="risk-box"><small>Stop loss</small><input class="risk-input" id="stopLossInput" min="1" onchange="saveRiskSettings()" step="10" type="number" value="500"/></div>
+</div>
+<div class="control-note" id="riskStatus">Auto-trader limits apply to this demo session.</div>
+<div class="auto-controls">
+<button class="btn green" onclick="toggleAuto()">Start / Stop Auto</button>
+<button class="btn red" onclick="emergencyStop()">Emergency Stop</button>
+</div>
+<div class="execution-feed" id="executionFeed">
+<div class="exec"><span class="type">SYSTEM</span><span>Waiting for auto-trade instructions...</span><span class="time">now</span></div>
+</div>
+</section>
+</div>
+<div class="ai-panel" style="margin-top:12px">
+<h3>Human vs Bot Activity Monitor</h3>
+<p class="muted">This demo can label <b>its own execution events</b> as AI/Bot or Manual. It cannot reliably determine whether an unknown real-world trader is a human or a bot without verified platform-side telemetry.</p>
+<div class="scan-grid">
+<div class="scan-box"><small>Current executor</small><b id="executorType">Manual / User</b></div>
+<div class="scan-box"><small>Automation state</small><b id="automationType">OFF</b></div>
+<div class="scan-box"><small>Orders analyzed</small><b id="ordersAnalyzed">0</b></div>
+<div class="scan-box"><small>Engine status</small><b class="up">Transparent Demo</b></div>
+</div>
+</div>
+</div>
+<div class="page-card" id="guides">
+<div class="page-hero"><h2>GV Trading Guides</h2><p>Learn the basics of markets, demo trading, technical analysis and risk management.</p></div>
+<div class="page-grid">
+<div class="info-card"><div class="guide-item"><b>01 · Market Orders</b><span class="muted">A market order is designed to execute at the available demo price. Learn how execution price can differ as markets move.</span></div><div class="guide-item"><b>02 · Limit Orders</b><span class="muted">A limit order specifies a desired price level. In this demo, use it to understand how conditional execution works.</span></div><div class="guide-item"><b>03 · Stop Orders</b><span class="muted">A stop order can be used as part of an exit or entry plan when price reaches a chosen level.</span></div></div>
+<div class="info-card"><div class="guide-item"><b>04 · Position Sizing</b><span class="muted">Decide how much capital you are willing to expose before selecting leverage.</span></div><div class="guide-item"><b>05 · Support &amp; Resistance</b><span class="muted">Support and resistance are commonly used price zones for understanding where buying or selling interest may appear.</span></div><div class="guide-item"><b>06 · AI Signals</b><span class="muted">A signal is an analytical output, not a guarantee. Review the underlying conditions before making a decision.</span></div></div>
+</div>
+<div class="info-card" style="margin-top:14px"><h3>Beginner Learning Path</h3><p>Start with market terminology → understand charts → practice demo trades → study risk management → review your trade history → learn how automated systems work.</p><div class="action-row"><button class="btn primary" onclick="showPage('trading')">Practice Demo Trading →</button><button class="btn" onclick="showPage('ai')">Study AI Analysis</button></div></div>
+</div>
+<div class="page-card" id="founder">
+<div class="page-hero"><h2>About GV Trading Platform</h2><p>The story, purpose and learning vision behind the platform.</p></div>
+<div class="info-card" style="margin-top:14px"><div class="profile-large"><div class="avatar">GB</div><div><h2 style="margin:0">Gyane Baraka</h2><p style="margin:4px 0 0">Founder · GV Trading Platform</p></div></div><p><b>Gyane Baraka</b>, born in 1994, is the founder of GV Trading Platform. He is a citizen of both Somalia and Kenya. The platform was created as a learning-focused digital environment for people interested in crypto markets, market analysis and responsible decision-making.</p><p>GV Trading Platform brings together educational guides, simulated trading, market dashboards and AI-style analysis in one place. The goal of the demo environment is to make complex trading concepts easier to explore without presenting simulated activity as guaranteed financial results.</p></div>
+<div class="page-grid"><div class="info-card"><h3>Platform Vision</h3><p>Build an accessible place where beginners can learn market concepts, test ideas and understand the importance of risk management.</p></div><div class="info-card"><h3>Platform Principles</h3><ul><li>Education before execution.</li><li>Clear demo/simulation labeling.</li><li>Transparent risk information.</li><li>No promise of guaranteed profit.</li></ul></div></div>
+<div class="info-card" style="margin-top:14px"><h3>Contact</h3><p>Phone: <b>0727271122</b></p><p>Email: <b>barakareshmy@gmail.com</b></p></div>
+</div>
+<div class="page-card" id="settings">
+<div class="page-hero"><h2>Settings</h2><p>Customize your demo experience and review platform safety information.</p></div>
+<div class="info-card" style="margin-top:14px"><div class="setting-row"><div><b>Demo Trading Mode</b><small>Keep all orders simulated</small></div><div class="toggle-demo"></div></div><div class="setting-row"><div><b>AI Notifications</b><small>Show analysis and execution updates</small></div><div class="toggle-demo"></div></div><div class="setting-row"><div><b>Risk Alerts</b><small>Display warnings before simulated high-risk actions</small></div><div class="toggle-demo"></div></div><div class="setting-row"><div><b>Dark Terminal Theme</b><small>Use the GV dark trading interface</small></div><div class="toggle-demo"></div></div></div>
+<div class="page-grid"><div class="info-card"><h3>Security</h3><p>Never place exchange API keys, payment credentials or private wallet keys directly inside this front-end HTML file. Real integrations should use a secure backend.</p></div><div class="info-card"><h3>Demo Data</h3><p>Market prices, balances, AI scores and automated trades are demonstration values. They do not represent live exchange activity.</p><button class="btn primary" onclick="showToast('Demo settings saved for this session.')">Save Demo Preferences</button></div></div>
+</div>
+<div class="page-card control-page" id="control">
+<div class="control-hero">
+<div>
+<h2>GV Control Center</h2>
+<p>Main platform control dashboard for users, demo trading, GV AI, safety controls and system activity.</p>
+</div>
+<div class="admin-badge">ADMIN CONTROL CENTER</div>
+</div>
+<div class="control-stats">
+<div class="control-stat"><small>Total Users</small><b id="controlTotalUsers">0</b><span id="controlUsersNote">Loading profile data</span></div>
+<div class="control-stat"><small>Demo Balance</small><b id="controlDemoBalance">$0</b><span>Simulated funds only</span></div>
+<div class="control-stat"><small>AI Scans</small><b id="controlScanCount">0</b><span>GV AI demo scans</span></div>
+<div class="control-stat"><small>Platform Status</small><b id="controlPlatformStatus">ONLINE</b><span id="controlStatusNote">Demo systems ready</span></div>
+</div>
+<div class="control-grid">
 
-  <div id="founder" class="page-card">
-    <div class="page-hero"><h2>About GV Trading Platform</h2><p>The story, purpose and learning vision behind the platform.</p></div>
-    <div class="info-card" style="margin-top:14px"><div class="profile-large"><div class="avatar">GB</div><div><h2 style="margin:0">Gyane Baraka</h2><p style="margin:4px 0 0">Founder · GV Trading Platform</p></div></div><p><b>Gyane Baraka</b>, born in 1994, is the founder of GV Trading Platform. He is a citizen of both Somalia and Kenya. The platform was created as a learning-focused digital environment for people interested in crypto markets, market analysis and responsible decision-making.</p><p>GV Trading Platform brings together educational guides, simulated trading, market dashboards and AI-style analysis in one place. The goal of the demo environment is to make complex trading concepts easier to explore without presenting simulated activity as guaranteed financial results.</p></div>
-    <div class="page-grid"><div class="info-card"><h3>Platform Vision</h3><p>Build an accessible place where beginners can learn market concepts, test ideas and understand the importance of risk management.</p></div><div class="info-card"><h3>Platform Principles</h3><ul><li>Education before execution.</li><li>Clear demo/simulation labeling.</li><li>Transparent risk information.</li><li>No promise of guaranteed profit.</li></ul></div></div>
-    <div class="info-card" style="margin-top:14px"><h3>Contact</h3><p>Phone: <b>0727271122</b></p><p>Email: <b>barakareshmy@gmail.com</b></p></div>
-  </div>
 
-  <div id="settings" class="page-card">
-    <div class="page-hero"><h2>Settings</h2><p>Customize your demo experience and review platform safety information.</p></div>
-    <div class="info-card" style="margin-top:14px"><div class="setting-row"><div><b>Demo Trading Mode</b><small>Keep all orders simulated</small></div><div class="toggle-demo"></div></div><div class="setting-row"><div><b>AI Notifications</b><small>Show analysis and execution updates</small></div><div class="toggle-demo"></div></div><div class="setting-row"><div><b>Risk Alerts</b><small>Display warnings before simulated high-risk actions</small></div><div class="toggle-demo"></div></div><div class="setting-row"><div><b>Dark Terminal Theme</b><small>Use the GV dark trading interface</small></div><div class="toggle-demo"></div></div></div>
-    <div class="page-grid"><div class="info-card"><h3>Security</h3><p>Never place exchange API keys, payment credentials or private wallet keys directly inside this front-end HTML file. Real integrations should use a secure backend.</p></div><div class="info-card"><h3>Demo Data</h3><p>Market prices, balances, AI scores and automated trades are demonstration values. They do not represent live exchange activity.</p><button class="btn primary" onclick="showToast('Demo settings saved for this session.')">Save Demo Preferences</button></div></div>
-  </div>
 
-  <div id="control" class="page-card control-page">
-    <div class="control-hero">
-      <div>
-        <h2>GV Control Center</h2>
-        <p>Main platform control dashboard for users, demo trading, GV AI, safety controls and system activity.</p>
-      </div>
-      <div class="admin-badge">ADMIN CONTROL CENTER</div>
-    </div>
 
-    <div class="control-stats">
-      <div class="control-stat"><small>Total Users</small><b id="controlTotalUsers">0</b><span id="controlUsersNote">Loading profile data</span></div>
-      <div class="control-stat"><small>Demo Balance</small><b id="controlDemoBalance">$0</b><span>Simulated funds only</span></div>
-      <div class="control-stat"><small>AI Scans</small><b id="controlScanCount">0</b><span>GV AI demo scans</span></div>
-      <div class="control-stat"><small>Platform Status</small><b id="controlPlatformStatus">ONLINE</b><span id="controlStatusNote">Demo systems ready</span></div>
-    </div>
 
-    <div class="control-grid">
-      <section class="control-panel">
-        <div class="control-panel-head">
-          <div><h3>User Management</h3><small>Registered profiles available to the control center</small></div>
-          <input id="controlUserSearch" class="control-search" placeholder="Search name or email" oninput="filterControlUsers()">
-        </div>
-        <div class="control-panel-body" style="overflow:auto">
-          <table class="control-users">
-            <thead><tr><th>User</th><th>Level</th><th>Demo Balance</th><th>Created</th></tr></thead>
-            <tbody id="controlUsersBody">
-              <tr><td colspan="4" style="color:#71889d">Loading users…</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
 
-      <section class="control-panel">
-        <div class="control-panel-head"><div><h3>Platform Controls</h3><small>Demo environment switches</small></div></div>
-        <div class="control-panel-body">
-          <div class="control-actions">
-            <div class="control-action"><div><b>Demo Trading</b><small>Allow simulated orders</small></div><button id="ctrlDemo" class="control-switch on" onclick="controlToggle('demo',this)"></button></div>
-            <div class="control-action"><div><b>GV AI Scanner</b><small>Allow AI demo scans</small></div><button id="ctrlAI" class="control-switch on" onclick="controlToggle('ai',this)"></button></div>
-            <div class="control-action"><div><b>New Registrations</b><small>Allow new demo accounts</small></div><button id="ctrlRegister" class="control-switch on" onclick="controlToggle('register',this)"></button></div>
-            <div class="control-action"><div><b>Notifications</b><small>Platform alerts</small></div><button id="ctrlNotify" class="control-switch on" onclick="controlToggle('notify',this)"></button></div>
-          </div>
-          <button id="controlEmergency" class="control-danger" onclick="controlEmergencyStop()">EMERGENCY DEMO STOP</button>
-        </div>
-      </section>
-
-      <section class="control-panel">
-        <div class="control-panel-head"><div><h3>Trading & AI Monitor</h3><small>Current browser demo engine state</small></div></div>
-        <div class="control-panel-body">
-          <div class="control-system">
-            <div class="system-line"><span>Open simulated trades</span><b id="controlOpenTrades">0</b></div>
-            <div class="system-line"><span>Auto trader</span><b id="controlAutoState" class="system-ok">OFF</b></div>
-            <div class="system-line"><span>AI scanning</span><b id="controlAIState" class="system-ok">READY</b></div>
-            <div class="system-line"><span>Safety stop</span><b id="controlSafetyState" class="system-ok">CLEAR</b></div>
-            <div class="system-line"><span>Current asset</span><b id="controlAsset">BTC/USD</b></div>
-          </div>
-          <div class="control-note-box">All trading controls on this page operate on the GV demonstration environment. They do not send real orders or move real money.</div>
-        </div>
-      </section>
-
-      <section class="control-panel">
-        <div class="control-panel-head"><div><h3>System Status</h3><small>Platform health indicators</small></div></div>
-        <div class="control-panel-body">
-          <div class="control-system">
-            <div class="system-line"><span>Website</span><b class="system-ok">ONLINE</b></div>
-            <div class="system-line"><span>Market chart</span><b class="system-ok">RUNNING</b></div>
-            <div class="system-line"><span>Demo engine</span><b id="controlDemoEngine" class="system-ok">ACTIVE</b></div>
-            <div class="system-line"><span>Supabase connection</span><b id="controlSupabase" class="system-warn">CHECKING</b></div>
-            <div class="system-line"><span>Admin security</span><b class="system-warn">SETUP REQUIRED</b></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="control-panel" style="grid-column:1/-1">
-        <div class="control-panel-head"><div><h3>Control Activity</h3><small>Recent actions from this browser session</small></div><button class="btn" onclick="clearControlFeed()">Clear</button></div>
-        <div class="control-panel-body">
-          <div id="controlFeed" class="control-feed"></div>
-          <div class="control-note-box">Next security step: connect this Control Center to a Supabase administrator role so normal users cannot access it. The current page is the control interface only.</div>
-        </div>
-      </section>
-    </div>
-  </div>
-
+<section class="control-panel">
+<div class="control-panel-head"><div><h3>Platform Controls</h3><small>Demo environment switches</small></div></div>
+<div class="control-panel-body">
+<div class="control-actions">
+<div class="control-action"><div><b>Demo Trading</b><small>Allow simulated orders</small></div><button class="control-switch on" id="ctrlDemo" onclick="controlToggle('demo',this)"></button></div>
+<div class="control-action"><div><b>GV AI Scanner</b><small>Allow AI demo scans</small></div><button class="control-switch on" id="ctrlAI" onclick="controlToggle('ai',this)"></button></div>
+<div class="control-action"><div><b>New Registrations</b><small>Allow new demo accounts</small></div><button class="control-switch on" id="ctrlRegister" onclick="controlToggle('register',this)"></button></div>
+<div class="control-action"><div><b>Notifications</b><small>Platform alerts</small></div><button class="control-switch on" id="ctrlNotify" onclick="controlToggle('notify',this)"></button></div>
+</div>
+<button class="control-danger" id="controlEmergency" onclick="controlEmergencyStop()">EMERGENCY DEMO STOP</button>
+</div>
+</section><section class="control-panel graph-control-panel">
+<div class="control-panel-head"><div><h3>Graph Control</h3><small>Control the GV simulated market chart</small></div><span class="level">DEMO GRAPH</span></div>
+<div class="control-panel-body">
+<div class="graph-controls">
+<div class="graph-control-card"><label>Graph status</label><button aria-label="Toggle graph movement" class="control-switch on" id="graphMotionSwitch" onclick="toggleGraphMotion()" type="button"></button></div>
+<div class="graph-control-card"><label>Market</label><select id="graphAssetControl" onchange="controlGraphAsset(this.value)"><option>BTC/USD</option><option>ETH/USD</option><option>SOL/USD</option><option>XRP/USD</option></select></div>
+<div class="graph-control-card"><label>Timeframe</label><select id="graphTfControl" onchange="controlGraphTimeframe(this.value)"><option>1m</option><option>5m</option><option selected="">15m</option><option>30m</option><option>1h</option><option>4h</option><option>1d</option></select></div>
+<div class="graph-control-card"><label>Movement speed</label><select id="graphSpeedControl" onchange="controlGraphSpeed(this.value)"><option value="0.5">Slow</option><option selected="" value="1">Normal</option><option value="1.5">Fast</option><option value="2.5">Very fast</option></select></div>
+</div>
+<div class="graph-control-actions">
+<button class="btn" onclick="pauseGraph()" type="button">PAUSE GRAPH</button>
+<button class="btn primary" onclick="resumeGraph()" type="button">RESUME GRAPH</button>
+<button class="btn" onclick="resetGraph()" type="button">RESET GRAPH</button>
+</div>
+<div class="graph-status" id="graphControlStatus"><span>Chart engine</span><b>RUNNING</b><small id="graphControlDetail">BTC/USD · 15m · Normal speed</small></div>
+<div class="control-note-box">These controls change only the simulated GV chart shown on this website. They do not control or manipulate a real cryptocurrency market.</div>
+</div>
+</section><section class="control-panel">
+<div class="control-panel-head"><div><h3>Trading &amp; AI Monitor</h3><small>Current browser demo engine state</small></div></div>
+<div class="control-panel-body">
+<div class="control-system">
+<div class="system-line"><span>Open simulated trades</span><b id="controlOpenTrades">0</b></div>
+<div class="system-line"><span>Auto trader</span><b class="system-ok" id="controlAutoState">OFF</b></div>
+<div class="system-line"><span>AI scanning</span><b class="system-ok" id="controlAIState">READY</b></div>
+<div class="system-line"><span>Safety stop</span><b class="system-ok" id="controlSafetyState">CLEAR</b></div>
+<div class="system-line"><span>Current asset</span><b id="controlAsset">BTC/USD</b></div>
+</div>
+<div class="control-note-box">All trading controls on this page operate on the GV demonstration environment. They do not send real orders or move real money.</div>
+</div>
+</section><section class="control-panel">
+<div class="control-panel-head"><div><h3>System Status</h3><small>Platform health indicators</small></div></div>
+<div class="control-panel-body">
+<div class="control-system">
+<div class="system-line"><span>Website</span><b class="system-ok">ONLINE</b></div>
+<div class="system-line"><span>Market chart</span><b class="system-ok">RUNNING</b></div>
+<div class="system-line"><span>Demo engine</span><b class="system-ok" id="controlDemoEngine">ACTIVE</b></div>
+<div class="system-line"><span>Supabase connection</span><b class="system-warn" id="controlSupabase">CHECKING</b></div>
+<div class="system-line"><span>Admin security</span><b class="system-warn">SETUP REQUIRED</b></div>
+</div>
+</div>
+</section><section class="control-panel">
+<div class="control-panel-head">
+<div><h3>User Management</h3><small>Registered profiles available to the control center</small></div>
+<input class="control-search" id="controlUserSearch" oninput="filterControlUsers()" placeholder="Search name or email"/>
+</div>
+<div class="control-panel-body" style="overflow:auto">
+<table class="control-users">
+<thead><tr><th>User</th><th>Level</th><th>Demo Balance</th><th>Created</th></tr></thead>
+<tbody id="controlUsersBody">
+<tr><td colspan="4" style="color:#71889d">Loading users…</td></tr>
+</tbody>
+</table>
+</div>
+</section><section class="control-panel" style="grid-column:1/-1">
+<div class="control-panel-head"><div><h3>Control Activity</h3><small>Recent actions from this browser session</small></div><button class="btn" onclick="clearControlFeed()">Clear</button></div>
+<div class="control-panel-body">
+<div class="control-feed" id="controlFeed"></div>
+<div class="control-note-box">Next security step: connect this Control Center to a Supabase administrator role so normal users cannot access it. The current page is the control interface only.</div>
+</div>
+</section></div>
+</div>
 </div>
 </main>
 </div>
-
-
 <div class="modal-backdrop auth-modal" id="authModal" onclick="if(event.target===this)closeModal('authModal')">
-  <div class="modal">
-    <h3 id="authTitle">Create your GV account</h3>
-    <p id="authIntro">Create a demo profile so your dashboard, preferences and simulated activity can stay connected to your account on this browser.</p>
-
-    <div class="auth-tabs">
-      <button id="registerTab" class="active" onclick="switchAuth('register')">Create Account</button>
-      <button id="loginTab" onclick="switchAuth('login')">Login</button>
-    </div>
-
-    <div id="registerForm" class="auth-form">
-      <div class="field"><label>Full name</label><input id="regName" type="text" autocomplete="name" placeholder="Your full name"></div>
-      <div class="field"><label>Email address</label><input id="regEmail" type="email" autocomplete="email" placeholder="you@example.com"></div>
-      <div class="field"><label>Password</label><input id="regPassword" type="password" autocomplete="new-password" placeholder="At least 6 characters"></div>
-      <div class="field"><label>Confirm password</label><input id="regConfirm" type="password" autocomplete="new-password" placeholder="Repeat your password"></div>
-      <label class="auth-check"><input id="regAgree" type="checkbox"> I understand this is a demo trading account and not a real financial account.</label>
-    </div>
-
-    <div id="loginForm" class="auth-form" style="display:none">
-      <div class="field"><label>Email address</label><input id="loginEmail" type="email" autocomplete="email" placeholder="you@example.com"></div>
-      <div class="field"><label>Password</label><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Your password"></div>
-      <label class="auth-check"><input id="rememberLogin" type="checkbox" checked> Keep me logged in on this browser</label>
-    </div>
-
-    <div id="authMessage" class="auth-message"></div>
-    <div class="modal-actions">
-      <button class="btn" onclick="closeModal('authModal')">Cancel</button>
-      <button class="btn primary" id="authSubmit" onclick="submitAuth()">Create Account</button>
-    </div>
-    <div class="control-note">Local demo authentication only. Passwords are stored locally in this browser for this prototype. Do not use a real password here.</div>
-  </div>
+<div class="modal">
+<h3 id="authTitle">Create your GV account</h3>
+<p id="authIntro">Create a demo profile so your dashboard, preferences and simulated activity can stay connected to your account on this browser.</p>
+<div class="auth-tabs">
+<button class="active" id="registerTab" onclick="switchAuth('register')">Create Account</button>
+<button id="loginTab" onclick="switchAuth('login')">Login</button>
 </div>
-
+<div class="auth-form" id="registerForm">
+<div class="field"><label>Full name</label><input autocomplete="name" id="regName" placeholder="Your full name" type="text"/></div>
+<div class="field"><label>Email address</label><input autocomplete="email" id="regEmail" placeholder="you@example.com" type="email"/></div>
+<div class="field"><label>Password</label><input autocomplete="new-password" id="regPassword" placeholder="At least 6 characters" type="password"/></div>
+<div class="field"><label>Confirm password</label><input autocomplete="new-password" id="regConfirm" placeholder="Repeat your password" type="password"/></div>
+<label class="auth-check"><input id="regAgree" type="checkbox"/> I understand this is a demo trading account and not a real financial account.</label>
+</div>
+<div class="auth-form" id="loginForm" style="display:none">
+<div class="field"><label>Email address</label><input autocomplete="email" id="loginEmail" placeholder="you@example.com" type="email"/></div>
+<div class="field"><label>Password</label><input autocomplete="current-password" id="loginPassword" placeholder="Your password" type="password"/></div>
+<label class="auth-check"><input checked="" id="rememberLogin" type="checkbox"/> Keep me logged in on this browser</label>
+</div>
+<div class="auth-message" id="authMessage"></div>
+<div class="modal-actions">
+<button class="btn" onclick="closeModal('authModal')">Cancel</button>
+<button class="btn primary" id="authSubmit" onclick="submitAuth()">Create Account</button>
+</div>
+<div class="control-note">Local demo authentication only. Passwords are stored locally in this browser for this prototype. Do not use a real password here.</div>
+</div>
+</div>
 <div class="modal-backdrop" id="accountMenuModal" onclick="if(event.target===this)closeModal('accountMenuModal')">
-  <div class="modal">
-    <h3 id="menuUserName">GV Trader</h3>
-    <p id="menuUserEmail">Demo account</p>
-    <div class="info-card">
-      <div class="detail-line"><span>Account type</span><b>Demo Trader</b></div>
-      <div class="detail-line"><span>Session</span><b class="up">Active</b></div>
-      <div class="detail-line"><span>Storage</span><b>Browser only</b></div>
-    </div>
-    <div class="modal-actions">
-      <button class="btn" onclick="closeModal('accountMenuModal');showPage('settings')">Settings</button>
-      <button class="btn red" onclick="logoutDemo()">Log Out</button>
-    </div>
-  </div>
+<div class="modal">
+<h3 id="menuUserName">GV Trader</h3>
+<p id="menuUserEmail">Demo account</p>
+<div class="info-card">
+<div class="detail-line"><span>Account type</span><b>Demo Trader</b></div>
+<div class="detail-line"><span>Session</span><b class="up">Active</b></div>
+<div class="detail-line"><span>Storage</span><b>Browser only</b></div>
 </div>
-
+<div class="modal-actions">
+<button class="btn" onclick="closeModal('accountMenuModal');showPage('settings')">Settings</button>
+<button class="btn red" onclick="logoutDemo()">Log Out</button>
+</div>
+</div>
+</div>
 <div class="modal-backdrop" id="accountModal" onclick="if(event.target===this)closeModal('accountModal')">
-  <div class="modal">
-    <h3>Create Demo Account</h3><p>Create a local demo profile for this browser. This does not create a real financial account and no password is sent anywhere.</p>
-    <div class="field"><label>Display name</label><input id="demoName" type="text" placeholder="Your name"></div>
-    <div class="field"><label>Email</label><input id="demoEmail" type="email" placeholder="you@example.com"></div>
-    <div class="modal-actions"><button class="btn" onclick="closeModal('accountModal')">Cancel</button><button class="btn primary" onclick="createDemoAccount()">Create Demo Account</button></div>
-  </div>
+<div class="modal">
+<h3>Create Demo Account</h3><p>Create a local demo profile for this browser. This does not create a real financial account and no password is sent anywhere.</p>
+<div class="field"><label>Display name</label><input id="demoName" placeholder="Your name" type="text"/></div>
+<div class="field"><label>Email</label><input id="demoEmail" placeholder="you@example.com" type="email"/></div>
+<div class="modal-actions"><button class="btn" onclick="closeModal('accountModal')">Cancel</button><button class="btn primary" onclick="createDemoAccount()">Create Demo Account</button></div>
+</div>
 </div>
 <div class="modal-backdrop" id="walletModal" onclick="if(event.target===this)closeModal('walletModal')">
-  <div class="modal">
-    <h3 id="walletModalTitle">Demo Wallet Action</h3><p id="walletModalText">This action changes only the simulated balance shown in this browser.</p>
-    <div class="field"><label>Amount (USD)</label><input id="walletAmount" type="number" min="1" step="10" value="100"></div>
-    <div class="modal-actions"><button class="btn" onclick="closeModal('walletModal')">Cancel</button><button class="btn primary" id="walletConfirm" onclick="confirmWalletAction()">Confirm</button></div>
-  </div>
+<div class="modal">
+<h3 id="walletModalTitle">Demo Wallet Action</h3><p id="walletModalText">This action changes only the simulated balance shown in this browser.</p>
+<div class="field"><label>Amount (USD)</label><input id="walletAmount" min="1" step="10" type="number" value="100"/></div>
+<div class="modal-actions"><button class="btn" onclick="closeModal('walletModal')">Cancel</button><button class="btn primary" id="walletConfirm" onclick="confirmWalletAction()">Confirm</button></div>
+</div>
 </div>
 <div class="toast" id="toast"></div>
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const SUPABASE_URL='https://uqsjbqgoltufkeflvwgu.supabase.co';
@@ -727,6 +749,7 @@ async function handleSupabaseUser(authUser){
     name:profile?.full_name||authUser.user_metadata?.full_name||authUser.user_metadata?.name||authUser.email?.split('@')[0]||'GV Trader',
     email:profile?.email||authUser.email||'',
     account_level:profile?.account_level||'Beginner',
+    is_admin:profile?.is_admin===true,
     balance:Number(profile?.demo_balance??25840),
     scans:Number(localStorage.getItem('gvScans_'+authUser.id)||24)
   };
@@ -734,11 +757,21 @@ async function handleSupabaseUser(authUser){
   state.scanCount=gvCurrentUser.scans;
   updateBalance();
   updateAccountUI(gvCurrentUser);
+  updateAdminAccess(gvCurrentUser);
   updateUserDashboard(gvCurrentUser);
   if($('marketScans'))$('marketScans').textContent=state.scanCount;
   loadUserPreferences(authUser.id);
 }
 
+function updateAdminAccess(user){
+  const nav=$('adminControlNav');
+  const isAdmin=!!user?.is_admin;
+  if(nav)nav.classList.toggle('admin-visible',isAdmin);
+  if(!isAdmin){
+    const controlPage=$('control');
+    if(controlPage)controlPage.style.display='none';
+  }
+}
 function updateAccountUI(user){
   const bar=$('accountBar');if(!bar)return;
   const initials=initialsFor(user.name);
@@ -780,6 +813,7 @@ async function logoutDemo(){
   const {error}=await supabaseClient.auth.signOut();
   if(error){showToast('Logout failed. Please try again.');return}
   gvCurrentUser=null;
+  updateAdminAccess(null);
   state.balance=25840;state.trades=1;state.scanCount=24;
   $('userDashboard')?.classList.remove('show');
   $('accountBar').innerHTML='<button class="btn primary" onclick="openAuth(\'register\')">Create Account</button><button class="btn" onclick="openAuth(\'login\')">Login</button>';
@@ -811,6 +845,7 @@ supabaseClient.auth.onAuthStateChange((event,session)=>{
   }
   if(event==='SIGNED_OUT'){
     gvCurrentUser=null;
+    updateAdminAccess(null);
   }
 });
 
@@ -894,10 +929,10 @@ function advanceChart(){
   renderChart();
 }
 function startChartMotion(){
-  clearInterval(chartMotionTimer);
   const tf=document.querySelector('#timeframes button.active')?.textContent||'15m';
-  const delay=chartSettings(tf).interval;
-  chartMotionTimer=setInterval(advanceChart,delay);
+  gvGraphControl.tf=tf;
+  applyGraphTimer();
+  updateGraphControlUI();
 }
 function setTimeframe(btn,tf){document.querySelectorAll('#timeframes button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderChart();startChartMotion();showToast(`Chart timeframe changed to ${tf}.`);}
 function selectAsset(asset){state.asset=asset;const d=assets[asset];$('livePrice').textContent=money(d.price);$('analysisPrice').textContent=money(d.price);const coin=document.querySelector('.coin');if(coin)coin.textContent=d.coin;const title=document.querySelector('.market-title h2');if(title)title.innerHTML=`${asset} <span style="font-size:11px;color:#879caf">⌄</span>`;const sub=document.querySelector('.market-title small');if(sub)sub.textContent=`${d.name} · Demo Market`;renderChart();showToast(`${asset} selected.`);startChartMotion();}
@@ -977,6 +1012,38 @@ setInterval(renderTerminalChart,900);
 
 /* GV CONTROL CENTER */
 const gvControlState={demo:true,ai:true,register:true,notify:true,emergency:false,users:[]};
+
+let gvGraphControl={running:true,speed:1,tf:'15m'};
+function updateGraphControlUI(){
+  const sw=$('graphMotionSwitch'),status=$('graphControlStatus'),detail=$('graphControlDetail');
+  if(sw)sw.classList.toggle('on',gvGraphControl.running);
+  if(status){status.classList.toggle('paused',!gvGraphControl.running);const b=status.querySelector('b');if(b)b.textContent=gvGraphControl.running?'RUNNING':'PAUSED';}
+  if(detail)detail.textContent=`${state.asset||'BTC/USD'} · ${gvGraphControl.tf} · ${gvGraphControl.speed===0.5?'Slow':gvGraphControl.speed===1?'Normal':gvGraphControl.speed===1.5?'Fast':'Very fast'} speed`;
+}
+function applyGraphTimer(){
+  clearInterval(chartMotionTimer);
+  if(!gvGraphControl.running)return;
+  const base=chartSettings(gvGraphControl.tf).interval;
+  chartMotionTimer=setInterval(advanceChart,Math.max(120,Math.round(base/gvGraphControl.speed)));
+}
+function toggleGraphMotion(){gvGraphControl.running=!gvGraphControl.running;applyGraphTimer();updateGraphControlUI();controlAddFeed('Graph Movement',gvGraphControl.running?'Resumed from Control Center.':'Paused from Control Center.','📈');showToast(`Graph ${gvGraphControl.running?'resumed':'paused'}.`);}
+function pauseGraph(){gvGraphControl.running=false;applyGraphTimer();updateGraphControlUI();controlAddFeed('Graph Paused','Chart movement stopped from Control Center.','⏸');showToast('Graph paused.');}
+function resumeGraph(){gvGraphControl.running=true;applyGraphTimer();updateGraphControlUI();controlAddFeed('Graph Resumed','Chart movement started from Control Center.','▶');showToast('Graph resumed.');}
+function resetGraph(){
+  chartModel={key:'',candles:[],tick:0,lastTick:0};
+  renderChart();
+  gvGraphControl.running=true;applyGraphTimer();updateGraphControlUI();
+  controlAddFeed('Graph Reset','Simulated chart series regenerated.','↻');showToast('Graph reset.');
+}
+function controlGraphSpeed(value){gvGraphControl.speed=Number(value)||1;applyGraphTimer();updateGraphControlUI();controlAddFeed('Graph Speed',`Changed to ${gvGraphControl.speed===0.5?'Slow':gvGraphControl.speed===1?'Normal':gvGraphControl.speed===1.5?'Fast':'Very fast'}.`,'⚡');}
+function controlGraphTimeframe(tf){
+  gvGraphControl.tf=tf;
+  const btn=[...document.querySelectorAll('#timeframes button')].find(b=>b.textContent.trim()===tf);
+  if(btn)setTimeframe(btn,tf);else{renderChart();applyGraphTimer();}
+  updateGraphControlUI();controlAddFeed('Graph Timeframe',`Changed to ${tf}.`,'⏱');
+}
+function controlGraphAsset(asset){selectAsset(asset);updateGraphControlUI();controlAddFeed('Graph Market',`Changed to ${asset}.`,'◈');}
+
 function controlAddFeed(title,detail,icon='⚙'){
   const box=$('controlFeed');if(!box)return;
   const row=document.createElement('div');row.className='control-feed-row';
@@ -1069,11 +1136,15 @@ function openControlCenter(){
 }
 
 function showPage(name,btn){
+  if(name==='control' && !currentUser()?.is_admin){
+    showToast('Admin access required.');
+    return;
+  }
   document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
   if(btn)btn.classList.add('active');else{const target=[...document.querySelectorAll('.nav button')].find(b=>b.getAttribute('onclick')?.includes(`'${name}'`));if(target)target.classList.add('active')}
   const dashboard=$('dashboardPage'),other=$('otherPages');
   if(name==='dashboard'){dashboard.style.display='block';other.classList.remove('show');$('pageTitle').textContent='Trading Dashboard';const u=currentUser();if(u)updateUserDashboard(u)}
-  else{dashboard.style.display='none';other.classList.add('show');document.querySelectorAll('.page-card').forEach(p=>p.style.display='none');const page=$(name);if(page)page.style.display='block';$('pageTitle').textContent=name==='ai'?'GV AI Analyst':name==='trading'?'GV Trading Terminal':name.charAt(0).toUpperCase()+name.slice(1)}
+  else{dashboard.style.display='none';other.classList.add('show');document.querySelectorAll('.page-card').forEach(p=>p.style.display='none');const page=$(name);if(page)page.style.display='block';$('pageTitle').textContent=name==='ai'?'GV AI Analyst':name==='trading'?'GV Trading Terminal':name==='control'?'GV Control Center':name.charAt(0).toUpperCase()+name.slice(1)}
   $('sidebar').classList.remove('open');window.scrollTo({top:0,behavior:'smooth'});
 }
 function addExecution(type,message,tag='BOT'){const feed=$('executionFeed');if(!feed)return;const row=document.createElement('div');row.className='exec';row.innerHTML=`<span class="type">${type}</span><span>${message} <span class="human-tag ${tag==='BOT'?'bot-tag':''}">${tag}</span></span><span class="time">now</span>`;feed.prepend(row);while(feed.children.length>25)feed.lastElementChild.remove();const n=Number($('ordersAnalyzed')?.textContent||0)+1;if($('ordersAnalyzed'))$('ordersAnalyzed').textContent=n}
@@ -1105,7 +1176,7 @@ function toggleSetting(el,label){const on=el.classList.toggle('on');state.settin
 function loadSavedAccount(){try{if(currentUser())return;const a=JSON.parse(localStorage.getItem('gvDemoAccount'));if(a?.name){document.querySelectorAll('.avatar').forEach(x=>x.textContent=a.name.split(/\s+/).map(v=>v[0]).slice(0,2).join('').toUpperCase());const p=document.querySelector('.profile b');if(p)p.textContent=a.name;const s=document.querySelector('.profile small');if(s)s.textContent='Demo Account · GV'}}catch(e){}}
 // The chart engine is the single source of demo price movement, so the header price follows it.
 setInterval(()=>{const c=chartModel.candles?.[chartModel.candles.length-1];if(c){const p=c.close;$('livePrice').textContent=money(p);if($('analysisPrice'))$('analysisPrice').textContent=money(p)}},350);
-document.addEventListener('DOMContentLoaded',()=>{restoreSession();updateBalance();renderChart();startChartMotion();terminalUpdatePayout();updateTerminalCounts();renderTerminalChart();document.querySelectorAll('.toggle-demo').forEach((el,i)=>{el.classList.add('on');el.onclick=()=>toggleSetting(el,['demo','notifications','risk','dark'][i])});refreshControlMonitor();controlAddFeed('Control Center Ready','GV administrative dashboard initialized.','▣');});
+document.addEventListener('DOMContentLoaded',()=>{updateAdminAccess(null);restoreSession();updateBalance();renderChart();startChartMotion();updateGraphControlUI();terminalUpdatePayout();updateTerminalCounts();renderTerminalChart();document.querySelectorAll('.toggle-demo').forEach((el,i)=>{el.classList.add('on');el.onclick=()=>toggleSetting(el,['demo','notifications','risk','dark'][i])});refreshControlMonitor();controlAddFeed('Control Center Ready','GV administrative dashboard initialized.','▣');});
 </script>
 </body>
 </html>
