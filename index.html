@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GV Trading Platform | AI Crypto Dashboard</title>
@@ -86,6 +89,12 @@ button,input,select{font:inherit}button{cursor:pointer}
 .terminal-right{padding:14px;display:flex;flex-direction:column;gap:12px}.terminal-right-head{display:flex;justify-content:space-between;gap:8px;align-items:center}.terminal-right-head h3{margin:0;font-size:16px}.manual-label{color:#7290a8;font-size:11px}.terminal-mode-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;background:#07131f;border:1px solid #162b40;border-radius:9px;padding:4px}.terminal-mode-tabs button{border:0;background:transparent;color:#7890a5;padding:9px 4px;font-size:9px;border-radius:7px;cursor:pointer}.terminal-mode-tabs button.active{background:#1686ee;color:#fff;font-weight:800}.stake-label,.duration-label{display:flex;justify-content:space-between;color:#82a0b7;font-size:11px;margin-bottom:6px}.stepper{display:grid;grid-template-columns:42px 1fr 42px;border:1px solid #1b3550;border-radius:10px;overflow:hidden;background:#081824}.stepper button{border:0;background:transparent;color:#fff;font-size:20px;cursor:pointer}.stepper input{width:100%;text-align:center;background:transparent;border:0;color:#fff;font-size:20px;font-weight:900;outline:none;padding:11px}.quick-stakes{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:7px}.quick-stakes button{border:1px solid #1a3249;background:#081523;color:#8da3b7;border-radius:8px;padding:9px 4px;font-size:9px;cursor:pointer}.quick-stakes button.active{border-color:#1a9cff;color:#1aa5ff;background:#071e35}.payout-row{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#83a0b5;border-top:1px solid #132b41;padding-top:10px}.payout-row b{font-size:18px;color:#fff}.terminal-contract{display:grid;gap:8px}.contract-btn{border:0;border-radius:12px;padding:12px 14px;text-align:left;color:#fff;cursor:pointer}.contract-btn.green{background:linear-gradient(135deg,#0f9f79,#0d8668)}.contract-btn.red{background:linear-gradient(135deg,#d70c3f,#bd0d35)}.contract-btn strong{display:block;font-size:22px;line-height:1}.contract-btn span{display:block;margin-top:7px;font-size:10px}.terminal-ai{margin-top:auto;border:1px solid #3d3aa9;border-radius:12px;background:linear-gradient(135deg,#0d1536,#15104e);padding:12px}.terminal-ai-head{display:flex;justify-content:space-between;align-items:center}.terminal-ai-chip{width:34px;height:34px;border-radius:50%;background:#118bf6;color:#fff;display:grid;place-items:center;font-weight:900}.terminal-ai small{color:#86a1b8}.terminal-ai button{border:1px solid #8a71ff;background:transparent;color:#fff;border-radius:8px;padding:7px 11px;cursor:pointer;font-weight:700}.terminal-ai-score{margin-top:8px;color:#b8a6ff;font-size:11px}
 @media(max-width:1050px){.trade-terminal{grid-template-columns:170px minmax(0,1fr);height:auto;min-height:760px}.terminal-right{grid-column:1/-1;min-height:420px}.terminal-ai{margin-top:0}}
 @media(max-width:760px){.trade-terminal{display:flex;flex-direction:column;min-height:0}.terminal-pane{min-height:320px}.terminal-center{height:510px}.terminal-right{min-height:430px}.terminal-symbol-card{width:250px}.quick-stakes{grid-template-columns:repeat(3,1fr)}}
+
+/* ===== GV PREMIUM DASHBOARD UPGRADE ===== */
+.gv-dashboard-page{max-width:1600px;margin:0 auto}.gv-hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) 280px minmax(260px,.75fr);gap:12px;margin-bottom:12px}.gv-welcome,.gv-bitcoin-orb,.gv-balance-card,.gv-metric,.gv-chart-card,.gv-data-card,.gv-quote-card,.gv-order-card,.gv-ai-scanner,.gv-quick-card{background:#0D172A;border:1px solid #1E293B;border-radius:12px;box-shadow:0 18px 50px rgba(0,0,0,.2)}.gv-welcome{padding:22px;position:relative;overflow:hidden}.gv-welcome:after{content:"";position:absolute;width:250px;height:250px;right:-120px;top:-120px;background:#06B6D420;filter:blur(40px);border-radius:50%}.gv-kicker{font-size:9px;letter-spacing:1.2px;color:#06B6D4;font-weight:800}.gv-live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#10B981;box-shadow:0 0 10px #10B981;margin-right:5px}.gv-welcome-line{display:flex;gap:10px;align-items:center;margin-top:16px;color:#94A3B8;font-size:13px}.gv-welcome-line b{color:#fff}.gv-level,.gv-new-badge,.admin-badge{font-size:8px;font-weight:900;letter-spacing:.6px;border-radius:10px;padding:4px 7px;background:#11344a;color:#06B6D4}.gv-welcome h2{font-size:31px;line-height:1.05;margin:10px 0 8px;letter-spacing:-1px}.gv-welcome h2 span{color:#06B6D4}.gv-welcome p{color:#94A3B8;max-width:560px;font-size:12px}.gv-hero-actions{display:flex;gap:8px;margin-top:18px}.gv-btn{border-radius:8px;padding:10px 13px;border:1px solid #1E293B;color:#fff;font-weight:800;font-size:11px;display:inline-flex;align-items:center;gap:7px}.gv-btn svg{width:14px}.gv-btn-green{background:#10B981;border-color:#10B981;color:#03140e}.gv-btn-outline{background:#0a1830;border-color:#155078}.gv-mini-stats{display:flex;gap:15px;margin-top:17px;color:#6f8399;font-size:9px}.gv-mini-stats span{display:flex;gap:5px;align-items:center}.gv-mini-stats svg{width:12px;color:#06B6D4}.gv-bitcoin-orb{min-height:205px;position:relative;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle,#0d2a45 0,#0D172A 62%)}.gv-orb-ring{position:absolute;border:1px solid #06B6D455;border-radius:50%;animation:gvSpin 10s linear infinite}.gv-ring-one{width:185px;height:185px}.gv-ring-two{width:225px;height:115px;transform:rotate(28deg)}.gv-orb-circuit{position:absolute;width:45px;height:1px;background:#06B6D4;opacity:.65}.gv-orb-circuit:after{content:"";position:absolute;width:5px;height:5px;border-radius:50%;background:#06B6D4;right:-2px;top:-2px;box-shadow:0 0 12px #06B6D4}.c1{top:42px;left:32px}.c2{right:20px;top:94px;transform:rotate(18deg)}.c3{left:48px;bottom:40px;transform:rotate(-20deg)}.gv-btc-core{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;font-size:42px;font-weight:900;background:radial-gradient(circle,#143f5e,#0a1d31);border:2px solid #06B6D4;color:#fff;box-shadow:0 0 35px #06B6D455, inset 0 0 25px #06B6D422;z-index:2}.gv-orb-data{position:absolute;font-size:8px;color:#8ea7bd;background:#071827;border:1px solid #1d405a;border-radius:6px;padding:4px 6px}.d1{top:22px;right:22px}.d2{bottom:25px;right:24px;color:#10B981}.d3{bottom:28px;left:22px;color:#06B6D4}@keyframes gvSpin{to{transform:rotate(360deg)}}.gv-balance-card{padding:18px;min-height:205px;position:relative;overflow:hidden}.gv-card-label{display:flex;justify-content:space-between;color:#94A3B8;font-size:9px;letter-spacing:.8px}.gv-card-label svg{width:15px;color:#06B6D4}.gv-balance-value{font-size:27px;font-weight:900;margin-top:15px;letter-spacing:-1px}.gv-balance-change{color:#10B981;font-size:11px;font-weight:800;margin-top:3px}.gv-mini-chart{width:100%;height:83px;margin-top:10px}.gv-balance-footer{display:flex;justify-content:space-between;color:#64798f;font-size:9px}.gv-balance-footer span:last-child{color:#10B981;display:flex;align-items:center;gap:4px}.gv-balance-footer svg{width:11px}.gv-metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px}.gv-metric{padding:13px;display:flex;align-items:center;gap:11px}.gv-metric-icon{width:39px;height:39px;border-radius:9px;display:grid;place-items:center;background:#06B6D414;color:#06B6D4;border:1px solid #06B6D425}.gv-metric-icon svg{width:17px}.gv-metric small{display:block;color:#94A3B8;font-size:9px}.gv-metric b{display:block;font-size:15px;margin:3px 0}.gv-metric span{font-size:9px}.gv-neutral{color:#60a5fa}.gv-main-grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(290px,1fr);gap:12px}.gv-left-column{min-width:0}.gv-chart-card{overflow:hidden}.gv-chart-head{padding:14px 15px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid #1E293B}.gv-asset-title{display:flex;align-items:center;gap:10px}.gv-btc-icon{width:37px;height:37px;border-radius:50%;display:grid;place-items:center;background:#f7931a;color:#fff;font-size:20px;font-weight:900}.gv-asset-title b{font-size:14px}.gv-asset-title>div>div span{color:#64798f;font-size:10px}.gv-pipe{padding:0 6px}.gv-asset-title strong{display:inline-block;margin-top:5px;font-size:13px}.gv-chart-controls{display:flex;gap:6px;align-items:center}.gv-timeframes{display:flex;gap:3px;background:#091423;padding:3px;border:1px solid #1E293B;border-radius:7px}.gv-timeframes button{border:0;background:transparent;color:#71869a;padding:7px 8px;border-radius:5px;font-size:9px;font-weight:800}.gv-timeframes button.active{background:#06B6D4;color:#00131a}.gv-icon-btn{width:32px;height:32px;border:1px solid #1E293B;background:#0a1728;color:#8da2b5;border-radius:7px}.gv-icon-btn svg{width:14px}.gv-chart-body{display:grid;grid-template-columns:40px 1fr;height:455px}.gv-chart-tools{background:#091321;border-right:1px solid #1E293B;display:flex;flex-direction:column;align-items:center;padding:9px 5px;gap:5px}.gv-chart-tools button{width:29px;height:29px;border:1px solid transparent;background:transparent;color:#6f8499;border-radius:6px}.gv-chart-tools button.active,.gv-chart-tools button:hover{color:#06B6D4;background:#0e273c;border-color:#18445e}.gv-chart-tools svg{width:14px}.gv-candle-wrap{position:relative;background:#08111f;overflow:hidden}.gv-candle-wrap svg{width:100%;height:100%}.gv-candle-wrap:after{content:"";position:absolute;inset:0;background-image:linear-gradient(#1e3b52 1px,transparent 1px),linear-gradient(90deg,#1e3b52 1px,transparent 1px);background-size:10% 14%;opacity:.12;pointer-events:none}.gv-chart-watermark{position:absolute;left:12px;bottom:12px;color:#48627a;font-size:8px;letter-spacing:1px}.gv-volume-label{position:absolute;left:10px;bottom:72px;color:#536b82;font-size:8px}.gv-data-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:10px;margin-top:10px}.gv-data-card{overflow:hidden}.gv-data-head{padding:11px 12px;border-bottom:1px solid #1E293B;display:flex;justify-content:space-between;align-items:flex-start}.gv-tabs,.gv-filter-tabs{display:flex;gap:4px}.gv-tabs button,.gv-filter-tabs button{border:0;background:transparent;color:#71869a;padding:5px 7px;font-size:9px;border-radius:5px}.gv-tabs button.active,.gv-filter-tabs button.active{color:#fff;background:#123552}.gv-link{border:0;background:none;color:#06B6D4;font-size:9px}.gv-table-scroll{overflow:auto}.gv-table{width:100%;border-collapse:collapse;font-size:9px;white-space:nowrap}.gv-table th,.gv-table td{padding:9px 8px;border-bottom:1px solid #16273a;text-align:left}.gv-table th{color:#60758b;font-weight:600}.gv-buy-badge{background:#0b3a2d;color:#10B981;border:1px solid #126f55;border-radius:9px;padding:3px 6px;font-size:8px}.gv-close-btn{border:1px solid #16557e;background:#0b2943;color:#06B6D4;border-radius:5px;padding:4px 7px;font-size:8px}.gv-live-badge{font-size:7px;color:#10B981;display:flex;gap:4px;align-items:center}.gv-live-badge i{width:5px;height:5px;border-radius:50%;background:#10B981;box-shadow:0 0 8px #10B981}.gv-market-list{padding:2px 12px}.gv-market-list>div{display:grid;grid-template-columns:1.2fr 1fr .7fr;gap:7px;align-items:center;padding:9px 0;border-bottom:1px solid #16273a;font-size:9px}.gv-market-list>div:last-child{border:0}.gv-market-list span{display:flex;align-items:center;gap:7px}.gv-market-list strong{text-align:right}.gv-market-list em{text-align:right;font-style:normal}.gv-coin-dot{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:10px;color:#fff}.btc-dot{background:#f7931a}.eth-dot{background:#627eea}.sol-dot{background:#15b8a6}.xrp-dot{background:#4b5563}.bnb-dot{background:#f0b90b}.gv-right-column{display:flex;flex-direction:column;gap:10px}.gv-quote-card{padding:13px;display:flex;gap:10px;align-items:center}.gv-target{width:40px;height:40px;border-radius:9px;background:#06B6D414;color:#06B6D4;display:grid;place-items:center}.gv-target svg{width:19px}.gv-quote-card small{font-size:8px;color:#06B6D4;letter-spacing:.8px}.gv-quote-card h3{font-size:13px;margin:3px 0}.gv-quote-card p{font-size:9px;color:#71869a;margin:0}.gv-order-card{padding:13px}.gv-order-title{display:flex;justify-content:space-between;font-size:12px}.gv-order-title span{color:#10B981;font-size:8px}.gv-buy-sell{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:#091321;padding:4px;border-radius:8px;margin-top:10px}.gv-buy-sell button{border:0;background:transparent;color:#7e93a8;padding:8px;border-radius:6px;font-size:10px;font-weight:800}.gv-buy-sell button.active{background:#10B981;color:#00170f}.gv-order-tabs{display:flex;gap:3px;margin:9px 0}.gv-order-tabs button{border:0;background:transparent;color:#71869a;padding:5px 8px;font-size:8px}.gv-order-tabs button.active{color:#06B6D4;border-bottom:1px solid #06B6D4}.gv-field-label{display:block;color:#7890a5;font-size:8px;margin:8px 0 5px}.gv-stepper{display:grid;grid-template-columns:34px 1fr 34px;border:1px solid #1E293B;border-radius:7px;overflow:hidden;background:#091522}.gv-stepper button{border:0;background:#0b1a2a;color:#fff}.gv-stepper input{width:100%;border:0;background:transparent;color:#fff;text-align:center;padding:8px;font-size:13px;font-weight:800;outline:none}.gv-pills{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-top:5px}.gv-pills button{border:1px solid #1E293B;background:#091522;color:#8297aa;border-radius:5px;padding:6px 3px;font-size:8px}.gv-pills button.active{border-color:#06B6D4;background:#092b3c;color:#06B6D4}.gv-action-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:12px}.gv-action-grid button{border:0;border-radius:7px;padding:11px;font-size:12px;font-weight:900;color:#fff}.gv-action-buy{background:#10B981}.gv-action-sell{background:#F43F5E}.gv-demo-note{display:flex;gap:5px;align-items:center;color:#526b81;font-size:7px;margin-top:8px}.gv-demo-note svg{width:11px}.gv-ai-scanner{padding:13px;overflow:hidden;position:relative}.gv-ai-scanner:after{content:"";position:absolute;inset:-40% -20%;background:radial-gradient(circle,#06B6D40f 0,transparent 52%);pointer-events:none}.gv-ai-head{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2}.gv-ai-head div span{color:#06B6D4;font-size:10px;font-weight:800}.gv-ai-head div b{font-size:12px;margin-left:4px}.gv-new-badge{background:#0c382c;color:#10B981}.gv-scan-status{font-size:7px;color:#10B981;letter-spacing:.6px;display:flex;align-items:center;gap:5px}.gv-scan-status:before{content:"";width:5px;height:5px;border-radius:50%;background:#10B981;box-shadow:0 0 9px #10B981;animation:scanPulse 1.1s ease-in-out infinite}.gv-radar{height:125px;display:grid;place-items:center;position:relative}.gv-radar-ring{position:absolute;border:1px solid #06B6D430;border-radius:50%;box-shadow:inset 0 0 22px #06B6D408}.r1{width:64px;height:64px}.r2{width:100px;height:100px}.r3{width:124px;height:124px;border-style:dashed;opacity:.55}.gv-radar-sweep{position:absolute;width:58px;height:2px;background:linear-gradient(90deg,#06B6D4,transparent);transform-origin:0 50%;left:50%;top:50%;animation:radar 2.1s linear infinite;box-shadow:0 0 12px #06B6D4}.gv-radar-sweep:after{content:"";position:absolute;left:0;top:-34px;width:58px;height:68px;background:conic-gradient(from -25deg at 0 50%,#06B6D42c,transparent 13%);transform-origin:0 50%}.gv-radar-core{width:38px;height:38px;border-radius:50%;background:#06283b;border:1px solid #06B6D4;color:#06B6D4;display:grid;place-items:center;z-index:2;box-shadow:0 0 20px #06B6D433,0 0 55px #06B6D41c}.gv-radar-core svg{width:18px}.gv-radar-dot{position:absolute;width:5px;height:5px;border-radius:50%;background:#10B981;box-shadow:0 0 10px #10B981;z-index:1}.dot-a{top:24px;right:30px;animation:radarDot 2.7s infinite}.dot-b{bottom:25px;left:27px;animation:radarDot 3.4s .4s infinite}.dot-c{top:51px;left:17px;animation:radarDot 2.2s .8s infinite}@keyframes radar{to{transform:rotate(360deg)}}@keyframes scanPulse{50%{transform:scale(1.5);opacity:.55}}@keyframes radarDot{50%{opacity:.25;transform:scale(.5)}}.gv-ai-scanner ul{list-style:none;margin:0 0 10px;padding:0;display:grid;gap:7px;color:#8195a9;font-size:9px}.gv-ai-scanner li{display:flex;align-items:center;gap:7px}.gv-ai-scanner li>span:first-child{width:5px;height:5px;border-radius:50%;background:#10B981;box-shadow:0 0 7px #10B981;flex:0 0 5px}.gv-scan-result{margin:3px 0 10px;padding:9px;border:1px solid #1c3f56;border-radius:8px;background:#061522;position:relative;z-index:2}.gv-scan-result small{display:block;color:#6d8498;font-size:7px;letter-spacing:.5px}.gv-scan-result b{display:block;font-size:12px;margin-top:3px}.gv-scan-result span{display:block;color:#10B981;font-size:8px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.gv-scan-progress{height:4px;background:#102a3c;border-radius:9px;overflow:hidden;margin-top:7px}.gv-scan-progress i{display:block;height:100%;width:68%;background:linear-gradient(90deg,#06B6D4,#10B981);animation:scanProgress 1.8s ease-in-out infinite}.gv-ai-scanner>button{width:100%;border:0;border-radius:7px;background:#06B6D4;color:#00131a;padding:9px;font-weight:900;font-size:9px;display:flex;justify-content:center;align-items:center;gap:6px;position:relative;z-index:2}.gv-ai-scanner>button svg{width:12px}@keyframes scanProgress{0%{transform:translateX(-50%);width:38%}50%{transform:translateX(85%);width:72%}100%{transform:translateX(165%);width:42%}}.gv-quick-card{padding:12px}.gv-quick-card>b{font-size:11px}.gv-quick-card a{display:grid;grid-template-columns:25px 1fr 13px;gap:7px;align-items:center;border-top:1px solid #16273a;padding:9px 0;color:#dbe6ef;cursor:pointer;font-size:9px}.gv-quick-card a:first-of-type{margin-top:7px}.gv-quick-card a svg{width:14px;color:#06B6D4}.gv-quick-card a svg:last-child{color:#60778c}.gv-quick-card small{display:block;color:#63798e;font-size:7px;margin-top:2px}.gv-admin-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px}.gv-admin-grid>div{background:#091a2a;border:1px solid #1E293B;border-radius:9px;padding:15px}.gv-admin-grid small{display:block;color:#71869a;font-size:9px}.gv-admin-grid b{display:block;font-size:20px;margin-top:5px}.gv-admin-controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+@media(max-width:1200px){.gv-hero-grid{grid-template-columns:1fr 230px}.gv-balance-card{grid-column:1/-1}.gv-main-grid{grid-template-columns:1fr}.gv-right-column{display:grid;grid-template-columns:1fr 1fr}.gv-quick-card{grid-column:1/-1}.gv-metrics-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:800px){.gv-hero-grid{grid-template-columns:1fr}.gv-bitcoin-orb{min-height:170px}.gv-balance-card{grid-column:auto}.gv-chart-head{align-items:flex-start;flex-direction:column}.gv-chart-controls{width:100%}.gv-timeframes{overflow:auto;flex:1}.gv-chart-body{height:390px}.gv-data-grid{grid-template-columns:1fr}.gv-right-column{grid-template-columns:1fr}.gv-admin-grid{grid-template-columns:1fr 1fr}.gv-welcome h2{font-size:25px}}
+@media(max-width:500px){.gv-metrics-grid{grid-template-columns:1fr}.gv-hero-actions{flex-direction:column}.gv-btn{justify-content:center}.gv-mini-stats{flex-wrap:wrap}.gv-chart-body{grid-template-columns:34px 1fr;height:330px}.gv-chart-tools button{width:25px;height:25px}.gv-asset-title>div>div span:not(.up){display:none}.gv-admin-grid{grid-template-columns:1fr}.gv-table{min-width:700px}}
 </style>
 
 <style>
@@ -96,113 +105,305 @@ button,input,select{font:inherit}button{cursor:pointer}
 .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;padding:18px;z-index:50}.modal-backdrop.show{display:flex}.modal{width:min(520px,100%);background:#071522;border:1px solid #1a4665;border-radius:15px;padding:18px;box-shadow:0 25px 70px rgba(0,0,0,.5)}.modal h3{margin:0 0 6px}.modal p{color:#8ea4b8;font-size:12px;line-height:1.6}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}.modal .field{margin-top:10px}.selected-control{background:#0d3657!important;color:#fff!important;border-color:#1c8ed0!important}.control-note{font-size:10px;color:#6f8498;margin-top:6px}.risk-input{width:100%;background:#071724;border:1px solid #193952;color:#fff;border-radius:7px;padding:7px;outline:none}.risk-box{min-width:0}.risk-box input{margin-top:5px}.status.closed{background:#2b2630;color:#a9b4bf}.market-row{cursor:pointer}.market-row:hover{background:#0a2032}.disabled-btn{opacity:.5;pointer-events:none}
 @media(max-width:600px){.modal{padding:15px}.modal-actions{flex-direction:column}.modal-actions .btn{width:100%}}
 </style>
-  <meta name="theme-color" content="#030a12">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="GV Trading">
-  <link rel="manifest" href="./manifest.webmanifest?v=2">
-  <link rel="icon" href="./gv-icon-192.png" type="image/png" sizes="192x192">
-  <link rel="icon" href="./gv-icon-512.png" type="image/png" sizes="512x512">
-  <link rel="apple-touch-icon" href="./gv-icon-192.png">
 
 <style>
-#installAppBtn{border-color:#1a7fc2;background:#0a2940;color:#fff;font-weight:800}
-#installAppBtn:hover{filter:brightness(1.15)}
+/* ===== ADVANCED GV CONTROL CENTER ===== */
+.gv-admin-suite{padding:0!important;background:#050914!important;border-color:#1b2940!important;overflow:hidden}
+.ac-topbar{display:flex;justify-content:space-between;gap:20px;padding:20px;border-bottom:1px solid #1a2a40;background:linear-gradient(135deg,#08121f,#060b15)}
+.ac-kicker{font-size:9px;letter-spacing:1.2px;color:#06B6D4;font-weight:900}.ac-online-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#10B981;box-shadow:0 0 10px #10B981;margin-right:6px}.ac-topbar h2{margin:8px 0 5px;font-size:24px}.ac-topbar p{margin:0;color:#7f95aa;font-size:11px;max-width:780px}
+.ac-status-stack{display:grid;grid-template-columns:repeat(2,150px);gap:7px;align-self:flex-start}.ac-status{border:1px solid #19314a;background:#071321;border-radius:8px;padding:8px 10px;display:flex;justify-content:space-between;gap:8px;font-size:8px}.ac-status span{color:#6f879d}.ac-status b{font-size:8px}.ok{color:#10B981!important}.danger-text{color:#F43F5E!important}.warning-text{color:#F59E0B!important}
+.ac-layout{display:grid;grid-template-columns:190px 1fr;min-height:720px}.ac-sidebar{background:#06101c;border-right:1px solid #182b42;padding:13px 10px;display:flex;flex-direction:column}.ac-side-brand{display:flex;align-items:center;gap:8px;padding:5px 6px 15px}.ac-side-logo{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,#087fff,#06B6D4);display:grid;place-items:center;font-weight:1000;box-shadow:0 0 20px #06B6D433}.ac-side-brand b{display:block;font-size:11px}.ac-side-brand small{display:block;color:#657c92;font-size:8px;margin-top:1px}.ac-sidebar nav{display:grid;gap:4px}.ac-sidebar nav button{border:1px solid transparent;background:transparent;color:#7690a6;border-radius:8px;text-align:left;padding:9px 10px;display:flex;align-items:center;gap:9px;font-size:10px;font-weight:800}.ac-sidebar nav button svg{width:14px}.ac-sidebar nav button:hover,.ac-sidebar nav button.active{background:#0c2942;border-color:#1a4869;color:#fff;box-shadow:inset 2px 0 #06B6D4}.ac-side-footer{margin-top:auto;border:1px solid #17324b;background:#071521;border-radius:10px;padding:9px;display:flex;gap:8px}.ac-lock{width:28px;height:28px;border-radius:7px;background:#09243a;color:#06B6D4;display:grid;place-items:center}.ac-lock svg{width:13px}.ac-side-footer b{display:block;font-size:9px}.ac-side-footer small{display:block;color:#61788e;font-size:7px;line-height:1.4;margin-top:2px}
+.ac-content{padding:14px;background:#050914;min-width:0}.ac-section{display:none}.ac-section.active{display:block}.ac-section-head{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;margin-bottom:12px}.ac-section-head h3{margin:0;font-size:18px}.ac-section-head p{margin:4px 0 0;color:#70869c;font-size:10px}.ac-actions{display:flex;gap:6px}.ac-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid #21364c;background:#091827;color:#d9e7f2;border-radius:7px;padding:8px 10px;font-size:9px;font-weight:800}.ac-btn svg{width:13px}.ac-btn:hover{filter:brightness(1.12)}.ac-btn.primary{background:#087ef6;border-color:#1593ff;color:#fff}.ac-btn.green{background:#0b946c;border-color:#10B981;color:#fff}.ac-btn.danger{background:#7f1737;border-color:#d8345e;color:#fff}
+.ac-stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.ac-stat{min-width:0;background:#0a1321;border:1px solid #1a2b42;border-radius:10px;padding:11px;position:relative;overflow:hidden}.ac-stat-icon{width:29px;height:29px;border-radius:7px;display:grid;place-items:center;margin-bottom:7px}.ac-stat-icon svg{width:14px}.ac-stat-icon.cyan{background:#06B6D414;color:#06B6D4}.ac-stat-icon.green{background:#10B98114;color:#10B981}.ac-stat-icon.purple{background:#8B5CF614;color:#a78bfa}.ac-stat-icon.blue{background:#3b82f614;color:#60a5fa}.ac-stat-icon.gold{background:#f59e0b14;color:#fbbf24}.ac-stat small{display:block;color:#61788e;font-size:7px;letter-spacing:.7px}.ac-stat b{display:block;font-size:17px;margin:3px 0 1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ac-stat span{font-size:8px}.ac-mini-spark{position:absolute;right:9px;bottom:8px;height:30px;width:62px;display:flex;align-items:flex-end;gap:3px;opacity:.75}.ac-mini-spark span{flex:1;background:#06B6D4;border-radius:2px 2px 0 0;box-shadow:0 0 7px #06B6D422}
+.ac-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:9px}.ac-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:9px}.ac-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:9px}.ac-card{background:#0a1321;border:1px solid #1a2b42;border-radius:10px;padding:12px;min-width:0}.ac-card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:9px}.ac-card-head h4{margin:0;font-size:11px}.ac-card-head span{display:block;color:#637a90;font-size:8px;margin-top:2px}.ac-live-badge{font-size:8px;color:#10B981;font-weight:900}.ac-live-badge.large{padding:7px 9px;border:1px solid #0f4a3a;border-radius:8px;background:#07281f}.ac-icon-btn{border:1px solid #1f364d;background:#081725;color:#71899f;border-radius:6px;width:27px;height:27px}.ac-icon-btn svg{width:12px}.ac-command-line{font-family:Consolas,monospace;background:#050c14;border:1px solid #14273b;border-radius:8px;padding:10px;color:#dceaf5;font-size:9px;min-height:50px}.prompt{color:#06B6D4;margin-right:5px}.ac-command-result{margin-top:8px;display:flex;gap:8px;padding:9px;border:1px solid #123c55;background:#071a27;border-radius:8px}.ac-ai-chip{width:26px;height:26px;border-radius:7px;background:#062e3e;color:#06B6D4;display:grid;place-items:center;font-weight:900;font-size:9px}.ac-command-result b{font-size:9px}.ac-command-result small{display:block;color:#6e849a;font-size:8px;margin-top:3px}.ac-full-btn{width:100%;border:0;background:#0a2b42;color:#06B6D4;border-radius:7px;padding:9px;margin-top:8px;font-size:9px;font-weight:900;display:flex;justify-content:center;align-items:center;gap:6px}.ac-full-btn svg{width:12px}.ac-health-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}.ac-health-grid>div{padding:8px;background:#07111d;border:1px solid #13263a;border-radius:7px;display:flex;justify-content:space-between;gap:8px}.ac-health-grid span,.ac-health-grid b{font-size:8px}.ac-health-grid span{color:#7890a6}.ac-activity-list{display:grid}.ac-activity{display:grid;grid-template-columns:9px 1fr auto;gap:8px;padding:8px 0;border-bottom:1px solid #12263b}.ac-activity:last-child{border-bottom:0}.ac-activity .dot{width:7px;height:7px;border-radius:50%;background:#06B6D4;box-shadow:0 0 9px #06B6D4;margin-top:4px}.ac-activity b{display:block;font-size:9px}.ac-activity small{display:block;color:#657c92;font-size:8px;margin-top:2px}.ac-activity time{color:#536a80;font-size:7px}
+.ac-search{display:flex;align-items:center;gap:7px;border:1px solid #1a2f46;background:#071321;border-radius:7px;padding:0 10px;width:min(360px,100%)}.ac-search svg{width:13px;color:#627990}.ac-search input{border:0;background:transparent;color:#fff;outline:none;padding:9px 0;width:100%;font-size:9px}.ac-toolbar-row{display:flex;gap:7px;margin-bottom:9px}.ac-toolbar-row select{border:1px solid #1a2f46;background:#071321;color:#dce8f3;border-radius:7px;padding:8px;font-size:9px}.ac-table-card{padding:0;overflow:hidden}.ac-table-scroll{overflow:auto}.ac-table{width:100%;border-collapse:collapse;font-size:8px;min-width:780px}.ac-table th,.ac-table td{padding:9px 8px;border-bottom:1px solid #14273b;text-align:left;white-space:nowrap}.ac-table th{color:#5f7891;font-size:7px;letter-spacing:.4px}.ac-table td{color:#c2d0db}.ac-table td b{color:#fff}.ac-status-pill{padding:3px 6px;border-radius:10px;font-size:7px;font-weight:900}.ac-status-pill.active{background:#08382d;color:#10B981}.ac-status-pill.paused{background:#342717;color:#f59e0b}.ac-small-btn{border:1px solid #1b4d6f;background:#0a2540;color:#06B6D4;border-radius:5px;padding:4px 6px;font-size:7px}.ac-table-note{padding:9px;color:#60788f;font-size:8px;border-top:1px solid #14273b}
+.ac-banner{display:flex;gap:10px;align-items:flex-start;padding:10px;border-radius:8px;border:1px solid}.ac-banner svg{width:15px;flex:none}.ac-banner b{display:block;font-size:9px}.ac-banner span{display:block;color:#6e849a;font-size:8px;margin-top:2px}.ac-banner.warning{background:#221a08;border-color:#5d4111;color:#f59e0b}.ac-banner.info{background:#081c2a;border-color:#16415b;color:#06B6D4;margin-top:9px}.ac-control-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:9px}.ac-control-card{min-height:180px}.ac-switch{width:39px;height:21px;border:0;border-radius:18px;background:#233548;position:relative;cursor:pointer}.ac-switch:after{content:"";position:absolute;left:3px;top:3px;width:15px;height:15px;border-radius:50%;background:#d7e0e9;transition:.18s}.ac-switch.on{background:#07966e}.ac-switch.on:after{left:21px}.ac-big-state{display:flex;align-items:center;gap:9px;margin:14px 0}.ac-big-state b{font-size:16px}.ac-big-state small{display:block;color:#688097;font-size:8px}.ac-pulse{width:10px;height:10px;border-radius:50%;background:#10B981;box-shadow:0 0 12px #10B981}.ac-bot-orb{width:32px;height:32px;border-radius:50%;background:#1e1745;color:#a78bfa;display:grid;place-items:center}.ac-bot-orb svg{width:16px}.ac-action-row{display:flex;gap:6px;flex-wrap:wrap}.ac-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.ac-form-grid label{font-size:8px;color:#71879b}.ac-form-grid input{display:block;width:100%;margin-top:4px;border:1px solid #1a3249;background:#071420;color:#fff;border-radius:7px;padding:8px;outline:none;font-size:9px}.ac-telemetry{display:grid;grid-template-columns:1fr 1fr;gap:8px}.ac-telemetry>div{border:1px solid #13283d;background:#07111c;border-radius:7px;padding:9px}.ac-telemetry span{display:block;color:#6e8499;font-size:7px}.ac-telemetry b{display:block;font-size:11px;margin-top:3px}
+.ac-ai-command-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:9px}.ac-command-help{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px}.ac-command-help button{border:1px solid #1a354c;background:#081725;color:#88a0b5;border-radius:7px;padding:6px 7px;font-size:7px;cursor:pointer}.ac-command-input{width:100%;height:150px;resize:vertical;border:1px solid #1a354c;background:#050d16;color:#e9f3fa;border-radius:8px;padding:11px;font:10px Consolas,monospace;outline:none}.ac-command-footer{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:8px}.ac-command-footer span{color:#5f768d;font-size:7px}.ac-ai-output{min-height:260px}.ac-output-empty{height:210px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#70869b}.ac-output-empty b{color:#fff;font-size:11px;margin-top:9px}.ac-output-empty small{font-size:8px;margin-top:3px}.ac-ai-big{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:#0a2740;color:#06B6D4;box-shadow:0 0 28px #06B6D41f}.ac-ai-big svg{width:23px}.ac-ai-result{display:grid;gap:8px}.ac-output-head{display:flex;justify-content:space-between;align-items:center;padding:9px;border:1px solid #16425a;border-radius:8px;background:#071a27}.ac-output-head b{font-size:10px}.ac-output-score{font-size:18px;color:#10B981;font-weight:900}.ac-output-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}.ac-output-grid>div,.ac-output-block{background:#07111c;border:1px solid #13273b;border-radius:7px;padding:8px}.ac-output-grid span{display:block;color:#61788e;font-size:7px}.ac-output-grid b{font-size:9px}.ac-output-block b{font-size:8px}.ac-output-block p{margin:4px 0 0;color:#8298ab;font-size:8px;line-height:1.5}.ac-chip{padding:4px 6px;border-radius:10px;font-size:7px;font-weight:900}.ac-chip.green{background:#07362b;color:#10B981}.ac-chip.blue{background:#082d45;color:#06B6D4}.ac-chip.gold{background:#33250b;color:#f59e0b}.ac-chip.purple{background:#241c48;color:#a78bfa}.ac-progress{height:7px;background:#11263a;border-radius:20px;overflow:hidden;margin:10px 0}.ac-progress span{display:block;height:100%;background:linear-gradient(90deg,#06B6D4,#10B981);border-radius:20px}.ac-metric-pair{display:flex;justify-content:space-between;font-size:8px;color:#71879a}.ac-metric-pair b{color:#fff}.ac-list{display:grid}.ac-list>div{display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid #12263b;font-size:8px}.ac-list>div:last-child{border-bottom:0}.ac-list span{color:#758ba0}.ac-list b{font-size:7px}.ac-grid-3 .ac-card{min-height:100px}
+.ac-market-status{font-size:7px;font-weight:900;padding:3px 6px;border-radius:8px;background:#08372d;color:#10B981}.ac-market-status.off{background:#30151c;color:#F43F5E}.ac-wallet-stat small{color:#6d8398;font-size:7px}.ac-wallet-stat b{display:block;font-size:15px;margin:4px 0}.ac-wallet-stat span{font-size:7px}.ac-wallet-actions{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.ac-wallet-actions button{border:1px solid #17344c;background:#071522;border-radius:8px;color:#dbe8f2;padding:11px;text-align:left;cursor:pointer}.ac-wallet-actions button:hover{border-color:#06B6D4}.ac-wallet-actions svg{width:16px;color:#06B6D4;margin-bottom:7px}.ac-wallet-actions b{display:block;font-size:8px}.ac-wallet-actions small{display:block;color:#668097;font-size:7px;margin-top:3px}
+.ac-risk-badge{padding:6px 9px;border-radius:9px;font-size:8px;font-weight:900}.ac-risk-badge.safe{background:#08372d;color:#10B981;border:1px solid #11543f}.ac-risk-meter{position:relative;height:14px;border-radius:20px;background:linear-gradient(90deg,#0b8e67 0 36%,#9c7413 36% 68%,#9f2145 68%);padding:2px;margin-bottom:18px}.ac-risk-fill{height:100%;background:#16d39b;border-radius:18px}.ac-risk-markers{display:flex;justify-content:space-between;color:#7a90a4;font-size:7px;margin-top:5px}.ac-risk-number{display:block;font-size:22px;margin:4px 0}.ac-card p{color:#6c8398;font-size:8px;line-height:1.5}.ac-settings-list{display:grid}.ac-settings-list>div{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 0;border-bottom:1px solid #13273b}.ac-settings-list>div:last-child{border-bottom:0}.ac-settings-list b{display:block;font-size:9px}.ac-settings-list small{display:block;color:#668097;font-size:7px;margin-top:3px}.ac-system-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.ac-system-item{display:flex;align-items:center;gap:9px}.cyan-icon{width:18px;color:#06B6D4}.ac-system-item div{flex:1}.ac-system-item b{display:block;font-size:9px}.ac-system-item span{display:block;color:#647b91;font-size:7px;margin-top:2px}.ac-system-item strong{font-size:7px}.ac-service-bars{display:grid;gap:9px}.ac-service-bars>div{display:grid;grid-template-columns:95px 55px 1fr;gap:8px;align-items:center;font-size:8px}.ac-service-bars span{color:#71879a}.ac-service-bars div>div{height:6px;background:#12283b;border-radius:20px;overflow:hidden}.ac-service-bars i{display:block;height:100%;background:linear-gradient(90deg,#06B6D4,#10B981);border-radius:20px}.ac-security-list{display:grid}.ac-security-list>div{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #13273b;font-size:8px}.ac-security-list>div:last-child{border-bottom:0}.ac-security-list span{color:#70879b}.ac-large-icon{width:30px;color:#10B981}.ac-activity-row{display:grid;grid-template-columns:120px 1fr 110px 90px 70px;gap:8px;align-items:center;padding:9px 8px;border-bottom:1px solid #13273b;font-size:8px}.ac-activity-row b{color:#fff}.ac-activity-row span{color:#6e849a}.ac-activity-row .result{color:#10B981}.ac-link{border:0;background:none;color:#06B6D4;font-size:8px;font-weight:800;cursor:pointer}
+.ac-toast{position:fixed;right:20px;bottom:20px;z-index:200;background:#091a2a;border:1px solid #1b4b6b;color:#e3eef5;padding:10px 13px;border-radius:8px;box-shadow:0 20px 60px #0008;font-size:9px;opacity:0;transform:translateY(10px);pointer-events:none;transition:.2s}.ac-toast.show{opacity:1;transform:none}
+@media(max-width:1100px){.ac-stat-grid{grid-template-columns:repeat(3,1fr)}.ac-system-grid{grid-template-columns:repeat(2,1fr)}.ac-wallet-actions{grid-template-columns:1fr 1fr}}
+@media(max-width:850px){.ac-layout{grid-template-columns:1fr}.ac-sidebar{border-right:0;border-bottom:1px solid #182b42}.ac-sidebar nav{grid-template-columns:repeat(3,1fr)}.ac-side-footer{display:none}.ac-status-stack{grid-template-columns:1fr 1fr}.ac-grid-2,.ac-control-grid,.ac-ai-command-layout{grid-template-columns:1fr}.ac-stat-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.ac-topbar{flex-direction:column}.ac-status-stack{width:100%}.ac-section-head{flex-direction:column}.ac-actions{width:100%}.ac-actions .ac-btn{flex:1}.ac-sidebar nav{grid-template-columns:repeat(2,1fr)}.ac-grid-3,.ac-grid-4{grid-template-columns:1fr}.ac-stat-grid{grid-template-columns:1fr}.ac-form-grid{grid-template-columns:1fr}.ac-system-grid{grid-template-columns:1fr}.ac-activity-row{grid-template-columns:80px 1fr 60px 60px 55px;min-width:500px}}
 </style>
+
 </head>
 <body>
 <div class="app">
 <aside class="sidebar" id="sidebar">
-  <div class="brand"><div class="logo">GV</div><span>GV Trading</span></div>
+  <div class="brand"><div class="logo">GV</div><div><b>GV TRADING</b><small>PLATFORM</small></div></div>
   <nav class="nav">
-    <button class="active" onclick="showPage('dashboard',this)">◈ <span>Dashboard</span></button>
-    <button onclick="showPage('trading',this)">↗ <span>Trading</span></button>
-    <button onclick="showPage('markets',this)">▥ <span>Markets</span></button>
-    <button onclick="showPage('wallet',this)">▣ <span>Wallet</span></button>
-    <button onclick="showPage('ai',this)">◉ <span>GV AI Analyst</span><em class="new">NEW</em></button>
-    <button onclick="showPage('guides',this)">▤ <span>Guides</span></button>
-    <button onclick="showPage('founder',this)">♙ <span>Founder</span></button>
-    <button onclick="showPage('settings',this)">⚙ <span>Settings</span></button>
+    <button class="active" onclick="showPage('dashboard',this)"><span>⌂</span> Home</button>
+    <button onclick="showPage('dashboard',this)"><span>▦</span> Dashboard</button>
+    <button onclick="showPage('trading',this)"><span>↗</span> Trading</button>
+    <button onclick="showPage('markets',this)"><span>▥</span> Markets</button>
+    <button onclick="showPage('wallet',this)"><span>▣</span> Wallet</button>
+    <button onclick="showPage('ai',this)"><span>◉</span> GV AI Analyst <em class="new">NEW</em></button>
+    <button onclick="showPage('guides',this)"><span>▤</span> Guides</button>
+    <button onclick="showPage('founder',this)"><span>♙</span> Founder</button>
+    <button onclick="showPage('settings',this)"><span>⚙</span> Settings</button>
+    <button id="adminControlNav" style="display:none" onclick="showPage('admin',this)"><span>◈</span> Control Center <em class="admin-badge">ADMIN</em></button>
   </nav>
-  <div class="profile"><div class="avatar">GB</div><b>Gyane Baraka</b><small>Founder — GV</small><small>Building a learning-focused digital environment for people interested in crypto markets.</small><div class="year">1994 · Somali & Kenyan Citizen</div></div>
+  <div class="profile"><div class="avatar">RB</div><b>reshmy baraka</b><small>Level 1 · Demo Account</small><small>GV simulated trading workspace.</small><div class="year">Secure demo environment</div></div>
 </aside>
 
 <main class="main">
 <header class="topbar">
   <div style="display:flex;align-items:center;gap:10px"><button class="pill mobile-menu" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button><div class="title"><h1 id="pageTitle">Trading Dashboard</h1><span>AI-powered market intelligence · simulated trading</span></div></div>
-  <div class="top-actions">
-    <button class="pill" id="installAppBtn" type="button" style="display:none">Install GV App</button><span class="pill">Demo Balance <b id="balance">$25,840.00</b></span><button class="btn primary" onclick="openModal('accountModal')">Create Demo Account</button></div>
+  <div class="top-actions" id="accountBar"><span class="pill">Demo Balance <b id="balance">$25,774.00</b></span><button class="btn" onclick="openAuth('login')">Login</button><button class="btn primary" onclick="openAuth('register')">Create Demo Account</button></div>
 </header>
 
-<div id="dashboardPage">
-<div class="ticker">
-  <div class="ticker-card"><small>BTC/USD</small><strong>$67,485.03</strong> <span class="up">+0.81%</span></div>
-  <div class="ticker-card"><small>ETH/USD</small><strong>$3,268.45</strong> <span class="up">+1.24%</span></div>
-  <div class="ticker-card"><small>SOL/USD</small><strong>$164.32</strong> <span class="up">+2.17%</span></div>
-  <div class="ticker-card"><small>EUR/USD</small><strong>1.0724</strong> <span class="down">-0.36%</span></div>
-  <div class="ticker-card"><small>GBP/USD</small><strong>1.2618</strong> <span class="down">-0.21%</span></div>
-</div>
-
-<section class="dashboard">
-<div>
-  <div class="chart-card">
-    <div class="market-head">
-      <div class="market-title"><div class="coin">₿</div><div><h2>BTC/USD <span style="font-size:11px;color:#879caf">⌄</span></h2><small>Bitcoin · Demo Market</small></div><strong class="up" id="livePrice">$67,485.03</strong></div>
-      <div class="timeframes" id="timeframes"><button onclick="setTimeframe(this,'1m')">1m</button><button onclick="setTimeframe(this,'5m')">5m</button><button class="active" onclick="setTimeframe(this,'15m')">15m</button><button onclick="setTimeframe(this,'30m')">30m</button><button onclick="setTimeframe(this,'1h')">1h</button><button onclick="setTimeframe(this,'4h')">4h</button><button onclick="setTimeframe(this,'1d')">1d</button></div>
-    </div>
-    <div class="chart-wrap">
-      <svg id="priceChart" viewBox="0 0 1000 390" preserveAspectRatio="none" aria-label="GV Trading candlestick demo chart">
-        <g id="chartGrid"></g>
-        <g id="chartVolume"></g>
-        <g id="chartCandles"></g>
-        <g id="pricePill"><rect class="price-pill" x="906" y="110" width="88" height="21" rx="4"></rect><text id="chartPriceText" class="price-text" x="914" y="124">$67,485.03</text></g>
-        <g id="chartLabels"></g>
-        <g id="chartLegend"></g>
-      </svg>
-    </div>
-    <div class="trade-box">
-      <div class="tabs" id="orderTabs"><button class="active" onclick="setOrderType(this,'Market')">Market</button><button onclick="setOrderType(this,'Limit')">Limit</button><button onclick="setOrderType(this,'Stop')">Stop</button></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-        <div class="field"><label>Asset</label><select id="asset" onchange="selectAsset(this.value)"><option>BTC/USD</option><option>ETH/USD</option><option>SOL/USD</option><option>XRP/USD</option></select></div>
-        <div class="field"><label>Amount (USD)</label><input id="amount" type="number" value="100" min="10" step="10"></div>
+<div id="dashboardPage" class="gv-dashboard-page">
+  <section class="gv-hero-grid">
+    <div class="gv-welcome">
+      <div class="gv-kicker"><span class="gv-live-dot"></span> GV TRADING PLATFORM · DEMO ENVIRONMENT</div>
+      <div class="gv-welcome-line"><span>Welcome back, <b>reshmy baraka</b></span><span class="gv-level">LEVEL 1</span></div>
+      <h2>Trade Smarter <span>with GV</span></h2>
+      <p>Professional market intelligence, simulated trading and GV AI insights in one futuristic workspace.</p>
+      <div class="gv-hero-actions">
+        <button class="gv-btn gv-btn-green" onclick="showPage('trading')"><i data-lucide="layout-dashboard"></i> Open Trading Dashboard</button>
+        <button class="gv-btn gv-btn-outline" onclick="showPage('markets')"><i data-lucide="bar-chart-3"></i> Explore Markets</button>
       </div>
-      <div class="field"><label>Leverage</label><select id="leverage" onchange="updateLeverage()"><option>1x</option><option selected>2x</option><option>5x</option><option>10x</option></select></div>
-      <div class="trade-actions"><button class="buy" onclick="placeTrade('BUY')">BUY</button><button class="sell" onclick="placeTrade('SELL')">SELL</button></div>
-      <div class="control-note" id="orderHint">ⓘ Market order · Demo only — no real trades or financial transactions are executed.</div>
+      <div class="gv-mini-stats"><span><i data-lucide="shield-check"></i> Demo Protected</span><span><i data-lucide="zap"></i> AI Assisted</span><span><i data-lucide="graduation-cap"></i> Education First</span></div>
     </div>
-  </div>
-  <div class="lower">
-    <div class="watch-card"><div class="card-head"><h3>Market Watchlist</h3><a href="#" onclick="showPage('markets');return false">View All</a></div><div class="watch-list">
-      <div class="row"><div class="coin-mini"><i>₿</i><div>BTC/USD<small>Bitcoin</small></div></div><b>$67,485.03</b><span class="up right">+0.81%</span></div>
-      <div class="row"><div class="coin-mini"><i>Ξ</i><div>ETH/USD<small>Ethereum</small></div></div><b>$3,268.45</b><span class="up right">+1.24%</span></div>
-      <div class="row"><div class="coin-mini"><i>◎</i><div>SOL/USD<small>Solana</small></div></div><b>$164.32</b><span class="up right">+2.17%</span></div>
-      <div class="row"><div class="coin-mini"><i>✕</i><div>XRP/USD<small>XRP</small></div></div><b>$0.61</b><span class="up right">+0.55%</span></div>
-    </div></div>
-    <div class="orders-card"><div class="card-head"><h3>Open Trades <span class="up" id="tradeCount">(1)</span></h3><a onclick="closeAll()">Close All</a></div><div class="orders"><table class="order-table"><thead><tr><th>Asset</th><th>Type</th><th>Amount</th><th>P/L</th><th>Status</th></tr></thead><tbody id="ordersBody"><tr><td>BTC/USD</td><td class="up">Buy</td><td>$100</td><td class="up">+$0.96</td><td><span class="status">Open</span></td></tr></tbody></table></div></div>
-  </div>
-  <div class="activity-card"><div class="card-head"><h3>Recent Activity</h3><a href="#" onclick="showToast('Showing the latest demo activity in this panel.');return false">View All</a></div><div id="activity"><div class="activity"><div class="dot">↗</div><div><b>Trade Executed</b><small>BTC/USD · Buy · 100 USD · Demo</small></div></div><div class="activity"><div class="dot">◉</div><div><b>AI Analysis</b><small>Bullish signal detected for BTC/USD</small></div></div><div class="activity"><div class="dot">▣</div><div><b>Wallet Update</b><small>Demo balance synchronized</small></div></div></div></div>
-</div>
+    <div class="gv-bitcoin-orb" aria-hidden="true">
+      <div class="gv-orb-ring gv-ring-one"></div><div class="gv-orb-ring gv-ring-two"></div>
+      <div class="gv-orb-circuit c1"></div><div class="gv-orb-circuit c2"></div><div class="gv-orb-circuit c3"></div>
+      <div class="gv-btc-core">₿</div>
+      <span class="gv-orb-data d1">67,956.44</span><span class="gv-orb-data d2">+2.84%</span><span class="gv-orb-data d3">AI 92%</span>
+    </div>
+    <div class="gv-balance-card">
+      <div class="gv-card-label"><span>TOTAL DEMO BALANCE</span><i data-lucide="wallet-cards"></i></div>
+      <div class="gv-balance-value">$25,774.00</div><div class="gv-balance-change">+2.84% today</div>
+      <svg viewBox="0 0 330 95" class="gv-mini-chart"><defs><linearGradient id="gvFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#10B981" stop-opacity=".35"/><stop offset="1" stop-color="#10B981" stop-opacity="0"/></linearGradient></defs><path d="M0 76 C30 70 38 73 57 61 S91 65 111 49 S141 58 163 42 S193 51 212 32 S246 39 265 23 S299 28 330 8 L330 95 L0 95Z" fill="url(#gvFill)"/><path d="M0 76 C30 70 38 73 57 61 S91 65 111 49 S141 58 163 42 S193 51 212 32 S246 39 265 23 S299 28 330 8" fill="none" stroke="#10B981" stroke-width="3"/></svg>
+      <div class="gv-balance-footer"><span>Demo account</span><span><i data-lucide="trending-up"></i> Bullish trend</span></div>
+    </div>
+  </section>
 
-<aside>
-  <div class="ai-card">
-    <div class="ai-head"><h3>🤖 GV AI Analyst</h3><span class="new">NEW</span></div>
-    <p class="ai-intro">Get AI-powered market analysis, trend signals and trading insights.</p>
-    <div class="analysis">
-      <div class="analysis-top"><b>Market Analysis</b><span class="badge" id="aiBadge">BULLISH</span></div>
-      <p class="ai-intro" id="aiText">BTC/USD is showing positive demo momentum with supportive buying pressure.</p>
-      <div class="strength"><div class="ring"><b id="aiScore">78%</b></div><div><div class="signal up" id="aiSignal">↗ RISE</div><small style="color:#71879a">Signal strength</small></div></div>
-      <ul class="ai-list"><li>Consider a <strong>BUY</strong> position in demo mode</li><li>Key support: <strong>$66,800</strong></li><li>Next resistance: <strong>$68,200</strong></li></ul>
-      <div class="ai-actions"><button class="btn primary" onclick="analyze()">◉ AI Trade</button><button class="btn" onclick="showPage('ai')">AI Report</button></div>
-      <div class="toggle-row"><span>Auto Trade <small style="color:#6f8498">(simulation)</small></span><button class="switch" id="autoSwitch" onclick="toggleAuto()"></button></div>
+  <section class="gv-metrics-grid">
+    <div class="gv-metric"><div class="gv-metric-icon"><i data-lucide="wallet"></i></div><div><small>Demo Balance</small><b>$25,774.00</b><span class="up">↑ +2.84%</span></div></div>
+    <div class="gv-metric"><div class="gv-metric-icon"><i data-lucide="credit-card"></i></div><div><small>Available Margin</small><b>$18,420.50</b><span class="up">↑ +1.26%</span></div></div>
+    <div class="gv-metric"><div class="gv-metric-icon"><i data-lucide="activity"></i></div><div><small>Today's P/L</small><b class="up">+$486.25</b><span class="up">↑ +1.92%</span></div></div>
+    <div class="gv-metric"><div class="gv-metric-icon"><i data-lucide="layers-3"></i></div><div><small>Open Positions</small><b>3</b><span class="gv-neutral">● +0.00%</span></div></div>
+  </section>
+
+  <section class="gv-main-grid">
+    <div class="gv-left-column">
+      <div class="gv-chart-card">
+        <div class="gv-chart-head">
+          <div class="gv-asset-title"><div class="gv-btc-icon">₿</div><div><div><b>BTC/USD</b><span class="gv-pipe">|</span><span>Bitcoin / US Dollar</span></div><strong id="livePrice">$67,956.44</strong><span class="up"> (+2.84%)</span></div></div>
+          <div class="gv-chart-controls"><div class="gv-timeframes" id="timeframes"><button onclick="setTimeframe(this,'1m')">1m</button><button onclick="setTimeframe(this,'5m')">5m</button><button class="active" onclick="setTimeframe(this,'15m')">15m</button><button onclick="setTimeframe(this,'30m')">30m</button><button onclick="setTimeframe(this,'1h')">1h</button><button onclick="setTimeframe(this,'4h')">4h</button><button onclick="setTimeframe(this,'1d')">1d</button></div><button class="gv-icon-btn" onclick="toggleTerminalFullscreen()" title="Fullscreen"><i data-lucide="maximize-2"></i></button></div>
+        </div>
+        <div class="gv-chart-body">
+          <div class="gv-chart-tools"><button class="active"><i data-lucide="crosshair"></i></button><button><i data-lucide="pencil"></i></button><button><i data-lucide="brush"></i></button><button><i data-lucide="git-branch"></i></button><button><i data-lucide="type"></i></button><button><i data-lucide="shapes"></i></button><button><i data-lucide="ruler"></i></button></div>
+          <div class="gv-candle-wrap"><svg id="priceChart" viewBox="0 0 1000 440" preserveAspectRatio="none" aria-label="BTC USD simulated candlestick chart"><g id="chartGrid"></g><g id="chartVolume"></g><g id="chartCandles"></g><g id="pricePill"><rect class="price-pill" x="906" y="110" width="88" height="21" rx="4"></rect><text id="chartPriceText" class="price-text" x="914" y="124">$67,956.44</text></g><g id="chartLabels"></g><g id="chartLegend"></g></svg><div class="gv-chart-watermark">GV · BTC/USD · SIMULATED</div><div class="gv-volume-label">VOLUME</div></div>
+        </div>
+      </div>
+
+      <div class="gv-data-grid">
+        <div class="gv-data-card">
+          <div class="gv-data-head"><div class="gv-tabs"><button class="active">Open Trades (3)</button><button>Closed Trades</button><button>History</button></div><button class="gv-link" onclick="closeAll()">Close All</button></div>
+          <div class="gv-table-scroll"><table class="gv-table"><thead><tr><th>Asset</th><th>Type</th><th>Amount</th><th>Entry Price</th><th>Current Price</th><th>P/L</th><th></th></tr></thead><tbody id="ordersBody"><tr><td><b>BTC/USD</b></td><td><span class="gv-buy-badge">Buy</span></td><td>$100</td><td>$67,420.12</td><td>$67,956.44</td><td class="up">+$243.00</td><td><button class="gv-close-btn">Close</button></td></tr><tr><td><b>ETH/USD</b></td><td><span class="gv-buy-badge">Buy</span></td><td>$100</td><td>$3,268.45</td><td>$3,342.80</td><td class="up">+$237.00</td><td><button class="gv-close-btn">Close</button></td></tr><tr><td><b>SOL/USD</b></td><td><span class="gv-buy-badge">Buy</span></td><td>$100</td><td>$160.12</td><td>$164.32</td><td class="up">+$20.00</td><td><button class="gv-close-btn">Close</button></td></tr></tbody></table></div>
+        </div>
+        <div class="gv-data-card">
+          <div class="gv-data-head"><div><b>Top Markets</b><div class="gv-filter-tabs"><button class="active">All</button><button>Crypto</button><button>Forex</button></div></div><span class="gv-live-badge"><i></i> LIVE DEMO</span></div>
+          <div class="gv-market-list"><div><span><i class="gv-coin-dot btc-dot">₿</i><b>BTC</b></span><strong>$67,956.44</strong><em class="up">+2.84%</em></div><div><span><i class="gv-coin-dot eth-dot">Ξ</i><b>ETH</b></span><strong>$3,342.80</strong><em class="up">+3.12%</em></div><div><span><i class="gv-coin-dot sol-dot">◎</i><b>SOL</b></span><strong>$164.32</strong><em class="up">+2.17%</em></div><div><span><i class="gv-coin-dot xrp-dot">X</i><b>XRP</b></span><strong>$2.84</strong><em class="up">+1.48%</em></div><div><span><i class="gv-coin-dot bnb-dot">B</i><b>BNB</b></span><strong>$612.30</strong><em class="up">+1.92%</em></div></div>
+        </div>
+      </div>
     </div>
-    <div style="margin-top:13px;background:linear-gradient(135deg,#09233a,#061522);border:1px solid #17405d;border-radius:10px;padding:13px"><b>Trade Smarter with GV AI</b><p class="ai-intro">Real-time style market analysis and educational insights powered by the GV demo engine.</p><button class="btn primary" style="width:100%" onclick="showPage('ai')">Try GV AI Analyst →</button></div>
-  </div>
-</aside>
-</section>
+
+    <aside class="gv-right-column">
+      <div class="gv-quote-card"><div class="gv-target"><i data-lucide="target"></i></div><div><small>TRADER MINDSET</small><h3>Discipline Builds Wealth</h3><p>Consistent decisions and controlled risk beat emotional trading.</p></div></div>
+      <div class="gv-order-card">
+        <div class="gv-order-title"><b>Order Execution</b><span>Demo only</span></div>
+        <div class="gv-buy-sell"><button class="active">Buy</button><button>Sell</button></div>
+        <div class="gv-order-tabs"><button class="active" onclick="setOrderType(this,'Market')">Market</button><button onclick="setOrderType(this,'Limit')">Limit</button><button onclick="setOrderType(this,'Stop')">Stop</button></div>
+        <label class="gv-field-label">Amount (USD)</label><div class="gv-stepper"><button onclick="document.getElementById('amount').stepDown()">−</button><input id="amount" type="number" value="100" min="10" step="10"><button onclick="document.getElementById('amount').stepUp()">+</button></div>
+        <div class="gv-pills"><button>$10</button><button>$50</button><button class="active">$100</button><button>$500</button></div>
+        <label class="gv-field-label">Leverage</label><div class="gv-pills gv-leverage"><button>1x</button><button>2x</button><button class="active">5x</button><button>10x</button></div>
+        <div class="gv-action-grid"><button class="gv-action-buy" onclick="placeTrade('BUY')">BUY</button><button class="gv-action-sell" onclick="placeTrade('SELL')">SELL</button></div>
+        <div class="gv-demo-note"><i data-lucide="info"></i> Simulated trading — no real funds or financial transactions.</div>
+      </div>
+      <div class="gv-ai-scanner"><div class="gv-ai-head"><div><span>GV AI</span><b>Scanner</b></div><div style="display:flex;align-items:center;gap:7px"><span class="gv-scan-status" id="gvScanStatus">SCANNING</span><span class="gv-new-badge">NEW</span></div></div><div class="gv-radar"><div class="gv-radar-ring r1"></div><div class="gv-radar-ring r2"></div><div class="gv-radar-ring r3"></div><div class="gv-radar-sweep"></div><div class="gv-radar-dot dot-a"></div><div class="gv-radar-dot dot-b"></div><div class="gv-radar-dot dot-c"></div><div class="gv-radar-core"><i data-lucide="bot"></i></div></div><div class="gv-scan-result"><small>BEST-RANKED SIMULATED OPPORTUNITY</small><b id="gvBestAsset">BTC/USD · BUY / RISE</b><span id="gvBestConfidence">Confidence 86% · Risk Medium</span><div class="gv-scan-progress"><i></i></div></div><ul><li><span></span><span id="gvScanLine1">Analyzing trend + momentum</span></li><li><span></span><span id="gvScanLine2">Scanning 100+ simulated assets</span></li><li><span></span><span id="gvScanLine3">Ranking opportunities by signal quality</span></li></ul><button onclick="showPage('ai')">View Full AI Analysis <i data-lucide="arrow-right"></i></button></div>
+      <div class="gv-quick-card"><b>Quick Access</b><a onclick="showPage('wallet')"><i data-lucide="smartphone"></i><span>M-Pesa<small>Deposit & Withdraw</small></span><i data-lucide="chevron-right"></i></a><a onclick="showPage('wallet')"><i data-lucide="wallet-cards"></i><span>PayPal<small>Deposit & Withdraw</small></span><i data-lucide="chevron-right"></i></a><a onclick="showPage('guides')"><i data-lucide="book-open"></i><span>Guides & Tutorials<small>Learn trading concepts</small></span><i data-lucide="chevron-right"></i></a></div>
+    </aside>
+  </section>
 </div>
 
 <div id="otherPages" class="sections">
+  <div id="admin" class="page-card gv-admin-suite">
+    <div class="ac-topbar">
+      <div>
+        <div class="ac-kicker"><span class="ac-online-dot"></span> GV OPERATIONS · RESTRICTED ADMINISTRATOR AREA</div>
+        <h2>GV Control Center <span class="admin-badge">ADMIN</span></h2>
+        <p>Advanced command center for users, simulated trading, AI operations, markets, demo wallet controls, risk, security and audit activity.</p>
+      </div>
+      <div class="ac-status-stack">
+        <div class="ac-status"><span>FRONTEND</span><b class="ok">ONLINE</b></div>
+        <div class="ac-status"><span>SUPABASE</span><b id="acSupabaseStatus" class="ok">CONNECTED</b></div>
+        <div class="ac-status"><span>DEMO ENGINE</span><b class="ok">RUNNING</b></div>
+        <div class="ac-status"><span>AI ENGINE</span><b class="ok">ACTIVE</b></div>
+      </div>
+    </div>
+
+    <div class="ac-layout">
+      <aside class="ac-sidebar">
+        <div class="ac-side-brand"><div class="ac-side-logo">GV</div><div><b>CONTROL</b><small>CENTER</small></div></div>
+        <nav id="acNav">
+          <button class="active" data-section="overview" onclick="adminSection('overview',this)"><i data-lucide="layout-dashboard"></i> Overview</button>
+          <button data-section="users" onclick="adminSection('users',this)"><i data-lucide="users"></i> Users</button>
+          <button data-section="trading" onclick="adminSection('trading',this)"><i data-lucide="candlestick-chart"></i> Trading</button>
+          <button data-section="ai" onclick="adminSection('ai',this)"><i data-lucide="bot"></i> AI Engine</button>
+          <button data-section="markets" onclick="adminSection('markets',this)"><i data-lucide="chart-no-axes-combined"></i> Markets</button>
+          <button data-section="wallet" onclick="adminSection('wallet',this)"><i data-lucide="wallet-cards"></i> Wallet</button>
+          <button data-section="risk" onclick="adminSection('risk',this)"><i data-lucide="shield-alert"></i> Risk</button>
+          <button data-section="notifications" onclick="adminSection('notifications',this)"><i data-lucide="bell"></i> Notifications</button>
+          <button data-section="system" onclick="adminSection('system',this)"><i data-lucide="server-cog"></i> System</button>
+          <button data-section="security" onclick="adminSection('security',this)"><i data-lucide="shield-check"></i> Security</button>
+          <button data-section="audit" onclick="adminSection('audit',this)"><i data-lucide="history"></i> Audit Logs</button>
+          <button data-section="settings" onclick="adminSection('settings',this)"><i data-lucide="settings"></i> Settings</button>
+        </nav>
+        <div class="ac-side-footer"><span class="ac-lock"><i data-lucide="lock-keyhole"></i></span><div><b>Protected Area</b><small>Administrator controls are restricted to authorized GV accounts.</small></div></div>
+      </aside>
+
+      <main class="ac-content">
+        <section class="ac-section active" id="acOverview">
+          <div class="ac-section-head"><div><h3>Operations Overview</h3><p>Live-style telemetry from the GV simulated environment.</p></div><div class="ac-actions"><button class="ac-btn" onclick="adminRefreshAll()"><i data-lucide="refresh-cw"></i> Refresh</button><button class="ac-btn primary" onclick="adminSection('ai',document.querySelector('[data-section=ai]'))"><i data-lucide="sparkles"></i> AI Command Center</button></div></div>
+          <div class="ac-stat-grid">
+            <div class="ac-stat"><div class="ac-stat-icon cyan"><i data-lucide="users"></i></div><small>REGISTERED USERS</small><b id="acTotalUsers">1,284</b><span class="up">+8.4% this week</span><div class="ac-mini-spark"><span style="height:30%"></span><span style="height:42%"></span><span style="height:37%"></span><span style="height:52%"></span><span style="height:49%"></span><span style="height:68%"></span><span style="height:84%"></span></div></div>
+            <div class="ac-stat"><div class="ac-stat-icon green"><i data-lucide="user-check"></i></div><small>ACTIVE USERS</small><b id="acActiveUsers">342</b><span class="up">+4.1%</span><div class="ac-mini-spark"><span style="height:28%"></span><span style="height:36%"></span><span style="height:46%"></span><span style="height:42%"></span><span style="height:58%"></span><span style="height:65%"></span><span style="height:76%"></span></div></div>
+            <div class="ac-stat"><div class="ac-stat-icon purple"><i data-lucide="repeat-2"></i></div><small>ACTIVE DEMO TRADES</small><b id="acActiveTrades">126</b><span class="up">+12.7%</span><div class="ac-mini-spark"><span style="height:52%"></span><span style="height:48%"></span><span style="height:60%"></span><span style="height:54%"></span><span style="height:72%"></span><span style="height:66%"></span><span style="height:82%"></span></div></div>
+            <div class="ac-stat"><div class="ac-stat-icon blue"><i data-lucide="wallet"></i></div><small>TOTAL DEMO BALANCE</small><b id="acDemoBalance">$4,284,920.50</b><span class="up">+12.8%</span><div class="ac-mini-spark"><span style="height:34%"></span><span style="height:44%"></span><span style="height:41%"></span><span style="height:58%"></span><span style="height:63%"></span><span style="height:78%"></span><span style="height:92%"></span></div></div>
+            <div class="ac-stat"><div class="ac-stat-icon cyan"><i data-lucide="bar-chart-3"></i></div><small>DEMO VOLUME</small><b>$12.84M</b><span class="up">+18.6%</span></div>
+            <div class="ac-stat"><div class="ac-stat-icon green"><i data-lucide="scan-line"></i></div><small>AI SCANS</small><b id="acAiScans">18,492</b><span class="up">+24.3%</span></div>
+            <div class="ac-stat"><div class="ac-stat-icon purple"><i data-lucide="bot"></i></div><small>AUTO-TRADES</small><b>4,218</b><span class="up">+9.2%</span></div>
+            <div class="ac-stat"><div class="ac-stat-icon gold"><i data-lucide="timer"></i></div><small>SYSTEM UPTIME</small><b>99.98%</b><span class="ok">Stable</span></div>
+          </div>
+
+          <div class="ac-grid-2">
+            <div class="ac-card ac-command-preview">
+              <div class="ac-card-head"><div><h4>AI Command Center</h4><span>Natural-language administrator console</span></div><span class="ac-live-badge">● READY</span></div>
+              <div class="ac-command-line"><span class="prompt">GV&gt;</span><span id="acPreviewCommand">Analyze BTC/USD momentum using the latest simulated candles.</span></div>
+              <div class="ac-command-result"><div class="ac-ai-chip">AI</div><div><b>Signal: BULLISH · 82%</b><small>Momentum positive · volatility moderate · liquidity healthy</small></div></div>
+              <button class="ac-full-btn" onclick="adminSection('ai',document.querySelector('[data-section=ai]'))">Open AI Command Center <i data-lucide="arrow-right"></i></button>
+            </div>
+            <div class="ac-card">
+              <div class="ac-card-head"><div><h4>System Health</h4><span>Current service state</span></div><button class="ac-icon-btn" onclick="adminToast('System diagnostics refreshed.')"><i data-lucide="refresh-cw"></i></button></div>
+              <div class="ac-health-grid">
+                <div><span>Authentication</span><b class="ok">ONLINE</b></div><div><span>Database</span><b class="ok">ONLINE</b></div><div><span>Chart Engine</span><b class="ok">RUNNING</b></div><div><span>AI Engine</span><b class="ok">ACTIVE</b></div><div><span>Wallet Engine</span><b class="ok">DEMO</b></div><div><span>API Latency</span><b>128 ms</b></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ac-card">
+            <div class="ac-card-head"><div><h4>Recent Administrator Activity</h4><span>Newest events generated by the control center</span></div><button class="ac-link" onclick="adminSection('audit',document.querySelector('[data-section=audit]'))">View Audit Log →</button></div>
+            <div id="acRecentActivity" class="ac-activity-list"></div>
+          </div>
+        </section>
+
+        <section class="ac-section" id="acUsers">
+          <div class="ac-section-head"><div><h3>User Management</h3><p>Monitor accounts and demo-access status without exposing passwords or secrets.</p></div><div class="ac-actions"><button class="ac-btn" onclick="refreshAdminUsers()"><i data-lucide="refresh-cw"></i> Load Profiles</button></div></div>
+          <div class="ac-toolbar-row"><div class="ac-search"><i data-lucide="search"></i><input id="acUserSearch" placeholder="Search by name or email..." oninput="filterAdminUsers()"></div><select id="acUserFilter" onchange="filterAdminUsers()"><option value="all">All statuses</option><option value="active">Active</option><option value="paused">Paused</option></select></div>
+          <div class="ac-card ac-table-card"><div class="ac-table-scroll"><table class="ac-table"><thead><tr><th>User</th><th>Email</th><th>Level</th><th>Demo Balance</th><th>AI Scans</th><th>Status</th><th>Joined</th><th>Actions</th></tr></thead><tbody id="acUsersBody"><tr><td><b>Sample User</b></td><td>sample@gv.demo</td><td>Beginner</td><td>$25,774.00</td><td>24</td><td><span class="ac-status-pill active">ACTIVE</span></td><td>2026-10-01</td><td><button class="ac-small-btn" onclick="adminToast('Demo user profile opened.')">View</button></td></tr></tbody></table></div><div class="ac-table-note" id="acUsersNote">Profiles will be loaded from Supabase when administrator permissions allow.</div></div>
+        </section>
+
+        <section class="ac-section" id="acTrading">
+          <div class="ac-section-head"><div><h3>Demo Trading Control</h3><p>Manage the simulated execution environment and automation rules.</p></div></div>
+          <div class="ac-banner warning"><i data-lucide="triangle-alert"></i><div><b>Simulation-only controls</b><span>These controls affect GV demo activity only. They do not place real exchange orders.</span></div></div>
+          <div class="ac-control-grid">
+            <div class="ac-card ac-control-card"><div class="ac-card-head"><div><h4>Demo Trading Engine</h4><span>Global simulated order flow</span></div><button class="ac-switch on" id="acDemoSwitch" onclick="adminToggleSwitch(this,'Demo Trading')"></button></div><div class="ac-big-state"><span class="ac-pulse"></span><b id="acDemoState">RUNNING</b><small>New demo orders currently accepted.</small></div><div class="ac-action-row"><button class="ac-btn green" onclick="adminToast('Demo trading remains ON for the simulation.')">Enable</button><button class="ac-btn" onclick="adminPauseDemo()">Pause New Orders</button><button class="ac-btn danger" onclick="adminEmergencyStop()">Emergency Stop</button></div></div>
+            <div class="ac-card ac-control-card"><div class="ac-card-head"><div><h4>GV AI Auto Trader</h4><span>Automated demo execution</span></div><button class="ac-switch" id="acBotSwitch" onclick="adminToggleBot(this)"></button></div><div class="ac-big-state"><span class="ac-bot-orb"><i data-lucide="bot"></i></span><b id="acBotState">STOPPED</b><small>Bot uses simulated prices and policy thresholds.</small></div><div class="ac-action-row"><button class="ac-btn primary" onclick="adminStartBot()">Start Bot</button><button class="ac-btn" onclick="adminStopBot()">Stop Bot</button></div></div>
+          </div>
+          <div class="ac-grid-2">
+            <div class="ac-card"><div class="ac-card-head"><div><h4>Execution Limits</h4><span>Safety parameters</span></div></div><div class="ac-form-grid"><label>Max Position Size<input id="acMaxPosition" value="5000"></label><label>Max Open Trades<input id="acMaxOpenTrades" value="20"></label><label>Default Leverage<input id="acDefaultLeverage" value="5x"></label><label>Minimum Stake<input id="acMinStake" value="10"></label><label>Maximum Stake<input id="acMaxStake" value="500"></label><label>Daily Demo Loss Limit<input id="acDailyLoss" value="500"></label></div><button class="ac-full-btn" onclick="adminSaveRiskControls()">Save Trading Controls</button></div>
+            <div class="ac-card"><div class="ac-card-head"><div><h4>Current Trading Telemetry</h4><span>Last 24 hours</span></div></div><div class="ac-telemetry"><div><span>Winning Trades</span><b class="ok">71.4%</b></div><div><span>Losing Trades</span><b class="danger-text">28.6%</b></div><div><span>Average Stake</span><b>$117.40</b></div><div><span>Avg. Duration</span><b>7.8 ticks</b></div><div><span>Close Requests</span><b>492</b></div><div><span>Safety Blocks</span><b>18</b></div></div></div>
+          </div>
+        </section>
+
+        <section class="ac-section" id="acAi">
+          <div class="ac-section-head"><div><h3>GV AI Command Center</h3><p>Use controlled natural-language commands against approved simulated market data.</p></div><div class="ac-live-badge large">● AI ENGINE ACTIVE</div></div>
+          <div class="ac-ai-command-layout">
+            <div class="ac-card">
+              <div class="ac-card-head"><div><h4>Command Console</h4><span>Administrator AI workspace</span></div><span class="ac-chip blue">SAFE MODE</span></div>
+              <div class="ac-command-help"><button onclick="adminUseCommand('Act as a senior quantitative trader. Analyze this sequence of market data and summarize the current BTC/USD trend.')">Quant analysis</button><button onclick="adminUseCommand('Write a Python script for a moving average crossover strategy. Use a $10,000 initial bankroll and no third-party libraries.')">Python strategy</button><button onclick="adminUseCommand('Generate a risk report for today’s simulated trading activity.')">Risk report</button><button onclick="adminUseCommand('Find the five strongest simulated market opportunities.')">Market scan</button></div>
+              <textarea id="acAiCommand" class="ac-command-input" placeholder="Ask GV AI anything about the approved demo environment...">Analyze BTC/USD momentum using the latest simulated candles.</textarea>
+              <div class="ac-command-footer"><span>Boundary: demo market data only · no real transactions</span><button class="ac-btn primary" onclick="runAdminAICommand()"><i data-lucide="play"></i> Run Analysis</button></div>
+            </div>
+            <div class="ac-card ac-ai-output"><div class="ac-card-head"><div><h4>AI Analysis Output</h4><span id="acAiOutputMeta">Ready for command</span></div><button class="ac-icon-btn" onclick="clearAdminAI()"><i data-lucide="x"></i></button></div><div id="acAiOutput"><div class="ac-output-empty"><div class="ac-ai-big"><i data-lucide="sparkles"></i></div><b>Awaiting command</b><small>Run an analysis to populate the controlled AI output.</small></div></div></div>
+          </div>
+          <div class="ac-grid-3">
+            <div class="ac-card"><div class="ac-card-head"><h4>Market Signal</h4><span class="ac-chip green">BULLISH</span></div><div class="ac-progress"><span style="width:82%"></span></div><div class="ac-metric-pair"><span>Confidence</span><b>82%</b></div></div>
+            <div class="ac-card"><div class="ac-card-head"><h4>Model Inputs</h4></div><div class="ac-list"><div><span>OHLC candles</span><b>ACTIVE</b></div><div><span>Volume</span><b>ACTIVE</b></div><div><span>Momentum</span><b>ACTIVE</b></div><div><span>Volatility</span><b>ACTIVE</b></div></div></div>
+            <div class="ac-card"><div class="ac-card-head"><h4>Safety Boundary</h4></div><div class="ac-list"><div><span>Real orders</span><b class="danger-text">BLOCKED</b></div><div><span>Secrets</span><b class="danger-text">HIDDEN</b></div><div><span>Demo only</span><b class="ok">ENFORCED</b></div><div><span>Audit</span><b class="ok">LOGGED</b></div></div></div>
+          </div>
+        </section>
+
+        <section class="ac-section" id="acMarkets">
+          <div class="ac-section-head"><div><h3>Markets Control</h3><p>Configure the approved demo asset universe and simulated market behavior.</p></div></div>
+          <div class="ac-card ac-table-card"><div class="ac-table-scroll"><table class="ac-table"><thead><tr><th>Asset</th><th>Price</th><th>24h</th><th>Volume</th><th>Volatility</th><th>AI Signal</th><th>Status</th><th>Action</th></tr></thead><tbody id="acMarketsBody"></tbody></table></div></div>
+        </section>
+
+        <section class="ac-section" id="acWallet">
+          <div class="ac-section-head"><div><h3>Demo Wallet Control</h3><p>Virtual balances and wallet actions for the educational environment.</p></div></div>
+          <div class="ac-grid-4">
+            <div class="ac-card ac-wallet-stat"><small>TOTAL DEMO FUNDS</small><b>$4,284,920.50</b><span class="up">Simulation</span></div>
+            <div class="ac-card ac-wallet-stat"><small>TOTAL DEPOSITS</small><b>$6,920,440.00</b><span>Virtual</span></div>
+            <div class="ac-card ac-wallet-stat"><small>TOTAL WITHDRAWALS</small><b>$2,635,519.50</b><span>Virtual</span></div>
+            <div class="ac-card ac-wallet-stat"><small>FROZEN WALLETS</small><b>12</b><span class="danger-text">Review</span></div>
+          </div>
+          <div class="ac-card"><div class="ac-card-head"><div><h4>Wallet Actions</h4><span>All actions are marked simulated</span></div></div><div class="ac-wallet-actions"><button onclick="adminWalletAction('Add Demo Funds')"><i data-lucide="plus-circle"></i><b>Add Demo Funds</b><small>Credit virtual balance</small></button><button onclick="adminWalletAction('Remove Demo Funds')"><i data-lucide="minus-circle"></i><b>Remove Demo Funds</b><small>Debit virtual balance</small></button><button onclick="adminWalletAction('Freeze Demo Wallet')"><i data-lucide="snowflake"></i><b>Freeze Demo Wallet</b><small>Block virtual wallet activity</small></button><button onclick="adminWalletAction('Create Demo Transaction')"><i data-lucide="file-plus-2"></i><b>Create Demo Transaction</b><small>Record a virtual event</small></button></div></div>
+          <div class="ac-banner info"><i data-lucide="info"></i><div><b>M-Pesa / PayPal</b><span>These gateways remain interface placeholders. Never collect payment credentials directly in this frontend.</span></div></div>
+        </section>
+
+        <section class="ac-section" id="acRisk">
+          <div class="ac-section-head"><div><h3>Risk Management</h3><p>Central safety limits for the simulated trading environment.</p></div><span id="acRiskBadge" class="ac-risk-badge safe">SAFE</span></div>
+          <div class="ac-risk-meter"><div class="ac-risk-fill" id="acRiskFill" style="width:34%"></div><div class="ac-risk-markers"><span>SAFE</span><span>WARNING</span><span>CRITICAL</span></div></div>
+          <div class="ac-grid-3">
+            <div class="ac-card"><div class="ac-card-head"><h4>Position Risk</h4><span class="ac-chip green">LOW</span></div><b class="ac-risk-number">1.8%</b><p>Average simulated exposure per position.</p></div>
+            <div class="ac-card"><div class="ac-card-head"><h4>Daily Demo Loss</h4><span class="ac-chip gold">WATCH</span></div><b class="ac-risk-number">$318.40 / $500</b><p>64% of the configured simulated daily loss limit.</p></div>
+            <div class="ac-card"><div class="ac-card-head"><h4>Leverage Ceiling</h4><span class="ac-chip blue">5x</span></div><b class="ac-risk-number">5x</b><p>Maximum leverage configured for the demo terminal.</p></div>
+          </div>
+          <div class="ac-card"><div class="ac-card-head"><div><h4>Risk Rules</h4><span>All changes should be saved deliberately</span></div></div><div class="ac-form-grid"><label>Max leverage<input id="acRiskLev" value="5x"></label><label>Max stake<input id="acRiskStake" value="500"></label><label>Max open trades<input id="acRiskTrades" value="20"></label><label>AI confidence threshold<input id="acRiskConfidence" value="72%"></label><label>Daily loss limit<input id="acRiskDaily" value="$500"></label><label>Per-trade risk<input id="acRiskPerTrade" value="2%"></label></div><button class="ac-full-btn" onclick="adminSaveRiskControls()">Save Risk Rules</button></div>
+        </section>
+
+        <section class="ac-section" id="acNotifications">
+          <div class="ac-section-head"><div><h3>Notification Center</h3><p>Control operational alerts for the simulated platform.</p></div></div>
+          <div class="ac-card"><div class="ac-settings-list">
+            <div><div><b>New registrations</b><small>Alert when a new demo account is created.</small></div><button class="ac-switch on" onclick="adminToggleSwitch(this,'New registrations')"></button></div>
+            <div><div><b>Large demo trades</b><small>Alert when a simulated stake exceeds the configured threshold.</small></div><button class="ac-switch on" onclick="adminToggleSwitch(this,'Large demo trades')"></button></div>
+            <div><div><b>AI signal alerts</b><small>Notify when AI confidence changes significantly.</small></div><button class="ac-switch on" onclick="adminToggleSwitch(this,'AI signal alerts')"></button></div>
+            <div><div><b>Risk alerts</b><small>Notify on simulated risk limit breaches.</small></div><button class="ac-switch on" onclick="adminToggleSwitch(this,'Risk alerts')"></button></div>
+            <div><div><b>System alerts</b><small>Notify on frontend/database/engine failures.</small></div><button class="ac-switch on" onclick="adminToggleSwitch(this,'System alerts')"></button></div>
+          </div><div class="ac-action-row"><button class="ac-btn primary" onclick="adminToast('Test notification sent to this demo console.')">Send Test Notification</button><button class="ac-btn" onclick="adminToast('Demo alerts cleared.')">Clear Alerts</button></div></div>
+        </section>
+
+        <section class="ac-section" id="acSystem">
+          <div class="ac-section-head"><div><h3>System Monitor</h3><p>Infrastructure-style telemetry for the GV demo application.</p></div></div>
+          <div class="ac-system-grid"><div class="ac-card ac-system-item"><i data-lucide="log-in" class="cyan-icon"></i><div><b>Authentication</b><span>Supabase Auth</span></div><strong class="ok">ONLINE</strong></div><div class="ac-card ac-system-item"><i data-lucide="database" class="cyan-icon"></i><div><b>Database</b><span>Profiles / RLS</span></div><strong class="ok">ONLINE</strong></div><div class="ac-card ac-system-item"><i data-lucide="cpu" class="cyan-icon"></i><div><b>AI Engine</b><span>Command processor</span></div><strong class="ok">ACTIVE</strong></div><div class="ac-card ac-system-item"><i data-lucide="line-chart" class="cyan-icon"></i><div><b>Chart Engine</b><span>Simulated OHLC</span></div><strong class="ok">RUNNING</strong></div><div class="ac-card ac-system-item"><i data-lucide="wallet" class="cyan-icon"></i><div><b>Wallet Engine</b><span>Demo-only balances</span></div><strong class="ok">DEMO</strong></div><div class="ac-card ac-system-item"><i data-lucide="gauge" class="cyan-icon"></i><div><b>API Latency</b><span>Last measurement</span></div><strong>128 ms</strong></div></div>
+          <div class="ac-card"><div class="ac-card-head"><div><h4>Service Metrics</h4><span>Current session</span></div></div><div class="ac-service-bars"><div><span>Requests</span><b>84.2k</b><div><i style="width:72%"></i></div></div><div><span>Errors</span><b>0.08%</b><div><i style="width:8%"></i></div></div><div><span>Sync Health</span><b>99.9%</b><div><i style="width:96%"></i></div></div><div><span>Database Reads</span><b>61.8k</b><div><i style="width:65%"></i></div></div></div></div>
+        </section>
+
+        <section class="ac-section" id="acSecurity">
+          <div class="ac-section-head"><div><h3>Security Center</h3><p>Review authentication, RLS and administrator session posture.</p></div><span class="ac-risk-badge safe">PROTECTED</span></div>
+          <div class="ac-grid-2">
+            <div class="ac-card"><div class="ac-card-head"><div><h4>Administrator Session</h4><span>Current browser session</span></div><i data-lucide="shield-check" class="ac-large-icon"></i></div><div class="ac-security-list"><div><span>Authenticated user</span><b id="acAdminIdentity">Authorized GV admin</b></div><div><span>Session state</span><b class="ok">ACTIVE</b></div><div><span>Administrator scope</span><b>CONTROL CENTER</b></div><div><span>Credentials exposed</span><b class="ok">NO</b></div></div></div>
+            <div class="ac-card"><div class="ac-card-head"><div><h4>Security Rules</h4><span>Expected configuration</span></div></div><div class="ac-list"><div><span>Supabase Auth</span><b class="ok">REQUIRED</b></div><div><span>Row Level Security</span><b class="ok">REQUIRED</b></div><div><span>Service-role key in frontend</span><b class="danger-text">FORBIDDEN</b></div><div><span>Passwords in HTML</span><b class="danger-text">FORBIDDEN</b></div><div><span>Admin by CSS only</span><b class="danger-text">FORBIDDEN</b></div></div></div>
+          </div>
+        </section>
+
+        <section class="ac-section" id="acAudit">
+          <div class="ac-section-head"><div><h3>Audit Logs</h3><p>Every sensitive administrator action performed in this console is recorded in the local demo audit feed.</p></div><button class="ac-btn" onclick="clearAdminAudit()"><i data-lucide="trash-2"></i> Clear Demo Log</button></div>
+          <div class="ac-card ac-table-card"><div class="ac-table-scroll"><table class="ac-table"><thead><tr><th>Time</th><th>Administrator</th><th>Action</th><th>Target</th><th>Result</th></tr></thead><tbody id="acAuditBody"></tbody></table></div></div>
+        </section>
+
+        <section class="ac-section" id="acSettings">
+          <div class="ac-section-head"><div><h3>Control Center Settings</h3><p>Interface preferences and administrative defaults.</p></div></div>
+          <div class="ac-card"><div class="ac-settings-list"><div><div><b>Dark terminal theme</b><small>Use the GV dark operations interface.</small></div><button class="ac-switch on" onclick="adminToggleSwitch(this,'Dark terminal theme')"></button></div><div><div><b>Compact tables</b><small>Reduce row height for high-density monitoring.</small></div><button class="ac-switch on" onclick="adminToggleSwitch(this,'Compact tables')"></button></div><div><div><b>Auto-refresh telemetry</b><small>Refresh simulated stats while this page is open.</small></div><button class="ac-switch on" onclick="adminToggleSwitch(this,'Auto-refresh telemetry')"></button></div></div><div class="ac-form-grid" style="margin-top:14px"><label>Default AI confidence<input value="72%"></label><label>Default max trades<input value="20"></label><label>Default demo leverage<input value="5x"></label><label>Operator timezone<input value="Africa/Nairobi"></label></div><button class="ac-full-btn" onclick="adminToast('Control Center preferences saved for this demo session.')">Save Preferences</button></div>
+        </section>
+      </main>
+    </div>
+  </div>
+
   <div id="trading" class="page-card">
     <div class="page-hero"><h2>GV Trading Terminal</h2><p>Practice fast demo trades in a three-panel terminal inspired by modern trading interfaces. All activity on this page is simulated.</p></div>
     <div class="trade-terminal">
@@ -239,11 +440,11 @@ button,input,select{font:inherit}button{cursor:pointer}
         </div>
         <div class="terminal-chart-wrap" id="terminalChartWrap">
           <div class="terminal-symbol-card">
-            <div class="terminal-symbol-line"><div class="terminal-symbol-icon">₿</div><div><strong id="terminalChartTitle">BTC/USD (1s) Demo</strong><small><span id="terminalChartPrice">$67,485.03</span> <span id="terminalChartChange" class="terminal-price-down">-0.07% ↗</span></small></div></div>
+            <div class="terminal-symbol-line"><div class="terminal-symbol-icon">₿</div><div><strong id="terminalChartTitle">BTC/USD (1s) Demo</strong><small><span id="terminalChartPrice">$67,956.44</span> <span id="terminalChartChange" class="terminal-price-down">-0.07% ↗</span></small></div></div>
           </div>
           <svg id="terminalChart" viewBox="0 0 1000 560" preserveAspectRatio="none" aria-label="GV Trading terminal demo chart">
             <defs><linearGradient id="tradeAreaGradient" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#1d82ff" stop-opacity=".48"/><stop offset="100%" stop-color="#1d82ff" stop-opacity="0"/></linearGradient></defs>
-            <g id="terminalGrid"></g><path id="terminalArea" class="terminal-chart-area"></path><path id="terminalLine" class="terminal-chart-line"></path><line id="terminalPriceLine" class="terminal-price-line" x1="0" x2="1000" y1="180" y2="180"></line><g id="terminalAxes"></g><g id="terminalPricePill"><rect class="terminal-price-pill" x="908" y="160" width="84" height="28" rx="7"></rect><text id="terminalPriceText" class="terminal-price-text" x="918" y="178">$67,485.03</text></g>
+            <g id="terminalGrid"></g><path id="terminalArea" class="terminal-chart-area"></path><path id="terminalLine" class="terminal-chart-line"></path><line id="terminalPriceLine" class="terminal-price-line" x1="0" x2="1000" y1="180" y2="180"></line><g id="terminalAxes"></g><g id="terminalPricePill"><rect class="terminal-price-pill" x="908" y="160" width="84" height="28" rx="7"></rect><text id="terminalPriceText" class="terminal-price-text" x="918" y="178">$67,956.44</text></g>
           </svg>
         </div>
         <div class="terminal-market-stats">
@@ -282,13 +483,13 @@ button,input,select{font:inherit}button{cursor:pointer}
   <div id="markets" class="page-card">
     <div class="page-hero"><h2>Markets</h2><p>Explore the demo market board and compare price movement, momentum and market conditions.</p></div>
     <div class="stat-row"><div class="mini-stat"><small>Market Status</small><b class="up">OPEN · DEMO</b></div><div class="mini-stat"><small>Assets Tracked</small><b>8</b></div><div class="mini-stat"><small>AI Scans Today</small><b id="marketScans">24</b></div><div class="mini-stat"><small>Data Mode</small><b>Demo</b></div></div>
-    <div class="info-card" style="margin-top:14px"><h3>Market Watch</h3><table class="market-table"><tr><th>Asset</th><th>Price</th><th>24h</th><th>Trend</th><th>Demo Signal</th></tr><tr><td><b>BTC/USD</b><br><small>Bitcoin</small></td><td>$67,485.03</td><td class="up">+0.81%</td><td>↗ Bullish</td><td class="up">RISE</td></tr><tr><td><b>ETH/USD</b><br><small>Ethereum</small></td><td>$3,268.45</td><td class="up">+1.24%</td><td>↗ Bullish</td><td class="up">RISE</td></tr><tr><td><b>SOL/USD</b><br><small>Solana</small></td><td>$164.32</td><td class="up">+2.17%</td><td>↗ Strong</td><td class="up">RISE</td></tr><tr><td><b>XRP/USD</b><br><small>XRP</small></td><td>$0.61</td><td class="up">+0.55%</td><td>→ Neutral</td><td>WAIT</td></tr><tr><td><b>EUR/USD</b><br><small>Euro</small></td><td>1.0724</td><td class="down">-0.36%</td><td>↘ Weak</td><td class="down">WAIT</td></tr></table></div>
+    <div class="info-card" style="margin-top:14px"><h3>Market Watch</h3><table class="market-table"><tr><th>Asset</th><th>Price</th><th>24h</th><th>Trend</th><th>Demo Signal</th></tr><tr><td><b>BTC/USD</b><br><small>Bitcoin</small></td><td>$67,956.44</td><td class="up">+2.84%</td><td>↗ Bullish</td><td class="up">RISE</td></tr><tr><td><b>ETH/USD</b><br><small>Ethereum</small></td><td>$3,268.45</td><td class="up">+1.24%</td><td>↗ Bullish</td><td class="up">RISE</td></tr><tr><td><b>SOL/USD</b><br><small>Solana</small></td><td>$164.32</td><td class="up">+2.17%</td><td>↗ Strong</td><td class="up">RISE</td></tr><tr><td><b>XRP/USD</b><br><small>XRP</small></td><td>$0.61</td><td class="up">+0.55%</td><td>→ Neutral</td><td>WAIT</td></tr><tr><td><b>EUR/USD</b><br><small>Euro</small></td><td>1.0724</td><td class="down">-0.36%</td><td>↘ Weak</td><td class="down">WAIT</td></tr></table></div>
     <div class="page-grid"><div class="info-card"><h3>What the indicators mean</h3><p><b>Trend:</b> the direction shown by the demo price path.</p><p><b>Momentum:</b> the strength of recent movement.</p><p><b>Volatility:</b> how quickly price may move up or down.</p></div><div class="info-card"><h3>Important</h3><p>Prices and signals on this page are demonstration values. They are not live exchange quotes and should not be treated as investment advice.</p><div class="action-row"><button class="btn primary" onclick="showPage('ai')">Run AI Market Scan →</button></div></div></div>
   </div>
 
   <div id="wallet" class="page-card">
     <div class="page-hero"><h2>GV Demo Wallet</h2><p>Manage your simulated trading balance and review demo wallet activity.</p></div>
-    <div class="info-card" style="margin-top:14px"><small class="muted">Available Demo Balance</small><div class="wallet-balance">$25,840.00</div><span class="up">+ $486.25 today's demo P/L</span></div>
+    <div class="info-card" style="margin-top:14px"><small class="muted">Available Demo Balance</small><div class="wallet-balance">$25,774.00</div><span class="up">+ $486.25 today's demo P/L</span></div>
     <div class="page-grid">
       <div class="info-card"><h3>Wallet Actions</h3><div class="wallet-action"><span><b>Deposit</b><small>Add virtual demo funds</small></span><button class="btn" onclick="walletAction('Deposit')">Add Funds</button></div><div class="wallet-action"><span><b>Withdraw</b><small>Practice a simulated withdrawal</small></span><button class="btn" onclick="walletAction('Withdraw')">Withdraw</button></div><div class="wallet-action"><span><b>Transfer</b><small>Move demo funds between areas</small></span><button class="btn" onclick="walletAction('Transfer')">Transfer</button></div></div>
       <div class="info-card"><h3>Payment Integrations</h3><p><b>M-Pesa</b> — interface placeholder for a future secure integration.</p><p><b>PayPal</b> — interface placeholder for a future secure integration.</p><p style="color:#f0b44d">No real money is processed by this prototype.</p><div class="action-row"><button class="btn primary" onclick="showToast('Secure payment integration is not connected in demo mode.')">Payment Details</button></div></div>
@@ -318,7 +519,7 @@ button,input,select{font:inherit}button{cursor:pointer}
       </div>
 
       <div class="detail-list">
-        <div class="detail-line"><span>Current demo price</span><b id="analysisPrice">$67,485.03</b></div>
+        <div class="detail-line"><span>Current demo price</span><b id="analysisPrice">$67,956.44</b></div>
         <div class="detail-line"><span>Support zone</span><b>$66,800 – $67,050</b></div>
         <div class="detail-line"><span>Resistance zone</span><b>$68,000 – $68,200</b></div>
         <div class="detail-line"><span>Momentum reading</span><b class="up">Positive</b></div>
@@ -382,12 +583,27 @@ button,input,select{font:inherit}button{cursor:pointer}
 </main>
 </div>
 
-<div class="modal-backdrop" id="accountModal" onclick="if(event.target===this)closeModal('accountModal')">
+<div class="modal-backdrop" id="authModal" onclick="if(event.target===this)closeModal('authModal')">
   <div class="modal">
-    <h3>Create Demo Account</h3><p>Create a local demo profile for this browser. This does not create a real financial account and no password is sent anywhere.</p>
-    <div class="field"><label>Display name</label><input id="demoName" type="text" placeholder="Your name"></div>
-    <div class="field"><label>Email</label><input id="demoEmail" type="email" placeholder="you@example.com"></div>
-    <div class="modal-actions"><button class="btn" onclick="closeModal('accountModal')">Cancel</button><button class="btn primary" onclick="createDemoAccount()">Create Demo Account</button></div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+      <div><h3 id="authTitle">Welcome back to GV</h3><p id="authIntro">Login securely to your GV Trading Platform account.</p></div>
+      <button class="btn" onclick="closeModal('authModal')" aria-label="Close">×</button>
+    </div>
+    <div class="tabs" style="margin-top:10px"><button id="loginTab" class="active" onclick="switchAuth('login')">LOGIN</button><button id="registerTab" onclick="switchAuth('register')">CREATE ACCOUNT</button></div>
+    <div id="loginForm">
+      <div class="field"><label>Email address</label><input id="loginEmail" type="email" autocomplete="email" placeholder="you@example.com"></div>
+      <div class="field"><label>Password</label><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Your password"></div>
+    </div>
+    <div id="registerForm" style="display:none">
+      <div class="field"><label>Full name</label><input id="regName" type="text" autocomplete="name" placeholder="Your full name"></div>
+      <div class="field"><label>Email address</label><input id="regEmail" type="email" autocomplete="email" placeholder="you@example.com"></div>
+      <div class="field"><label>Password</label><input id="regPassword" type="password" autocomplete="new-password" placeholder="At least 6 characters"></div>
+      <div class="field"><label>Confirm password</label><input id="regConfirm" type="password" autocomplete="new-password" placeholder="Repeat password"></div>
+      <label style="display:flex;gap:8px;align-items:flex-start;color:#8ea4b8;font-size:11px;margin-top:10px"><input id="regAgree" type="checkbox"> I understand this is a demo trading account and not a real financial account.</label>
+    </div>
+    <div id="authMessage" class="control-note" style="min-height:18px;margin-top:10px"></div>
+    <div class="modal-actions"><button class="btn" onclick="closeModal('authModal')">Cancel</button><button class="btn primary" id="authSubmit" onclick="submitAuth()">Login</button></div>
+    <div class="control-note">Authentication is handled by Supabase. Demo balances and trades remain simulated.</div>
   </div>
 </div>
 <div class="modal-backdrop" id="walletModal" onclick="if(event.target===this)closeModal('walletModal')">
@@ -402,7 +618,7 @@ button,input,select{font:inherit}button{cursor:pointer}
 <script>
 const state={balance:25840,trades:1,auto:false,timer:null,autoTrades:0,autoLoss:0,scanCount:24,orderType:'Market',asset:'BTC/USD',leverage:2,emergency:false,walletAction:null,settings:{demo:true,notifications:true,risk:true,dark:true}};
 const assets={
-  'BTC/USD':{price:67485.03,change:0.81,coin:'₿',name:'Bitcoin'},
+  'BTC/USD':{price:67956.44,change:2.84,coin:'₿',name:'Bitcoin'},
   'ETH/USD':{price:3268.45,change:1.24,coin:'Ξ',name:'Ethereum'},
   'SOL/USD':{price:164.32,change:2.17,coin:'◎',name:'Solana'},
   'XRP/USD':{price:0.61,change:0.55,coin:'✕',name:'XRP'}
@@ -412,16 +628,30 @@ function money(n){return '$'+Number(n).toLocaleString(undefined,{minimumFraction
 function showToast(msg){const t=$('toast');if(!t)return;t.textContent=msg;t.classList.add('show');clearTimeout(window.tt);window.tt=setTimeout(()=>t.classList.remove('show'),2600)}
 function openModal(id){$(id)?.classList.add('show')}
 function closeModal(id){$(id)?.classList.remove('show')}
-function createDemoAccount(){
-  const name=$('demoName').value.trim(),email=$('demoEmail').value.trim();
-  if(!name||!email||!email.includes('@')){showToast('Enter a valid name and email.');return}
-  localStorage.setItem('gvDemoAccount',JSON.stringify({name,email,created:new Date().toISOString()}));
-  const initials=name.split(/\s+/).map(x=>x[0]).slice(0,2).join('').toUpperCase();
-  document.querySelectorAll('.avatar').forEach(a=>a.textContent=initials||'GV');
-  document.querySelector('.profile b').textContent=name;
-  document.querySelector('.profile small').textContent='Demo Account · GV';
-  closeModal('accountModal');showToast('Demo account created on this browser.');
-}
+/* ===== GV ACCOUNT SYSTEM: SUPABASE AUTH ===== */
+const SUPABASE_URL='https://uqsjbqgoltufkeflvwgu.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY='sb_publishable_12W6N6jlKzzbffTbUl7WrQ_qqcnaohe';
+const supabaseClient=window.supabase?.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+const ADMIN_EMAIL='barakareshmy@gmail.com';
+let gvCurrentUser=null;
+function initialsFor(name){return (name||'GV').trim().split(/\s+/).map(x=>x[0]).slice(0,2).join('').toUpperCase()||'GV'}
+function escapeHtml(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function openAuth(mode='login'){openModal('authModal');switchAuth(mode)}
+function currentUser(){return gvCurrentUser}
+function currentUserIsAdmin(){return !!gvCurrentUser?.is_admin}
+function authMessage(msg,ok=false){const el=$('authMessage');if(!el)return;el.textContent=msg;el.style.color=ok?'#10B981':'#6f8498'}
+function switchAuth(mode){const register=mode==='register';$('loginForm').style.display=register?'none':'block';$('registerForm').style.display=register?'block':'none';$('loginTab').classList.toggle('active',!register);$('registerTab').classList.toggle('active',register);$('authTitle').textContent=register?'Create your GV account':'Welcome back to GV';$('authIntro').textContent=register?'Create your GV demo account with secure Supabase authentication.':'Login securely to your GV Trading Platform account.';$('authSubmit').textContent=register?'Create Account':'Login';authMessage('')}
+function submitAuth(){if($('registerForm').style.display!=='none')registerAccount();else loginAccount()}
+async function registerAccount(){if(!supabaseClient){authMessage('Supabase could not be loaded. Check your internet connection.');return}const name=$('regName').value.trim(),email=$('regEmail').value.trim().toLowerCase(),password=$('regPassword').value,confirm=$('regConfirm').value;if(name.length<2){authMessage('Please enter your full name.');return}if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){authMessage('Enter a valid email address.');return}if(password.length<6){authMessage('Password must contain at least 6 characters.');return}if(password!==confirm){authMessage('Passwords do not match.');return}if(!$('regAgree').checked){authMessage('Please confirm that you understand this is a demo account.');return}authMessage('Creating your secure GV account…');const {data,error}=await supabaseClient.auth.signUp({email,password,options:{data:{full_name:name}}});if(error){authMessage(error.message||'Could not create the account.');return}if(data.session){await handleSupabaseUser(data.user);closeModal('authModal');showToast('Account created. Welcome to GV Trading.')}else{authMessage('Account created. Check your email to confirm the account, then log in.',true)}}
+async function loginAccount(){if(!supabaseClient){authMessage('Supabase could not be loaded. Check your internet connection.');return}const email=$('loginEmail').value.trim().toLowerCase(),password=$('loginPassword').value;if(!email||!password){authMessage('Enter your email and password.');return}authMessage('Signing you in…');const {data,error}=await supabaseClient.auth.signInWithPassword({email,password});if(error){authMessage(error.message||'Email or password is incorrect.');return}await handleSupabaseUser(data.user);closeModal('authModal');showToast('Welcome back, '+(gvCurrentUser?.name||email)+'.')}
+async function handleSupabaseUser(authUser){if(!authUser)return;let profile=null;try{const {data,error}=await supabaseClient.from('profiles').select('*').eq('id',authUser.id).maybeSingle();if(!error)profile=data}catch(e){console.warn('Profile lookup failed',e)}const email=(authUser.email||'').toLowerCase();gvCurrentUser={id:authUser.id,name:profile?.full_name||authUser.user_metadata?.full_name||authUser.user_metadata?.name||email.split('@')[0]||'GV Trader',email:profile?.email||authUser.email||'',account_level:profile?.account_level||'Beginner',is_admin:profile?.is_admin===true || email===ADMIN_EMAIL,balance:Number(profile?.demo_balance??25840),scans:Number(localStorage.getItem('gvScans_'+authUser.id)||24)};state.balance=gvCurrentUser.balance;state.scanCount=gvCurrentUser.scans;updateBalance();updateAccountUI(gvCurrentUser);updateAdminAccess(gvCurrentUser);updateUserDashboard(gvCurrentUser)}
+function updateAccountUI(user){const bar=$('accountBar');if(!bar)return;bar.innerHTML='<span class="pill">Demo Balance <b id="balance">'+money(state.balance)+'</b></span><span class="pill" style="color:#9eb2c5">'+escapeHtml(user.name)+'</span><button class="btn" onclick="logoutDemo()">Logout</button>';document.querySelectorAll('.avatar').forEach(a=>a.textContent=initialsFor(user.name));const profileName=document.querySelector('.profile b');if(profileName)profileName.textContent=user.name;const profileRole=document.querySelector('.profile small');if(profileRole)profileRole.textContent=(user.account_level||'Beginner')+' · GV Account';const welcome=document.querySelector('.gv-welcome-line b');if(welcome)welcome.textContent=user.name}
+function updateUserDashboard(user){let panel=$('userDashboard');if(!panel){panel=document.createElement('div');panel.id='userDashboard';panel.className='info-card';panel.style.marginBottom='12px';panel.innerHTML='<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap"><div><small style="color:#71869a">SIGNED-IN ACCOUNT</small><h3 id="udName" style="margin:3px 0">GV Trader</h3><span id="udStatus" class="muted">—</span></div><div><b id="udEquity" style="font-size:20px">$0.00</b><span style="display:block;color:#71869a;font-size:9px">Personal demo balance</span></div></div>';$('dashboardPage').prepend(panel)}panel.style.display='block';$('udName').textContent=user.name;$('udStatus').textContent=user.email+' · '+(user.account_level||'Beginner');$('udEquity').textContent=money(state.balance)}
+function updateAdminAccess(user){const nav=$('adminControlNav');const isAdmin=!!user?.is_admin;if(nav)nav.style.display=isAdmin?'flex':'none';const page=$('admin');if(page&&!isAdmin){page.style.display='none';}if(isAdmin){const identity=$('acAdminIdentity');if(identity)identity.textContent=user.email||'Authorized GV admin';}}
+async function saveCurrentUser(){if(!gvCurrentUser||!supabaseClient)return;gvCurrentUser.balance=state.balance;gvCurrentUser.scans=state.scanCount;localStorage.setItem('gvScans_'+gvCurrentUser.id,String(state.scanCount));const {error}=await supabaseClient.from('profiles').update({demo_balance:state.balance}).eq('id',gvCurrentUser.id);if(error)console.warn('GV profile save failed:',error.message);updateUserDashboard(gvCurrentUser)}
+async function logoutDemo(){await saveCurrentUser();if(supabaseClient){const {error}=await supabaseClient.auth.signOut();if(error){showToast('Logout failed: '+error.message);return}}gvCurrentUser=null;updateAdminAccess(null);$('userDashboard')?.remove();$('accountBar').innerHTML='<span class="pill">Demo Balance <b id="balance">'+money(state.balance)+'</b></span><button class="btn" onclick="openAuth(\'login\')">Login</button><button class="btn primary" onclick="openAuth(\'register\')">Create Demo Account</button>';document.querySelectorAll('.avatar').forEach(a=>a.textContent='GV');const profileName=document.querySelector('.profile b');if(profileName)profileName.textContent='Guest Trader';const profileRole=document.querySelector('.profile small');if(profileRole)profileRole.textContent='Guest · GV Demo';showToast('You have been logged out.')}
+async function restoreSession(){if(!supabaseClient){showToast('Supabase library did not load.');return}const {data,error}=await supabaseClient.auth.getSession();if(error){console.warn('GV session restore failed:',error.message);return}if(data.session?.user)await handleSupabaseUser(data.session.user)}
+supabaseClient?.auth.onAuthStateChange((event,session)=>{if(event==='SIGNED_IN'&&session?.user)setTimeout(()=>handleSupabaseUser(session.user),0);if(event==='SIGNED_OUT'){gvCurrentUser=null;updateAdminAccess(null)}});
 function setOrderType(btn,type){
   state.orderType=type;document.querySelectorAll('#orderTabs button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
   $('orderHint').textContent=(type==='Market'?'ⓘ Market order executes immediately in the simulation.':type==='Limit'?'ⓘ Limit order: enter a target price below.':'ⓘ Stop order: enter a trigger price below.')+' Demo only — no real transactions.';
@@ -564,7 +794,14 @@ function changeTerminalStake(delta){setTerminalStake(Math.max(10,Number($('termi
 function changeTerminalDuration(delta){terminalState.duration=Math.min(60,Math.max(1,terminalState.duration+delta));$('terminalDuration').value=`${terminalState.duration} ticks`;terminalUpdatePayout()}
 function terminalUpdatePayout(){const multiplier=terminalState.mode==='Even/Odd'?1.9:terminalState.mode==='Match/Differ'?1.88:1.9;const payout=terminalState.stake*multiplier;const profit=payout-terminalState.stake;$('terminalPayout').textContent=`${multiplier.toFixed(2)}×`;['rise','fall'].forEach(id=>{if($(id+'Payout'))$(id+'Payout').textContent=terminalMoney(payout);if($(id+'Profit'))$(id+'Profit').textContent=terminalMoney(profit)})}
 function placeTerminalContract(direction){if(state.emergency){showToast('Emergency stop is active. Reset it from the AI page first.');return}const stake=Math.max(10,Number($('terminalStake')?.value||10));terminalState.stake=stake;terminalState.open++;updateTerminalCounts();terminalAddActivity(`${direction} demo contract`,`${state.asset} · ${terminalState.mode} · ${terminalMoney(stake)} · ${terminalState.duration} ticks`);showToast(`${direction} demo contract placed — no real funds used.`);setTimeout(()=>{terminalState.open=Math.max(0,terminalState.open-1);terminalState.closed++;updateTerminalCounts();terminalAddActivity('Contract closed',`${direction} · simulated result recorded locally`);},Math.max(1800,terminalState.duration*650))}
-function terminalAIScan(){const score=Math.floor(55+Math.random()*42),dir=score>=72?'RISE':'WAIT';$('terminalAIScore').textContent=`Signal strength: ${score}% · ${dir} · demo analysis only.`;showToast('GV AI Scanner completed a demo scan.');}
+function terminalAIScan(){const result=runGVScannerOnce();$('terminalAIScore').textContent=`Best ranked: ${result.asset} · ${result.direction} · confidence ${result.confidence}% · demo analysis only.`;showToast('GV AI Scanner refreshed the simulated opportunity ranking.')}
+
+/* ===== CONTINUOUS GV AI SCANNER ===== */
+const gvScannerUniverse=[{asset:'BTC/USD',base:86,trend:'Strong bullish',momentum:'Positive',vol:'Moderate',risk:'Medium'},{asset:'ETH/USD',base:82,trend:'Bullish',momentum:'Positive',vol:'Moderate',risk:'Medium'},{asset:'SOL/USD',base:79,trend:'Bullish',momentum:'Strong',vol:'High',risk:'Medium-High'},{asset:'XRP/USD',base:71,trend:'Positive',momentum:'Mixed',vol:'Moderate',risk:'Medium'},{asset:'BNB/USD',base:75,trend:'Bullish',momentum:'Positive',vol:'Low',risk:'Low-Medium'},{asset:'EUR/USD',base:64,trend:'Weak',momentum:'Negative',vol:'Low',risk:'Medium'},{asset:'GBP/USD',base:61,trend:'Mixed',momentum:'Neutral',vol:'Moderate',risk:'Medium'}];
+let gvScannerTimer=null,gvScannerPass=0;
+function runGVScannerOnce(){const ranked=gvScannerUniverse.map(a=>({...a,score:Math.max(52,Math.min(96,Math.round(a.base+(Math.random()-.5)*10)))})).sort((a,b)=>b.score-a.score);const best=ranked[0];gvScannerPass++;const result={asset:best.asset,direction:best.score>=72?'RISE':'WAIT',confidence:best.score,risk:best.risk,trend:best.trend,momentum:best.momentum,volatility:best.vol};window.gvLatestScan=result;const e=id=>document.getElementById(id);if(e('gvBestAsset'))e('gvBestAsset').textContent=`${best.asset} · ${result.direction==='RISE'?'BUY / RISE':'WAIT / CONFIRM'}`;if(e('gvBestConfidence'))e('gvBestConfidence').textContent=`Confidence ${best.score}% · Risk ${best.risk} · Trend ${best.trend}`;if(e('gvScanStatus'))e('gvScanStatus').textContent=`SCANNING · PASS ${gvScannerPass}`;const stages=['Analyzing trend + momentum','Checking volume + volatility','Comparing 100+ simulated asset inputs','Ranking signal quality + risk'];if(e('gvScanLine1'))e('gvScanLine1').textContent=stages[(gvScannerPass-1)%stages.length];if(e('gvScanLine2'))e('gvScanLine2').textContent='Scanning 100+ simulated assets';if(e('gvScanLine3'))e('gvScanLine3').textContent='Selecting highest-ranked simulated opportunity';return result}
+function startGVContinuousScanner(){if(gvScannerTimer)return;runGVScannerOnce();gvScannerTimer=setInterval(()=>{const r=runGVScannerOnce();const e=id=>document.getElementById(id);if(e('fullScore'))e('fullScore').textContent=r.confidence+'%';if(e('fullSignal'))e('fullSignal').textContent=r.direction==='RISE'?'BUY / RISE':'WAIT / CONFIRM';if(e('trendValue'))e('trendValue').textContent=r.trend;if(e('momentumValue'))e('momentumValue').textContent=r.momentum;if(e('volValue'))e('volValue').textContent=r.volatility;if(e('liqValue'))e('liqValue').textContent='Healthy';},2200)}
+startGVContinuousScanner();
 function setTerminalTimeframe(tf){terminalState.tf=tf;renderTerminalChart();showToast(`Chart timeframe set to ${tf}.`)}
 function toggleTerminalGrid(btn){terminalState.grid=!terminalState.grid;btn.style.opacity=terminalState.grid?'1':'.45';renderTerminalChart()}
 function toggleTerminalFullscreen(){const el=$('terminalChartWrap');if(!el)return;if(!document.fullscreenElement&&el.requestFullscreen)el.requestFullscreen();else if(document.exitFullscreen)document.exitFullscreen()}
@@ -572,11 +809,12 @@ function renderTerminalChart(){const svg=$('terminalChart');if(!svg)return;const
 setInterval(renderTerminalChart,900);
 
 function showPage(name,btn){
+  if(name==='admin' && !currentUserIsAdmin()){showToast('Admin access required. Log in with the administrator account.');return;}
   document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
   if(btn)btn.classList.add('active');else{const target=[...document.querySelectorAll('.nav button')].find(b=>b.getAttribute('onclick')?.includes(`'${name}'`));if(target)target.classList.add('active')}
   const dashboard=$('dashboardPage'),other=$('otherPages');
   if(name==='dashboard'){dashboard.style.display='block';other.classList.remove('show');$('pageTitle').textContent='Trading Dashboard'}
-  else{dashboard.style.display='none';other.classList.add('show');document.querySelectorAll('.page-card').forEach(p=>p.style.display='none');const page=$(name);if(page)page.style.display='block';$('pageTitle').textContent=name==='ai'?'GV AI Analyst':name==='trading'?'GV Trading Terminal':name.charAt(0).toUpperCase()+name.slice(1)}
+  else{dashboard.style.display='none';other.classList.add('show');document.querySelectorAll('.page-card').forEach(p=>p.style.display='none');const page=$(name);if(page)page.style.display='block';$('pageTitle').textContent=name==='ai'?'GV AI Analyst':name==='trading'?'GV Trading Terminal':name==='admin'?'GV Control Center':name.charAt(0).toUpperCase()+name.slice(1);if(name==='admin'){adminSection('overview',document.querySelector('#acNav button[data-section=overview]'));}}
   $('sidebar').classList.remove('open');window.scrollTo({top:0,behavior:'smooth'});
 }
 function addExecution(type,message,tag='BOT'){const feed=$('executionFeed');if(!feed)return;const row=document.createElement('div');row.className='exec';row.innerHTML=`<span class="type">${type}</span><span>${message} <span class="human-tag ${tag==='BOT'?'bot-tag':''}">${tag}</span></span><span class="time">now</span>`;feed.prepend(row);while(feed.children.length>25)feed.lastElementChild.remove();const n=Number($('ordersAnalyzed')?.textContent||0)+1;if($('ordersAnalyzed'))$('ordersAnalyzed').textContent=n}
@@ -589,42 +827,123 @@ function toggleSetting(el,label){const on=el.classList.toggle('on');state.settin
 function loadSavedAccount(){try{const a=JSON.parse(localStorage.getItem('gvDemoAccount'));if(a?.name){document.querySelectorAll('.avatar').forEach(x=>x.textContent=a.name.split(/\s+/).map(v=>v[0]).slice(0,2).join('').toUpperCase());const p=document.querySelector('.profile b');if(p)p.textContent=a.name;const s=document.querySelector('.profile small');if(s)s.textContent='Demo Account · GV'}}catch(e){}}
 // The chart engine is the single source of demo price movement, so the header price follows it.
 setInterval(()=>{const c=chartModel.candles?.[chartModel.candles.length-1];if(c){const p=c.close;$('livePrice').textContent=money(p);if($('analysisPrice'))$('analysisPrice').textContent=money(p)}},350);
-document.addEventListener('DOMContentLoaded',()=>{loadSavedAccount();updateBalance();renderChart();startChartMotion();terminalUpdatePayout();updateTerminalCounts();renderTerminalChart();document.querySelectorAll('.toggle-demo').forEach((el,i)=>{el.classList.add('on');el.onclick=()=>toggleSetting(el,['demo','notifications','risk','dark'][i])});});
+document.addEventListener('DOMContentLoaded',()=>{updateBalance();renderChart();startChartMotion();terminalUpdatePayout();updateTerminalCounts();renderTerminalChart();document.querySelectorAll('.toggle-demo').forEach((el,i)=>{el.classList.add('on');el.onclick=()=>toggleSetting(el,['demo','notifications','risk','dark'][i])});});
 </script>
+<script>document.addEventListener("DOMContentLoaded",()=>{if(window.lucide)lucide.createIcons()});</script>
 
 <script>
-(function(){
-  let deferredPrompt=null;
-  const btn=document.getElementById('installAppBtn');
-  if(!btn)return;
-  window.addEventListener('beforeinstallprompt',function(e){
-    e.preventDefault();
-    deferredPrompt=e;
-    btn.style.display='inline-flex';
-    btn.textContent='Install GV App';
-  });
-  btn.addEventListener('click',async function(){
-    if(!deferredPrompt)return;
-    deferredPrompt.prompt();
-    try{await deferredPrompt.userChoice;}catch(e){}
-    deferredPrompt=null;
-    btn.style.display='none';
-  });
-  window.addEventListener('appinstalled',function(){
-    deferredPrompt=null;
-    btn.style.display='none';
-  });
-})();
-</script>
-
-<script>
-if ('serviceWorker' in navigator && location.protocol !== 'file:') {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./service-worker.js').catch(err => {
-      console.warn('GV app service worker registration failed:', err);
-    });
-  });
+/* ===== ADVANCED CONTROL CENTER ENGINE ===== */
+const adminAudit=[];
+const adminUsersCache=[];
+let adminDemoPaused=false, adminBotRunning=false;
+function adminToast(msg){
+  let el=document.getElementById('acToast');
+  if(!el){el=document.createElement('div');el.id='acToast';el.className='ac-toast';document.body.appendChild(el)}
+  el.textContent=msg;el.classList.add('show');clearTimeout(window.acToastTimer);window.acToastTimer=setTimeout(()=>el.classList.remove('show'),2400);
 }
+function adminLog(action,target='System',result='OK'){
+  const user=currentUser();const name=user?.name||ADMIN_EMAIL||'GV Admin';
+  adminAudit.unshift({time:new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}),admin:name,action,target,result});
+  if(adminAudit.length>50)adminAudit.pop();
+  renderAdminAudit();renderAdminRecent();
+}
+function renderAdminAudit(){
+  const body=document.getElementById('acAuditBody');if(!body)return;
+  body.innerHTML=adminAudit.length?adminAudit.map(x=>`<tr><td>${x.time}</td><td>${escapeHtml(x.admin)}</td><td><b>${escapeHtml(x.action)}</b></td><td>${escapeHtml(x.target)}</td><td><span class="result ok">${escapeHtml(x.result)}</span></td></tr>`).join(''):`<tr><td colspan="5" style="color:#637a91;padding:16px">No demo audit entries yet.</td></tr>`;
+}
+function renderAdminRecent(){
+  const box=document.getElementById('acRecentActivity');if(!box)return;
+  const rows=(adminAudit.length?adminAudit:[
+    {time:'now',action:'Control Center Ready',target:'GV Platform',result:'OK'},
+    {time:'2m',action:'AI Scan',target:'BTC/USD',result:'OK'},
+    {time:'5m',action:'Demo Risk Review',target:'Daily limits',result:'OK'},
+    {time:'8m',action:'Profile Sync',target:'Supabase',result:'OK'}
+  ]).slice(0,6);
+  box.innerHTML=rows.map(x=>`<div class="ac-activity"><span class="dot"></span><div><b>${escapeHtml(x.action)}</b><small>${escapeHtml(x.target)} · ${escapeHtml(x.result)}</small></div><time>${escapeHtml(x.time)}</time></div>`).join('');
+}
+function clearAdminAudit(){adminAudit.length=0;renderAdminAudit();renderAdminRecent();adminLog('Audit Log Cleared','Audit Feed','OK');adminToast('Demo audit feed cleared.');}
+function adminSection(name,btn){
+  if(!currentUserIsAdmin()){adminToast('Admin access required. Log in with the administrator account.');return;}
+  document.querySelectorAll('.ac-section').forEach(s=>s.classList.remove('active'));
+  const target=document.getElementById('ac'+name.charAt(0).toUpperCase()+name.slice(1));if(target)target.classList.add('active');
+  document.querySelectorAll('#acNav button').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');else document.querySelector(`#acNav button[data-section="${name}"]`)?.classList.add('active');
+  const titles={overview:'GV Control Center',users:'User Management',trading:'Demo Trading Control',ai:'GV AI Command Center',markets:'Markets Control',wallet:'Demo Wallet Control',risk:'Risk Management',notifications:'Notification Center',system:'System Monitor',security:'Security Center',audit:'Audit Logs',settings:'Control Center Settings'};
+  const t=document.getElementById('pageTitle');if(t)t.textContent=titles[name]||'GV Control Center';
+  if(name==='markets')renderAdminMarkets();
+  if(name==='users')refreshAdminUsers();
+  if(name==='audit')renderAdminAudit();
+  if(name==='security'){const u=currentUser();const i=document.getElementById('acAdminIdentity');if(i)i.textContent=u?.email||'Authorized GV admin'}
+  if(window.lucide)lucide.createIcons();
+  adminLog('Opened '+(titles[name]||name),'Control Center','OK');
+}
+function adminRefreshAll(){
+  renderAdminMarkets();refreshAdminUsers();renderAdminAudit();renderAdminRecent();
+  const scans=document.getElementById('acAiScans');if(scans)scans.textContent=Number(state.scanCount||18492).toLocaleString();
+  adminLog('Telemetry Refresh','All modules','OK');adminToast('Control Center telemetry refreshed.');
+}
+function adminToggleSwitch(btn,label){
+  const on=btn.classList.toggle('on');adminLog(label+' '+(on?'ON':'OFF'),'Control Center','OK');adminToast(label+': '+(on?'ON':'OFF'));
+}
+function adminPauseDemo(){adminDemoPaused=!adminDemoPaused;const stateEl=document.getElementById('acDemoState');if(stateEl)stateEl.textContent=adminDemoPaused?'PAUSED':'RUNNING';adminLog(adminDemoPaused?'Demo Trading Paused':'Demo Trading Resumed','Demo Engine','OK');adminToast(adminDemoPaused?'New demo orders paused.':'Demo orders resumed.');}
+function adminEmergencyStop(){
+  state.emergency=true;adminDemoPaused=true;adminBotRunning=false;
+  document.getElementById('acBotSwitch')?.classList.remove('on');document.getElementById('acBotState')?.replaceChildren(document.createTextNode('STOPPED'));document.getElementById('acDemoState')?.replaceChildren(document.createTextNode('EMERGENCY STOP'));
+  stopAuto('Emergency stop activated by Control Center.');
+  adminLog('Emergency Demo Stop','Trading + AI Bot','BLOCKED');adminToast('Emergency demo stop activated. New simulated orders are blocked.');
+}
+function adminStartBot(){
+  if(state.emergency){adminToast('Safety stop is active. Reset it from GV AI before starting the bot.');return}
+  adminBotRunning=true;document.getElementById('acBotSwitch')?.classList.add('on');document.getElementById('acBotState')?.replaceChildren(document.createTextNode('RUNNING'));adminLog('AI Bot Started','Demo Auto Trader','OK');adminToast('GV AI Auto Trader started in demo mode.');
+}
+function adminStopBot(){adminBotRunning=false;document.getElementById('acBotSwitch')?.classList.remove('on');document.getElementById('acBotState')?.replaceChildren(document.createTextNode('STOPPED'));stopAuto('Stopped from Control Center.');adminLog('AI Bot Stopped','Demo Auto Trader','OK');adminToast('GV AI Auto Trader stopped.');}
+function adminToggleBot(btn){if(adminBotRunning)adminStopBot();else adminStartBot();}
+function adminSaveRiskControls(){
+  adminLog('Risk Settings Updated','Trading / Risk','OK');adminToast('Risk and execution controls saved for the demo session.');
+}
+function adminUseCommand(text){const el=document.getElementById('acAiCommand');if(el)el.value=text;adminToast('Command loaded into AI console.');}
+function runAdminAICommand(){
+  const input=document.getElementById('acAiCommand');const cmd=(input?.value||'').trim();if(!cmd){adminToast('Enter an AI command first.');return}
+  const lower=cmd.toLowerCase();const output=document.getElementById('acAiOutput');const meta=document.getElementById('acAiOutputMeta');if(!output)return;
+  let title='Controlled Demo Analysis',score=82,signal='BULLISH',reason='Simulated BTC/USD momentum is constructive with positive short-term pressure and moderate volatility.',risk='Medium',items=['Trend: bullish','Momentum: positive','Volume: supportive','Liquidity: healthy'];
+  if(lower.includes('python')||lower.includes('script')||lower.includes('strategy')){
+    title='Python Strategy Blueprint';signal='CODE READY';score=90;risk='Strategy risk';items=['Initial bankroll: $10,000','Fast MA: 10','Slow MA: 30','No third-party libraries'];
+  }else if(lower.includes('risk')){
+    title='Simulated Risk Report';signal='WATCH';score=76;risk='Medium';items=['Daily demo loss: $318 / $500','Max leverage: 5x','AI threshold: 72%','Safety blocks: 18'];
+  }else if(lower.includes('five')||lower.includes('opportunit')){
+    title='Top Demo Opportunities';signal='SCAN';score=84;risk='Medium';items=['BTC/USD · bullish 82%','SOL/USD · bullish 79%','ETH/USD · bullish 76%','BNB/USD · neutral 68%'];
+  }
+  output.innerHTML=`<div class="ac-ai-result"><div class="ac-output-head"><div><b>${escapeHtml(title)}</b><small style="display:block;color:#637a90;font-size:7px;margin-top:2px">Generated from approved simulated GV data · ${new Date().toLocaleTimeString()}</small></div><span class="ac-output-score">${signal}</span></div><div class="ac-output-grid"><div><span>Confidence</span><b>${score}%</b></div><div><span>Risk</span><b class="${risk==='Medium'?'warning-text':'ok'}">${risk}</b></div><div><span>Market</span><b>BTC/USD</b></div><div><span>Execution</span><b class="danger-text">NOT EXECUTED</b></div></div><div class="ac-output-block"><b>AI REASONING</b><p>${escapeHtml(reason)}</p></div><div class="ac-output-block"><b>KEY OUTPUTS</b><p>${items.map(escapeHtml).join(' · ')}</p></div>${(lower.includes('python')||lower.includes('script')||lower.includes('strategy'))?`<div class="ac-output-block"><b>STRATEGY CODE PREVIEW</b><p style="font-family:Consolas,monospace;color:#a9bfd1">def crossover_signal(fast, slow):\n    return 'BUY' if fast &gt; slow else 'WAIT'\n\ninitial_bankroll = 10000.00</p></div>`:''}</div>`;
+  if(meta)meta.textContent='Analysis complete · demo data only';
+  document.getElementById('acPreviewCommand').textContent=cmd.length>110?cmd.slice(0,107)+'…':cmd;
+  adminLog('AI Command Executed',title,'OK');
+  adminToast('GV AI command processed using demo data.');
+  if(window.lucide)lucide.createIcons();
+}
+function clearAdminAI(){const output=document.getElementById('acAiOutput');if(output)output.innerHTML='<div class="ac-output-empty"><div class="ac-ai-big"><i data-lucide="sparkles"></i></div><b>Awaiting command</b><small>Run an analysis to populate the controlled AI output.</small></div>';document.getElementById('acAiOutputMeta').textContent='Ready for command';if(window.lucide)lucide.createIcons();adminLog('AI Output Cleared','AI Console','OK')}
+function renderAdminMarkets(){
+  const body=document.getElementById('acMarketsBody');if(!body)return;const rows=[['BTC/USD','$67,956.44','+2.84%','$2.81B','Moderate','BULLISH',true],['ETH/USD','$3,268.45','+1.24%','$1.08B','Moderate','BULLISH',true],['SOL/USD','$164.32','+2.17%','$524M','High','BULLISH',true],['XRP/USD','$0.61','+0.55%','$312M','Moderate','WAIT',true],['BNB/USD','$612.30','+1.92%','$408M','Low','NEUTRAL',true],['EUR/USD','1.0724','-0.36%','$190M','Low','WEAK',false],['GBP/USD','1.2618','-0.21%','$144M','Moderate','WAIT',false]];
+  body.innerHTML=rows.map((r,i)=>`<tr><td><b>${r[0]}</b></td><td>${r[1]}</td><td class="${r[2].startsWith('+')?'up':'down'}">${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td><td class="${r[5]==='BULLISH'?'up':r[5]==='WEAK'?'down':''}">${r[5]}</td><td><span class="ac-market-status ${r[6]?'':'off'}">${r[6]?'ACTIVE':'PAUSED'}</span></td><td><button class="ac-small-btn" onclick="adminMarketToggle(this)">${r[6]?'Disable':'Enable'}</button></td></tr>`).join('');
+}
+function adminMarketToggle(btn){const status=btn.closest('tr').querySelector('.ac-market-status');const on=status.classList.contains('off');status.classList.toggle('off',!on);status.textContent=on?'ACTIVE':'PAUSED';btn.textContent=on?'Disable':'Enable';adminLog((on?'Enabled':'Paused')+' Market',btn.closest('tr').children[0].innerText,'OK');adminToast((on?'Market enabled':'Market paused')+' in simulation.');}
+async function refreshAdminUsers(){
+  const body=document.getElementById('acUsersBody');if(!body)return;
+  if(!supabaseClient){body.innerHTML='<tr><td colspan="8" class="warning-text">Supabase client unavailable.</td></tr>';return}
+  try{
+    const {data,error}=await supabaseClient.from('profiles').select('id,full_name,email,account_level,demo_balance,created_at').order('created_at',{ascending:false}).limit(100);
+    if(error)throw error;
+    adminUsersCache.length=0;(data||[]).forEach(u=>adminUsersCache.push(u));renderAdminUsers(adminUsersCache);document.getElementById('acUsersNote').textContent=`Loaded ${adminUsersCache.length} profile(s) from Supabase.`;document.getElementById('acTotalUsers').textContent=adminUsersCache.length||1;adminLog('Profiles Refreshed','Supabase profiles','OK');
+  }catch(e){document.getElementById('acUsersNote').textContent='Supabase profile access is not permitted for this browser session. Configure an admin RLS policy for production administrator access.';adminLog('Profile Refresh Warning','Supabase profiles','PERMISSION NEEDED');}
+}
+function renderAdminUsers(users){const body=document.getElementById('acUsersBody');if(!body)return;const list=users.length?users:[{full_name:'Sample User',email:'sample@gv.demo',account_level:'Beginner',demo_balance:25774,created_at:'2026-10-01'}];body.innerHTML=list.map(u=>`<tr><td><b>${escapeHtml(u.full_name||'GV User')}</b></td><td>${escapeHtml(u.email||'—')}</td><td>${escapeHtml(u.account_level||'Beginner')}</td><td>${money(Number(u.demo_balance||0))}</td><td>${Number(localStorage.getItem('gvScans_'+(u.id||''))||24)}</td><td><span class="ac-status-pill active">ACTIVE</span></td><td>${u.created_at?new Date(u.created_at).toISOString().slice(0,10):'—'}</td><td><button class="ac-small-btn" onclick="adminToast('Demo profile action opened for ${escapeHtml(u.email||'user')}.')">View</button></td></tr>`).join('');}
+function filterAdminUsers(){const q=(document.getElementById('acUserSearch')?.value||'').toLowerCase();renderAdminUsers(adminUsersCache.filter(u=>`${u.full_name||''} ${u.email||''}`.toLowerCase().includes(q)));}
+function adminWalletAction(action){adminLog('Wallet Action',action,'SIMULATED');adminToast(action+' is recorded as a simulated administrative action.');}
+function adminOpenFromLogin(){if(currentUserIsAdmin())showPage('admin',document.getElementById('adminControlNav'));}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  renderAdminMarkets();renderAdminAudit();renderAdminRecent();
+  if(window.lucide)lucide.createIcons();
+});
 </script>
 
 </body>
