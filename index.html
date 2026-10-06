@@ -160,20 +160,21 @@ button,input,select{font:inherit}button{cursor:pointer}
 
 
 <style>
-/* GV PREMIUM BRANDING */
-.gv-brand-pro{position:relative;overflow:visible}
-.gv-brand-image-wrap{width:48px;height:48px;border-radius:14px;overflow:hidden;border:1px solid #1d6b9a;background:#04111e;box-shadow:0 0 24px rgba(6,182,212,.20),inset 0 0 18px rgba(37,99,235,.12);flex:0 0 auto}
-.gv-brand-image{width:100%;height:100%;object-fit:cover;object-position:center center;transform:scale(1.18);filter:saturate(1.12) contrast(1.06)}
-.gv-brand-status{display:flex;align-items:center;gap:5px;margin-top:4px;font-size:7px;letter-spacing:.65px;color:#5f9eb8;white-space:nowrap}
+/* GV PREMIUM BRANDING — CLEAN PLACEMENT */
+.gv-brand-pro{position:relative;display:flex;align-items:center;gap:10px;overflow:visible}
+.gv-brand-image-wrap{width:44px;height:44px;border-radius:12px;overflow:hidden;border:1px solid #215a7e;background:#06111d;box-shadow:0 0 22px rgba(6,182,212,.18),0 0 34px rgba(37,99,235,.10);flex:0 0 auto;display:grid;place-items:center}
+.gv-brand-image{width:100%;height:100%;object-fit:cover;object-position:center;transform:none;filter:saturate(1.08) contrast(1.03);display:block}
+.gv-brand-status{display:flex;align-items:center;gap:5px;margin-top:4px;font-size:7px;letter-spacing:.55px;color:#5f9eb8;white-space:nowrap}
 .gv-brand-status i{width:5px;height:5px;border-radius:50%;background:#10B981;box-shadow:0 0 9px #10B981;display:inline-block}
-.gv-logo-signature{position:absolute;right:20px;top:22px;width:136px;height:112px;border:1px solid rgba(30,41,59,.85);border-radius:20px;overflow:hidden;background:radial-gradient(circle at 50% 30%,rgba(6,182,212,.12),rgba(3,10,20,.02) 65%);box-shadow:0 12px 34px rgba(0,0,0,.32),0 0 30px rgba(6,182,212,.08);pointer-events:none;opacity:.92}
-.gv-logo-signature img{width:100%;height:100%;object-fit:cover;object-position:center 31%;transform:scale(1.32)}
-.gv-logo-glow{position:absolute;inset:-40%;background:radial-gradient(circle,rgba(16,185,129,.08),transparent 55%);animation:gvBrandPulse 3.8s ease-in-out infinite}
-@keyframes gvBrandPulse{0%,100%{transform:scale(.9);opacity:.35}50%{transform:scale(1.12);opacity:.9}}
+.gv-logo-signature{position:absolute;right:18px;top:50%;transform:translateY(-50%);width:170px;height:170px;border:0;border-radius:24px;overflow:hidden;background:transparent;box-shadow:0 18px 48px rgba(0,0,0,.30),0 0 36px rgba(6,182,212,.08);pointer-events:none;opacity:.88;z-index:0}
+.gv-logo-signature img{width:100%;height:100%;object-fit:contain;object-position:center;transform:none;display:block;mix-blend-mode:screen}
+.gv-logo-glow{position:absolute;inset:-25%;background:radial-gradient(circle,rgba(16,185,129,.12),transparent 58%);animation:gvBrandPulse 3.8s ease-in-out infinite;pointer-events:none}
 .gv-welcome{position:relative;overflow:hidden}
+.gv-welcome>*:not(.gv-logo-signature){position:relative;z-index:1}
 .gv-welcome:after{content:'';position:absolute;inset:auto -20% -60% 20%;height:160px;background:radial-gradient(circle,rgba(6,182,212,.08),transparent 65%);pointer-events:none}
-@media(max-width:850px){.gv-logo-signature{width:96px;height:82px;right:12px;top:16px}}
-@media(max-width:600px){.gv-logo-signature{display:none}.gv-brand-status{display:none}.gv-brand-image-wrap{width:42px;height:42px}}
+@keyframes gvBrandPulse{0%,100%{transform:scale(.92);opacity:.3}50%{transform:scale(1.08);opacity:.85}}
+@media(max-width:850px){.gv-logo-signature{width:130px;height:130px;right:10px;opacity:.7}.gv-brand-image-wrap{width:42px;height:42px}}
+@media(max-width:600px){.gv-logo-signature{display:none}.gv-brand-status{display:none}.gv-brand-image-wrap{width:40px;height:40px}}
 </style>
 </head>
 <body>
